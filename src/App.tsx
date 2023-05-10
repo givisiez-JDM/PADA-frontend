@@ -1,14 +1,17 @@
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import TextInput from './components/TextInput/TextInput'
+import { PasswordInput } from './components/PasswordInput/PasswordInput.styles'
+import Home from './pages/Home'
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <p>PADA-Frontend</p>
-      </div>
-    </>
+  return (    
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />}/>
+        </Routes>
+      </BrowserRouter>
+    
   )
 }
 
