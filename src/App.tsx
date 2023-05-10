@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import TextInput from './components/TextInput/TextInput'
-import { PasswordInput } from './components/PasswordInput/PasswordInput.styles'
 import Home from './pages/Home'
+import Cadastro from './pages/Cadastro'
 
 function App() {
 
@@ -9,6 +8,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="cadastro" element={<Cadastro />}/>
         </Routes>
       </BrowserRouter>
     
