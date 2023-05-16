@@ -1,17 +1,18 @@
+import { FC, InputHTMLAttributes } from 'react';
 import { Input } from "./TextInput.styles";
 import { FaUserCircle } from 'react-icons/fa';
 
-interface TextInputProps {
+interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
     type: string;
+    name: string;
 }
 
 
-const TextInput: React.FC<TextInputProps> = ({placeholder, type}) => {
+const TextInput: FC<TextInputProps> = ({placeholder, type, ...rest}) => {
     return (
     <>
-        <Input type={type} placeholder={placeholder}/>
-        <i><FaUserCircle /></i>
+        <Input type={type} placeholder={placeholder} {...rest}/>
     </>
     )
 }

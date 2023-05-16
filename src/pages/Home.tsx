@@ -7,10 +7,10 @@ function Home() {
   return (
     <div className='form-container'>
       <form>
-          <TextInput type='text' placeholder='Usuário'/>          
+          <TextInput type='text' name='usuario' placeholder='Usuário'/>          
           <PasswordInput type='password' placeholder='Senha'/>          
           <Button title="Entrar"/>
-          <p>Lembre da senha</p>
+          <p><input type='checkbox'/>  Lembre da senha</p>
       </form>
     </div>
   )
