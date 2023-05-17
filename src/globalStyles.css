@@ -16,6 +16,7 @@ body {
 .form-container {
     border: 1px solid #191F30;
     padding: 5rem 3rem;
+    max-width: 300px;
 }
 
 form {
@@ -47,5 +48,13 @@ form {
 .iconGraphic {
     width: 25px;
     height: 100%;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+p {
+    color: tomato;
 }
 
