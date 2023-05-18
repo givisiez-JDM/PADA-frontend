@@ -19,6 +19,11 @@ const types: Record<string, Types> = {
     password: {
         regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
         message: 'Senha inválida. (Sua senha deve ter pelo menos 8 caracteres, deve conter no mínimo um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)',
+    },
+
+    confirmPassword: {
+        regex: /^\s*$/,
+        message: 'Este campo deve ser preenchido'
     }
 }
 
@@ -30,7 +35,7 @@ const useForm = (type: string) => {
         if(value.length === 0) {
             setError('Preencha um valor');
             return false;
-        } else if(!types[type].regex.test(value)) {
+        } else if(types[type] && !types[type].regex.test(value)) {
             setError(types[type].message);
             return false;
         } else {

@@ -7,15 +7,9 @@ import useForm from '../Hooks/useForm'
 function Cadastro() {
 
   const email = useForm('email')
-  const name = useForm('name')
+  const name = useForm('')
   const password = useForm('password')
-
- function handleBlur(event:React.FormEvent<HTMLInputElement>) {
-  
-  
-  
-  console.log('olá')
-  }
+  const confirmPassword = useForm('')
 
   return (
     <div className='form-container'>
@@ -24,7 +18,7 @@ function Cadastro() {
           <TextInput type='text' name='name' placeholder='Nome' {...name} />          
           <TextInput type='email' name='email' placeholder='E-mail' {...email}/>     
           <PasswordInput type='password' name='password' placeholder='Senha' {...password} />          
-          <PasswordInput type='password' name='confirmPassword' placeholder='Confirmar senha' {...password} />          
+          <PasswordInput type='password' name='confirmPassword' placeholder='Confirmar senha' {...confirmPassword} />          
           <Button title="Entrar"/>
           <p>Lembre da senha</p>
       </form>

@@ -14,7 +14,8 @@ body {
 }
 
 .form-container {
-    border: 1px solid #191F30;
+    box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 10px;
     padding: 5rem 3rem;
     max-width: 300px;
 }
