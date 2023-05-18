@@ -13,6 +13,43 @@ body {
     font-size: 0.8rem;
 }
 
+.blue-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 500px;
+    height: 250px;
+    padding: 35px 55px;
+    background-color: #4C7ABB;
+    border-radius: 10px;
+}
+
+.white-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 500px;
+    height: 250px;
+    padding: 35px 55px;
+    border: 3px solid #4C7ABB;
+    border-radius: 10px;
+}
+
+.logo {
+    display: flex;   
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: darkgrey;
+}
+
 .form-container {
     box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
     border-radius: 10px;

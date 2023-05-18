@@ -1,13 +1,19 @@
 import React from 'react'
-import { StyledButton } from './Button.styles'
+import { Container } from "./Button.styles";
 
-interface ButtonProps {
+export type ButtonProps = {
+  children?: React.ReactNode;
+  disabled?: boolean;
+  color?: 'primary' | 'secondary';
   title: string;
 }
 
-const Button: React.FC<ButtonProps> = ({title}) => {
+export const Button = ({children, disabled, 
+  color, title}: ButtonProps) => {
   return (
-    <StyledButton>{title}</StyledButton>
+    <Container title={title} color={color} disabled={disabled}>
+      {children}
+    </Container>
   )
 }
 
