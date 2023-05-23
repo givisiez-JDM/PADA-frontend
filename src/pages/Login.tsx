@@ -14,7 +14,7 @@ function Login() {
       <form>
           <TextInput type='text' name='usuario' placeholder='Usuário' {...name}/>          
           <PasswordInput type='password' placeholder='Senha'/>          
-          <Button title="Entrar"/>
+          <Button title='Entrar' color='primary'>Entrar</Button>
           <p><input type='checkbox'/>  Lembre da senha</p>
       </form>
       

@@ -12,17 +12,19 @@ function Cadastro() {
   const confirmPassword = useForm('')
 
   return (
-    <div className='form-container'>
-      <h1>Projeto Alergia</h1>
+    <>
+    <h3>Crie sua conta</h3>
+    <div className='white-container'>
       <form>
           <TextInput type='text' name='name' placeholder='Nome' {...name} />          
           <TextInput type='email' name='email' placeholder='E-mail' {...email}/>     
           <PasswordInput type='password' name='password' placeholder='Senha' {...password} />          
           <PasswordInput type='password' name='confirmPassword' placeholder='Confirmar senha' {...confirmPassword} />          
-          <Button title="Entrar"/>
+          <Button title='Enviar' color='primary'>Cadastre-se</Button>
           <p>Lembre da senha</p>
       </form>
     </div>
+    </>
   )
 }
 
