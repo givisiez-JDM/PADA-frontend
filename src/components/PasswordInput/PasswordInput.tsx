@@ -1,6 +1,5 @@
 import { FC, InputHTMLAttributes } from 'react';
 import { PasswordInput } from "./PasswordInput.styles";
-import { TbCircleKeyFilled } from 'react-icons/tb'
 
 interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
     placeholder?: string;
@@ -15,7 +14,7 @@ const TextInput: React.FC<PasswordInputProps> = ({placeholder, type, value, onBl
     return (
     <>
     <PasswordInput type={type} placeholder={placeholder} onChange={onChange} onBlur={onBlur}  value={value}/>
-    {error && <p>{error}</p>}
+    {error && <p className='inputError'>{error}</p>}
     </>
     )
 }

@@ -20,7 +20,7 @@ function Cadastro() {
           <TextInput type='email' name='email' placeholder='E-mail' {...email}/>     
           <PasswordInput type='password' name='password' placeholder='Senha' {...password} />          
           <PasswordInput type='password' name='confirmPassword' placeholder='Confirmar senha' {...confirmPassword} />          
-          <Button title='Enviar' color='primary'>Cadastre-se</Button>
+          <Button title='Cadastre-se' color='primary'>Cadastre-se</Button>
           <p>Lembre da senha</p>
       </form>
     </div>

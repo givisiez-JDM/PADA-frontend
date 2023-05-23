@@ -92,7 +92,13 @@ h1 {
     margin-bottom: 20px;
 }
 
-p {
+.inputError {
     color: tomato;
+}
+
+.icon {
+    width: 20px;
+    height: 100%;
+    margin-right: 15px;
 }
 

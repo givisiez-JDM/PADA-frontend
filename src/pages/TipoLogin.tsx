@@ -1,7 +1,9 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 import Button from '../components/Button/Button'
-import { FaBeer } from 'react-icons/fa';
+import { UserDoctor } from '@styled-icons/fa-solid/UserDoctor'
+import { UserHeart } from '@styled-icons/remix-fill/UserHeart'
+
 
 function TipoLogin() {
   
@@ -9,8 +11,8 @@ function TipoLogin() {
   return (
     <div className='blue-container'>
       <form>
-      <NavLink to='/login'><Button title='Médico' color='primary'><FaBeer />Médico</Button></NavLink>
-      <NavLink to='/login'><Button title='Paciente' color='secondary'>Paciente</Button></NavLink>
+      <NavLink to='/login'><Button title='Médico' color='primary'><UserDoctor className='icon' />Médico</Button></NavLink>
+      <NavLink to='/login'><Button title='Paciente' color='secondary'><UserHeart className='icon' />Paciente</Button></NavLink>
       </form>      
     </div>
   )
