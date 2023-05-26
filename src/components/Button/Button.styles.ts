@@ -32,4 +32,10 @@ const COLOR = {
 
   ${(props) => props.color && COLOR[props.color]}
   ${(props) => props.disabled && DISABLED}
+
+  &:hover {
+    color: #FFFFFF;
+    background: #334C76;
+    transition: 0.3s;
+  }
 `;

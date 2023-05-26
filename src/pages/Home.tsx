@@ -9,7 +9,6 @@ function Home() {
     <div className='blue-container'>
       <NavLink to="/tipo-login"><Button title='Login' color='primary'>Login</Button></NavLink>
       <NavLink to="/tipo-cadastro"><Button title='Cadastre-se' color='secondary'>Cadastre-se</Button></NavLink>
-      <p>Esqueceu sua senha?</p>
     </div>
   )
 }
