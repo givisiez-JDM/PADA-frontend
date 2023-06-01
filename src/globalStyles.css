@@ -104,3 +104,13 @@ h1, h3 {
     margin-right: 15px;
 }
 
+.MenuPageContainer {
+    height: 100vh;
+    width: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
