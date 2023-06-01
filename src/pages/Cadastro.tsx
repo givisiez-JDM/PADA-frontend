@@ -21,7 +21,7 @@ function Cadastro() {
           <PasswordInput type='password' name='password' placeholder='Senha' {...password} />          
           <PasswordInput type='password' name='confirmPassword' placeholder='Confirmar senha' {...confirmPassword} />          
           <Button title='Cadastre-se' color='primary'>Cadastre-se</Button>
-          <p>Lembre da senha</p>
+          <p><input type='checkbox'/> Lembre da senha</p>
       </form>
     </div>
     </>
