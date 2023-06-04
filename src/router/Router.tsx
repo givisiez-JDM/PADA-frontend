@@ -6,6 +6,7 @@ import Login from '../pages/Login'
 import TipoLogin from '../pages/TipoLogin'
 import TipoCadastro from '../pages/TipoCadastro'
 import MenuMedico from '../pages/MenuMedico'
+import MenuPaciente from '../pages/MenuPaciente'
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="tipo-cadastro" element={<TipoCadastro />}/>
           <Route path="cadastro" element={<Cadastro />}/>
           <Route path="menu-medico" element={<MenuMedico />}/>
+          <Route path="menu-paciente" element={<MenuPaciente />}/>
         </Routes>
       </BrowserRouter>
   )

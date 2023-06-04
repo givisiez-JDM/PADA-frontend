@@ -9,6 +9,7 @@ export const MenuItemContainer = styled.div`
     height: 160px;
     border-radius: 20px;
     box-shadow: 4px 4px 9px 0px rgba(0,0,0,0.25);
+    cursor: pointer;
 `;
 
 export const MenuItemImg = styled.img`
@@ -20,6 +21,7 @@ export const MenuItemImg = styled.img`
 export const MenuItemTitle = styled.h5`
     font-weight: 600;
     font-size: 1rem;
+    text-align: center;
 `;
 
 export const MenuItemText = styled.p`
