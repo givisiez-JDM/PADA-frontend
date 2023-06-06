@@ -8,13 +8,13 @@ function TipoCadastro() {
   return (
     <div className="blue-container">
       <form>
-        <NavLink to="/cadastro">
+        <NavLink to="/cadastro?userType=medico">
           <Button title="Médico" color="secondary">
             <UserDoctor className="icon" />
             Médico
           </Button>
         </NavLink>
-        <NavLink to="/cadastro">
+        <NavLink to="/cadastro?userType=paciente">
           <Button title="Paciente" color="secondary">
             <UserHeart className="icon" />
             Paciente

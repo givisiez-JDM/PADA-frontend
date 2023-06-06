@@ -3,13 +3,17 @@ import TextInput from "../components/TextInput/TextInput";
 import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import useForm from "../Hooks/useForm";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 function Cadastro() {
   const email = useForm("email");
   const name = useForm("");
   const password = useForm("password");
   const confirmPassword = useForm("");
+
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const userType = params.get("userType");
 
   return (
     <>
@@ -35,11 +39,23 @@ function Cadastro() {
             placeholder="Confirmar senha"
             {...confirmPassword}
           />
-          <NavLink to="/menu-medico">
-            <Button title="Cadastre-se" color="primary">
-              Cadastre-se
-            </Button>
-          </NavLink>
+
+          {userType === "medico" && (
+            <NavLink to="/menu-medico">
+              <Button title="Cadastre-se" color="primary">
+                Cadastre-se
+              </Button>
+            </NavLink>
+          )}
+
+          {userType === "paciente" && (
+            <NavLink to="/menu-paciente">
+              <Button title="Cadastre-se" color="primary">
+                Cadastre-se
+              </Button>
+            </NavLink>
+          )}
+
           <p>
             <input type="checkbox" /> Lembre da senha
           </p>
