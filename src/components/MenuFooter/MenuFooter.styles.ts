@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const FooterContainer = styled.div`
-    display: flex;
-    height: 10%;
-    width: 100%;
+  display: flex;
+  height: 10%;
+  width: 100%;
 `;

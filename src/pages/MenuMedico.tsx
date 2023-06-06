@@ -4,20 +4,44 @@ import MenuHeader from "../components/MenuHeader/MenuHeader";
 import MenuFooter from "../components/MenuFooter/MenuFooter";
 
 function MenuMedico() {
-    return (
+  return (
     <div className="MenuPageContainer">
-    <MenuHeader children="Olá!"/>
-    <MenuContainer>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    <MenuCard imgSrc="./src/assets/pacienteIcone.png" text="Conheça cada um dos seus pacientes" title="Pacientes"/>
-    </MenuContainer>
-    <MenuFooter />
+      <MenuHeader children="Olá!" />
+      <MenuContainer>
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+        <MenuCard
+          imgSrc="./src/assets/pacienteIcone.png"
+          text="Conheça cada um dos seus pacientes"
+          title="Pacientes"
+        />
+      </MenuContainer>
+      <MenuFooter />
     </div>
-    )
+  );
 }
 
 export default MenuMedico;

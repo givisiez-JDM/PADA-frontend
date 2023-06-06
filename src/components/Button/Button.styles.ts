@@ -2,25 +2,25 @@ import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button";
 
 const COLOR = {
-    primary: css`
-      color: #FFFFFF;
-      background-color: #76A7ED;
-      border: 2px solid #4C7ABB;
-    `,
-    secondary: css`
-      color: #76A7ED;
-      background-color: #FFFFFF;
-      border: 2px solid #4C7ABB;
-    `,
-  };
+  primary: css`
+    color: #ffffff;
+    background-color: #76a7ed;
+    border: 2px solid #4c7abb;
+  `,
+  secondary: css`
+    color: #76a7ed;
+    background-color: #ffffff;
+    border: 2px solid #4c7abb;
+  `,
+};
 
-  const DISABLED = css`
+const DISABLED = css`
   cursor: not-allowed;
-  color: #4C7ABB;
-  background: #BBBBBB;
+  color: #4c7abb;
+  background: #bbbbbb;
 `;
 
-  export const Container = styled.button<ButtonProps>`
+export const Container = styled.button<ButtonProps>`
   width: 15rem;
   padding: 10px 15px;
   cursor: pointer;
@@ -34,8 +34,8 @@ const COLOR = {
   ${(props) => props.disabled && DISABLED}
 
   &:hover {
-    color: #FFFFFF;
-    background: #334C76;
+    color: #ffffff;
+    background: #334c76;
     transition: 0.3s;
   }
 `;

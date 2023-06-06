@@ -1,15 +1,15 @@
-import { StyledHeadDiv, StyledHeaderTitle } from "./MenuHeader.styles"
+import { StyledHeadDiv, StyledHeaderTitle } from "./MenuHeader.styles";
 
-export type MenuHeaderProps ={
-    children?: React.ReactNode; 
-}
+export type MenuHeaderProps = {
+  children?: React.ReactNode;
+};
 
-const MenuHeader = ({children}: MenuHeaderProps) => {
+const MenuHeader = ({ children }: MenuHeaderProps) => {
   return (
     <StyledHeadDiv>
-        <StyledHeaderTitle>{children}</StyledHeaderTitle>
+      <StyledHeaderTitle>{children}</StyledHeaderTitle>
     </StyledHeadDiv>
-  )
-}
+  );
+};
 
 export default MenuHeader;
