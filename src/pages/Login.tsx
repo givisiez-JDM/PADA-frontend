@@ -3,6 +3,7 @@ import useForm from "../Hooks/useForm";
 import TextInput from "../components/TextInput/TextInput";
 import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
 import Button from "../components/Button/Button";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const name = useForm("nome");
@@ -21,9 +22,11 @@ function Login() {
           <p>
             <input type="checkbox" /> Lembre da senha
           </p>
-          <Button title="Entrar" color="primary">
-            Entrar
-          </Button>
+          <NavLink to="/menu-medico">
+            <Button title="Entrar" color="primary">
+              Entrar
+            </Button>
+          </NavLink>
         </form>
       </div>
       <p>Esqueceu a senha?</p>
