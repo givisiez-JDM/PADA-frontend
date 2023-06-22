@@ -1,14 +1,9 @@
-import { useState } from 'react'
+import Router from "./router/Router"
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <p>PADA-Frontend</p>
-      </div>
-    </>
+  return (    
+      <Router />    
   )
 }
 
