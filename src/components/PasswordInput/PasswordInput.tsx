@@ -8,7 +8,7 @@ interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error: string;
 }
 
-const TextInput: React.FC<PasswordInputProps> = ({
+const TextInput: FC<PasswordInputProps> = ({
   placeholder,
   type,
   value,
