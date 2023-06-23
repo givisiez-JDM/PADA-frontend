@@ -10,7 +10,7 @@ interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 
-const TextInput: React.FC<PasswordInputProps> = ({placeholder, type, value, onBlur, onChange, error}) => {
+const TextInput: FC<PasswordInputProps> = ({placeholder, type, value, onBlur, onChange, error}) => {
     return (
     <>
     <PasswordInput type={type} placeholder={placeholder} onChange={onChange} onBlur={onBlur}  value={value}/>
