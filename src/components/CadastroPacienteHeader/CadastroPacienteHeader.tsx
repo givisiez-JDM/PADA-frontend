@@ -4,8 +4,11 @@ import {
   HeaderTitle,
   HeaderGreeting,
 } from "./CadastroPacienteHeader.styles";
+import DropdownMenu from "../DropdownMenu/DropdownMenu";
 
 const CadastroPacienteHeader = () => {
+  const menuItems = ["Meu perfil", "Sair"];
+
   return (
     <HeaderContainer>
       <HeaderLogo>LOGO</HeaderLogo>
@@ -13,6 +16,7 @@ const CadastroPacienteHeader = () => {
         <HeaderTitle>Bem-Vindo!</HeaderTitle>
         <HeaderGreeting>Olá, Dr. ????</HeaderGreeting>
       </div>
+      <DropdownMenu items={menuItems} />
     </HeaderContainer>
   );
 };
