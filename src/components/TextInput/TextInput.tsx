@@ -5,7 +5,8 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   type: string;
   name: string;
-  error: string;
+  error?: string;
+  style?: React.CSSProperties;
 }
 
 const TextInput: FC<TextInputProps> = ({
@@ -15,6 +16,7 @@ const TextInput: FC<TextInputProps> = ({
   onBlur,
   onChange,
   error,
+  style,
 }) => {
   return (
     <>
@@ -24,6 +26,7 @@ const TextInput: FC<TextInputProps> = ({
         onChange={onChange}
         onBlur={onBlur}
         value={value}
+        style={style}
       />
       {error && <p className="inputError">{error}</p>}
     </>
