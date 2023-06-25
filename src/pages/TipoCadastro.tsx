@@ -14,12 +14,6 @@ function TipoCadastro() {
             Médico
           </Button>
         </NavLink>
-        <NavLink to="/cadastro?userType=paciente">
-          <Button title="Paciente" color="secondary">
-            <UserHeart className="icon" />
-            Paciente
-          </Button>
-        </NavLink>
       </form>
     </div>
   );
