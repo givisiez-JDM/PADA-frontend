@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button/Button";
 import { UserDoctor } from "@styled-icons/fa-solid/UserDoctor";
-import { UserHeart } from "@styled-icons/remix-fill/UserHeart";
 
 function TipoCadastro() {
   return (
@@ -11,12 +10,6 @@ function TipoCadastro() {
           <Button title="Médico" color="secondary">
             <UserDoctor className="icon" />
             Médico
-          </Button>
-        </NavLink>
-        <NavLink to="/cadastro?userType=paciente">
-          <Button title="Paciente" color="secondary">
-            <UserHeart className="icon" />
-            Paciente
           </Button>
         </NavLink>
       </form>
