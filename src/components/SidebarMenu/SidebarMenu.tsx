@@ -1,11 +1,22 @@
-import { StyledMenu } from "./SidebarMenu.styles";
+import { StyledMenu, StyledList, StyledListItem } from "./SidebarMenu.styles";
 
-export const SidebarMenu = () => {
+interface MenuItems {
+  name: string;
+}
+
+interface SidebarMenuProps {
+  items: MenuItems[];
+}
+
+export const SidebarMenu: React.FC<SidebarMenuProps> = ({ items }) => {
   return (
     <StyledMenu>
       <h2>Pacientes</h2>
-      <p>Meus Pacientes</p>
-      <p>Cadastro</p>
+      <StyledList>
+        {items.map((item) => (
+          <StyledListItem>{item.name}</StyledListItem>
+        ))}
+      </StyledList>
     </StyledMenu>
   );
 };

@@ -49,7 +49,7 @@ const ConteudoCadastroPaciente = () => {
             <h2>Dosagem do Medicamento</h2>
           </GridTitle>
           <p>
-            <Checkbox checked={false} onChange={handleCheckboxChange} />
+            <input type="checkbox" name="" className="checkbox" />
             1:10.000
           </p>
           <p>

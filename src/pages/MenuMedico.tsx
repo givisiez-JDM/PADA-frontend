@@ -1,46 +1,41 @@
-import MenuCard from "../components/MenuCard/MenuCard";
+import MenuMedicoHeader from "../components/MenuMedicoHeader/MenuMedicoHeader";
+import { SidebarMenu } from "../components/SidebarMenu/SidebarMenu";
 import MenuContainer from "../components/MenuContainer/MenuContainer";
-import MenuHeader from "../components/MenuHeader/MenuHeader";
-import MenuFooter from "../components/MenuFooter/MenuFooter";
+import { SearchbarDiv } from "../components/MenuContainer/MenuContainer.styles";
+import TextInput from "../components/TextInput/TextInput";
+import Button from "../components/Button/Button";
+import { NavLink } from "react-router-dom";
+
+const items = [
+  { name: "Amanda C." },
+  { name: "Emanuel M." },
+  { name: "João R. P." },
+  { name: "Mariana D." },
+  { name: "Juliano G." },
+];
 
 function MenuMedico() {
   return (
-    <div className="MenuPageContainer">
-      <MenuHeader children="Olá!" />
+    <>
+      <MenuMedicoHeader />
+      <SidebarMenu items={items} />
       <MenuContainer>
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
-        <MenuCard
-          imgSrc="./src/assets/pacienteIcone.png"
-          text="Conheça cada um dos seus pacientes"
-          title="Pacientes"
-        />
+        <SearchbarDiv>
+          <TextInput
+            type="text"
+            name="buscar-paciente"
+            style={{ width: "30vw" }}
+          />
+          <Button
+            color="primary"
+            title="cadastrar-paciente"
+            style={{ width: "9vw" }}
+          >
+            Cadastrar Paciente
+          </Button>
+        </SearchbarDiv>
       </MenuContainer>
-      <MenuFooter />
-    </div>
+    </>
   );
 }
 
