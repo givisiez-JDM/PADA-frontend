@@ -7,17 +7,20 @@ export const DropdownContainer = styled.div`
 
 export const DropdownButton = styled.button`
   background-color: transparent;
-  border: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid #fff;
+  border-radius: 10px;
   color: inherit;
   cursor: pointer;
 `;
 
 export const DropdownMenuBody = styled.ul`
   position: absolute;
-  top: 100%;
+  top: 20;
   left: 0;
   padding: 0;
   margin: 0;
+  width: 8rem;
   background-color: #334c76;
   list-style: none;
   display: none;

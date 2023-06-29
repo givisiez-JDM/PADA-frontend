@@ -4,10 +4,22 @@ export const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: start;
-  height: 90vh;
+  height: 80vh;
   top: 10vh;
   left: 0;
-  padding: 2rem;
+  margin-top: 10vh;
+  padding-left: 2rem;
+  padding-top: 15vh;
   position: fixed;
-  background: rgba(76, 122, 187, 0.2);
+`;
+
+export const StyledList = styled.ul`
+  margin-top: 2vh;
+`;
+
+export const StyledListItem = styled.li`
+  list-style: none;
+  border-left: 4px solid #4c7abb;
+  padding: 0 0.5rem;
+  margin-bottom: 1rem;
 `;

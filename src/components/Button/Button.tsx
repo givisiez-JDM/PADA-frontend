@@ -6,11 +6,18 @@ export type ButtonProps = {
   disabled?: boolean;
   color?: "primary" | "secondary";
   title: string;
+  style?: React.CSSProperties;
 };
 
-export const Button = ({ children, disabled, color, title }: ButtonProps) => {
+export const Button = ({
+  children,
+  disabled,
+  color,
+  title,
+  style,
+}: ButtonProps) => {
   return (
-    <Container title={title} color={color} disabled={disabled}>
+    <Container title={title} color={color} disabled={disabled} style={style}>
       {children}
     </Container>
   );
