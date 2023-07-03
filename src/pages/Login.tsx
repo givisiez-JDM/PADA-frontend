@@ -4,6 +4,7 @@ import TextInput from "../components/TextInput/TextInput";
 import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
 import Button from "../components/Button/Button";
 import { NavLink, useLocation } from "react-router-dom";
+import Background from "../components/Background/Background";
 
 function Login() {
   const name = useForm("nome");
@@ -45,6 +46,7 @@ function Login() {
         </form>
       </div>
       <p>Esqueceu a senha?</p>
+      <Background/>
     </>
   );
 }

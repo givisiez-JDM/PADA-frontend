@@ -4,6 +4,7 @@ import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import useForm from "../Hooks/useForm";
 import { NavLink, useLocation } from "react-router-dom";
+import Background from "../components/Background/Background";
 
 function Cadastro() {
   const email = useForm("email");
@@ -61,7 +62,9 @@ function Cadastro() {
           </p>
         </form>
       </div>
+    <Background/>
     </>
+    
   );
 }
 
