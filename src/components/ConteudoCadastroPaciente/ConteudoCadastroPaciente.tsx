@@ -22,70 +22,39 @@ const ConteudoCadastroPaciente = () => {
     <form action="">
       <ContentContainer>
         <DivRowOne>
-          <h1>Cadastrar Paciente</h1>
           <p>Nome</p>
-          <TextInput type="text" name="nome" style={{ width: "52em" }} />
-        </DivRowOne>
-        <DivRowTwo>
+          <TextInput type="text" name="nome" style={{ width: "25em" }} />
           <div>
             <p>Telefone</p>
-            <TextInput type="text" name="telefone" style={{ width: "16em" }} />
+            <TextInput type="text" name="telefone" style={{ width: "25em" }} />
           </div>
           <div>
             <p>E-mail</p>
-            <TextInput type="email" name="email" style={{ width: "16em" }} />
+            <TextInput type="email" name="email" style={{ width: "25em" }} />
           </div>
           <div>
             <p>Data de Nascimento</p>
             <TextInput
               type="date"
               name="nascimento"
-              style={{ width: "16em" }}
+              style={{ width: "25em" }}
             />
           </div>
+        </DivRowOne>
+        <DivRowTwo>
+          <GridTitle>
+            <h2>Método de Tratamento</h2>
+          </GridTitle>
+          <p>
+            <input type="checkbox" name="" className="checkbox" />
+            Sublingual
+          </p>
+          <p>
+            <input type="checkbox" name="" className="checkbox" />
+            Vacinas
+          </p>
         </DivRowTwo>
         <DivRowThree>
-          <GridTitle>
-            <h2>Dosagem do Medicamento</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-        </DivRowThree>
-        <DivRowFour>
-          <GridTitle>
-            <h2>Periodicidade do Tratamento</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 7 dias
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 2
-            semanas
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 3
-            semanas
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 4
-            semanas
-          </p>
-        </DivRowFour>
-        <DivRowFive>
           <GridTitle>
             <h2>Alergias</h2>
           </GridTitle>
@@ -137,36 +106,13 @@ const ConteudoCadastroPaciente = () => {
             <input type="checkbox" name="" className="checkbox" />
             Candidíase
           </p>
-        </DivRowFive>
-        <DivRowSix>
-          <GridTitle>
-            <h2>Método de Tratamento</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Sublingual
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Vacinas
-          </p>
-          <GridSecondTitle>
-            <h2>Duração do Tratamento</h2>
-          </GridSecondTitle>
-          <div>
-            <p>Inicio</p>
-            <TextInput type="date" name="nascimento" />
-          </div>
-          <div>
-            <p>Fim</p>
-            <TextInput type="date" name="nascimento" />
-          </div>
-        </DivRowSix>
-        <DivRowSeven>
+        </DivRowThree>
+        <DivRowFour></DivRowFour>
+        <DivRowFive>
           <Button title="cadastrar-paciente" color="primary">
-            Cadastrar Paciente
+            Avançar
           </Button>
-        </DivRowSeven>
+        </DivRowFive>
       </ContentContainer>
     </form>
   );

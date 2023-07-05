@@ -123,3 +123,21 @@ h3 {
 .checkbox {
   margin-right: 0.5rem;
 }
+
+.error-message {
+  background-color: rgb(247, 222, 227);
+  border: solid 1px crimson;
+  color: crimson;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.success-message {
+  background-color: rgb(216, 249, 216);
+  border: solid 1px forestgreen;
+  color: forestgreen;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}

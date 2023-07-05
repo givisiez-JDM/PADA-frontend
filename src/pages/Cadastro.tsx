@@ -1,59 +1,77 @@
+import React, { useState } from "react";
+import axios from "axios";
 import TextInput from "../components/TextInput/TextInput";
 import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import useForm from "../Hooks/useForm";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
-function Cadastro() {
-  const email = useForm("email");
-  const name = useForm("");
-  const password = useForm("password");
-  const confirmPassword = useForm("");
+const Cadastro = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const userType = params.get("userType");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const redirect = useNavigate();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const response = await axios.post(
+        "https://app-vacina-backend-production.up.railway.app/doctor",
+        { name, email, password }
+      );
+      console.log(response.data);
+      setSuccessMessage("Cadastro realizado com sucesso!");
+      setTimeout(() => {
+        redirect("/menu-medico");
+      }, 2000);
+    } catch (error) {
+      console.log(error);
+      setErrorMessage("O cadastro não pode ser realizado!");
+    }
+  };
 
   return (
     <>
+      {successMessage && <h4 className="success-message">{successMessage}</h4>}
+      {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
       <h3>Crie sua conta</h3>
       <div className="white-container">
-        <form>
-          <TextInput type="text" name="name" placeholder="Nome" {...name} />
+        <form onSubmit={handleSubmit}>
+          <TextInput
+            type="text"
+            name="name"
+            placeholder="Nome"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
           <TextInput
             type="email"
             name="email"
             placeholder="E-mail"
-            {...email}
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
           />
           <PasswordInput
             type="password"
             name="password"
             placeholder="Senha"
-            {...password}
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
           />
           <PasswordInput
             type="password"
             name="confirmPassword"
             placeholder="Confirmar senha"
-            {...confirmPassword}
           />
 
-          {userType === "medico" && (
-            <NavLink to="/menu-medico">
-              <Button title="Cadastre-se" color="primary">
-                Cadastre-se
-              </Button>
-            </NavLink>
-          )}
-
-          {userType === "paciente" && (
-            <NavLink to="/menu-paciente">
-              <Button title="Cadastre-se" color="primary">
-                Cadastre-se
-              </Button>
-            </NavLink>
-          )}
+          <Button title="Cadastre-se" color="primary" type="submit">
+            Cadastre-se
+          </Button>
 
           <p>
             <input type="checkbox" /> Lembre da senha
@@ -62,6 +80,6 @@ function Cadastro() {
       </div>
     </>
   );
-}
+};
 
 export default Cadastro;

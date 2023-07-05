@@ -7,6 +7,7 @@ export type ButtonProps = {
   color?: "primary" | "secondary";
   title: string;
   style?: React.CSSProperties;
+  type?: "button" | "submit" | "reset";
 };
 
 export const Button = ({
@@ -15,9 +16,16 @@ export const Button = ({
   color,
   title,
   style,
+  type,
 }: ButtonProps) => {
   return (
-    <Container title={title} color={color} disabled={disabled} style={style}>
+    <Container
+      title={title}
+      color={color}
+      disabled={disabled}
+      style={style}
+      type={type}
+    >
       {children}
     </Container>
   );
