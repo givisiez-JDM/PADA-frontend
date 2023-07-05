@@ -26,13 +26,15 @@ function MenuMedico() {
             name="buscar-paciente"
             style={{ width: "30vw" }}
           />
-          <Button
-            color="primary"
-            title="cadastrar-paciente"
-            style={{ width: "9vw" }}
-          >
-            Cadastrar Paciente
-          </Button>
+          <NavLink to="/cadastro-paciente">
+            <Button
+              color="primary"
+              title="cadastrar-paciente"
+              style={{ width: "9vw" }}
+            >
+              Cadastrar Paciente
+            </Button>
+          </NavLink>
         </SearchbarDiv>
       </MenuContainer>
     </>

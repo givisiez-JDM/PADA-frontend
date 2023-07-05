@@ -10,7 +10,7 @@ function Home() {
           Login
         </Button>
       </NavLink>
-      <NavLink to="/tipo-cadastro">
+      <NavLink to="/cadastro">
         <Button title="Cadastre-se" color="secondary">
           Cadastre-se
         </Button>
