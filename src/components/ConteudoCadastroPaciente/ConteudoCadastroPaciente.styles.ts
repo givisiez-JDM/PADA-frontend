@@ -4,8 +4,8 @@ export const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
   width: 80vw;
   height: 70vh;
   padding: 3rem 0;
@@ -30,8 +30,8 @@ export const DivRowTwo = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 1rem;
-  grid-row-gap: 1rem;
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
   width: 20vw;
   padding: 1rem;
   border-radius: 10px;
@@ -43,6 +43,8 @@ export const DivRowThree = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
   gap: 1.5rem;
   height: 35vh;
   align-items: center;

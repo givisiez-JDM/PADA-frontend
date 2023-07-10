@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 function Home() {
   return (
     <div className="blue-container">
-      <NavLink to="/tipo-login">
+      <NavLink to="/login">
         <Button title="Login" color="primary">
           Login
         </Button>
