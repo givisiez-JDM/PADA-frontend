@@ -25,6 +25,7 @@ function MenuMedico() {
             type="text"
             name="buscar-paciente"
             style={{ width: "30vw" }}
+            value=""
           />
           <NavLink to="/cadastro-paciente">
             <Button

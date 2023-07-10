@@ -1,16 +1,11 @@
 import React, { useState } from "react";
-import useForm from "../Hooks/useForm";
 import TextInput from "../components/TextInput/TextInput";
 import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
 import Button from "../components/Button/Button";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { redirect, useNavigate } from "react-router-dom";
 
 function Login() {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const userType = params.get("userType");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -32,8 +27,9 @@ function Login() {
       console.log(response.data);
       setSuccessMessage("Login realizado com sucesso!");
       setTimeout(() => {
+        console.log("redirecionamento");
         redirect("/menu-medico");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
       setErrorMessage("O Login não pode ser realizado!");
@@ -63,19 +59,9 @@ function Login() {
             <input type="checkbox" /> Lembre da senha
           </p>
 
-          {userType === "medico" && (
-            <Button title="Entrar" color="primary" type="submit">
-              Entrar
-            </Button>
-          )}
-
-          {userType === "paciente" && (
-            <NavLink to="/menu-paciente">
-              <Button title="Entrar" color="primary">
-                Entrar
-              </Button>
-            </NavLink>
-          )}
+          <Button title="Entrar" color="primary" type="submit">
+            Entrar
+          </Button>
         </form>
       </div>
       <p>Esqueceu a senha?</p>
