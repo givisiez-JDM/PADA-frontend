@@ -15,7 +15,7 @@ const MenuFooter = () => {
         src="./src/assets/SairIcone.png"
         value="Sair"
         color="grey"
-        route="/tipo-login"
+        route="/login?userType=medico"
       />
     </FooterContainer>
   );
