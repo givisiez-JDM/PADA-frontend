@@ -7,10 +7,11 @@ export const ContentContainer = styled.div`
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   width: 80vw;
-  height: 70vh;
-  padding: 3rem 0;
+  max-height: 120vh;
+  padding: 1rem 3rem;
   margin: 1rem 0;
   color: #334c76;
+  align-self: center;
 `;
 
 export const DivRowOne = styled.div`
@@ -19,6 +20,7 @@ export const DivRowOne = styled.div`
   border-radius: 10px;
   background: rgba(76, 122, 187, 0.1);
   grid-area: 1 / 1 / 2 / 2;
+  width: 40vw;
 
   p {
     font-weight: 600;
@@ -46,9 +48,9 @@ export const DivRowThree = styled.div`
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   gap: 1.5rem;
-  height: 35vh;
+  min-height: 55vh;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
   border-radius: 10px;
   background: rgba(76, 122, 187, 0.1);
@@ -68,6 +70,7 @@ export const DivRowFour = styled.div`
 export const DivRowFive = styled.div`
   justify-self: end;
   grid-area: 3 / 1 / 4 / 3;
+  margin-bottom: 3rem;
 `;
 
 export const DivRowSix = styled.div`

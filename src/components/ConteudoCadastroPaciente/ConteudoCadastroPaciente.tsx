@@ -23,21 +23,21 @@ const ConteudoCadastroPaciente = () => {
       <ContentContainer>
         <DivRowOne>
           <p>Nome</p>
-          <TextInput type="text" name="nome" style={{ width: "25em" }} />
+          <TextInput type="text" name="nome" style={{ width: "35em" }} />
           <div>
             <p>Telefone</p>
-            <TextInput type="text" name="telefone" style={{ width: "25em" }} />
+            <TextInput type="text" name="telefone" style={{ width: "35em" }} />
           </div>
           <div>
             <p>E-mail</p>
-            <TextInput type="email" name="email" style={{ width: "25em" }} />
+            <TextInput type="email" name="email" style={{ width: "35em" }} />
           </div>
           <div>
             <p>Data de Nascimento</p>
             <TextInput
               type="date"
               name="nascimento"
-              style={{ width: "25em" }}
+              style={{ width: "35em" }}
             />
           </div>
         </DivRowOne>
@@ -46,12 +46,16 @@ const ConteudoCadastroPaciente = () => {
             <h2>Método de Tratamento</h2>
           </GridTitle>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Sublingual
+            <label>
+              <input type="checkbox" name="sublingual" className="checkbox" />
+              Sublingual
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Vacinas
+            <label>
+              <input type="checkbox" name="vacinas" className="checkbox" />
+              Vacinas
+            </label>
           </p>
         </DivRowTwo>
         <DivRowThree>
@@ -59,52 +63,76 @@ const ConteudoCadastroPaciente = () => {
             <h2>Alergias</h2>
           </GridTitle>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Alimentar
+            <label>
+              <input type="checkbox" name="alimentar" className="checkbox" />
+              Alimentar
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Abelha
+            <label>
+              <input type="checkbox" name="abelha" className="checkbox" />
+              Abelha
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Vespa
+            <label>
+              <input type="checkbox" name="vespa" className="checkbox" />
+              Vespa
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Formiga
+            <label>
+              <input type="checkbox" name="formiga" className="checkbox" />
+              Formiga
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Ácaro
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Ácaro
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Cachorro
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Cachorro
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Gato
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Gato
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Barata
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Barata
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Bola?
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Bola?
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Fungo
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Fungo
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Inseto
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Inseto
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Candidíase
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Candidíase
+            </label>
           </p>
         </DivRowThree>
         <DivRowFour></DivRowFour>
