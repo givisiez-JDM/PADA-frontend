@@ -7,9 +7,9 @@ export const StyledMenu = styled.div`
   height: 80vh;
   top: 10vh;
   left: 0;
-  margin-top: 10vh;
-  padding-left: 5rem;
-  padding-top: 15vh;
+  margin-top: 2vh;
+  padding-left: 2rem;
+  padding-top: 10vh;
   position: fixed;
 `;
 

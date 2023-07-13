@@ -11,7 +11,6 @@ export const HeaderContainer = styled.div`
   top: 0;
   left: 0;
   z-index: 1;
-  position: fixed;
   background: #4c7abb;
   color: #ffffff;
   border-radius: 0 0 20px 20px;

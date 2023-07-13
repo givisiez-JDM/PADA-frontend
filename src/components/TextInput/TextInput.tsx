@@ -7,7 +7,7 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   error?: string;
   style?: React.CSSProperties;
-  value: string;
+  value?: string;
 }
 
 const TextInput: FC<TextInputProps> = ({
