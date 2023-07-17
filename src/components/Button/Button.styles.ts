@@ -22,7 +22,10 @@ const DISABLED = css`
 
 export const Container = styled.button<ButtonProps>`
   width: 15rem;
+  min-width: 10vh;
   padding: 10px 15px;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
   border: none;
   border-radius: 50px;

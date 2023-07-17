@@ -1,12 +1,10 @@
-import CadastroPacienteHeader from "../components/CadastroPacienteHeader/CadastroPacienteHeader";
-import { SidebarMenu } from "../components/SidebarMenu/SidebarMenu";
+import CadastroPacienteHeader from "../components/MenuMedicoHeader/MenuMedicoHeader";
 import ConteudoCadastroPaciente from "../components/ConteudoCadastroPaciente/ConteudoCadastroPaciente";
 
 const CadastroPaciente = () => {
   return (
     <>
       <CadastroPacienteHeader />
-      <SidebarMenu />
       <ConteudoCadastroPaciente />
     </>
   );

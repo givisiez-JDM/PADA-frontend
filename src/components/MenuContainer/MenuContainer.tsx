@@ -1,11 +1,11 @@
-import { MenuDiv } from "./MenuContainer.styles";
+import { ContentDiv } from "./MenuContainer.styles";
 
 export type containerProps = {
   children?: React.ReactNode;
 };
 
 const MenuContainer = ({ children }: containerProps) => {
-  return <MenuDiv>{children}</MenuDiv>;
+  return <ContentDiv>{children}</ContentDiv>;
 };
 
 export default MenuContainer;
