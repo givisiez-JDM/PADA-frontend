@@ -5,6 +5,7 @@ import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import useForm from "../Hooks/useForm";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import Background from "../components/Background/Background";
 
 const Cadastro = () => {
   const [name, setName] = useState("");
@@ -78,7 +79,9 @@ const Cadastro = () => {
           </p>
         </form>
       </div>
+    <Background/>
     </>
+    
   );
 };
 

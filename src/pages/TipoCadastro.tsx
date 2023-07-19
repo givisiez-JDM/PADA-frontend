@@ -1,8 +1,11 @@
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button/Button";
+import { UserDoctor } from "@styled-icons/fa-solid/UserDoctor";
+import Background from "../components/Background/Background";
 
 function TipoCadastro() {
   return (
+    <>
     <div className="blue-container">
       <form>
         <NavLink to="/cadastro?userType=medico">
@@ -12,6 +15,8 @@ function TipoCadastro() {
         </NavLink>
       </form>
     </div>
+    <Background/>
+    </>
   );
 }
 
