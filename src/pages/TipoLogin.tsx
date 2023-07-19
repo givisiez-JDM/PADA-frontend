@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button/Button";
-import { UserDoctor } from "@styled-icons/fa-solid/UserDoctor";
-import { UserHeart } from "@styled-icons/remix-fill/UserHeart";
 import Background from "../components/Background/Background";
 
 function TipoLogin() {

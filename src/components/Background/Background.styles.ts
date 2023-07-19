@@ -8,7 +8,7 @@ export const BackgroundContainer = styled.div`
   bottom: 0 !important;
   width: calc(100% + 1vh);
   height:33vh !important;
-  z-index: 9999 !important; 
+  z-index: 0; 
   background-image: url(${baseImg}) !important;
   background-size: cover !important;
   background-position: top !important;
@@ -31,7 +31,7 @@ export const BackgroundTopContainer = styled.div`
   left: 0 !important;
   width: calc(100% + 1vh) !important;
   height: 33vh !important;
-  z-index: 9999 !important;
+  z-index: 0;
   background-image: url(${topImg}) !important;
   background-size: cover !important;
   background-position: bottom !important;

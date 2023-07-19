@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Button from "../components/Button/Button";
-import { UserDoctor } from "@styled-icons/fa-solid/UserDoctor";
 import Background from "../components/Background/Background";
 
 function TipoCadastro() {
