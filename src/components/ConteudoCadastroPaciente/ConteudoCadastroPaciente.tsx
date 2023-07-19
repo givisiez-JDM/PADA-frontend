@@ -22,151 +22,125 @@ const ConteudoCadastroPaciente = () => {
     <form action="">
       <ContentContainer>
         <DivRowOne>
-          <h1>Cadastrar Paciente</h1>
           <p>Nome</p>
-          <TextInput type="text" name="nome" style={{ width: "52em" }} />
-        </DivRowOne>
-        <DivRowTwo>
+          <TextInput type="text" name="nome" style={{ width: "35em" }} />
           <div>
             <p>Telefone</p>
-            <TextInput type="text" name="telefone" style={{ width: "16em" }} />
+            <TextInput type="text" name="telefone" style={{ width: "35em" }} />
           </div>
           <div>
             <p>E-mail</p>
-            <TextInput type="email" name="email" style={{ width: "16em" }} />
+            <TextInput type="email" name="email" style={{ width: "35em" }} />
           </div>
           <div>
             <p>Data de Nascimento</p>
             <TextInput
               type="date"
               name="nascimento"
-              style={{ width: "16em" }}
+              style={{ width: "35em" }}
             />
           </div>
-        </DivRowTwo>
-        <DivRowThree>
-          <GridTitle>
-            <h2>Dosagem do Medicamento</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            1:10.000
-          </p>
-        </DivRowThree>
-        <DivRowFour>
-          <GridTitle>
-            <h2>Periodicidade do Tratamento</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 7 dias
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 2
-            semanas
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 3
-            semanas
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />A cada 4
-            semanas
-          </p>
-        </DivRowFour>
-        <DivRowFive>
-          <GridTitle>
-            <h2>Alergias</h2>
-          </GridTitle>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Alimentar
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Abelha
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Vespa
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Formiga
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Ácaro
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Cachorro
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Gato
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Barata
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Bola?
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Fungo
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Inseto
-          </p>
-          <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Candidíase
-          </p>
-        </DivRowFive>
-        <DivRowSix>
+        </DivRowOne>
+        <DivRowTwo>
           <GridTitle>
             <h2>Método de Tratamento</h2>
           </GridTitle>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Sublingual
+            <label>
+              <input type="checkbox" name="sublingual" className="checkbox" />
+              Sublingual
+            </label>
           </p>
           <p>
-            <input type="checkbox" name="" className="checkbox" />
-            Vacinas
+            <label>
+              <input type="checkbox" name="vacinas" className="checkbox" />
+              Vacinas
+            </label>
           </p>
-          <GridSecondTitle>
-            <h2>Duração do Tratamento</h2>
-          </GridSecondTitle>
-          <div>
-            <p>Inicio</p>
-            <TextInput type="date" name="nascimento" />
-          </div>
-          <div>
-            <p>Fim</p>
-            <TextInput type="date" name="nascimento" />
-          </div>
-        </DivRowSix>
-        <DivRowSeven>
+        </DivRowTwo>
+        <DivRowThree>
+          <GridTitle>
+            <h2>Alergias</h2>
+          </GridTitle>
+          <p>
+            <label>
+              <input type="checkbox" name="alimentar" className="checkbox" />
+              Alimentar
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="abelha" className="checkbox" />
+              Abelha
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="vespa" className="checkbox" />
+              Vespa
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="formiga" className="checkbox" />
+              Formiga
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Ácaro
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Cachorro
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Gato
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Barata
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Bola?
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Fungo
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Inseto
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="checkbox" name="" className="checkbox" />
+              Candidíase
+            </label>
+          </p>
+        </DivRowThree>
+        <DivRowFour></DivRowFour>
+        <DivRowFive>
           <Button title="cadastrar-paciente" color="primary">
-            Cadastrar Paciente
+            Avançar
           </Button>
-        </DivRowSeven>
+        </DivRowFive>
       </ContentContainer>
     </form>
   );

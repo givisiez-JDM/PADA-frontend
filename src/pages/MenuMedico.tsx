@@ -5,6 +5,7 @@ import { SearchbarDiv } from "../components/MenuContainer/MenuContainer.styles";
 import TextInput from "../components/TextInput/TextInput";
 import Button from "../components/Button/Button";
 import { NavLink } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const items = [
   { name: "Amanda C." },
@@ -25,14 +26,17 @@ function MenuMedico() {
             type="text"
             name="buscar-paciente"
             style={{ width: "30vw" }}
+            value=""
           />
-          <Button
-            color="primary"
-            title="cadastrar-paciente"
-            style={{ width: "9vw" }}
-          >
-            Cadastrar Paciente
-          </Button>
+          <NavLink to="/cadastro-paciente">
+            <Button
+              color="primary"
+              title="cadastrar-paciente"
+              style={{ width: "9vw" }}
+            >
+              Cadastrar Paciente
+            </Button>
+          </NavLink>
         </SearchbarDiv>
       </MenuContainer>
     </>

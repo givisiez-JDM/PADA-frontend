@@ -3,14 +3,15 @@ import styled from "styled-components";
 export const ContentContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  width: 60vw;
-  height: 90vh;
-  margin-left: 200px;
-  padding: 50px;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+  width: 80vw;
+  max-height: 120vh;
+  padding: 1rem 3rem;
+  margin: 1rem 0;
   color: #334c76;
+  align-self: center;
 `;
 
 export const DivRowOne = styled.div`
@@ -18,30 +19,42 @@ export const DivRowOne = styled.div`
   padding: 1rem;
   border-radius: 10px;
   background: rgba(76, 122, 187, 0.1);
-  grid-area: 1 / 1 / 2 / 3;
+  grid-area: 1 / 1 / 2 / 2;
+  width: 40vw;
+
+  p {
+    font-weight: 600;
+    margin-top: 1rem;
+  }
 `;
 
 export const DivRowTwo = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
+  width: 20vw;
   padding: 1rem;
   border-radius: 10px;
   background: rgba(76, 122, 187, 0.1);
-  grid-area: 2 / 1 / 3 / 3;
+  grid-area: 1 / 2 / 2 / 3;
 `;
 
 export const DivRowThree = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem;
   gap: 1.5rem;
+  min-height: 55vh;
   align-items: center;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
   border-radius: 10px;
   background: rgba(76, 122, 187, 0.1);
-  grid-area: 3 / 1 / 4 / 2;
+  grid-area: 2 / 1 / 3 / 2;
 `;
 
 export const DivRowFour = styled.div`
@@ -51,21 +64,13 @@ export const DivRowFour = styled.div`
   gap: 1.5rem;
   padding: 1rem;
   border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 2 / 2 / 3 / 3;
 `;
 
 export const DivRowFive = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  gap: 1rem;
-  height: 30vh;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 4 / 1 / 5 / 2;
+  justify-self: end;
+  grid-area: 3 / 1 / 4 / 3;
+  margin-bottom: 3rem;
 `;
 
 export const DivRowSix = styled.div`

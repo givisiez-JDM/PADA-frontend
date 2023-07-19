@@ -5,13 +5,12 @@ export const HeaderContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: space-between;
-  height: 20vh;
+  height: 15vh;
   width: 100vw;
   padding: 1rem;
   top: 0;
   left: 0;
   z-index: 1;
-  position: fixed;
   background: #4c7abb;
   color: #ffffff;
   border-radius: 0 0 20px 20px;
