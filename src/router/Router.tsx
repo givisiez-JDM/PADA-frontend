@@ -9,6 +9,7 @@ import MenuMedico from "../pages/MenuMedico";
 import MenuPaciente from "../pages/MenuPaciente";
 import CadastroPaciente from "../pages/CadastroPaciente";
 import FasesDeTratamento from "../pages/Fases-de-tratamento";
+import PerfilPaciente from "../pages/PerfilPaciente";
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
         <Route path="menu-paciente" element={<MenuPaciente />} />
         <Route path="cadastro-paciente" element={<CadastroPaciente />} />
         <Route path="fase-tratamento" element={<FasesDeTratamento />} />
+        <Route path="perfil-paciente" element={<PerfilPaciente />} />
       </Routes>
     </BrowserRouter>
   );

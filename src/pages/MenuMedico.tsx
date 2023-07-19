@@ -19,7 +19,7 @@ function MenuMedico() {
   return (
     <>
       <MenuMedicoHeader />
-      <SidebarMenu items={items} />
+      <SidebarMenu menuTitle="Pacientes" items={items} />
       <MenuContainer>
         <SearchbarDiv>
           <TextInput

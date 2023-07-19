@@ -6,12 +6,16 @@ interface MenuItems {
 
 interface SidebarMenuProps {
   items: MenuItems[];
+  menuTitle?: string;
 }
 
-export const SidebarMenu: React.FC<SidebarMenuProps> = ({ items }) => {
+export const SidebarMenu: React.FC<SidebarMenuProps> = ({
+  items,
+  menuTitle,
+}) => {
   return (
     <StyledMenu>
-      <h2>Pacientes</h2>
+      <h2>{menuTitle}</h2>
       <StyledList>
         {items.map((item) => (
           <StyledListItem>{item.name}</StyledListItem>

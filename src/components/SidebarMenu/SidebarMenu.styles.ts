@@ -5,7 +5,7 @@ export const StyledMenu = styled.div`
   flex-direction: column;
   justify-content: start;
   height: 80vh;
-  top: 10vh;
+  width: 20vw;
   left: 0;
   margin-top: 2vh;
   padding-left: 2rem;
