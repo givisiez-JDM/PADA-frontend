@@ -36,7 +36,7 @@ const Cadastro = () => {
   };
 
   return (
-    <>
+    <div className="centerContent">
       {successMessage && <h4 className="success-message">{successMessage}</h4>}
       {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
       <h3>Crie sua conta</h3>
@@ -78,7 +78,7 @@ const Cadastro = () => {
           </p>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

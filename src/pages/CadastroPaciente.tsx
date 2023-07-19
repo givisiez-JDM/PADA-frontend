@@ -4,10 +4,8 @@ import ConteudoCadastroPaciente from "../components/ConteudoCadastroPaciente/Con
 const CadastroPaciente = () => {
   return (
     <>
-      <div className="testando">
-        <CadastroPacienteHeader />
-        <ConteudoCadastroPaciente />
-      </div>
+      <CadastroPacienteHeader />
+      <ConteudoCadastroPaciente />
     </>
   );
 };

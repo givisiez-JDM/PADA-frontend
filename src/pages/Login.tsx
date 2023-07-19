@@ -38,33 +38,37 @@ function Login() {
 
   return (
     <>
-      {successMessage && <h4 className="success-message">{successMessage}</h4>}
-      {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
-      <div className="white-container">
-        <form onSubmit={handleSubmit}>
-          <TextInput
-            type="text"
-            name="usuario"
-            placeholder="Usuário"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <PasswordInput
-            type="password"
-            placeholder="Senha"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
-          <p>
-            <input type="checkbox" /> Lembre da senha
-          </p>
+      <div className="centerContent">
+        {successMessage && (
+          <h4 className="success-message">{successMessage}</h4>
+        )}
+        {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
+        <div className="white-container">
+          <form onSubmit={handleSubmit}>
+            <TextInput
+              type="text"
+              name="usuario"
+              placeholder="Usuário"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <PasswordInput
+              type="password"
+              placeholder="Senha"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+            <p>
+              <input type="checkbox" /> Lembre da senha
+            </p>
 
-          <Button title="Entrar" color="primary" type="submit">
-            Entrar
-          </Button>
-        </form>
+            <Button title="Entrar" color="primary" type="submit">
+              Entrar
+            </Button>
+          </form>
+        </div>
+        <p>Esqueceu a senha?</p>
       </div>
-      <p>Esqueceu a senha?</p>
     </>
   );
 }

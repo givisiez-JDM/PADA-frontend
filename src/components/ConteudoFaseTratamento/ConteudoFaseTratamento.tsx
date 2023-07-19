@@ -12,7 +12,7 @@ import Button from "../Button/Button";
 
 const ConteudoFaseTratamento = () => {
   return (
-    <form>
+    <form action="">
       <FaseContentContainer>
         <h2>Fase 1</h2>
         <DuracaoTratamento>
