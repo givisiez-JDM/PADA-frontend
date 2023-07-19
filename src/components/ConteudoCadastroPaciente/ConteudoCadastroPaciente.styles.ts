@@ -7,7 +7,7 @@ export const ContentContainer = styled.div`
   grid-column-gap: 0.5rem;
   grid-row-gap: 0.5rem;
   width: 80vw;
-  max-height: 120vh;
+  max-height: 100vh;
   padding: 1rem 3rem;
   margin: 1rem 0;
   color: #334c76;

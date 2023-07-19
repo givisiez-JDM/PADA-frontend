@@ -13,6 +13,7 @@ import {
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
 import Checkbox from "../Checkbox/Checkbox";
+import { NavLink } from "react-router-dom";
 
 const ConteudoCadastroPaciente = () => {
   const handleCheckboxChange = (checked: boolean) => {
@@ -137,9 +138,11 @@ const ConteudoCadastroPaciente = () => {
         </DivRowThree>
         <DivRowFour></DivRowFour>
         <DivRowFive>
-          <Button title="cadastrar-paciente" color="primary">
-            Avançar
-          </Button>
+          <NavLink to="/fase-tratamento">
+            <Button title="cadastrar-paciente" color="primary">
+              Avançar
+            </Button>
+          </NavLink>
         </DivRowFive>
       </ContentContainer>
     </form>
