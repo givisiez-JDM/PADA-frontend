@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 import React, { useState } from "react";
 import axios from "axios";
->>>>>>> PADA-137
 import TextInput from "../components/TextInput/TextInput";
 import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";

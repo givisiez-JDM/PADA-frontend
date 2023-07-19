@@ -1,13 +1,10 @@
-<<<<<<< HEAD
 import useForm from "../Hooks/useForm";
-=======
-import React, { useState } from "react";
->>>>>>> PADA-137
 import TextInput from "../components/TextInput/TextInput";
 import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
 import Button from "../components/Button/Button";
 import axios from "axios";
 import { redirect, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState("");
