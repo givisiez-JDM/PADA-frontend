@@ -10,7 +10,9 @@ export default function PerfilPaciente() {
       <MenuMedicoHeader />
       <div style={{ display: "flex" }}>
         <SidebarMenu items={perfilMenu} />
-        <ConteudoPerfilPaciente />
+        <div className="centerContent">
+          <ConteudoPerfilPaciente />
+        </div>
       </div>
     </>
   );

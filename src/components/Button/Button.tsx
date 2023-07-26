@@ -8,6 +8,7 @@ export type ButtonProps = {
   title: string;
   style?: React.CSSProperties;
   type?: "button" | "submit" | "reset";
+  onClick?: React.MouseEventHandler;
 };
 
 export const Button = ({
@@ -17,6 +18,7 @@ export const Button = ({
   title,
   style,
   type,
+  onClick,
 }: ButtonProps) => {
   return (
     <Container
@@ -25,6 +27,7 @@ export const Button = ({
       disabled={disabled}
       style={style}
       type={type}
+      onClick={onClick}
     >
       {children}
     </Container>
