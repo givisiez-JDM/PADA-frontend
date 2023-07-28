@@ -10,12 +10,34 @@ import {
 import Button from "../Button/Button";
 import TextInput from "../TextInput/TextInput";
 
-export const Modal = () => {
+interface ModalProps {
+  onClose: () => void;
+}
+
+export const Modal: React.FC<ModalProps> = ({ onClose }) => {
   return (
     <ModalContainer>
       <ModalContent>
         <form action="">
           <FaseContentContainer>
+            <h4
+              onClick={onClose}
+              style={{
+                border: "solid 1px white",
+                padding: "0.5rem",
+                borderRadius: "0.3rem",
+                width: "28px",
+                height: "30px",
+                cursor: "pointer",
+                alignSelf: "end",
+                marginRight: "1rem",
+                justifyContent: "center",
+                alignItems: "center",
+                color: "#FFF",
+              }}
+            >
+              X
+            </h4>
             <DuracaoTratamento>
               <h3>Duração do Tratamento</h3>
               <p>Início</p>

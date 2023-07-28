@@ -9,6 +9,7 @@ import {
 import TextInput from "../TextInput/TextInput";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import Button from "../Button/Button";
+import { NavLink } from "react-router-dom";
 
 const ConteudoFaseTratamento = () => {
   return (
@@ -68,9 +69,11 @@ const ConteudoFaseTratamento = () => {
           <h3>Inativa</h3>
           <ToggleSwitch />
         </Inativa>
-        <Button color="primary" title="salvar" style={{ width: "8em" }}>
-          Salvar
-        </Button>
+        <NavLink to="/perfil-paciente">
+          <Button color="primary" title="salvar" style={{ width: "8em" }}>
+            Salvar
+          </Button>
+        </NavLink>
       </FaseContentContainer>
     </form>
   );

@@ -5,6 +5,9 @@ import { useState } from "react";
 
 export const ConteudoPerfilPaciente = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
     <ProfileContentContainer>
       <Button
@@ -14,7 +17,7 @@ export const ConteudoPerfilPaciente = () => {
       >
         Adicionar Fase
       </Button>
-      {isOpen && <Modal />}
+      {isOpen && <Modal onClose={handleClose} />}
     </ProfileContentContainer>
   );
 };

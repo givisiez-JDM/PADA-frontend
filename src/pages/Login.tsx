@@ -3,7 +3,7 @@ import TextInput from "../components/TextInput/TextInput";
 import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
 import Button from "../components/Button/Button";
 import axios from "axios";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -24,7 +24,12 @@ function Login() {
         "https://app-vacina-backend-production.up.railway.app/login/doctor",
         { email, password }
       );
+
+      const pacientes = await axios.get(
+        "https://app-vacina-backend-production.up.railway.app/login/doctor"
+      );
       console.log(response.data);
+      console.log(response.data.user.id);
       setSuccessMessage("Login realizado com sucesso!");
       setTimeout(() => {
         console.log("redirecionamento");
