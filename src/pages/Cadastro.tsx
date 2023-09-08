@@ -4,7 +4,7 @@ import TextInput from "../components/TextInput/TextInput";
 import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import Background from "../components/Background/Background";
+
 
 const Cadastro = () => {
   const [name, setName] = useState("");
@@ -78,7 +78,7 @@ const Cadastro = () => {
           </p>
         </form>
       </div>
-    <Background/>
+    
     </>
     
   );

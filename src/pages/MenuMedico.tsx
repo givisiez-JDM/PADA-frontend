@@ -5,7 +5,7 @@ import { SearchbarDiv } from "../components/MenuContainer/MenuContainer.styles";
 import TextInput from "../components/TextInput/TextInput";
 import Button from "../components/Button/Button";
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+
 
 const items = [
   { name: "Amanda C." },

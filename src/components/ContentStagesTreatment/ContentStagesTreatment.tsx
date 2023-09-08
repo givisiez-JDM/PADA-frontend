@@ -5,7 +5,7 @@ import {
   DivTitle,
   DosagemMedicamento,
   Inativa,
-} from "./ConteudoFaseTratamento.styles";
+} from "./ContentStagesTreatment.styles";
 import TextInput from "../TextInput/TextInput";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
 import Button from "../Button/Button";

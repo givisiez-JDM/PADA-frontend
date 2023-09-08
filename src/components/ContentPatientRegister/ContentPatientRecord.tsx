@@ -5,19 +5,13 @@ import {
   DivRowThree,
   DivRowFour,
   DivRowFive,
-  DivRowSix,
-  DivRowSeven,
   GridTitle,
-  GridSecondTitle,
-} from "./ConteudoCadastroPaciente.styles";
+  } from "./ContentPatientRegister.styles";
 import TextInput from "../TextInput/TextInput";
 import Button from "../Button/Button";
-import Checkbox from "../Checkbox/Checkbox";
 
 const ConteudoCadastroPaciente = () => {
-  const handleCheckboxChange = (checked: boolean) => {
-    console.log("Checkbox checked: ", checked);
-  };
+ 
   return (
     <form action="">
       <ContentContainer>
