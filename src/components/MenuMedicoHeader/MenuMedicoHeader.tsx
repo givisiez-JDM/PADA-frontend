@@ -4,10 +4,10 @@ import {
   HeaderImage,
   HeaderGreeting,
 } from "./MenuMedicoHeader.styles";
-import DropdownMenu from "../DropdownMenu/DropdownMenu";
+
 
 const MenuMedicoHeader = () => {
-  const menuItems = ["Meu perfil", "Sair"];
+
 
   return (
     <HeaderContainer>

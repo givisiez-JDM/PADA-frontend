@@ -1,5 +1,5 @@
 import MenuMedicoHeader from "../components/MenuMedicoHeader/MenuMedicoHeader";
-import ConteudoFaseTratamento from "../components/ConteudoFaseTratamento/ConteudoFaseTratamento";
+import ConteudoFaseTratamento from "../components/ContentStagesTreatment/ContentStagesTreatment";
 
 export default function FasesDeTratamento() {
   return (
@@ -9,3 +9,5 @@ export default function FasesDeTratamento() {
     </>
   );
 }
+
+

@@ -4,7 +4,7 @@ import Button from "../components/Button/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Background from "../components/Background/Background";
+
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -66,7 +66,7 @@ function Login() {
         </form>
       </div>
       <p>Esqueceu a senha?</p>
-      <Background/>
+      
     </>
   );
 }
