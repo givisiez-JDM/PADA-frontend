@@ -1,5 +1,5 @@
 import CadastroPacienteHeader from "../components/MenuMedicoHeader/MenuMedicoHeader";
-import ConteudoCadastroPaciente from "../components/ConteudoCadastroPaciente/ConteudoCadastroPaciente";
+import ConteudoCadastroPaciente from "../components/ContentPatientRegister/ContentPatientRecord";
 
 const CadastroPaciente = () => {
   return (
