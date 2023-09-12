@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Cadastro from "../pages/Cadastro";
-import Login from "../pages/Login";
-import MenuMedico from "../pages/MenuMedico";
-import CadastroPaciente from "../pages/CadastroPaciente";
-import FasesDeTratamento from "../pages/FasesDeTratamento";
+import Home from "../pages/Home/index";
+import Cadastro from "../pages/Cadastro/index";
+import Login from "../pages/Login/index";
+import MenuMedico from "../pages/MenuMedico/index";
+import CadastroPaciente from "../pages/CadastroPaciente/index";
+import FasesDeTratamento from "../pages/FasesDeTratamento/index";
 
 const Router = () => {
   return (
