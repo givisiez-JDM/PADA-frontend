@@ -1,25 +1,14 @@
-import {
-  ContentContainer,
-  DivRowOne,
-  DivRowTwo,
-  DivRowThree,
-  DivRowFour,
-  DivRowFive,
-  DivRowSix,
-  DivRowSeven,
-  GridTitle,
-  GridSecondTitle,
-} from "./ConteudoCadastroPaciente.styles";
-import TextInput from "../TextInput/TextInput";
-import Button from "../Button/Button";
-import Checkbox from "../Checkbox/Checkbox";
+import Button from "../../components/Button/Button";
+import TextInput from "../../components/TextInput/TextInput";
+import { ContentContainer, DivRowFive, DivRowFour, DivRowOne, DivRowThree, DivRowTwo, GridTitle } from "./styles";
+import CadastroPacienteHeader from "../../components/MenuMedicoHeader/MenuMedicoHeader";
 
-const ConteudoCadastroPaciente = () => {
-  const handleCheckboxChange = (checked: boolean) => {
-    console.log("Checkbox checked: ", checked);
-  };
-  return (
-    <form action="">
+
+const CadastroPaciente = () => {
+    return (
+      <>
+      <CadastroPacienteHeader/>
+          <form action="">
       <ContentContainer>
         <DivRowOne>
           <p>Nome</p>
@@ -143,7 +132,8 @@ const ConteudoCadastroPaciente = () => {
         </DivRowFive>
       </ContentContainer>
     </form>
-  );
-};
-
-export default ConteudoCadastroPaciente;
+      </>
+    );
+  };
+  
+  export default CadastroPaciente;

@@ -1,18 +1,15 @@
-import {
-  FaseContentContainer,
-  DuracaoTratamento,
-  PeriodicidadeTratamento,
-  DivTitle,
-  DosagemMedicamento,
-  Inativa,
-} from "./ConteudoFaseTratamento.styles";
-import TextInput from "../TextInput/TextInput";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import Button from "../Button/Button";
+import MenuMedicoHeader from "../../components/MenuMedicoHeader/MenuMedicoHeader";
+import { DivTitle, DosagemMedicamento, DuracaoTratamento, FaseContentContainer, Inativa, PeriodicidadeTratamento } from "./styles";
+import TextInput from "../../components/TextInput/TextInput";
+import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
+import Button from "../../components/Button/Button";
 
-const ConteudoFaseTratamento = () => {
+
+export default function FasesDeTratamento() {
   return (
-    <form>
+    <>
+      <MenuMedicoHeader />
+      <form>
       <FaseContentContainer>
         <h2>Fase 1</h2>
         <DuracaoTratamento>
@@ -72,8 +69,8 @@ const ConteudoFaseTratamento = () => {
           Salvar
         </Button>
       </FaseContentContainer>
+    
     </form>
+    </>
   );
-};
-
-export default ConteudoFaseTratamento;
+}
