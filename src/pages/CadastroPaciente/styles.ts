@@ -1,100 +1,142 @@
 import styled from "styled-components";
 
-export const ContentContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
+export const ContentContainer = styled.form`
+  display: flex;
+  flex-direction: row;
+  gap: 7rem;
+
   width: 80vw;
   max-height: 120vh;
   padding: 1rem 3rem;
   margin: 1rem 0;
   color: #334c76;
   align-self: center;
+  
 `;
 
-export const DivRowOne = styled.div`
-  align-items: center;
-  padding: 1rem;
-  border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 1 / 1 / 2 / 2;
-  width: 40vw;
+export const ContentRegister = styled.div`
 
-  p {
-    font-weight: 600;
-    margin-top: 1rem;
-  }
+display: flex;
+flex-direction: column;
+
+.ContentInput{
+  display: flex;
+  flex-direction: column;
+}
+
+.date{
+  margin-top: 1rem;
+
+}
+
+label{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: ${(props) => props.theme['Keyboard']};
+  margin-bottom: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+`
+
+export const TextInputTreatment = styled.input`
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 10px 10px;
+  border: 1px solid #334c76;
+  color: #334C76;
+
+`
+
+
+export const RegisterAlergis = styled.div`
+display: flex;
+flex-direction: column;
+
+h2{
+  color: ${(props) => props.theme['Keyboard']};
+  margin-top: 1.25rem;
+
+}
+
+.inputCheckbox{
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ margin-top: 1rem;
+
+ 
+}
+
+`
+
+export const ContentTreatment = styled.div`
+p{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: ${(props) => props.theme['Keyboard']};
+  margin-bottom: 0.35rem;
+  margin-top: 0.35rem;
+}
+
+.duration{
+  display: flex;
+  flex-direction: column;
+}
+
+
+label{
+  font-family: sans-serif;
+  font-weight: lighter;
+  font-size: 1.125rem;
+}
+.labelTreatment{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: ${(props) => props.theme['Keyboard']};
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.medication{
+  height: 2rem!important;
+  width: 16.313rem!important;
+  margin-bottom: 1rem;
+}
+`
+
+export const InputDate = styled.input`
+  background-color: #f5f5f5;
+  border-radius: 20px;
+  padding: 10px 10px;
+  border: 1px solid #334c76;
+  color: #334c76;
+  width: 12rem;
+
 `;
 
-export const DivRowTwo = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
-  width: 20vw;
-  padding: 1rem;
-  border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 1 / 2 / 2 / 3;
-`;
+export const ConteinerCheckBox = styled.div`
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ margin-top: 1rem;
+`
 
-export const DivRowThree = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem;
-  gap: 1.5rem;
-  min-height: 55vh;
-  align-items: center;
-  padding: 2rem;
-  border-radius: 10px;
-  border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 2 / 1 / 3 / 2;
-`;
+export const RegisterButton = styled.button`
+position: absolute;
+top: 30rem;
+left: 70rem;
+width: 12rem;
+height: 3.125rem;
+border-radius: 50px;
+border: none;
+background: ${(props) => props.theme['variant-3']};
+color:${(props) => props.theme['white']};
+font-size: 1.2rem;
+font-weight: 500;
 
-export const DivRowFour = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 1.5rem;
-  padding: 1rem;
-  border-radius: 10px;
-  grid-area: 2 / 2 / 3 / 3;
-`;
+display:flex;
+justify-content: center;
+align-items: center;
 
-export const DivRowFive = styled.div`
-  justify-self: end;
-  grid-area: 3 / 1 / 4 / 3;
-  margin-bottom: 3rem;
-`;
-
-export const DivRowSix = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 1.5rem;
-  height: 30vh;
-  align-items: center;
-  padding: 1rem;
-  border-radius: 10px;
-  background: rgba(76, 122, 187, 0.1);
-  grid-area: 4 / 2 / 5 / 3;
-`;
-
-export const DivRowSeven = styled.div`
-  justify-self: end;
-  grid-area: 5 / 1 / 6 / 3;
-`;
-
-export const GridTitle = styled.div`
-  grid-area: 1 / 1 / 2 / 3;
-`;
-
-export const GridSecondTitle = styled.div`
-  grid-area: 3 / 1 / 3 / 3;
-`;
+`

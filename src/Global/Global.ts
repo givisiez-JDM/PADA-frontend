@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
   }
-  
+
   body {
     display: flex;
     flex-wrap: wrap;
@@ -24,9 +24,6 @@ export const GlobalStyle = createGlobalStyle`
     gap: 1rem;
   }
   
-  h1,
-  h3 {
-  margin-bottom: 20px;
-}
+
 
 `

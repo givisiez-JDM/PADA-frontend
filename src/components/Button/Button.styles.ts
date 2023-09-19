@@ -4,7 +4,7 @@ import { ButtonProps } from "./Button";
 const COLOR = {
   primary: css`
     color: #ffffff;
-    background-color: #76a7ed;
+    background-color: ${(props) => props.theme['variant-2']};
     border: 2px solid #4c7abb;
   `,
   secondary: css`
