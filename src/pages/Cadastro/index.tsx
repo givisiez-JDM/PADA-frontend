@@ -1,89 +1,108 @@
-import { useState } from "react";
+import React from "react";
+import wave from "../../Assets/wave.png";
+import iconPerson from "../../Assets/icon-person.svg";
+import iconEmail from "../../Assets/email.svg";
+import iconKey from "../../Assets/key.svg";
+import useForm from "../../Hooks/useForm";
+import useAxios from "../../Hooks/useAxios";
+import { useData } from "../../Global/GlobalContext";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { PasswordInput } from "../../components/PasswordInput/PasswordInput.styles";
-import TextInput from "../../components/TextInput/TextInput";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { ContainerRegister } from "./styles";
+import { UserRequest } from "../../Requests/UserRequest";
+import useValidatePassword from "../../Hooks/useValidatePassword";
+import { BottomWave, Box, Checkbox, ErrorMessage, FooterDescription, Main, Title, TopWave } from "./styles";
 
+const userRequest = new UserRequest();
 
+const Signup = () => {
+  const name = useForm("name");
+  const email = useForm("email");
+  const password = useForm("password");
+  const confirmPassword = useForm('password')
 
-const Cadastro = () => {
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-  
-    const [successMessage, setSuccessMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
-  
-    const redirect = useNavigate();
-  
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-  
-      try {
-        const response = await axios.post(
-          "https://app-vacina-backend-production.up.railway.app/doctor",
-          { name, email, password }
-        );
-        console.log(response.data);
-        setSuccessMessage("Cadastro realizado com sucesso!");
-        setTimeout(() => {
-          redirect("/menu-medico");
-        }, 2000);
-      } catch (error) {
-        console.log(error);
-        setErrorMessage("O cadastro não pode ser realizado!");
-      }
+  const { post } = useAxios();
+  const { userLogin } = useData();
+  const {validatePassword, errorMessage} = useValidatePassword()
+
+ const navigate = useNavigate()
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    
+    const body = {
+      name: name.value,
+      email: email.value,
+      password: password.value,
     };
-  
-    return (
-      <>
-        {successMessage && <h4 className="success-message">{successMessage}</h4>}
-        {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
-        <h3>Crie sua conta</h3>
-        <ContainerRegister>
-          <form onSubmit={handleSubmit}>
-            <TextInput
-              type="text"
-              name="name"
-              placeholder="Nome"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-            />
-            <TextInput
-              type="email"
-              name="email"
-              placeholder="E-mail"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <PasswordInput
-              type="password"
-              name="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <PasswordInput
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirmar senha"
-            />
-  
-            <Button title="Cadastre-se" color="primary" type="submit">
-              Cadastre-se
-            </Button>
-  
-            <p>
-              <input type="checkbox" /> Lembre da senha
-            </p>
-          </form>
-        </ContainerRegister>
-      
-      </>
-      
-    );
+    
+    validatePassword(password.value, confirmPassword.value)
+    
+    const { url } = userRequest.USER_SIGNUP(body);
+    
+    await post(url, body);
+    
+    userLogin(email.value, password.value);
   };
-  
-  export default Cadastro;
+
+  return (
+    <Main>
+      <TopWave style={{ backgroundImage: `url(${wave})` }}/>
+      <Title>Crie sua conta</Title>
+      <Box onSubmit={handleSubmit}>
+        <Input
+          type="text"
+          placeholder="Nome do usuário"
+          style={{ backgroundImage: `url(${iconPerson})` }}
+          {...name}
+         
+        />
+
+        <Input
+          type="email"
+          placeholder="Email"
+          style={{ backgroundImage: `url(${iconEmail})` }}
+          {...email}
+        />
+
+        <Input
+          type="text"
+          placeholder="Senha"
+          style={{ backgroundImage: `url(${iconKey})` }}
+          {...password}
+        />
+
+        <Input
+          type="text"
+          placeholder="confirmar senha"
+          style={{ backgroundImage: `url(${iconKey})` }}
+          {...confirmPassword}
+        />
+
+        {
+          errorMessage && 
+        <ErrorMessage>{errorMessage}</ErrorMessage>
+
+        }
+
+        <Checkbox>
+          <input type="checkbox" />
+          Lembre da senha
+        </Checkbox>
+
+        <Button type="submit">
+          Entrar
+        </Button>
+      </Box>
+
+      <FooterDescription>
+        Já tem conta?{" "}
+            <span onClick={() => navigate('/login')}>Entrar</span>
+      </FooterDescription>
+      
+      <BottomWave style={{ backgroundImage: `url(${wave})` }}/>
+    </Main>
+  );
+};
+
+export default Signup;
