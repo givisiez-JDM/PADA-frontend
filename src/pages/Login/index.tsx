@@ -1,75 +1,62 @@
-import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import TextInput from "../../components/TextInput/TextInput";
-import { PasswordInput } from "../../components/PasswordInput/PasswordInput.styles";
+import React from "react";
+import Wave from "../../Assets/Frame.svg";
+import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-import { ContainerLogin } from "./styles";
+import useForm from "../../Hooks/useForm";
+import {useData} from '../../Global/GlobalContext'
+import iconPerson from "../../Assets/icon-person.svg";
+import key from "../../Assets/key.svg";
+import { BottomWave, Box, Checkbox, ForgotPassword, Main, TopWave } from "./styles";
 
-function Login() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-  
-    const [successMessage, setSuccessMessage] = useState("");
-    const [errorMessage, setErrorMessage] = useState("");
-  
-    const redirect = useNavigate();
-  
-    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      setSuccessMessage("");
-      setErrorMessage("");
-  
-      try {
-        const response = await axios.post(
-          "https://app-vacina-backend-production.up.railway.app/login/doctor",
-          { email, password }
-        );
-        console.log(response.data);
-        setSuccessMessage("Login realizado com sucesso!");
-        setTimeout(() => {
-          console.log("redirecionamento");
-          redirect("/menu-medico");
-        }, 1000);
-      } catch (error) {
-        console.log(error);
-        setErrorMessage("O Login não pode ser realizado!");
-      }
-    };
-  
-    return (
-      <>
-        {successMessage && <h4 className="success-message">{successMessage}</h4>}
-        {errorMessage && <h4 className="error-message">{errorMessage}</h4>}
-        <ContainerLogin>
-          <form onSubmit={handleSubmit}>
-            <TextInput
-              type="text"
-              name="usuario"
-              placeholder="Usuário"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-            />
-            <PasswordInput
-              type="password"
-              placeholder="Senha"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-            <p>
-              <input type="checkbox" /> Lembre da senha
-            </p>
-  
-            <Button title="Entrar" color="primary" type="submit">
-              Entrar
-            </Button>
-          </form>
-        </ContainerLogin>
-        <p>Esqueceu a senha?</p>
-        
-      </>
-    );
-  }
-  
-  export default Login;
-  
+
+
+const Login = () => {
+  const email = useForm("email");
+  const password = useForm("password");
+
+  const { userLogin } = useData();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    userLogin(email.value, password.value);
+  };
+
+  return (
+    <Main>
+      <TopWave style={{ backgroundImage: `url(${Wave})` }}/>
+      <Box onSubmit={handleSubmit} >
+        <Input
+          style={{ backgroundImage: `url(${iconPerson})` }}
+          type="email"
+          name="usuario"
+          placeholder="Usuário"
+          {...email}
+        />
+
+        <Input
+          style={{ backgroundImage: `url(${key})` }}
+          type="password"
+          placeholder="Senha"
+          name="senha"
+          {...password}
+        />
+
+        <Checkbox>
+          <input type="checkbox" />
+          Lembre da senha
+        </Checkbox>
+
+        <Button type="submit" >
+          Entrar
+        </Button>
+      </Box>
+
+      <ForgotPassword>Esqueceu a senha?</ForgotPassword>
+
+      <BottomWave style={{ backgroundImage: `url(${Wave})` }}/>
+    </Main>
+  );
+};
+
+export default Login;

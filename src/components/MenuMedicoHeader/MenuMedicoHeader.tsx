@@ -1,23 +1,23 @@
-import {
-  HeaderContainer,
-  InfoMedicoContainer,
-  HeaderImage,
-  HeaderGreeting,
-} from "./MenuMedicoHeader.styles";
+// import {
+//   HeaderContainer,
+//   InfoMedicoContainer,
+//   HeaderImage,
+//   HeaderGreeting,
+// } from "./MenuMedicoHeader.styles";
 
 
-const MenuMedicoHeader = () => {
+// const MenuMedicoHeader = () => {
 
 
-  return (
-    <HeaderContainer>
-      <HeaderImage>LOGO</HeaderImage>
-      <InfoMedicoContainer>
-        <HeaderImage>FOTO</HeaderImage>
-        <HeaderGreeting>Olá, Dr. Antônio</HeaderGreeting>
-      </InfoMedicoContainer>
-    </HeaderContainer>
-  );
-};
+//   return (
+//     <HeaderContainer>
+//       <HeaderImage>LOGO</HeaderImage>
+//       <InfoMedicoContainer>
+//         <HeaderImage>FOTO</HeaderImage>
+//         <HeaderGreeting>Olá, Dr. Antônio</HeaderGreeting>
+//       </InfoMedicoContainer>
+//     </HeaderContainer>
+//   );
+// };
 
-export default MenuMedicoHeader;
+// export default MenuMedicoHeader;
