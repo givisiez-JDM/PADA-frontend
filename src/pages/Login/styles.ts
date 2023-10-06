@@ -22,7 +22,7 @@ export const TopWave = styled.div `
 `
 
 export const BottomWave = styled.div`
-    height: 33vh;
+   height: 33vh;
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -75,4 +75,9 @@ export const ForgotPassword = styled.p `
     top: 1rem;
     font-size: small;
     font-weight: 500;
+
+    span {
+        color: #4C7ABB;
+        cursor: pointer;
+    }
 `

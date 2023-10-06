@@ -12,7 +12,6 @@ export const Main = styled.main`
 
 `
 
-
 export const TopWave = styled.div `
     height: 33vh;
     width: 100%;
@@ -31,6 +30,7 @@ export const BottomWave = styled.div`
     bottom: 0;
     background-repeat: no-repeat;
     background-size:cover;
+
 `
 
 export const Title = styled.h1`
@@ -76,6 +76,7 @@ export const FooterDescription = styled.p `
     top: 1.2rem;
     font-size: small;
     font-weight: 500;
+    z-index: 1000;
     cursor: pointer;
     
     span {

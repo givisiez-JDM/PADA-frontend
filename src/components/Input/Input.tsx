@@ -1,26 +1,28 @@
-import React from "react";
-import { InputError, InputLogin } from '../Input/styles'
+import React, { InputHTMLAttributes, forwardRef } from "react";
+import { InputError, InputLogin } from "./styles";
 
-type InputProps = React.ComponentProps<'input'> & {
+type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
   style?: React.CSSProperties;
-  onBlur?: React.FocusEventHandler<HTMLInputElement>
-}
+  name: string;
+};
 
-const Input = ({ error, style, onBlur, ...props}: InputProps) => {
-  return (
-    <div>
-        <InputLogin
-            type='text'
-            onBlur={onBlur}
-            style={style}
-            {...props}
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ name, style, error = "", ...props }, ref) => {
+    return (
+      <div>
+        <InputLogin 
+          type="text" 
+          style={style} 
+          ref={ref} 
+          name={name} 
+          {...props} 
         />
 
         {error && <InputError>{error}</InputError>}
-    </div>
-
-  );
-};
+      </div>
+    );
+  }
+);
 
 export default Input;

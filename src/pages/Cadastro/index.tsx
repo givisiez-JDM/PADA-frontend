@@ -3,104 +3,66 @@ import wave from "../../Assets/wave.png";
 import iconPerson from "../../Assets/icon-person.svg";
 import iconEmail from "../../Assets/email.svg";
 import iconKey from "../../Assets/key.svg";
-import useForm from "../../Hooks/useForm";
-import useAxios from "../../Hooks/useAxios";
-import { useData } from "../../Global/GlobalContext";
+import { useSignup } from "../../Hooks/useForm";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { UserRequest } from "../../Requests/UserRequest";
-import useValidatePassword from "../../Hooks/useValidatePassword";
-import { BottomWave, Box, Checkbox, ErrorMessage, FooterDescription, Main, Title, TopWave } from "./styles";
-
-const userRequest = new UserRequest();
+import { BottomWave,Box,Checkbox,FooterDescription,Main,Title,TopWave,} from "./styles";
 
 const Signup = () => {
-  const name = useForm("name");
-  const email = useForm("email");
-  const password = useForm("password");
-  const confirmPassword = useForm('password')
-
-  const { post } = useAxios();
-  const { userLogin } = useData();
-  const {validatePassword, errorMessage} = useValidatePassword()
-
- const navigate = useNavigate()
-
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    
-    const body = {
-      name: name.value,
-      email: email.value,
-      password: password.value,
-    };
-    
-    validatePassword(password.value, confirmPassword.value)
-    
-    const { url } = userRequest.USER_SIGNUP(body);
-    
-    await post(url, body);
-    
-    userLogin(email.value, password.value);
-  };
+  const { onSubmite, errors, register } = useSignup();
+  const navigate = useNavigate();
 
   return (
     <Main>
-      <TopWave style={{ backgroundImage: `url(${wave})` }}/>
+      <TopWave style={{ backgroundImage: `url(${wave})` }} />
       <Title>Crie sua conta</Title>
-      <Box onSubmit={handleSubmit}>
+      <Box onSubmit={onSubmite}>
         <Input
           type="text"
           placeholder="Nome do usuário"
           style={{ backgroundImage: `url(${iconPerson})` }}
-          {...name}
-         
+          {...register("name")}
+          error={errors.name?.message}
         />
 
         <Input
           type="email"
           placeholder="Email"
           style={{ backgroundImage: `url(${iconEmail})` }}
-          {...email}
+          {...register("email")}
+          error={errors.email?.message}
         />
 
         <Input
-          type="text"
+          type="password"
           placeholder="Senha"
           style={{ backgroundImage: `url(${iconKey})` }}
-          {...password}
+          {...register("password")}
+          error={errors.password?.message}
         />
 
         <Input
-          type="text"
+          type="password"
           placeholder="confirmar senha"
           style={{ backgroundImage: `url(${iconKey})` }}
-          {...confirmPassword}
+          {...register("confirmPassword")}
+          error={errors.confirmPassword?.message}
         />
-
-        {
-          errorMessage && 
-        <ErrorMessage>{errorMessage}</ErrorMessage>
-
-        }
 
         <Checkbox>
           <input type="checkbox" />
           Lembre da senha
         </Checkbox>
 
-        <Button type="submit">
-          Entrar
-        </Button>
+        <Button type="submit">Entrar</Button>
       </Box>
 
       <FooterDescription>
-        Já tem conta?{" "}
-            <span onClick={() => navigate('/login')}>Entrar</span>
+        Já tem conta? <span onClick={() => navigate("/login")}>Entrar</span>
       </FooterDescription>
-      
-      <BottomWave style={{ backgroundImage: `url(${wave})` }}/>
+
+      <BottomWave style={{ backgroundImage: `url(${wave})` }} />
     </Main>
   );
 };

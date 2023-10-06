@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 // Defina uma interface para as propriedades do contexto global
 type GlobalContextProps = {
   userLogin: (email: string, password: string) => void;
+  userSignup: ( name: string, email: string, password: string, confirmPassword:string) => void;
   data: any | null;
   error: any | null;
   login: boolean | null;
@@ -60,15 +61,40 @@ const GlobalStorage: React.FC<GlobalStorageProps> = ({ children }) => {
       const { url } = userRequest.USER_LOGIN();
       const req = await axios.post(url, body);
 
-      window.localStorage.setItem('token', req.data);
+      window.localStorage.setItem('token', req.data.token);
 
       setLogin(true);
-      navigate('/home');
+      navigate('/');
     } catch (error:any) {
       setError(error.response?.data || 'Erro desconhecido');
       setLoading(false);
     }
   };
+
+  const userSignup = async (name: string, email: string, password: string) => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const body = {
+        name:name,
+        email: email,
+        password: password
+       
+      }
+
+      const {url} = userRequest.USER_SIGNUP(body)
+      const req = await axios.post(url, body);
+
+      window.localStorage.setItem('token', req.data.token);
+
+      setLogin(true);
+      navigate('/');
+    } catch (error:any) {
+      setError(error.response?.data || 'Erro desconhecido');
+      setLoading(false);
+    }
+  }
 
 
   return (
@@ -78,7 +104,8 @@ const GlobalStorage: React.FC<GlobalStorageProps> = ({ children }) => {
         data,
         error,
         login,
-        loading
+        loading,
+        userSignup
       }}
     >
       {children}
