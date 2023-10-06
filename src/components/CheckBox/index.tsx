@@ -1,27 +1,25 @@
+import React, { InputHTMLAttributes, forwardRef } from "react";
 
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { Cross1Icon } from '@radix-ui/react-icons';
-import { ContainerCheckbor } from './styles';
+type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> & {
+  error?: string;
+  style?: React.CSSProperties;
+  name: string;
+};
 
+export const checkBox = forwardRef<HTMLInputElement, CheckBoxProps>(
+  ({ name, style, ...props }, ref) => {
+    return (
+      <div>
+        <input 
+          type='checkbox' 
+          style={style} 
+          ref={ref} 
+          name={name} 
+          {...props} 
+        />
+      </div>
+    );
+  }
+);
 
-
-export function CheckBox({label = ''}) {
-
-return(
-<>
-    <form>
-    <ContainerCheckbor>
-      <Checkbox.Root className="CheckboxRoot" defaultChecked id="c1">
-        <Checkbox.Indicator className="CheckboxIndicator">
-          <Cross1Icon />
-        </Checkbox.Indicator>
-      </Checkbox.Root>
-      <label className="Label" htmlFor="c1">
-        {label}
-      </label>
-    </ContainerCheckbor>
-  </form>
-    
-</>
-)
-}
+export default checkBox;
