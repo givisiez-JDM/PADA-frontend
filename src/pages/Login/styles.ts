@@ -22,7 +22,7 @@ export const TopWave = styled.div `
 `
 
 export const BottomWave = styled.div`
-   height: 33vh;
+    height: 33vh;
     width: 100%;
     position: absolute;
     bottom: 0;
