@@ -1,13 +1,57 @@
-import MenuMedicoHeader from "../../components/MenuMedicoHeader/MenuMedicoHeader";
+
 import { ButtonLocal, ConteinerCheckBox, ConteinerTreatment, FaseContentContainer,  Title } from "./styles";
 import TextInput from "../../components/TextInput/TextInput";
-
 import Button from "../../components/Button/Button";
 import { CheckBox } from "../../components/CheckBox";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import MenuCadastro from "../../components/MenuCadastro";
+
+
+const faseOne = z.object({
+start:z.string().nonempty('Data inválida'),
+end:z.string().nonempty('Data inválida'),
+times:z.array(z.object(
+  {time: z.string(),
+   checked:z.boolean() })),
+dosagens:z.array(z.object(
+  {dosagem: z.string(),
+   checked:z.boolean() })),
+
+})
+type RegisterFaseOne = z.infer<typeof faseOne>
 
 
 
 export default function FasesDeTratamento() {
+
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterFaseOne>({
+    resolver: zodResolver(faseOne),
+    defaultValues: {
+      times:[{time:' cada 7 dias',checked:false},
+             {time:'cada 3 semanas',checked:false},
+             {time:'cada 2 semanas',checked:false},
+             {time:'A cada 4 semanas',checked:false},
+            ],
+    dosagens:[{dosagem:'1:10.000'},
+              {dosagem:'1:100'},
+              {dosagem:'1:1.000'},
+              {dosagem:'1:10'}, 
+            ] 
+  }
+  })
+
+  const onSubmit = handleSubmit((data) => {
+    console.log("DATA SENT",data)
+   
+  })
+
 
 //porvisório
 const times: Array<string> = [' cada 7 dias','cada 3 semanas','cada 2 semanas','A cada 4 semanas']
@@ -17,8 +61,8 @@ const dosagens: Array<string> = ['1:10.000','1:100',' 1:1.000','1:10']
 
   return (
     <>
-      <MenuMedicoHeader />
-      <form>
+      <MenuCadastro />
+      <form onSubmit={onSubmit}>
       <FaseContentContainer>
         <h2 className="faseOne">Fase 1</h2>
         <ConteinerTreatment>
@@ -26,13 +70,16 @@ const dosagens: Array<string> = ['1:10.000','1:100',' 1:1.000','1:10']
             Duração do Tratamento
           </Title>
            <p>Início</p>
-           <TextInput name="inicio" type="date" style={{ width: "12em" }} />
+           <TextInput  type="date" style={{ width: "12em" }} 
+           {...register('start')}/>
+           {errors.start &&  <span>{errors.start.message}</span>}
            <p>Fim</p>
-          <TextInput name="fim" type="date" style={{ width: "12em" }} />
+          <TextInput  type="date" style={{ width: "12em" }}
+          {...register('end')} />
+          {errors.end && <span>{errors.end.message}</span>}
         </ConteinerTreatment>
 
         <div>
-         
           <Title>
             Periodicidade do Tratamento
           </Title>
@@ -42,8 +89,6 @@ const dosagens: Array<string> = ['1:10.000','1:100',' 1:1.000','1:10']
             <CheckBox key={time} label={time}/>
           ))}
           </ConteinerCheckBox>
-
-      
 
         </div>
         <div>
@@ -62,6 +107,7 @@ const dosagens: Array<string> = ['1:10.000','1:100',' 1:1.000','1:10']
         
        <ButtonLocal>
           <Button color="primary" title="enviar conviter" 
+          type="submit"
           style={{ width: "20rem", 
            fontSize:'1.125rem',
            fontFamily:'sans-serif' }}>

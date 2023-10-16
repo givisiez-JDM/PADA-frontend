@@ -1,27 +1,28 @@
 
-import * as Checkbox from '@radix-ui/react-checkbox';
-import { Cross1Icon } from '@radix-ui/react-icons';
-import { ContainerCheckbor } from './styles';
+import { ChangeEventHandler } from 'react';
+import {  ContainerCheckbox } from './styles';
 
 
+interface componenProps{
+  label: string,
+  checkedinput:boolean,
+  handleChange:ChangeEventHandler<HTMLInputElement> 
+}
 
-export function CheckBox({label = ''}) {
+
+export function CheckBox({label, handleChange,checkedinput}: componenProps) {
 
 return(
-<>
-    <form>
-    <ContainerCheckbor>
-      <Checkbox.Root className="CheckboxRoot" defaultChecked id="c1">
-        <Checkbox.Indicator className="CheckboxIndicator">
-          <Cross1Icon />
-        </Checkbox.Indicator>
-      </Checkbox.Root>
-      <label className="Label" htmlFor="c1">
-        {label}
-      </label>
-    </ContainerCheckbor>
-  </form>
-    
-</>
+<ContainerCheckbox>
+  <div className="custom-checkbox" >
+     <input id="checkbox1" className="checkbox"
+      type="checkbox" 
+      onChange={handleChange}
+      checked={checkedinput}
+      />
+  <label htmlFor="checkbox1">{label}</label>
+ </div>
+</ ContainerCheckbox>
 )
 }
+
