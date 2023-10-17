@@ -6,7 +6,7 @@ import { CheckBox } from "../../components/CheckBox";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import MenuCadastro from "../../components/MenuCadastro";
+import MenuCadastro from "../../components/MenuRegister";
 
 
 const faseOne = z.object({

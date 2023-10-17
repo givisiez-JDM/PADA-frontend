@@ -54,3 +54,18 @@ export const Avatar1 = styled.div`
   filter: drop-shadow(black 4px 4px 4px);
  
 `
+
+export const AvatarButton = styled.button`
+width: 30px;
+height: 30px;
+fill: #EFECE8;
+border-radius: 50px;
+border: none;
+color: #D1D1D1;
+font-family: Noto Sans KR;
+font-size: 35px;
+font-style: normal;
+font-weight: 900;
+line-height: normal;
+
+`

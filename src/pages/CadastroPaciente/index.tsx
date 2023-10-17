@@ -5,7 +5,7 @@ import * as z from 'zod';
 
 import { CheckBox } from "../../components/CheckBox";
 import { useState } from "react";
-import MenuCadastro from "../../components/MenuCadastro";
+import MenuCadastro from "../../components/MenuRegister";
 
 
 
