@@ -1,5 +1,5 @@
 import { ConteinerCheckBox, ContentContainer, ContentRegister, ContentTreatment, InputDate, RegisterAlergis, RegisterButton, TextInputTreatment } from "./styles";
-import { useFieldArray, useForm } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
@@ -141,8 +141,8 @@ const handleChange =  (index:  number) => {
                 console.log(index);
               }}
               key={field}
-              checkedinput= {false}
-              {...register('alergias')} />
+              checkedinput= {checked[index]}
+               />
            ))} 
       
            {/* <CheckBox label='Outros'/> */}

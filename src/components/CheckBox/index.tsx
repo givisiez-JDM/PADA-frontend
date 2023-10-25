@@ -15,12 +15,12 @@ export function CheckBox({label, handleChange,checkedinput}: componenProps) {
 return(
 <ContainerCheckbox>
   <div className="custom-checkbox" >
-     <input id="checkbox1" className="checkbox"
+     <input id={label} className="checkbox"
       type="checkbox" 
       onChange={handleChange}
       checked={checkedinput}
       />
-  <label htmlFor="checkbox1">{label}</label>
+  <label htmlFor={label}>{label}</label>
  </div>
 </ ContainerCheckbox>
 )
