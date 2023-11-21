@@ -7,17 +7,35 @@ import { useSignup } from "../../Hooks/useForm";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,FooterDescription,Main,Title,TopWave,} from "./styles";
+import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./styles";
+import { useData } from "../../Global/UserContext";
 
 const Signup = () => {
-  const { onSubmite, errors, register } = useSignup();
+  const { onSubmit, errors, register, getValues } = useSignup();
+  const [saveUser, setSaveUser] = React.useState(false);
+
   const navigate = useNavigate();
+  const { error } = useData();
+  const values = getValues("password");
+
+  const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.checked === true) {
+      setSaveUser(true);
+    } else {
+      setSaveUser(false);
+    }
+  };
+
+  const sendReq = () => {
+    onSubmit();
+    saveUser && window.localStorage.setItem("password", values);
+  };
 
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${wave})` }} />
       <Title>Crie sua conta</Title>
-      <Box onSubmit={onSubmite}>
+      <Box onSubmit={sendReq}>
         <Input
           type="text"
           placeholder="Nome do usuário"
@@ -50,12 +68,16 @@ const Signup = () => {
           error={errors.confirmPassword?.message}
         />
 
+        {error && <ErrorMessage>{error}</ErrorMessage>}
+
         <Checkbox>
-          <input type="checkbox" />
+          <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
           Lembre da senha
         </Checkbox>
 
-        <Button type="submit">Entrar</Button>
+        <Button type="submit" onClick={onSubmit}>
+          Entrar
+        </Button>
       </Box>
 
       <FooterDescription>

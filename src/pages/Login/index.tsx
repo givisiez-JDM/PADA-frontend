@@ -6,16 +6,37 @@ import iconPerson from "../../Assets/icon-person.svg";
 import key from "../../Assets/key.svg";
 import { useLogin } from "../../Hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ForgotPassword,Main,TopWave,} from "./styles";
+import { BottomWave,Box,Checkbox,ForgotPassword,IncorrectUser,Main,TopWave,} from "./styles";
+import { useData } from "../../Global/UserContext";
 
 const Login = () => {
-  const { onSubmit, errors, register } = useLogin();
+  const { onSubmit, errors, register, getValues } = useLogin();
+  const [saveUser, setSaveUser] = React.useState(false)
   const navigate = useNavigate();
+ 
+  const {error} = useData()
+  const values = getValues('password')
+  
+  const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if(event.target.checked === true){
+      setSaveUser(true)
+      
+    }else {
+      setSaveUser(false)
+      
+    }
+  }
 
+  const sendreq = () => {
+    onSubmit()
+    saveUser && window.localStorage.setItem('password', values)
+  }
+
+   
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
-      <Box onSubmit={onSubmit}>
+      <Box onSubmit={sendreq}>
         <Input
           style={{ backgroundImage: `url(${iconPerson})` }}
           type="email"
@@ -31,13 +52,20 @@ const Login = () => {
           {...register("password")}
           error={errors.password?.message}
         />
-
+            
+        {error && <IncorrectUser>{error}</IncorrectUser>}
+       
         <Checkbox>
-          <input type="checkbox" />
+          <input 
+            type="checkbox" 
+            checked={saveUser}
+            onChange={savePasswordLocally}
+           
+          />
           Lembre da senha
         </Checkbox>
 
-        <Button type="submit">Entrar</Button>
+        <Button type="submit" onClick={onSubmit}>Entrar</Button>
       </Box>
 
       <ForgotPassword>

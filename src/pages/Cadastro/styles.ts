@@ -87,10 +87,10 @@ export const FooterDescription = styled.p `
 `
 
 export const ErrorMessage = styled.p `
-    display: flex;
+    text-indent:-6.4rem;
     color: red;
     font-size: x-small;
     font-weight: 500;
-    position: relative;
-    right: 4rem;
+    word-wrap: break-word;
+    max-width: 12rem;
 `

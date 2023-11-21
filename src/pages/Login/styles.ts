@@ -81,3 +81,11 @@ export const ForgotPassword = styled.p `
         cursor: pointer;
     }
 `
+export const IncorrectUser = styled.p `
+    text-indent:-3.3rem;
+    color: red;
+    font-size: x-small;
+    font-weight: 500;
+    word-wrap: break-word;
+    max-width: 12rem;
+`

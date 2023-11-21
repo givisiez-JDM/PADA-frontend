@@ -6,6 +6,7 @@ type SignupRequestBody = {
     password: string
 }
 
+
 export class UserRequest {
     USER_LOGIN = () => {
         return {
@@ -21,4 +22,42 @@ export class UserRequest {
 			},
 		};
 	};
+
+    GET_DOCTOR_BY_ID = (id:any, token:string | null) => {
+        return{
+            url: `${BASE_URL}/doctors/${id}`,
+            headers:{
+                Authorization:token
+            }
+        }
+    }
+
+    GET_PATIENTS = (token:string | null) => {
+        return{
+            url: `${BASE_URL}/patients`,
+            headers:{
+                Authorization:token
+            }
+        }
+    }
+
+    GET_PATIENTS_BY_ID = (id:string | undefined, token:string | null) => {
+        return {
+            url: `${BASE_URL}/patients/${id}`,
+            headers: {
+				Authorization: token,
+			}
+        }
+    }
+
+
+    GET_TREATMENTS_BY_ID = ( id:string | undefined, token:string | null) => {
+        return {
+            url: `${BASE_URL}/treatments/patients/${id}`,
+            headers: {
+                Authorization: token
+            }
+        }
+    }
+   
 }
