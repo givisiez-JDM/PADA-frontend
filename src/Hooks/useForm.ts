@@ -28,13 +28,20 @@ const types: Record<string, Types> = {
   },
 };
 
+const errorMessage : string = {
+  email: "Preencha o e-mail",
+  name: "Preencha o nome de usuário",
+  password: "Preencha a senha",
+}
+
+
 const useForm = (type: string) => {
   const [value, setValue] = React.useState<string>("");
   const [error, setError] = React.useState<string>("");
 
   const validate = (value: string) => {
-    if (value.length === 0) {
-      setError("Preencha um valor");
+    if (value.trim().length === 0) {
+      setError(errorMessage[type]);
       return false;
     } else if (types[type] && !types[type].regex.test(value)) {
       setError(types[type].message);

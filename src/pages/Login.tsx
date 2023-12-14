@@ -1,11 +1,12 @@
 import useForm from "../Hooks/useForm";
 import TextInput from "../components/TextInput/TextInput";
-import { PasswordInput } from "../components/PasswordInput/PasswordInput.styles";
+import PasswordInput from "../components/PasswordInput/PasswordInput";
 import Button from "../components/Button/Button";
 import { NavLink, useLocation } from "react-router-dom";
 
 function Login() {
-  const name = useForm("nome");
+  const name = useForm("name");
+  const password = useForm("password");
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -21,7 +22,12 @@ function Login() {
             placeholder="Usuário"
             {...name}
           />
-          <PasswordInput type="password" placeholder="Senha" />
+          <PasswordInput
+            type="password"
+            name="password"
+            placeholder="Senha"
+            {...password}
+          />
           <p>
             <input type="checkbox" /> Lembre da senha
           </p>
