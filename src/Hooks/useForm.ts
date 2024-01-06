@@ -1,62 +1,97 @@
-import React from "react";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProps, loginType } from "../Types/LoginTypes";
+import { FormPropsSignup, SignupType } from "../Types/SignupTypes";
+import { useData } from "../Global/UserContext";
 
-type Types = {
-  regex: RegExp;
-  message: string;
-};
+  export const formLogiValidate = z.object({
+    email: z.string().nonempty("Preencha um valor").email("Email inválido"),
 
-const types: Record<string, Types> = {
-  email: {
-    regex: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    message: "E-mail inválido",
-  },
+    password: z
+      .string()
+      .nonempty("Preencha um valor")
+      .min(8, "Sua senha deve ter 8 caracteres")
+      // eslint-disable-next-line no-useless-escape
+      .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
+        message:
+          "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
+      }),
+  });
 
-  name: {
-    regex: /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/,
-    message: "Nome inválido",
-  },
+  export const useLogin = () => {
+    const {
+      register,
+      handleSubmit,
+      getValues,
+      getFieldState,
+      formState: { errors },
+    } = useForm<FormProps>({ mode: "onBlur", resolver: zodResolver(formLogiValidate) });
 
-  password: {
-    regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
-    message:
-      "Senha inválida. (Sua senha deve ter pelo menos 8 caracteres, deve conter no mínimo um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
-  },
+    const { userLogin } = useData();
 
-  confirmPassword: {
-    regex: /^\s*$/,
-    message: "Este campo deve ser preenchido",
-  },
-};
+    const onSubmit = handleSubmit(async (data: loginType) => {
+      const { email, password } = data;
+      userLogin(email, password);
+    });
 
-const useForm = (type: string) => {
-  const [value, setValue] = React.useState<string>("");
-  const [error, setError] = React.useState<string>("");
-
-  const validate = (value: string) => {
-    if (value.length === 0) {
-      setError("Preencha um valor");
-      return false;
-    } else if (types[type] && !types[type].regex.test(value)) {
-      setError(types[type].message);
-      return false;
-    } else {
-      setError("");
-      return true;
-    }
+    return {
+      handleSubmit,
+      register,
+      useData,
+      errors,
+      onSubmit,
+      useLogin,
+      getValues,
+      getFieldState,
+    };
   };
 
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    if (error) validate(event.currentTarget.value);
-    setValue(event.currentTarget.value);
-  };
+  export const formValidateSignup = z
+    .object({
+      name: z.string().nonempty("Preencha um valor").min(5, "Informe um nome válido"),
 
-  return {
-    value,
-    setValue,
-    error,
-    onChange,
-    onBlur: () => validate(value),
-  };
-};
+      email: z.string().nonempty("Preencha um valor").email("Email inválido"),
 
-export default useForm;
+      password: z
+        .string()
+        .nonempty("Preencha um valor")
+        .min(8, "Sua senha deve ter 8 caracteres")
+        // eslint-disable-next-line no-useless-escape
+        .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
+          message:
+            "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
+        }),
+
+      confirmPassword: z.string(),
+    })
+    .refine((fields) => fields.password === fields.confirmPassword, {
+      path: ["confirmPassword"],
+      message: "As senha precisam ser iguais",
+    });
+
+  export const useSignup = () => {
+    const {
+      register,
+      handleSubmit,
+      getValues,
+      formState: { errors },
+    } = useForm<FormPropsSignup>({ mode: "onBlur", resolver: zodResolver(formValidateSignup) });
+
+    const { userSignup } = useData();
+
+    const onSubmit = handleSubmit(async (data: SignupType) => {
+      const { name, email, password, confirmPassword } = data;
+      userSignup(name, email, password, confirmPassword);
+    });
+
+    return {
+      handleSubmit,
+      register,
+      useData,
+      errors,
+      onSubmit,
+      useSignup,
+      getValues,
+    };
+  };
