@@ -60,6 +60,7 @@ const MenuMedico = () => {
             <TitlePacient>{getAllPatients}</TitlePacient>
           </PacientList>
         </Middle>
+        <NavLink to="/fase-tratamento">aqui</NavLink>
       </Main>
 
       {modal && <ModalDoctor />}
