@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { UserRequest } from "../../Requests/UserRequest";
 import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./styles";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import { useData } from "../../Global/UserContext";
 import ModalDoctor from "../../components/ModalDoctor/ModalDoctor";
@@ -49,7 +49,9 @@ const MenuMedico = () => {
 
         <Middle>
           <BoxAddPacient>
+          <NavLink to="/cadastro-paciente">
             <Button>Cadastrar Paciente</Button>
+          </NavLink>
           </BoxAddPacient>
 
           <PacientList>
