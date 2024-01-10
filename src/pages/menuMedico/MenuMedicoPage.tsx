@@ -49,7 +49,9 @@ const MenuMedico = () => {
 
         <Middle>
           <BoxAddPacient>
+          <NavLink to="/cadastro-paciente">
             <Button>Cadastrar Paciente</Button>
+          </NavLink>
           </BoxAddPacient>
 
           <PacientList>
