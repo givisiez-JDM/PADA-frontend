@@ -8,7 +8,10 @@ export const ContentDiv = styled.div`
   grid-row-gap: 20px;
   width: 80vw;
   height: 50vh;
+<<<<<<< HEAD
   margin: 2rem auto;
+=======
+>>>>>>> 5bfbb64a563db6b85e53492513b41285ca609d53
 `;
 
 export const SearchbarDiv = styled.div`
