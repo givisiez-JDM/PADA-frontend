@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { UserRequest } from "../../requests/UserRequest";
 import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Header, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './PerfilPacientePage.styles'
 import useAxios from '../../hooks/useAxios';
@@ -9,6 +9,7 @@ const PerfilPaciente = () => {
   const userRequest = new UserRequest();
   const useReq = useAxios()
   const treatmentReq = useAxios()
+  const navigate = useNavigate();
 
   const {id} = useParams()
 
@@ -44,7 +45,7 @@ const PerfilPaciente = () => {
         <Nav>
           <p>Perfil</p>
           <p>Fases</p>
-          <p>Vacinas</p>
+          <p onClick={() => navigate(`/vacinas/paciente/5f59f128-148d-469b-9452-4613e6afd67c`)}>Vacinas</p>
         </Nav>
         <Section>
           <Title>Perfil</Title>
