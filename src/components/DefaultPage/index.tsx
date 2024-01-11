@@ -2,8 +2,9 @@ import * as React from 'react';
 
 import { Main } from './styles';
 
-interface Props {
-    children: React.ReactNode
+interface Props
+    extends React.ComponentProps<"main"> {
+    children?: React.ReactNode
 }
 
 const DefaultPage = ({ children, ...props }: Props) => {
