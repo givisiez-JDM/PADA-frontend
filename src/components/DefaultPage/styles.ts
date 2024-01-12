@@ -13,6 +13,7 @@ export const Header = styled.header`
     padding: 0 6rem;
     height: 5rem;
     width: 100%;
+    justify-content: space-between;
     align-items: center;
     background-color: #4C7ABB;
 `
@@ -22,7 +23,9 @@ export const Picture = styled.img`
     padding: 1rem 0;
 `
 
-export const UserMenu = styled.nav`
+export const UserMenu = styled.button`
+    background: none;
+    border: none;
     display: flex;
     margin-right: 6rem;
     color: white;
