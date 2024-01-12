@@ -27,7 +27,6 @@ export const UserMenu = styled.button`
     background: none;
     border: none;
     display: flex;
-    margin-right: 6rem;
     color: white;
     font-size: larger;
     
