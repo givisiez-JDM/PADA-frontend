@@ -1,6 +1,14 @@
+import * as React from 'react';
+
+import DefaultPage from '../../components/DefaultPage';
+
 const VacinasPaciente = () => {
+
     return ( 
-        <div>Vacinas paciente</div>
+        <DefaultPage>
+            <div>Vacinas paciente</div>
+
+        </DefaultPage>        
      );
 }
  
