@@ -1,13 +1,13 @@
 
-import DefaultPage from '../../components/DefaultPage';
+import DefaultPatientPage from '../../components/DefaultPatientPage';
 
 const VacinasPaciente = () => {
 
     return ( 
-        <DefaultPage>
+        <DefaultPatientPage>
             <div>Vacinas paciente</div>
 
-        </DefaultPage>        
+        </DefaultPatientPage>        
      );
 }
  

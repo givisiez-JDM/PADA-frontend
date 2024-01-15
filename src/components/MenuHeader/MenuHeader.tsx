@@ -1,4 +1,4 @@
-import { StyledHeadDiv, StyledHeaderTitle } from "./MenuHeader.styles";
+import { StyledHeadDiv, StyledHeaderContent } from "./MenuHeader.styles";
 
 export type MenuHeaderProps = {
   children?: React.ReactNode;
@@ -7,7 +7,7 @@ export type MenuHeaderProps = {
 const MenuHeader = ({ children }: MenuHeaderProps) => {
   return (
     <StyledHeadDiv>
-      <StyledHeaderTitle>{children}</StyledHeaderTitle>
+      <StyledHeaderContent>{children}</StyledHeaderContent>
     </StyledHeadDiv>
   );
 };
