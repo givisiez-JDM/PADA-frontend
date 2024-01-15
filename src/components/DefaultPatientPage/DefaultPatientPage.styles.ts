@@ -39,12 +39,17 @@ export const SideBar = styled.div`
     border-right: 2px solid #B4B4B4;
 `
 export const Menu = styled.ul`
-    padding: 5rem 2rem;
+    padding: 5rem 0;
 `
 
 export const MenuItem = styled.li`
     display: flex;
     justify-content: space-between;
-    padding: 1rem; 
+    padding: 1rem 2rem; 
     font-weight: 700; 
+
+    &:hover {
+        background-color: #4C7ABB;
+        color: #fff;
+    }
 `

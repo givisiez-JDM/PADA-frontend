@@ -13,6 +13,7 @@ interface IUser {
 }
 
 interface IPatient {
+    id: string,
     name: string,
     photo: any
 }
@@ -20,7 +21,7 @@ interface IPatient {
 interface Props
     extends React.ComponentProps<"main"> {
     user?: IUser,
-    patient?: IPatient
+    patient: IPatient
 }
 
 const DefaultPatientPage = ({ user, patient, ...props }: Props) => {
@@ -39,9 +40,9 @@ const DefaultPatientPage = ({ user, patient, ...props }: Props) => {
             <Content>
             <SideBar>
                 <Menu>
-                    <MenuItem onClick={() => navigate('/')}><p>Perfil</p> <img src={arrowRight}/></MenuItem>
-                    <MenuItem onClick={() => navigate('/')}><p>Fases</p> <img src={arrowRight}/></MenuItem>
-                    <MenuItem onClick={() => navigate('/')}><p>Vacinas</p> <img src={arrowRight}/></MenuItem>
+                    <MenuItem onClick={() => navigate(`/perfil/paciente/${patient.id}`)}><p>Perfil</p> <img src={arrowRight}/></MenuItem>
+                    <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={arrowRight}/></MenuItem>
+                    <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient.id}`)}><p>Vacinas</p> <img src={arrowRight}/></MenuItem>
                 </Menu>
             </SideBar>
             {props.children}
