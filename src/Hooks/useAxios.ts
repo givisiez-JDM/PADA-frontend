@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { useState, useCallback } from 'react';
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
+import { useState, useCallback } from 'react';
+import axios, { AxiosRequestConfig } from 'axios';
 
 interface UseAxiosResponse<T> {
   data: T | null;
