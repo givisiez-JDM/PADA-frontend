@@ -3,7 +3,7 @@ import { useState } from "react";
 import arrowUp from '../../../assets/arrow-up.svg';
 import arrowDown from '../../../assets/arrow-down.svg';
 
-import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle, VaccinesLegend } from "./Vaccine.style";
+import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle } from "./Vaccine.style";
 
 interface Props {
     id: number,
