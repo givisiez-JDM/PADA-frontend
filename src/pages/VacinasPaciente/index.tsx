@@ -1,5 +1,6 @@
 
 import DefaultPatientPage from '../../components/DefaultPatientPage';
+import Vaccine from './Vaccine';
 import { VaccineItem, VaccinesContainer, VaccinesHeader, VaccinesList, VaccinesTitle, VacinasContainer, VacinasHeader, VacinasTitulo } from './VacinasPaciente.styles';
 
 const VacinasPaciente = () => {
@@ -10,12 +11,12 @@ const VacinasPaciente = () => {
         photo: '/vite.svg'
     }
 
-    const vaccines =[
-    {id: 1, date: '1/1/24', title: 'Vacina 1', description: 'lorem ipsum'},
-    {id: 2, date: '1/1/24', title: 'Vacina 2', description: 'lorem ipsum'},
-    {id: 3, date: '1/1/24', title: 'Vacina 3', description: 'lorem ipsum'},
-    {id: 4, date: '1/1/24', title: 'Vacina 4', description: 'lorem ipsum'},
-    {id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum'},
+    const vaccines = [
+        { id: 1, date: '1/1/24', title: 'Vacina 1', description: 'lorem ipsum' },
+        { id: 2, date: '1/1/24', title: 'Vacina 2', description: 'lorem ipsum' },
+        { id: 3, date: '1/1/24', title: 'Vacina 3', description: 'lorem ipsum' },
+        { id: 4, date: '1/1/24', title: 'Vacina 4', description: 'lorem ipsum' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum' },
     ]
 
     return (
@@ -25,13 +26,13 @@ const VacinasPaciente = () => {
                     <VaccinesTitle>Vacinas</VaccinesTitle>
 
                 </VaccinesHeader>
-            <VaccinesList>
-                {vaccines.map(vaccine => (
-                <VaccineItem key={vaccine.id}>
-                    {vaccine.title}
-                    </VaccineItem>
+                <VaccinesList>
+                    {vaccines.map(vaccine => (
+                        <VaccineItem key={vaccine.id}>
+                            <Vaccine {...vaccine} />
+                        </VaccineItem>
                     ))}
-            </VaccinesList>
+                </VaccinesList>
 
             </VaccinesContainer>
 
