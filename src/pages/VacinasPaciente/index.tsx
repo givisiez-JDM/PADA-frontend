@@ -1,7 +1,7 @@
 
 import DefaultPatientPage from '../../components/DefaultPatientPage';
 import Vaccine from './Vaccine';
-import { VaccineItem, VaccinesContainer, VaccinesHeader, VaccinesList, VaccinesTitle, VacinasContainer, VacinasHeader, VacinasTitulo } from './VacinasPaciente.styles';
+import { VaccineColor, VaccineColorContainer, VaccineItem, VaccinesContainer, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle, VacinasContainer, VacinasHeader, VacinasTitulo } from './VacinasPaciente.styles';
 
 const VacinasPaciente = () => {
 
@@ -12,11 +12,16 @@ const VacinasPaciente = () => {
     }
 
     const vaccines = [
-        { id: 1, date: '1/1/24', title: 'Vacina 1', description: 'lorem ipsum' },
-        { id: 2, date: '1/1/24', title: 'Vacina 2', description: 'lorem ipsum' },
-        { id: 3, date: '1/1/24', title: 'Vacina 3', description: 'lorem ipsum' },
-        { id: 4, date: '1/1/24', title: 'Vacina 4', description: 'lorem ipsum' },
-        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum' },
+        { id: 1, date: '1/1/24', title: 'Vacina 1', description: 'lorem ipsum', status: 'apply' },
+        { id: 2, date: '1/1/24', title: 'Vacina 2', description: 'lorem ipsum', status: 'not-apply' },
+        { id: 3, date: '1/1/24', title: 'Vacina 3', description: 'lorem ipsum', status: 'later' },
+        { id: 4, date: '1/1/24', title: 'Vacina 4', description: 'lorem ipsum', status: 'apply' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
+        { id: 5, date: '1/1/24', title: 'Vacina 5', description: 'lorem ipsum', status: 'schedule' },
     ]
 
     return (
@@ -33,9 +38,20 @@ const VacinasPaciente = () => {
                         </VaccineItem>
                     ))}
                 </VaccinesList>
-
+                <VaccinesLegend>
+                    <h3>LEGENDA</h3>
+                    <VaccineColorContainer>
+                        <VaccineColor className='apply' />
+                        <p>Aplicada</p>
+                        <VaccineColor className='later' />
+                        <p>Aplicada em atraso</p>
+                        <VaccineColor className='not-apply' />
+                        <p>Não aplicada</p>
+                        <VaccineColor className='schedule' />
+                        <p>Agendada</p>
+                    </VaccineColorContainer>
+                </VaccinesLegend>
             </VaccinesContainer>
-
         </DefaultPatientPage>
     );
 }
