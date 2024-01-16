@@ -5,7 +5,7 @@ export const Main = styled.main`
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    height: 100vh;
+    height: 100%;
 `
 
 export const PatientData = styled.div`
@@ -35,7 +35,6 @@ export const Content = styled.section`
 export const SideBar = styled.div`
     width: 15%;
     min-width: 130px;
-    height: 100%;
     border-right: 2px solid #B4B4B4;
 `
 export const Menu = styled.ul`
