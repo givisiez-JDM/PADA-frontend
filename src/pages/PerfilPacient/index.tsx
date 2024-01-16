@@ -1,8 +1,8 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
-import { UserRequest } from "../../Requests/UserRequest";
+import { UserRequest } from "../../requests/UserRequest";
 import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Header, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './styles'
-import useAxios from '../../Hooks/useAxios';
+import useAxios from '../../hooks/useAxios';
 import arrow from '../../assets/arrow.png'
 
 const PerfilPaciente = () => {

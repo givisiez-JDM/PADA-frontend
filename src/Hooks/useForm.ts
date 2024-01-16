@@ -1,9 +1,9 @@
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProps, loginType } from "../Types/LoginTypes";
-import { FormPropsSignup, SignupType } from "../Types/SignupTypes";
-import { useData } from "../Global/UserContext";
+import { FormProps, loginType } from "../types/LoginTypes";
+import { FormPropsSignup, SignupType } from "../types/SignupTypes";
+import { useData } from "../global/UserContext";
 
   export const formLogiValidate = z.object({
     email: z.string().nonempty("Preencha um valor").email("Email inválido"),
