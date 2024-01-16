@@ -2,7 +2,7 @@ import { Modal } from "./styles";
 import user from "../../assets/user.svg";
 import doctor from "../../assets/doctor.svg";
 import logout from "../../assets/logout.svg";
-import { useData } from "../../Global/UserContext";
+import { useData } from "../../global/UserContext";
 
 const ModalDoctor = () => {
   const { userLogout } = useData();

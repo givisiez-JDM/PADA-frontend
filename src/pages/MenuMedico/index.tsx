@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
-import { UserRequest } from "../../Requests/UserRequest";
+import { UserRequest } from "../../requests/UserRequest";
 import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./styles";
 import { useNavigate } from "react-router-dom";
-import useAxios from "../../Hooks/useAxios";
-import { useData } from "../../Global/UserContext";
-import ModalDoctor from "../../components/ModalDoctor/ModalDoctor";
+import useAxios from "../../hooks/useAxios";
+import { useData } from "../../global/UserContext";
+import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
 import whiteArrow from "../../assets/white-arrow.svg";
 
 const MenuMedico = () => {

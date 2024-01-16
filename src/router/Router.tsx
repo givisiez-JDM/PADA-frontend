@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home/index";
-import Cadastro from "../pages/Cadastro/index";
-import Login from "../pages/Login/index";
-import GlobalStorage from "../Global/UserContext";
-import MenuMedico from "../pages/MenuMedico/index";
-import PerfilPaciente from "../pages/PerfilPacient";
+import Home from "../pages/home/index";
+import Cadastro from "../pages/cadastro/index";
+import Login from "../pages/login/index";
+import GlobalStorage from "../global/UserContext";
+import MenuMedico from "../pages/menuMedico/index";
+import PerfilPaciente from "../pages/perfilPacient";
 // import CadastroPaciente from "../pages/CadastroPaciente/index";
 // import FasesDeTratamento from "../pages/FasesDeTratamento/index";
 
