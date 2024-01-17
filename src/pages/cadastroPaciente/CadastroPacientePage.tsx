@@ -15,7 +15,8 @@ import image from '../../assets/profileUser.png'
 import Avatar from "@mui/material/Avatar";
 import { Plus } from "phosphor-react";
 import axios from "axios";
-
+import { format } from 'date-fns';
+import { ptBR } from 'date-fns/locale';
 
 
 
@@ -65,39 +66,40 @@ const CadastroPaciente = () => {
   })
 
   const [usingOtros, setUsingOtros] = useState(false)
- // const url = 'https://app-vacina-production.up.railway.app/doctors/patient-register'
+  const url = 'https://app-vacina-production.up.railway.app/doctors/patient-register'
 
 
 // const CadastroPaciente = () => {
 
-  const onSubmit = async (data:any) => {
-   // const values = {...getValues()}
-  //  const newData = {...values, allergies: [...values.alergias], method: values.method[0], active: true}
-  //  console.log("DATA SENT", newData)
+   const onSubmit = async (data:any) => {
 
-// //provisório //
-// const Alergias : Array<string> = ['Alimentar','Vespa','Ácaro','Gato','Inseto','Abelha','Formiga','Cachorro','Barata','Fungo']
-// //provisório //
-// const Metodos: Array<string> = ['Sublingual','Vacinas']
-   //  try{
-     //   const token = window.localStorage.getItem("token");
-      //const res = await axios.post(url,newData, {
-     //   headers: {
-     //       Authorization: `${token}`
-     //   }
-    //  })
-    //   console.log(res.data)
-   //  }catch (error){
-      //   console.log('response')
- // }
+    const datavalue = getValues('birthDate')
+    const formattedDate = new Date(datavalue);
+    const date = format(formattedDate, 'dd/MM/yyyy')
+   
+   console.log(date)
+
+    const values = {...getValues()}
+
+    const newData = {...values, allergies: [...values.alergias], method: values.method[0], active: true,birthDate:date}
+    console.log("DATA SENT", newData)
+
+     try{
+      const token = window.localStorage.getItem("token");
+      const res = await axios.post(url,newData, {
+        headers: {
+            Authorization: `${token}`
+        }
+      })
+       console.log(res.data)
+   }catch (error){
+         console.log('response')
+ }
   }
 
 
 
-//     return (
-//       <>
-//       <CadastroPacienteHeader/>
-  const Alergias: Array<string> = ['alimentar', 'vespa', 'Ácaro', 'Gato', 'Inseto', 'Abelha', 'Formiga', 'Cachorro', 'Barata', 'Fungo']
+  const Alergias: Array<string> = ['alimentar', 'vespa', 'ácaro', 'gato', 'inseto', 'abelha', 'formiga', 'cachorro', 'barata', 'fungo']
 
   const Metodos: Array<string> = ['sublingual', 'vacina']
 
