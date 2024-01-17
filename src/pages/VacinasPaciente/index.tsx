@@ -13,7 +13,7 @@ const vaccines: VaccineType[] = [
     { id: 1, scheduledDate: '2024-01-01', applicationDate: '2024-01-01', title: 'Vacina 1', observation: 'lorem ipsum', status: 'applied' },
     { id: 2, scheduledDate: '2024-01-02', applicationDate: '', title: 'Vacina 2', observation: 'lorem ipsum', status: 'not applied' },
     { id: 3, scheduledDate: '2024-01-03', applicationDate: '2024-01-04', title: 'Vacina 3', observation: 'lorem ipsum', status: 'late' },
-    { id: 4, scheduledDate: '2024-01-04', applicationDate: '', title: 'Vacina 4', observation: 'lorem ipsum', status: 'apply' },
+    { id: 4, scheduledDate: '2024-01-04', applicationDate: '', title: 'Vacina 4', observation: 'lorem ipsum', status: 'applied' },
     { id: 5, scheduledDate: '2024-01-05', applicationDate: '', title: 'Vacina 5', observation: 'lorem ipsum', status: 'schedule' },
     { id: 6, scheduledDate: '2024-01-06', applicationDate: '', title: 'Vacina 6', observation: 'lorem ipsum', status: 'schedule' },
     { id: 7, scheduledDate: '2024-01-07', applicationDate: '', title: 'Vacina 7', observation: 'lorem ipsum', status: 'schedule' },
@@ -66,11 +66,11 @@ const VacinasPaciente = () => {
                 <VaccinesLegend>
                     <h3>LEGENDA</h3>
                     <VaccineColorContainer>
-                        <VaccineColor className='apply' />
+                        <VaccineColor className='applied' />
                         <p>Aplicada</p>
-                        <VaccineColor className='later' />
+                        <VaccineColor className='late' />
                         <p>Aplicada em atraso</p>
-                        <VaccineColor className='not-apply' />
+                        <VaccineColor className='not-applied' />
                         <p>Não aplicada</p>
                         <VaccineColor className='schedule' />
                         <p>Agendada</p>
