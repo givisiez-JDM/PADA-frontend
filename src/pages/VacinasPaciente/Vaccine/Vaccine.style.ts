@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-const apply = '#5CED38'
-const noApply = '#FACB71'
-const later = '#E85656'
+const applied = '#5CED38'
+const notApplied = '#E85656'
+const late = '#FACB71'
 const schedule = '#B4B4B4'
 
 export const VaccineContainer = styled.div`
@@ -17,13 +17,13 @@ export const VaccineDate = styled.div.attrs({className:''})`
     border-left: 4px solid;
     padding: 1rem;
     &.applied {
-        border-color: ${apply};
+        border-color: ${applied};
     }
     &.late {
-        border-color: ${later};
+        border-color: ${late};
     }
     &.not-applied {
-        border-color: ${noApply};
+        border-color: ${notApplied};
     }
     &.schedule {
         border-color: ${schedule};
