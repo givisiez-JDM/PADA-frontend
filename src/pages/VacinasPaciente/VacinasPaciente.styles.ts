@@ -1,8 +1,8 @@
 import styled from "styled-components"
 
-const apply = '#5CED38'
-const noApply = '#E85656'
-const later = '#FACB71'
+const applied = '#5CED38'
+const notApplied = '#E85656'
+const late = '#FACB71'
 const schedule = '#B4B4B4'
 
 export const VaccinesContainer = styled.section`
@@ -83,14 +83,14 @@ export const VaccineColorContainer = styled.div`
 export const VaccineColor = styled.div`
     width: 1rem;
     height: 1rem;
-    &.apply {
-        background-color: ${apply};
+    &.applied {
+        background-color: ${applied};
     }
-    &.later {
-        background-color: ${later};
+    &.late {
+        background-color: ${late};
     }
-    &.not-apply {
-        background-color: ${noApply};
+    &.not-applied {
+        background-color: ${notApplied};
     }
     &.schedule {
         background-color: ${schedule};
