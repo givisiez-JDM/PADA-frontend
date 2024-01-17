@@ -16,13 +16,13 @@ export const VaccineDate = styled.div.attrs({className:''})`
     width: 20%;
     border-left: 4px solid;
     padding: 1rem;
-    &.apply {
+    &.applied {
         border-color: ${apply};
     }
-    &.later {
+    &.late {
         border-color: ${later};
     }
-    &.not-apply {
+    &.not-applied {
         border-color: ${noApply};
     }
     &.schedule {
