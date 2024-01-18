@@ -4,7 +4,7 @@ import Cadastro from "../pages/cadastro/index";
 import Login from "../pages/login/index";
 import GlobalStorage from "../global/UserContext";
 import MenuMedico from "../pages/menuMedico/index";
-import PerfilPaciente from "../pages/perfilPacient";
+import PerfilPaciente from "../pages/perfilPaciente";
 // import CadastroPaciente from "../pages/CadastroPaciente/index";
 // import FasesDeTratamento from "../pages/FasesDeTratamento/index";
 
