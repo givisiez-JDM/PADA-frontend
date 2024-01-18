@@ -5,7 +5,7 @@ import Login from "../pages/login/LoginPage";
 import GlobalStorage from "../global/UserContext";
 import MenuMedico from "../pages/menuMedico/MenuMedicoPage";
 import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
-import VacinasPaciente from "../pages/VacinasPaciente";
+import VacinasPaciente from "../pages/vacinasPaciente/VacinasPaciente";
 // import CadastroPaciente from "../pages/CadastroPaciente/CadastroPacientePage";
 // import FasesDeTratamento from "../pages/FasesDeTratamento/FasesDeTratamentoPage";
 
