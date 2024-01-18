@@ -1,13 +1,13 @@
 import React from "react";
-import wave from "../../Assets/wave.png";
-import iconPerson from "../../Assets/icon-person.svg";
-import iconEmail from "../../Assets/email.svg";
-import iconKey from "../../Assets/key.svg";
+import wave from "../../assets/wave.png";
+import iconPerson from "../../assets/icon-person.svg";
+import iconEmail from "../../assets/email.svg";
+import iconKey from "../../assets/key.svg";
 import { useSignup } from "../../hooks/useForm";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./styles";
+import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./CadastroPage.styles";
 import { useData } from "../../global/UserContext";
 
 const Signup = () => {

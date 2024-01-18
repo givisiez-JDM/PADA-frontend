@@ -1,4 +1,4 @@
-import { Modal } from "./styles";
+import { Modal } from "./ModalDoctor.styles";
 import user from "../../assets/user.svg";
 import doctor from "../../assets/doctor.svg";
 import logout from "../../assets/logout.svg";
