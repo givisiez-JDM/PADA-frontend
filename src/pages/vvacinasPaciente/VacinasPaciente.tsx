@@ -1,8 +1,8 @@
 
 import { useEffect, useState } from 'react';
 
-import DefaultPatientPage from '../../components/DefaultPatientPage';
-import Vaccine from './Vaccine';
+import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
+import Vaccine from './vaccine/Vaccine';
 import searchIco from '../../assets/search.svg'
 
 import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle } from './VacinasPaciente.styles';
