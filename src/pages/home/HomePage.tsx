@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import wave from '../../assets/wave.png'
-import { BottomWave, Box, Button, Main, TopWave } from "./styles";
+import { BottomWave, Box, Button, Main, TopWave } from "./HomePage.styles";
 
 
 function Home() {

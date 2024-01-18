@@ -1,12 +1,12 @@
 import React from "react";
-import Wave from "../../Assets/Frame.svg";
+import Wave from "../../assets/Frame.svg";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
-import iconPerson from "../../Assets/icon-person.svg";
-import key from "../../Assets/key.svg";
+import iconPerson from "../../assets/icon-person.svg";
+import key from "../../assets/key.svg";
 import { useLogin } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ForgotPassword,IncorrectUser,Main,TopWave,} from "./styles";
+import { BottomWave,Box,Checkbox,ForgotPassword,IncorrectUser,Main,TopWave,} from "./LoginPage.styles";
 import { useData } from "../../global/UserContext";
 
 const Login = () => {
