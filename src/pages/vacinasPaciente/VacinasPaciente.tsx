@@ -1,13 +1,14 @@
-
 import { useEffect, useState } from 'react';
 
 import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
 import Vaccine from './vaccine/Vaccine';
-import searchIco from '../../assets/search.svg'
+
+import SearchIco from '../../assets/search.svg'
+
+import { VaccineType } from '../../types/VaccineTypes';
+import { PatientType } from '../../types/PatientTypes';
 
 import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle } from './VacinasPaciente.styles';
-import { VaccineType } from '../../Types/VaccineTypes';
-import { PatientType } from '../../Types/PatientTypes';
 
 //////////////// TODO remover mocks e integrar com Back End
 const vaccines: VaccineType[] = [
@@ -52,7 +53,7 @@ const VacinasPaciente = () => {
                     <VaccinesDate >
                         <p>Busque no histórico:</p>
                         <div>
-                            <img src={searchIco} />
+                            <img src={SearchIco} alt='icone de busca' />
                             <input type="date" value={searchDate} onChange={event => setSearchDate(event.target.value)} />
                         </div>
                     </VaccinesDate>
