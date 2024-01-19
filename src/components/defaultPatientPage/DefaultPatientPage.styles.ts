@@ -4,7 +4,6 @@ import styled from "styled-components"
 export const Main = styled.main`
     display: flex;
     flex-direction: column;
-    font-family: 'Poppins', sans-serif;
     height: 100%;
 `
 
@@ -35,7 +34,7 @@ export const Content = styled.section`
 export const SideBar = styled.div`
     width: 15%;
     min-width: 130px;
-    border-right: 2px solid #B4B4B4;
+    border-right: 2px solid ${props => props.theme.colors.buttonOff};
 `
 export const Menu = styled.ul`
     padding: 5rem 0;
@@ -48,7 +47,7 @@ export const MenuItem = styled.li`
     font-weight: 700; 
 
     &:hover {
-        background-color: #4C7ABB;
-        color: #fff;
+        background-color: ${props => props.theme.colors.variant2};
+        color: ${props => props.theme.colors.white};
     }
 `

@@ -1,10 +1,5 @@
 import styled from "styled-components"
 
-const applied = '#5CED38'
-const notApplied = '#E85656'
-const late = '#FACB71'
-const schedule = '#B4B4B4'
-
 export const VaccinesContainer = styled.section`
     display: flex;
     flex-direction: column;
@@ -29,7 +24,7 @@ export const VaccinesDate = styled.div`
     div {
         display: flex;
         align-items: center;
-        background-color: #f1f1f1;
+        background-color: ${props => props.theme.colors.background};
         border-radius: 5px; 
         width: 387px;
         height: 47px; 
@@ -60,7 +55,6 @@ export const VaccinesList = styled.ul`
 `
 
 export const VaccinesLegend = styled.div`
-    background-color: #fff;
     justify-self: flex-end;
     padding: 2rem 0;
 
@@ -84,15 +78,15 @@ export const VaccineColor = styled.div`
     width: 1rem;
     height: 1rem;
     &.applied {
-        background-color: ${applied};
+        background-color: ${props => props.theme.colors.vaccine.applied};
     }
     &.late {
-        background-color: ${late};
+        background-color: ${props => props.theme.colors.vaccine.late};
     }
     &.not-applied {
-        background-color: ${notApplied};
+        background-color: ${props => props.theme.colors.vaccine.notApplied};
     }
     &.schedule {
-        background-color: ${schedule};
+        background-color: ${props => props.theme.colors.vaccine.schedule};
     }
 `
