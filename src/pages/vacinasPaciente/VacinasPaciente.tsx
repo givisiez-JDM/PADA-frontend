@@ -9,6 +9,7 @@ import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, V
 import { VaccineType } from '../../Types/VaccineTypes';
 import { PatientType } from '../../Types/PatientTypes';
 
+//////////////// TODO remover mocks e integrar com Back End
 const vaccines: VaccineType[] = [
     { id: 1, scheduledDate: '2024-01-01', applicationDate: '2024-01-01', title: 'Vacina 1', observation: 'lorem ipsum', status: 'applied' },
     { id: 2, scheduledDate: '2024-01-02', applicationDate: '', title: 'Vacina 2', observation: 'lorem ipsum', status: 'not applied' },
@@ -30,6 +31,7 @@ const patient: PatientType = {
     telephone: '123546',
     birthDate: '2000-05-23',
 }
+//////////////////////////////
 
 const VacinasPaciente = () => {
 
@@ -37,7 +39,6 @@ const VacinasPaciente = () => {
     const [vaccineList, setVaccineList] = useState(vaccines);
 
     useEffect(() => {
-        console.log(searchDate);
         const newList = vaccines.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
         console.log(newList);
         setVaccineList(newList);
