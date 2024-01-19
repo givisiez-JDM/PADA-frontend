@@ -25,14 +25,14 @@ const DefaultPatientPage = ({ patient, ...props }: Props) => {
                     <Picture src={patient.photo} alt='foto do paciente' />
                     <p>{patient.name}</p>
                 </PatientData>
-                <Close onClick={() => navigate('/menu-medico')}> <img src={CloseIco} /></Close>
+                <Close onClick={() => navigate('/menu-medico')}> <img src={CloseIco} alt="voltar para Home" /></Close>
             </MenuHeader>
             <Content>
                 <SideBar>
                     <Menu>
-                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient.id}`)}><p>Perfil</p> <img src={ArrowRightIco} /></MenuItem>
-                        <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={ArrowRightIco} /></MenuItem>
-                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient.id}`)}><p>Vacinas</p> <img src={ArrowRightIco} /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient.id}`)}><p>Perfil</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient.id}`)}><p>Vacinas</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
                     </Menu>
                 </SideBar>
                 {props.children}

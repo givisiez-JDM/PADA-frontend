@@ -36,7 +36,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
             </VaccineDescription>
             <VaccineButton
                 onClick={toggledescription}
-            ><img src={showDescription ? ArrowUpIco : ArrowDownIco} alt="Mostra descrição" /></VaccineButton>
+            ><img src={showDescription ? ArrowUpIco : ArrowDownIco} alt="Mostrar descrição" /></VaccineButton>
 
         </VaccineContainer>
     );
