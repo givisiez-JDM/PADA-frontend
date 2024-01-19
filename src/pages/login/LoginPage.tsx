@@ -27,7 +27,8 @@ const Login = () => {
     }
   }
 
-  const sendreq = () => {
+  const sendreq = (e:React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
     onSubmit()
     saveUser && window.localStorage.setItem('password', values)
   }
@@ -36,7 +37,7 @@ const Login = () => {
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
-      <Box onSubmit={sendreq}>
+      <Box onSubmit={e=>sendreq(e)}>
         <Input
           style={{ backgroundImage: `url(${iconPerson})` }}
           type="email"
