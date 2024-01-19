@@ -27,7 +27,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
     return (
 
         <VaccineContainer>
-            <VaccineDate className={getVaccineStatus()}>{applicationDate ?? scheduledDate}</VaccineDate>
+            <VaccineDate className={getVaccineStatus()}>{applicationDate || scheduledDate}</VaccineDate>
             <VaccineDescription>
                 <VaccineTitle>{title}</VaccineTitle>
                 <VaccineText
