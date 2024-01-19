@@ -1,10 +1,12 @@
 import { useState } from "react";
 
-import arrowUp from '../../../assets/arrow-up.svg';
-import arrowDown from '../../../assets/arrow-down.svg';
-import { VaccineType } from "../../../Types/VaccineTypes";
+import ArrowUpIco from '../../../assets/arrow-up.svg';
+import ArrowDownIco from '../../../assets/arrow-down.svg';
+
+import { VaccineType } from "../../../types/VaccineTypes";
 
 import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle } from "./Vaccine.style";
+
 
 function Vaccine({ title, observation, scheduledDate, status, applicationDate }: VaccineType) {
     const [showDescription, setShowDescription] = useState(false);
@@ -14,24 +16,18 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
     }
 
     function getVaccineStatus() {
-        switch (status) {
-            case 'applied':
-                return 'applied'
-            case 'not applied':
-                return 'not-applied'
-            case 'late':
-                return 'late'
-            case 'schedule':
-                return 'schedule'
-            default:
-                return ''
-        }
+        return {
+            'applied': 'applied',
+            'not applied': 'not-applied',
+            'late': 'late',
+            'schedule': 'schedule',
+        }[status] || ''
     }
 
     return (
 
         <VaccineContainer>
-            <VaccineDate className={getVaccineStatus()}>{applicationDate ? applicationDate : scheduledDate}</VaccineDate>
+            <VaccineDate className={getVaccineStatus()}>{applicationDate ?? scheduledDate}</VaccineDate>
             <VaccineDescription>
                 <VaccineTitle>{title}</VaccineTitle>
                 <VaccineText
@@ -40,7 +36,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
             </VaccineDescription>
             <VaccineButton
                 onClick={toggledescription}
-            ><img src={showDescription ? arrowUp : arrowDown} alt="Mostra descrição" /></VaccineButton>
+            ><img src={showDescription ? ArrowUpIco : ArrowDownIco} alt="Mostra descrição" /></VaccineButton>
 
         </VaccineContainer>
     );
