@@ -135,22 +135,22 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
   }
 
  
-  useEffect(() => {
-    const id = window.localStorage.getItem("id")
+  // useEffect(() => {
+  //   const id = window.localStorage.getItem("id")
 
-    if (token) {
-      setLogin(true)
-      getProfile(id)
+  //   if (token) {
+  //     setLogin(true)
+  //     getProfile(id)
 
-    }else {
-      userLogout()
-    }
+  //   }else {
+  //     userLogout()
+  //   }
 
-    if(!login) {
-      userLogout()
-    }
+  //   if(!login) {
+  //     userLogout()
+  //   }
 
-  }, []);
+  // }, []);
 
   return (
      <GlobalContext.Provider

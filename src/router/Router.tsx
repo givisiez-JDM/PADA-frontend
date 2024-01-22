@@ -5,8 +5,7 @@ import Login from "../pages/Login/index";
 import GlobalStorage from "../Global/UserContext";
 import MenuMedico from "../pages/MenuMedico/index";
 import PerfilPaciente from "../pages/PerfilPacient";
-// import CadastroPaciente from "../pages/CadastroPaciente/index";
-// import FasesDeTratamento from "../pages/FasesDeTratamento/index";
+import FaseDeTratamento from "../pages/FaseDeTratamento";
 
 const Router = () => {
   return (
@@ -18,8 +17,7 @@ const Router = () => {
         <Route path="login" element={<Login />} />
         <Route path="cadastro" element={<Cadastro />} />
         <Route path="menu-medico" element={<MenuMedico />} />
-        {/* <Route path="cadastro-paciente" element={<CadastroPaciente />} />
-      <Route path="fase-tratamento" element={<FasesDeTratamento />} />  */}
+        <Route path="fase-tratamento" element={<FaseDeTratamento />} /> 
       </Routes>
       </GlobalStorage>
     </BrowserRouter>

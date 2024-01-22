@@ -25,8 +25,12 @@ const PerfilPaciente = () => {
   React.useEffect(() => {
     const token = window.localStorage.getItem("token")
     const {url, headers} = userRequest.GET_TREATMENTS_BY_ID(id, token)
-
+    
     treatmentReq.get(url,{headers})
+
+    
+    console.log(treatmentReq?.data);
+    
   },[])  
 
   const allergiesMap = treatmentReq?.data?.allergies.map((allergie:any) => (
