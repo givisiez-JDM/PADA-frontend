@@ -41,7 +41,6 @@ const VacinasPaciente = () => {
 
     useEffect(() => {
         const newList = vaccines.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
-        console.log(newList);
         setVaccineList(newList);
     }, [searchDate]);
 
@@ -60,8 +59,8 @@ const VacinasPaciente = () => {
                 </VaccinesHeader>
                 <VaccinesList>
                     {vaccineList.map(vaccine => (
-                        <li>
-                            <Vaccine key={vaccine.id} {...vaccine} />
+                        <li key={vaccine.id}>
+                            <Vaccine  {...vaccine} />
                         </li>
                     ))}
                 </VaccinesList>
