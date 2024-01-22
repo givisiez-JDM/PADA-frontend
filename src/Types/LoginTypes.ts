@@ -1,5 +1,5 @@
 import {z} from 'zod'
-import { formLogiValidate } from '../Hooks/useForm'
+import { formLogiValidate } from '../hooks/useForm'
 
  export type FormProps = z.infer<typeof formLogiValidate>
 

@@ -6,10 +6,9 @@ type ButtonProps = React.ComponentProps<'button'> & {
     style?: React.CSSProperties;
 }
  
-const Button = ({ children, ...props}: ButtonProps) => {
+const Button = ({ children }: ButtonProps) => {
   return (
     <ButtonLogin 
-        {...props}
     >
         {children}
         

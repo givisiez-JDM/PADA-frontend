@@ -3,12 +3,12 @@ import wave from "../../Assets/wave.png";
 import iconPerson from "../../Assets/icon-person.svg";
 import iconEmail from "../../Assets/email.svg";
 import iconKey from "../../Assets/key.svg";
-import { useSignup } from "../../Hooks/useForm";
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
+import { useSignup } from "../../hooks/useForm";
+import Input from "../../components/input/Input";
+import Button from "../../components/button/Button";
 import { useNavigate } from "react-router-dom";
 import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./styles";
-import { useData } from "../../Global/UserContext";
+import { useData } from "../../global/UserContext";
 
 const Signup = () => {
   const { onSubmit, errors, register, getValues } = useSignup();
