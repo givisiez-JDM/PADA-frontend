@@ -146,9 +146,9 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       userLogout()
     }
 
-    if(!login) {
-      userLogout()
-    }
+    // if(!login) {
+    //   userLogout()
+    // }
 
   }, []);
 
