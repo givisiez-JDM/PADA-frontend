@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { AxiosRequestConfig } from 'axios';
+
+import { UserRequest } from '../../requests/UserRequest';
+import useAxios from '../../hooks/useAxios';
 
 import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
 import Vaccine from './vaccine/Vaccine';
 
 import SearchIco from '../../assets/search.svg'
 
-import { VaccineType } from '../../types/VaccineTypes';
+import { PhaseType, TreatmentType, VaccineType } from '../../types/TreatmentTypes';
 import { PatientType } from '../../types/PatientTypes';
 
 import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle } from './VacinasPaciente.styles';
@@ -24,28 +29,67 @@ const vaccines: VaccineType[] = [
     { id: 10, scheduledDate: '2024-01-10', applicationDate: '', title: 'Vacina 10', observation: 'lorem ipsum', status: 'schedule' },
 ]
 
-const patient: PatientType = {
-    id: '5f59f128-148d-469b-9452-4613e6afd67c',
-    name: 'Beatrix',
-    photo: '/vite.svg',
-    email: 'Beatrix@Beatrix',
-    telephone: '123546',
-    birthDate: '2000-05-23',
-}
+// const patient: PatientType = {
+//     id: '5f59f128-148d-469b-9452-4613e6afd67c',
+//     name: 'Beatrix',
+//     photo: '/vite.svg',
+//     email: 'Beatrix@Beatrix',
+//     telephone: '123546',
+//     birthDate: '2000-05-23',
+// }
 //////////////////////////////
 
 const VacinasPaciente = () => {
+    const userRequest = new UserRequest();
+    const patient = useAxios<PatientType>();
+    const treatmant = useAxios<TreatmentType>();
+    const phase = useAxios<PhaseType[]>();
+    const vaccine = useAxios<VaccineType[]>();
+
+
+    const { id } = useParams();
+    const token = window.localStorage.getItem("token");
+
 
     const [searchDate, setSearchDate] = useState('');
-    const [vaccineList, setVaccineList] = useState(vaccines);
+    const [vaccineList, setVaccineList] = useState<VaccineType[] | null>(null);
 
     useEffect(() => {
-        const newList = vaccines.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
-        setVaccineList(newList);
-    }, [searchDate]);
+        const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token);
+        patient.get(url, { headers });
+        if (patient.error) console.log(patient.error);
+    }, [id, token]);
+
+    useEffect(() => {
+        const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token);
+        treatmant.get(url, { headers });
+    }, [id, token]);
+
+    useEffect(() => {
+        if (treatmant.data) {
+            console.log('treatmant', treatmant.data)
+            const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data.treatmentId), token);
+            phase.get(url, { headers });
+        } else console.log('treatmant error', treatmant.error)
+    }, [treatmant]);
+
+    useEffect(() => {
+        if (phase.data?.length) {
+            const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(phase.data[0].phaseId), token);
+            phase.get(url, { headers });
+        } else console.log('phase error:', treatmant.error)
+    }, [phase]);
+
+    useEffect(() => {
+        if (vaccine.data) {
+            console.log('vaccines', vaccine.data)
+            const newList = vaccine.data.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
+            setVaccineList(newList);
+        } else console.log('vaccines error:', treatmant.error)
+    }, [searchDate, vaccine]);
 
     return (
-        <DefaultPatientPage patient={patient}>
+        <DefaultPatientPage patient={patient.data}>
             <VaccinesContainer>
                 <VaccinesHeader>
                     <VaccinesTitle>Vacinas</VaccinesTitle>
@@ -58,7 +102,7 @@ const VacinasPaciente = () => {
                     </VaccinesDate>
                 </VaccinesHeader>
                 <VaccinesList>
-                    {vaccineList.map(vaccine => (
+                    {vaccineList?.map(vaccine => (
                         <li key={vaccine.id}>
                             <Vaccine  {...vaccine} />
                         </li>

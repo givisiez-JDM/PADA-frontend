@@ -11,7 +11,7 @@ import { Close, Content, Main, Menu, MenuItem, PatientData, Picture, SideBar } f
 
 interface Props
     extends React.ComponentProps<"main"> {
-    patient: PatientType
+    patient: PatientType | null
 }
 
 const DefaultPatientPage = ({ patient, ...props }: Props) => {
@@ -22,17 +22,17 @@ const DefaultPatientPage = ({ patient, ...props }: Props) => {
         <Main>
             <MenuHeader>
                 <PatientData>
-                    <Picture src={patient.photo} alt='foto do paciente' />
-                    <p>{patient.name}</p>
+                    <Picture src={patient?.photo} alt='foto do paciente' />
+                    <p>{patient?.name}</p>
                 </PatientData>
                 <Close onClick={() => navigate('/menu-medico')}> <img src={CloseIco} alt="voltar para Home" /></Close>
             </MenuHeader>
             <Content>
                 <SideBar>
                     <Menu>
-                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient.id}`)}><p>Perfil</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient?.id}`)}><p>Perfil</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
                         <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
-                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient.id}`)}><p>Vacinas</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient?.id}`)}><p>Vacinas</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
                     </Menu>
                 </SideBar>
                 {props.children}
