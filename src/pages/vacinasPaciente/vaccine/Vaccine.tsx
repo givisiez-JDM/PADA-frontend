@@ -3,7 +3,7 @@ import { useState } from "react";
 import ArrowUpIco from '../../../assets/arrow-up.svg';
 import ArrowDownIco from '../../../assets/arrow-down.svg';
 
-import { VaccineType } from "../../../types/VaccineTypes";
+import { VaccineType } from "../../../types/TreatmentTypes";
 
 import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle } from "./Vaccine.style";
 
