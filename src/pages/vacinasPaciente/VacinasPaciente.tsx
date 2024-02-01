@@ -51,13 +51,13 @@ const VacinasPaciente = () => {
     const token = window.localStorage.getItem("token");
 
 
+    const [pageError, setPageError] = useState('');
     const [searchDate, setSearchDate] = useState('');
     const [vaccineList, setVaccineList] = useState<VaccineType[] | null>(null);
 
     useEffect(() => {
         const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token);
         patient.get(url, { headers });
-        if (patient.error) console.log(patient.error);
     }, [id, token]);
 
     useEffect(() => {
@@ -66,27 +66,53 @@ const VacinasPaciente = () => {
     }, [id, token]);
 
     useEffect(() => {
-        if (treatmant.data) {
-            console.log('treatmant', treatmant.data)
-            const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data.treatmentId), token);
+        try {
+            const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data.id), token);
             phase.get(url, { headers });
-        } else console.log('treatmant error', treatmant.error)
-    }, [treatmant]);
+        }
+        catch (error) {
+            console.error(error);
+        }
+    }, [token, treatmant.data]);
 
     useEffect(() => {
-        if (phase.data?.length) {
-            const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(phase.data[0].phaseId), token);
+        try {
+            const lastItem = phase.data?.slice(- 1);
+            const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(phase.data[lastItem].id), token);
             phase.get(url, { headers });
-        } else console.log('phase error:', treatmant.error)
-    }, [phase]);
+        }
+        catch (error) {
+            console.error(error)
+        }
+    }, [token, phase.data]);
 
     useEffect(() => {
-        if (vaccine.data) {
-            console.log('vaccines', vaccine.data)
-            const newList = vaccine.data.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
+        try {
+            const newList = vaccines.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
+            // const newList = vaccine.data.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
             setVaccineList(newList);
-        } else console.log('vaccines error:', treatmant.error)
-    }, [searchDate, vaccine]);
+            setPageError('')
+        }
+        catch (error) {
+            setPageError('error')
+            console.error(error)
+        }
+    }, [token, searchDate, vaccine.data]);
+
+    function getVaccineList() {
+        if (pageError) {
+            return (
+                <h2>Lista de vacinas não encontrada</h2>
+            )
+        } else {
+            return vaccineList?.map(vaccine => (
+                <li key={vaccine.id}>
+                    <Vaccine  {...vaccine} />
+                </li>
+            ))
+        }
+    }
+
 
     return (
         <DefaultPatientPage patient={patient.data}>
@@ -102,11 +128,7 @@ const VacinasPaciente = () => {
                     </VaccinesDate>
                 </VaccinesHeader>
                 <VaccinesList>
-                    {vaccineList?.map(vaccine => (
-                        <li key={vaccine.id}>
-                            <Vaccine  {...vaccine} />
-                        </li>
-                    ))}
+                    {getVaccineList()}
                 </VaccinesList>
                 <VaccinesLegend>
                     <h3>LEGENDA</h3>
