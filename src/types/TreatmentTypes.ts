@@ -1,5 +1,5 @@
 export type TreatmentType = {
-    treatmentId: number,
+    id: number,
     allergies: string[],
     method: string[],
     active: boolean,
@@ -7,10 +7,10 @@ export type TreatmentType = {
 }
 
 export type PhaseType = {
-    phaseId: number,
+    id: number,
     phaseNumber: number,
-    dosage: string[],
-    frequency: string[],
+    dosage: string,
+    frequency: string,
     startTreatment: string,
     endTreatment: string,
     active: boolean,
