@@ -34,7 +34,7 @@ export class UserRequest {
 
     GET_PATIENTS = (token: string | null) => {
         return {
-            url: `${BASE_URL}/patients`,
+            url: `${BASE_URL}/doctors/patients`,
             headers: {
                 Authorization: token
             }
