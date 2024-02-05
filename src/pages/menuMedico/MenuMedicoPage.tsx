@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { UserRequest } from "../../Requests/UserRequest";
-import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./styles";
+import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./MenuMedico.styles";
 import { NavLink, useNavigate } from "react-router-dom";
 import useAxios from "../../Hooks/useAxios";
 import { useData } from "../../Global/UserContext";
