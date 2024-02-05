@@ -1,28 +1,8 @@
-import {
-  AddButton,
-  BoxButton,
-  ChangeButtom,
-  Dosage,
-  FaseProgress,
-  FinalButton,
-  Frequency,
-  Header,
-  IconX,
-  Logo,
-  Main,
-  Middle,
-  Nav,
-  Section,
-  SubTitle,
-  Title,
-  TreatmentDuration,
-} from "./styles";
-import iconPatient from "../../assets/iconPatient.svg";
-import X from "../../assets/X.svg";
+import { AddButton,BoxButton,ChangeButtom,Dosage,FaseProgress,FinalButton,Frequency,Main,Middle,Nav,Section,SubTitle,Title,TreatmentDuration } from "./styles";
 import greyArrow from "../../assets/greyArrow.svg";
 import ModalTreatmentPhase from "../../components/ModalTreatmentPhase";
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import Header from "../../components/Header/Header";
 
 const FaseDeTratamento = () => {
   const [modal, setModal] = React.useState(false);
@@ -30,9 +10,7 @@ const FaseDeTratamento = () => {
   return (
     <Main>
       <Header>
-        <Logo src={iconPatient} />
         <p>Maria</p>
-        <IconX src={X} alt="" />
       </Header>
       <Middle>
         <Nav>
@@ -52,15 +30,18 @@ const FaseDeTratamento = () => {
         <Section>
           <Title>Fase</Title>
           <SubTitle>Fase 1</SubTitle>
+
           <TreatmentDuration>
             <h1>Duração da fase</h1>
             <p>Início: 27/03/2023</p>
             <p>Fim: 27/09/2023</p>
           </TreatmentDuration>
+
           <Frequency>
             <h1>Periodicidade</h1>
             <p>A cada 7 dias</p>
           </Frequency>
+
           <Dosage>
             <h1>Dosagem do medicamento</h1>
             <p>1:10</p>
@@ -75,7 +56,7 @@ const FaseDeTratamento = () => {
 
           <BoxButton>
             <FinalButton>Finalizar Fase</FinalButton>
-            <AddButton onClick={() => setModal(!modal)}>Adcionar fase</AddButton>
+            <AddButton onClick={() => setModal(!modal)}>Adicionar Fase</AddButton>
           </BoxButton>
         </Section>
       </Middle>

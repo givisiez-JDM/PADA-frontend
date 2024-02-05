@@ -5,23 +5,7 @@ import styled from "styled-components"
 export const Main = styled.main`
     display: flex;
     flex-direction: column;
-    font-family: 'Poppins', sans-serif;
-    
-`
-export const Header = styled.header`
-    display: flex;
-    height: 5rem;
-    width: 100%;
-    align-items: center;
-    background-color: #4C7ABB;
-    
-    img {
-        display: block;
-        margin-left: 2rem;
-        margin-right: 1rem;
-        background-color: black;
-    }
-
+    font-family: 'Poppins', sans-serif; 
 `
 
 export const Nav = styled.nav`
@@ -31,8 +15,7 @@ export const Nav = styled.nav`
     gap: 1rem;
     border-right: 2.5px solid #B4B4B4;
     font-weight: 500;
-    cursor: pointer;
-   
+    cursor: pointer;  
 `
 
 export const Section = styled.section`
@@ -40,17 +23,9 @@ export const Section = styled.section`
     width: 100%;
     padding: 3rem 4rem ;
     flex-direction: column;
-    gap: 2rem;
-   
-
-   
-   /* display: flex;
-   justify-content: center;
-   margin-bottom: 30rem;
-   
-   background-color: blue; */
-   
+    gap: 2rem; 
 `
+
 export const Middle = styled.div`
   display: flex;
   height: 100%;
@@ -60,16 +35,16 @@ export const Title = styled.p`
     font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 2rem;
-    border-bottom: 3px solid #F5F5F5;
-    
+    border-bottom: 3px solid #F5F5F5;  
 `
+
 export const ArticleName = styled.div`
     h1{
         padding-bottom: 0.6rem;
         font-weight: 600;
-    }
-    
+    }  
 `
+
 export const ArticleContact = styled.div`
    display: flex;
    flex-direction: column;
@@ -83,8 +58,8 @@ export const ArticleContact = styled.div`
         padding-bottom: 1rem;
         font-weight: 600;
     }
-
 `
+
 export const ArticleEmail = styled.article`
    p {
     font-weight: 400;
@@ -92,9 +67,10 @@ export const ArticleEmail = styled.article`
 
    h1{
     font-weight: 600;
-  }
+   }
 
 `
+
 export const Tel = styled.div`
     display: flex;
     flex-direction: column;
@@ -106,9 +82,8 @@ export const Tel = styled.div`
     p {
         font-weight: 400;
     }
-  
-
 `
+
 export const Born = styled.div`
    h1{
        font-weight: 600;
@@ -204,9 +179,7 @@ export const MethodTreatment = styled.div `
   }
 `
 
-
 export const Button = styled.button `
-    /* align-self: flex-end; */
     position: absolute;
     right: 2rem;
     bottom: 1rem;
@@ -215,7 +188,11 @@ export const Button = styled.button `
     border: none;
     border-radius: 16px;
     padding: 0.5rem 2rem;
-    
     font-weight: 500;
+
+    &:hover {
+        color: black;
+        transition: 0.3s ease-in-out;
+    }
    
 `

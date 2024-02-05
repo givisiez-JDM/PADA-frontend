@@ -1,9 +1,10 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
 import { UserRequest } from "../../Requests/UserRequest";
-import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Header, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './styles'
+import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './styles'
 import useAxios from '../../Hooks/useAxios';
 import arrow from '../../assets/arrow.png'
+import Header from '../../components/Header/Header';
 
 const PerfilPaciente = () => {
   const userRequest = new UserRequest();
@@ -41,8 +42,7 @@ const PerfilPaciente = () => {
   return (
     <Main>
       <Header>
-        {/* <h1>{useReq?.data?.photo}</h1> */}
-        <p>{useReq?.data?.name}</p>
+        <p>Maria</p>
       </Header>
       <Middle>
         <Nav>
