@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { string } from "zod";
 
 export const VaccineContainer = styled.div`
     display: flex;
@@ -7,10 +8,12 @@ export const VaccineContainer = styled.div`
     border-bottom: 2px solid ${props => props.theme.colors.variant2};
     padding: 1rem 0;
 `
-export const VaccineDate = styled.div.attrs({ className: '' })`
+export const VaccineDate = styled.div`
     width: 20%;
     border-left: 4px solid;
     padding: 1rem;
+    line-height: 1.5rem;
+
     &.applied {
         border-color: ${props => props.theme.colors.vaccine.applied};
     }

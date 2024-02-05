@@ -24,10 +24,15 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
         }[status] || ''
     }
 
+    function getDate() {
+        const date = new Date(applicationDate || scheduledDate)
+        return date.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', dateStyle: 'long', timeStyle: 'medium' })
+    }
+
     return (
 
         <VaccineContainer>
-            <VaccineDate className={getVaccineStatus()}>{applicationDate || scheduledDate}</VaccineDate>
+            <VaccineDate className={getVaccineStatus()}>{getDate()}</VaccineDate>
             <VaccineDescription>
                 <VaccineTitle>{title}</VaccineTitle>
                 <VaccineText
