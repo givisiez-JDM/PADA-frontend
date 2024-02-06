@@ -1,7 +1,7 @@
-import React, { ReactNode, createContext, useEffect, useState } from "react";
-import { UserRequest } from "../Requests/UserRequest";
+import React, { ReactNode, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserRequest } from "../Requests/UserRequest";
 
 type GlobalContextProps = {
   userLogin: (email: string, password: string) => void;

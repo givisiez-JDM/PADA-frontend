@@ -1,9 +1,11 @@
+
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormProps, loginType } from "../Types/LoginTypes";
-import { FormPropsSignup, SignupType } from "../Types/SignupTypes";
 import { useData } from "../Global/UserContext";
+import { FormPropsLogin, loginType } from "../Types/LoginTypes";
+import { FormPropsSignup, SignupType } from "../Types/SignupTypes";
+
 
   export const formLogiValidate = z.object({
     email: z.string().nonempty("Preencha um valor").email("Email inválido"),
@@ -26,7 +28,7 @@ import { useData } from "../Global/UserContext";
       getValues,
       getFieldState,
       formState: { errors },
-    } = useForm<FormProps>({ mode: "onBlur", resolver: zodResolver(formLogiValidate) });
+    } = useForm<FormPropsLogin>({ mode: "onBlur", resolver: zodResolver(formLogiValidate) });
 
     const { userLogin } = useData();
 

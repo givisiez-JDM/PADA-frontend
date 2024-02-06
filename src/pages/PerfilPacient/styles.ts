@@ -91,6 +91,7 @@ export const Born = styled.div`
    } 
   
 `
+
 export const Alergis = styled.div`
    h1{
       margin-bottom: 1.5rem;

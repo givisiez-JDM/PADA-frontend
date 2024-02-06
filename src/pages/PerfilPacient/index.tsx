@@ -1,43 +1,35 @@
-import React from 'react'
+import React from "react";
 import { useParams } from "react-router-dom";
 import { UserRequest } from "../../Requests/UserRequest";
 import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './styles'
-import useAxios from '../../Hooks/useAxios';
-import arrow from '../../assets/arrow.png'
-import Header from '../../components/Header/Header';
+import useAxios from "../../Hooks/useAxios";
+import arrow from "../../assets/arrow.png";
+import Header from "../../components/Header/Header";
 
 const PerfilPaciente = () => {
   const userRequest = new UserRequest();
-  const useReq = useAxios()
-  const treatmentReq = useAxios()
+  const useReq = useAxios();
+  const treatmentReq = useAxios();
 
-  const {id} = useParams()
+  const { id } = useParams();
 
   React.useEffect(() => {
-
     const token = window.localStorage.getItem("token");
     const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token);
-      
-    useReq.get(url, {headers})
-      
+
+    useReq.get(url, { headers });
   }, []);
 
-
   React.useEffect(() => {
-    const token = window.localStorage.getItem("token")
-    const {url, headers} = userRequest.GET_TREATMENTS_BY_ID(id, token)
-    
-    treatmentReq.get(url,{headers})
+    const token = window.localStorage.getItem("token");
+    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token);
 
-    
+    treatmentReq.get(url, { headers });
+
     console.log(treatmentReq?.data);
-    
-  },[])  
+  }, []);
 
-  const allergiesMap = treatmentReq?.data?.allergies.map((allergie:any) => (
-    <p>{allergie}</p>
-  ) )
-  
+  const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => <p>{allergie}</p>);
 
   return (
     <Main>
@@ -60,22 +52,18 @@ const PerfilPaciente = () => {
 
           <ArticleContact>
             <h1>contato</h1>
-          <div>
-            <Tel>
+            <div>
+              <Tel>
+                <h1>telefone</h1>
+                <p>{useReq?.data?.telephone}</p>
+              </Tel>
 
-              <h1>telefone</h1>
-              <p>{useReq?.data?.telephone}</p>
-
-            </Tel>
-            
-            <ArticleEmail>
-              <h1>Email</h1>
-              <p>{useReq?.data?.email}</p>
-            </ArticleEmail>
-          </div>
-
+              <ArticleEmail>
+                <h1>Email</h1>
+                <p>{useReq?.data?.email}</p>
+              </ArticleEmail>
+            </div>
           </ArticleContact>
-
 
           <Born>
             <h1>Data de nascimento</h1>
@@ -83,11 +71,11 @@ const PerfilPaciente = () => {
           </Born>
 
           <Alergis>
-            <h1>Alergias
+            <h1>
+              Alergias
               <img src={arrow} />
             </h1>
             {allergiesMap}
-          
           </Alergis>
 
           <Treatment>
@@ -96,24 +84,24 @@ const PerfilPaciente = () => {
               <img src={arrow} />
             </TitleTreatment>
             <TreatmentContainer>
-            <TreatmentDuration>
-              <h1>Duração do tratamento</h1>
-              <p>Início:27/03/2023</p>
-              <p>Fim:27/09/2023</p>
-            </TreatmentDuration>
+              <TreatmentDuration>
+                <h1>Duração do tratamento</h1>
+                <p>Início:27/03/2023</p>
+                <p>Fim:27/09/2023</p>
+              </TreatmentDuration>
 
-            <Medication>
-              <h1>Medicação</h1>
-              <p>Corticoide</p>
-            </Medication>
+              <Medication>
+                <h1>Medicação</h1>
+                <p>Corticoide</p>
+              </Medication>
 
-            <MethodTreatment>
-              <h1>Método do tratamento</h1>
-              <p>{treatmentReq?.data?.method}</p>
-            </MethodTreatment>
-            </TreatmentContainer> 
+              <MethodTreatment>
+                <h1>Método do tratamento</h1>
+                <p>{treatmentReq?.data?.method}</p>
+              </MethodTreatment>
+            </TreatmentContainer>
           </Treatment>
-        <Button>Editar Perfil</Button>
+          <Button>Editar Perfil</Button>
         </Section>
       </Middle>
     </Main>
