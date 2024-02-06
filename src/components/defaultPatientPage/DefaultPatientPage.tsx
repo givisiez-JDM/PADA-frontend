@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import CloseIco from "../../assets/close.svg";
 import ArrowRightIco from "../../assets/arrow-right.svg";
+import patientIcone from '../../assets/user.svg'
 
 import MenuHeader from '../menuHeader/MenuHeader';
 
@@ -22,7 +23,7 @@ const DefaultPatientPage = ({ patient, ...props }: Props) => {
         <Main>
             <MenuHeader>
                 <PatientData>
-                    <Picture src={patient?.photo} alt='foto do paciente' />
+                    <Picture src={patient?.photo || patientIcone} alt='foto do paciente' />
                     <p>{patient?.name}</p>
                 </PatientData>
                 <Close onClick={() => navigate('/menu-medico')}> <img src={CloseIco} alt="voltar para Home" /></Close>
