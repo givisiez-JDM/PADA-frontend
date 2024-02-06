@@ -19,7 +19,7 @@ export const Logo = styled.img `
 `
 
 export const IconX = styled.img `
-    margin-left: 80rem;
+    margin-left: 75rem;
     cursor: pointer;
 `
 

@@ -1,16 +1,16 @@
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "./Global/Global";
+import { GlobalStyle } from "./global/Global";
 import Router from "./router/Router";
-import { defaultTheme } from "./Global/GlobalTheme";
+import { Theme } from "./global/GlobalTheme";
+
 
 function App() {
-
   return (
     <>
-     <ThemeProvider theme={defaultTheme}>
-       <Router />
-       <GlobalStyle />
-     </ThemeProvider>
+      <ThemeProvider theme={Theme}>
+        <Router />
+        <GlobalStyle />
+      </ThemeProvider>
     </>
   )
 }

@@ -1,4 +1,19 @@
-import { AddButton,BoxButton,ChangeButtom,Dosage,FaseProgress,FinalButton,Frequency,Main,Middle,Nav,Section,SubTitle,Title,TreatmentDuration } from "./styles";
+import {
+  AddButton,
+  BoxButton,
+  ChangeButtom,
+  Dosage,
+  FaseProgress,
+  FinalButton,
+  Frequency,
+  Main,
+  Middle,
+  Nav,
+  Section,
+  SubTitle,
+  Title,
+  TreatmentDuration,
+} from "./styles";
 import greyArrow from "../../assets/greyArrow.svg";
 import ModalTreatmentPhase from "../../components/ModalTreatmentPhase";
 import React from "react";
