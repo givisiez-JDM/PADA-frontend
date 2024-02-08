@@ -17,10 +17,10 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
 
     function getVaccineStatus() {
         return {
-            'applied': 'applied',
-            'not applied': 'not-applied',
-            'late': 'late',
-            'schedule': 'schedule',
+            'aplicado': 'applied',
+            'não aplicado': 'not-applied',
+            'aplicado com atraso': 'late',
+            'agendado': 'schedule',
         }[status] || ''
     }
 

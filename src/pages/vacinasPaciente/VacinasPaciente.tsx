@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { AxiosRequestConfig } from 'axios';
 
 import { UserRequest } from '../../requests/UserRequest';
 import useAxios from '../../hooks/useAxios';
@@ -15,19 +14,6 @@ import { PatientType } from '../../types/PatientTypes';
 
 import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle } from './VacinasPaciente.styles';
 
-//////////////// TODO remover mocks e integrar com Back End
-const vaccines: VaccineType[] = [
-    { id: 1, scheduledDate: '2024-01-01 10:30:00', applicationDate: '2024-01-01', title: 'Vacina 1', observation: 'lorem ipsum', status: 'applied' },
-    { id: 2, scheduledDate: '2024-01-02 10:30:00', applicationDate: '', title: 'Vacina 2', observation: 'lorem ipsum', status: 'not applied' },
-    { id: 3, scheduledDate: '2024-01-03 10:30:00', applicationDate: '2024-01-04', title: 'Vacina 3', observation: 'lorem ipsum', status: 'late' },
-    { id: 4, scheduledDate: '2024-01-04 10:30:00', applicationDate: '', title: 'Vacina 4', observation: 'lorem ipsum', status: 'applied' },
-    { id: 5, scheduledDate: '2024-01-05 10:30:00', applicationDate: '', title: 'Vacina 5', observation: 'lorem ipsum', status: 'schedule' },
-    { id: 6, scheduledDate: '2024-01-06 10:30:00', applicationDate: '', title: 'Vacina 6', observation: 'lorem ipsum', status: 'schedule' },
-    { id: 7, scheduledDate: '2024-01-07 10:30:00', applicationDate: '', title: 'Vacina 7', observation: 'lorem ipsum', status: 'schedule' },
-    { id: 8, scheduledDate: '2024-01-08 10:30:00', applicationDate: '', title: 'Vacina 8', observation: 'lorem ipsum', status: 'schedule' },
-    { id: 9, scheduledDate: '2024-01-09 10:30:00', applicationDate: '', title: 'Vacina 9', observation: 'lorem ipsum', status: 'schedule' },
-    { id: 10, scheduledDate: '2024-01-10 10:30:00', applicationDate: '', title: 'Vacina 10', observation: 'lorem ipsum', status: 'schedule' },
-]
 
 const VacinasPaciente = () => {
     const userRequest = new UserRequest();
@@ -42,7 +28,8 @@ const VacinasPaciente = () => {
 
 
     const [pageError, setPageError] = useState('');
-    const [searchDate, setSearchDate] = useState('');
+    const [initDate, setInitDate] = useState('');
+    const [endDate, setEndDate] = useState('');
     const [vaccineList, setVaccineList] = useState<VaccineType[] | null>(null);
 
     useEffect(() => {
@@ -69,7 +56,7 @@ const VacinasPaciente = () => {
         try {
             const lastItem = phase.data?.slice(- 1)[0];
             const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(lastItem?.id), token);
-            phase.get(url, { headers });
+            vaccine.get(url, { headers });
         }
         catch (error) {
             console.error(error)
@@ -78,8 +65,17 @@ const VacinasPaciente = () => {
 
     useEffect(() => {
         try {
-            const newList = vaccines.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
-            // const newList = vaccine.data.filter(item => item.scheduledDate === searchDate || item.applicationDate === searchDate);
+            const newList = initDate || endDate ?
+                vaccine.data.filter(item => {
+                    const isInit = initDate ?
+                        item.scheduledDate.substring(0, 10) >= initDate ||
+                        item.applicationDate?.substring(0, 10) >= initDate : true;
+                    const isEnd = endDate ?
+                        item.scheduledDate.substring(0, 10) <= endDate ||
+                        item.applicationDate?.substring(0, 10) <= endDate : true;
+                    return isInit && isEnd;
+                })
+                : vaccine.data;
             setVaccineList(newList);
             setPageError('')
         }
@@ -87,7 +83,7 @@ const VacinasPaciente = () => {
             setPageError('error')
             console.error(error)
         }
-    }, [token, searchDate, vaccine.data]);
+    }, [token, initDate, endDate, vaccine.data]);
 
     function getVaccineList() {
         if (pageError) {
@@ -95,8 +91,8 @@ const VacinasPaciente = () => {
                 <h2>Lista de vacinas não encontrada</h2>
             )
         } else {
-            return vaccineList?.map(vaccine => (
-                <li key={vaccine.id}>
+            return vaccineList?.map((vaccine, index) => (
+                <li key={index}>
                     <Vaccine  {...vaccine} />
                 </li>
             ))
@@ -113,7 +109,8 @@ const VacinasPaciente = () => {
                         <p>Busque no histórico:</p>
                         <div>
                             <img src={SearchIco} alt='icone de busca' />
-                            <input type="date" value={searchDate} onChange={event => setSearchDate(event.target.value)} />
+                            <input type="date" value={initDate} onChange={event => setInitDate(event.target.value)} />
+                            <input type="date" value={endDate} onChange={event => setEndDate(event.target.value)} />
                         </div>
                     </VaccinesDate>
                 </VaccinesHeader>
