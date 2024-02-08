@@ -44,6 +44,7 @@ export const VaccineTitle = styled.h2`
 export const VaccineText = styled.p`
     display: none;
     padding: 0.5rem;
+    min-height: 2rem;
     color:  ${props => props.theme.colors.keyboard};
     border-radius: 10px;
     background: ${props => props.theme.colors.background}; 
