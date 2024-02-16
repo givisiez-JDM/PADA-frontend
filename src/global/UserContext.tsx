@@ -11,9 +11,9 @@ type GlobalContextProps = {
   login: boolean | null;
   loading: boolean | null;
   userId: any;
-  setUserId:any;
-  getProfile:any;
-  userLogout:any;
+  setUserId: any;
+  getProfile: any;
+  userLogout: any;
 };
 
 type GlobalStorageProps = {
@@ -59,17 +59,17 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       window.localStorage.setItem('id', req.data.user.id)
 
       setUserId(req.data.user.id)
-      
+
       setLogin(true);
       navigate('/menu-medico');
-    } catch (err:any) {
-        setData(null);
-        setError(err.response.data.error);
-        setLoading(false);
-        
-    }finally {
-        setLoading(false);
-      }
+    } catch (err: any) {
+      setData(null);
+      setError(err.response.data.error);
+      setLoading(false);
+
+    } finally {
+      setLoading(false);
+    }
   };
 
   const userSignup = async (name: string, email: string, password: string) => {
@@ -81,42 +81,42 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         name,
         email,
         password
-       
+
       }
 
-      const {url} = userRequest.USER_SIGNUP(body)
+      const { url } = userRequest.USER_SIGNUP(body)
       const req = await axios.post(url, body);
 
       window.localStorage.setItem('token', req.data.token);
       window.localStorage.setItem('id', req.data.user.id)
-      
-      
+
+
       setLogin(true);
       navigate('/menu-medico');
-    } catch (err:any) {
+    } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
       setLoading(false);
-      
+
     }
   }
 
-  const getProfile = async (userId:any) => {
+  const getProfile = async (userId: any) => {
     try {
       setError(null);
       setLoading(true);
 
-      const {url, headers} = userRequest.GET_DOCTOR_BY_ID(userId, token)
+      const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token)
 
-      const req = await axios.get(url, {headers})
+      const req = await axios.get(url, { headers })
 
-      setData(req.data) 
-         
-    } catch (err:any) {
+      setData(req.data)
+
+    } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
       setLoading(false);
-      
+
     }
   }
 
@@ -134,7 +134,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
   }
 
- 
+
   useEffect(() => {
     const id = window.localStorage.getItem("id")
 
@@ -142,18 +142,14 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setLogin(true)
       getProfile(id)
 
-    }else {
+    } else {
       userLogout()
     }
-
-    // if(!login) {
-    //   userLogout()
-    // }
 
   }, []);
 
   return (
-     <GlobalContext.Provider
+    <GlobalContext.Provider
       value={{
         userLogin,
         userSignup,
@@ -165,7 +161,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         setUserId,
         getProfile,
         userLogout
-        
+
       }}
     >
       {children}
