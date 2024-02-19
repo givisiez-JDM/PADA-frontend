@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import ArrowUpIco from '../../../assets/arrow-up.svg';
-import ArrowDownIco from '../../../assets/arrow-down.svg';
+import iconArrowUp from '../../../assets/arrow-up.svg';
+import iconArrowDown from '../../../assets/arrow-down.svg';
 
 import { VaccineType } from "../../../types/TreatmentTypes";
 
@@ -41,7 +41,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
             </VaccineDescription>
             <VaccineButton
                 onClick={toggledescription}
-            ><img src={showDescription ? ArrowUpIco : ArrowDownIco} alt="Mostrar descrição" /></VaccineButton>
+            ><img src={showDescription ? iconArrowUp : iconArrowDown} alt="Mostrar descrição" /></VaccineButton>
 
         </VaccineContainer>
     );

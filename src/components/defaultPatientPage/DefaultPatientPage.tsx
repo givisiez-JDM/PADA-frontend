@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 
-import CloseIco from "../../assets/close.svg";
-import ArrowRightIco from "../../assets/arrow-right.svg";
-import patientIcone from '../../assets/user.svg'
+import iconClose from "../../assets/close.svg";
+import iconArrowRight from "../../assets/arrow-right.svg";
+import iconPatient from '../../assets/user.svg'
 
 import MenuHeader from '../menuHeader/MenuHeader';
 
@@ -23,17 +23,17 @@ const DefaultPatientPage = ({ patient, ...props }: Props) => {
         <Main>
             <MenuHeader>
                 <PatientData>
-                    <Picture src={patient?.photo || patientIcone} alt='foto do paciente' />
+                    <Picture src={patient?.photo || iconPatient} alt='foto do paciente' />
                     <p>{patient?.name}</p>
                 </PatientData>
-                <Close onClick={() => navigate('/menu-medico')}> <img src={CloseIco} alt="voltar para Home" /></Close>
+                <Close onClick={() => navigate('/menu-medico')}> <img src={iconClose} alt="voltar para Home" /></Close>
             </MenuHeader>
             <Content>
                 <SideBar>
                     <Menu>
-                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient?.id}`)}><p>Perfil</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
-                        <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
-                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient?.id}`)}><p>Vacinas</p> <img src={ArrowRightIco} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/perfil/paciente/${patient?.id}`)}><p>Perfil</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate('#')}><p>Fases</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
+                        <MenuItem onClick={() => navigate(`/vacinas/paciente/${patient?.id}`)}><p>Vacinas</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
                     </Menu>
                 </SideBar>
                 {props.children}

@@ -7,7 +7,7 @@ import useAxios from '../../hooks/useAxios';
 import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
 import Vaccine from './vaccine/Vaccine';
 
-import SearchIco from '../../assets/search.svg'
+import iconSearch from '../../assets/search.svg'
 
 import { PhaseType, TreatmentType, VaccineType } from '../../types/TreatmentTypes';
 import { PatientType } from '../../types/PatientTypes';
@@ -108,7 +108,7 @@ const VacinasPaciente = () => {
                     <VaccinesDate >
                         <p>Busque no histórico:</p>
                         <div>
-                            <img src={SearchIco} alt='icone de busca' />
+                            <img src={iconSearch} alt='icone de busca' />
                             <input type="date" value={initDate} onChange={event => setInitDate(event.target.value)} />
                             <input type="date" value={endDate} onChange={event => setEndDate(event.target.value)} />
                         </div>
