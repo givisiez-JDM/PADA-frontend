@@ -1,4 +1,51 @@
+import Switch from "@mui/material/Switch";
 import styled from "styled-components";
+
+
+export const HeaderContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+  width: 100vw;
+  padding: 2rem;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  background: #4c7abb;
+  color: #ffffff;
+  border-radius: 0 0 20px 20px;
+   
+    h1{
+  font-size: 35px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: ${(props) => props.theme['white']};
+  }
+`;
+
+
+
+
+export const SectionDoctor = styled.div`
+    display: flex;
+    margin-right: 6rem;
+    color: white;
+    font-size: larger;
+    align-items: center;
+    justify-content: end;
+    padding-right: 2rem;
+    
+
+    img {
+       margin-left: 1rem;
+       height: 1.3rem;
+       width: 0.6rem;
+       cursor: pointer;
+    }
+`
+
 
 export const FaseContentContainer = styled.div`
   display: flex;
@@ -22,7 +69,7 @@ export const ConteinerTreatment = styled.div`
   flex-direction: column;
   gap: 0.5rem;
   color: #334c76;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const PeriodicidadeTratamento = styled.div`
@@ -58,10 +105,45 @@ export const ConteinerCheckBox = styled.div`
  gap: 0.563rem;
 
 `
+export const ContainerCheckbox = styled.div`
+ 
+ .checkbox {
+  display: none;
+}
+.checkbox + label:before {
+  content: '';
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 3px;
+  margin-right: 5px;
+  border: 2px solid black;
+  margin-bottom: -2px;
+  background: ${(props) => props.theme['Button-off']}
+}
+
+
+.custom-checkbox input:checked + label:before{
+  background-image: url('../../../src/assets/Vector.png');
+  background-position: center;
+  }
+`
 
 export const ButtonLocal = styled.div`
-position: relative;
-left: 50rem;
-width: 12rem;
+margin-top: 40px;
 
+`
+
+export const TextInputTime = styled.input`
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  padding: 10px 10px;
+  border: 1px solid #334c76;
+  color: #334C76;
+
+`
+
+export const SwitchContainer = styled.div`
+
+margin-top: 40px;
 `
