@@ -1,23 +1,22 @@
-
-import React from 'react'
+import React from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { UserRequest } from "../../requests/UserRequest";
-import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, Medication, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from './PerfilPacientePage.styles'
-import useAxios from '../../hooks/useAxios';
-import arrow from '../../assets/arrow.png'
-import Header from '../../components/Header/Header';
+import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration} from "./PerfilPacientePage.styles";
+import useAxios from "../../hooks/useAxios";
+import arrow from "../../assets/arrow.png";
+import Header from "../../components/header/Header";
+import { formatDate } from "../../utils/DateFns";
 
 const PerfilPaciente = () => {
   const userRequest = new UserRequest();
-  const useReq = useAxios()
-  const treatmentReq = useAxios()
+  const useReq = useAxios();
+  const treatmentReq = useAxios();
+  const treatmentPhasesReq = useAxios();
   const navigate = useNavigate();
 
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const handleBackClick = () => {
-   navigate(-1)
-  };
+  const treatmentId = treatmentReq?.data && treatmentReq?.data?.id;
 
   React.useEffect(() => {
     const token = window.localStorage.getItem("token");
@@ -27,27 +26,38 @@ const PerfilPaciente = () => {
   }, []);
 
   React.useEffect(() => {
-    const token = window.localStorage.getItem("token")
-    const {url, headers} = userRequest.GET_TREATMENTS_BY_ID(id, token)
+    const token = window.localStorage.getItem("token");
+    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token);
 
-    treatmentReq.get(url,{headers})
-  },[])  
+    treatmentReq.get(url, { headers });
+  }, []);
 
+  React.useEffect(() => {
+    const token = window.localStorage.getItem("token");
+    const { url, headers } = userRequest.GET_TREATMENTS_PHASES_BY_ID(treatmentId, token);
 
-  const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => (
-    <p>{allergie}</p>
-  ))
+    treatmentPhasesReq.get(url, { headers });
+  }, [treatmentId]);
 
+  const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => <p key={allergie}>{allergie}</p>);
+
+  const treatmentPhaseMap = treatmentPhasesReq?.data && treatmentPhasesReq.data.map((treatment: any) => (
+    <TreatmentDuration key={treatment.id}>
+      <h1>Duração do tratamento</h1>
+      <p>Início: {formatDate(treatment.startTreatment)}</p>
+      <p>Fim: {formatDate(treatment.endTreatment)}</p>
+    </TreatmentDuration>
+  ));
 
   return (
     <Main>
-      <Header onBackClick={handleBackClick}>
+      <Header>
         <p>{useReq?.data?.name}</p>
       </Header>
       <Middle>
         <Nav>
           <p>Perfil</p>
-          <p>Fases</p>
+          <p onClick={() => navigate('/fase-tratamento')}>Fases</p>
           <p onClick={() => navigate(`/vacinas/paciente/${id}`)}>Vacinas</p>
         </Nav>
         <Section>
@@ -62,12 +72,9 @@ const PerfilPaciente = () => {
             <h1>contato</h1>
             <div>
               <Tel>
-
                 <h1>telefone</h1>
                 <p>{useReq?.data?.telephone}</p>
-
               </Tel>
-
               <ArticleEmail>
                 <h1>Email</h1>
                 <p>{useReq?.data?.email}</p>
@@ -93,24 +100,16 @@ const PerfilPaciente = () => {
               Tratamento
               <img src={arrow} />
             </TitleTreatment>
+            
             <TreatmentContainer>
-              <TreatmentDuration>
-                <h1>Duração do tratamento</h1>
-                <p>Início:27/03/2023</p>
-                <p>Fim:27/09/2023</p>
-              </TreatmentDuration>
-
-              <Medication>
-                <h1>Medicação</h1>
-                <p>Corticoide</p>
-              </Medication>
-
+              {treatmentPhaseMap}
               <MethodTreatment>
                 <h1>Método do tratamento</h1>
                 <p>{treatmentReq?.data?.method}</p>
               </MethodTreatment>
             </TreatmentContainer>
           </Treatment>
+
           <Button>Editar Perfil</Button>
         </Section>
       </Middle>

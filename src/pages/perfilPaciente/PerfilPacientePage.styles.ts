@@ -1,7 +1,6 @@
 
 import styled from "styled-components"
 
-
 export const Main = styled.main`
     display: flex;
     flex-direction: column;
@@ -27,8 +26,8 @@ export const Section = styled.section`
 `
 
 export const Middle = styled.div`
-  display: flex;
-  height: 100%;
+    display: flex;
+    height: 100%;
 `
 
 export const Title = styled.p`
@@ -61,21 +60,20 @@ export const ArticleContact = styled.div`
 `
 
 export const ArticleEmail = styled.article`
-   p {
-    font-weight: 400;
-   }
+    p {
+        font-weight: 400;
+    }
 
-   h1{
-    font-weight: 600;
-   }
-
+    h1 {
+        font-weight: 600;
+    }
 `
 
 export const Tel = styled.div`
     display: flex;
     flex-direction: column;
     
-    h1{
+    h1 {
         font-weight: 600;
     }
     
@@ -85,99 +83,87 @@ export const Tel = styled.div`
 `
 
 export const Born = styled.div`
-   h1{
-       font-weight: 600;
-       padding-bottom: 1rem;
-   } 
-  
+    h1{
+        font-weight: 600;
+        padding-bottom: 1rem;
+    } 
 `
 
 export const Alergis = styled.div`
-   h1{
-      margin-bottom: 1.5rem;
-      font-weight: 600;
+    h1 {
+        margin-bottom: 1.5rem;
+        font-weight: 600;
 
-    &::before {
-        content: '|';
-        color: #4C7ABB ;
-        border-radius: 1rem;
-        margin-right: 0.7rem;
-        background-color: #4C7ABB;
-                
-    }
-
-    img {
-        transform: rotate(180deg);
-        
-    }
-  }
-
-   p {
-    display: flex;
-    margin-bottom: 0.5rem;
-  
-   } 
-   
-  
-`
-
-export const TreatmentContainer = styled.div `
-    display: flex;
-    gap: 2rem;
-  
-
-`
-export const TitleTreatment = styled.h1 `
-    padding-bottom: 0.4rem;
-    font-weight: 600;
-    &::before {
+        &::before {
             content: '|';
             color: #4C7ABB ;
             border-radius: 1rem;
             margin-right: 0.7rem;
             background-color: #4C7ABB;
-                    
         }
+
+        img {
+            transform: rotate(180deg);    
+        }
+    }
+
+    p {
+        display: flex;
+        margin-bottom: 0.5rem;
+    } 
+`
+
+export const TreatmentContainer = styled.div `
+    display: flex;
+    gap: 2rem;
+`
+
+export const TitleTreatment = styled.h1 `
+    padding-bottom: 0.4rem;
+    font-weight: 600;
+
+    &::before {
+        content: '|';
+        color: #4C7ABB;
+        border-radius: 1rem;
+        margin-right: 0.7rem;
+        background-color: #4C7ABB;
+    }
 
     img {
         transform: rotate(180deg);
     }    
-
 `
+
 export const Treatment = styled.div `
     display: flex;
     flex-direction: column;
     gap: 1rem;
 
-   
-
     p{
-       padding-bottom: 0.5rem;
-       
-       
+        padding-bottom: 0.5rem;  
     }
-
 `
 
 export const TreatmentDuration = styled.div `
-   h1{
-    padding-bottom: 1rem;
-    font-weight: 600;
-   }
-  
+    h1{
+        padding-bottom: 1rem;
+        font-weight: 600;
+    }
 `
 
 export const Medication = styled.div `
-  h1{
-    padding-bottom: 1rem;
-    font-weight: 600;
-  }
+    h1{
+        padding-bottom: 1rem;
+        font-weight: 600;
+    }
 `
+
 export const MethodTreatment = styled.div `
-  h1{
-    padding-bottom: 1rem;
-    font-weight: 600;
-  }
+    h1{
+        padding-bottom: 1rem;
+        font-weight: 600;
+    }
 `
 
 export const Button = styled.button `

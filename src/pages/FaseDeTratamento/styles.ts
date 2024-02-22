@@ -23,7 +23,7 @@ export const Logo = styled.img `
     margin-left: 2rem;
     margin-right: 2rem;
     height: 6rem;
-    padding-top: 1rem ;
+    padding-top: 1rem;
     padding-bottom: 1rem;
 `
 
@@ -56,7 +56,7 @@ export const Nav = styled.nav `
 export const Section = styled.section`
     display: flex;
     width: 100%;
-    padding: 3rem 4rem ;
+    padding: 3rem 4rem;
     flex-direction: column;
     gap: 2rem; 
 `
@@ -75,11 +75,10 @@ export const SubTitle = styled.p`
     
     &::before {
         content: '.';
-        color: #4C7ABB ;
+        color: #4C7ABB;
         border-radius: 1rem;
         margin-right: 0.9rem;
-        background-color: #4C7ABB;
-            
+        background-color: #4C7ABB;        
     } 
 `
 

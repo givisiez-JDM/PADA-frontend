@@ -2,19 +2,26 @@
 import IconPatient from '../../assets/iconPatient.svg'
 import X from '../../assets/X.svg'
 import { IconX, Logo, Main } from "./styles"
-import { MouseEventHandler, ReactNode } from "react";
+import { ReactNode } from "react";
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
-    children?: ReactNode
-    onBackClick?: MouseEventHandler<HTMLImageElement>;
+  children?: ReactNode  
 }
 
-const Header: React.FC<HeaderProps> = ({ children, onBackClick }) => {
+const Header: React.FC<HeaderProps> = ({ children }) => {
+  
+  const navigate = useNavigate()
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+  
   return (
     <Main>
         <Logo src={IconPatient} />
-        {children && <p>{children}</p>}
-        <IconX onClick={onBackClick} src={X} alt="icon x" />
+        {children && <>{children}</>}
+        <IconX onClick={handleBackClick} src={X} alt="icon x" />
     </Main>
   )
 }

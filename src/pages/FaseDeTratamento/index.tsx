@@ -1,23 +1,8 @@
-import {
-  AddButton,
-  BoxButton,
-  ChangeButtom,
-  Dosage,
-  FaseProgress,
-  FinalButton,
-  Frequency,
-  Main,
-  Middle,
-  Nav,
-  Section,
-  SubTitle,
-  Title,
-  TreatmentDuration,
-} from "./styles";
+import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Nav, Section, SubTitle, Title, TreatmentDuration} from "./styles";
 import greyArrow from "../../assets/greyArrow.svg";
 import ModalTreatmentPhase from "../../components/ModalTreatmentPhase";
 import React from "react";
-import Header from "../../components/Header/Header";
+import Header from "../../components/header/Header";
 
 const FaseDeTratamento = () => {
   const [modal, setModal] = React.useState(false);
@@ -76,7 +61,7 @@ const FaseDeTratamento = () => {
         </Section>
       </Middle>
 
-      {modal && <ModalTreatmentPhase />}
+      {modal && <ModalTreatmentPhase setModal={setModal}/>}
     </Main>
   );
 };

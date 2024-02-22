@@ -1,14 +1,14 @@
 import { BoxButton, Dosage, DosageBox, Frequency, FrequencyBox, MdButton, Modal, ModalBox, ModalContent, TreatmentDuration } from "./styles";
 import X from '../../assets/X.svg'
 
-const ModalTreatmentPhase = () => {
+const ModalTreatmentPhase = ( {setModal} : {setModal: React.Dispatch<React.SetStateAction<boolean>>} ) => {
 
   return (
     <Modal>
       <ModalBox>
         <ModalContent>
           <TreatmentDuration>
-            <div>
+            <div onClick={() => setModal(false)}>
               <img src={X}/>
             </div>
             <h1>Duração da fase</h1>
@@ -65,7 +65,7 @@ const ModalTreatmentPhase = () => {
             </DosageBox>
           </Dosage>
           <BoxButton>
-            <MdButton>Adcionar</MdButton>
+            <MdButton>Adicionar</MdButton>
           </BoxButton>
         </ModalContent>
       </ModalBox>
