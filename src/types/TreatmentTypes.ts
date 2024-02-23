@@ -4,7 +4,7 @@ export type FrequencyType =  '7 dias' | '2 semanas' | '3 semanas' | '4 semanas'
 
 export type TreatmentType = {
     id: number,
-    allergies: string[],
+    allergies: AllergieType[],
     method: string[],
     active: boolean,
     patientId?: number,
