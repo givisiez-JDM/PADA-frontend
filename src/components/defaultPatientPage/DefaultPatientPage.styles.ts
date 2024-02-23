@@ -1,5 +1,5 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
-
 
 export const Main = styled.main`
     display: flex;
@@ -12,12 +12,14 @@ export const PatientData = styled.div`
     align-items: center;
 `
 export const Picture = styled.img`
-    display: flex;
+    background-color: ${props => props.theme.colors.variant1};
     height: 6rem;
+    width: 6rem;
     margin: 1rem;
-    box-shadow: 0 4 ;
+    box-shadow:  3px 3px 3px rgba(0,0,0,0.5);
+    border-radius: 3rem;
 `
-export const Close = styled.a`
+export const Close = styled(Link)`
     width: 1,12rem;
     margin: auto 0;
 
@@ -40,7 +42,7 @@ export const Menu = styled.ul`
     padding: 5rem 0;
 `
 
-export const MenuItem = styled.li`
+export const MenuItem = styled(Link)`
     display: flex;
     justify-content: space-between;
     padding: 1rem 2rem; 

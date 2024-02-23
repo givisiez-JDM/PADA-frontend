@@ -14,44 +14,44 @@ export class UserRequest {
         }
     }
 
-    USER_SIGNUP = (body:SignupRequestBody) => {
-		return {
-			url: `${BASE_URL}/doctors`,
-			options: {
-				body,
-			},
-		};
-	};
+    USER_SIGNUP = (body: SignupRequestBody) => {
+        return {
+            url: `${BASE_URL}/doctors`,
+            options: {
+                body,
+            },
+        };
+    };
 
-    GET_DOCTOR_BY_ID = (id:any, token:string | null) => {
-        return{
+    GET_DOCTOR_BY_ID = (id: any, token: string | null) => {
+        return {
             url: `${BASE_URL}/doctors/${id}`,
-            headers:{
-                Authorization:token
+            headers: {
+                Authorization: token
             }
         }
     }
 
-    GET_PATIENTS = (token:string | null) => {
-        return{
-            url: `${BASE_URL}/patients`,
-            headers:{
-                Authorization:token
+    GET_PATIENTS = (token: string | null) => {
+        return {
+            url: `${BASE_URL}/doctors/patients`,
+            headers: {
+                Authorization: token
             }
         }
     }
 
-    GET_PATIENTS_BY_ID = (id:string | undefined, token:string | null) => {
+    GET_PATIENTS_BY_ID = (id: string | undefined, token: string | null) => {
         return {
             url: `${BASE_URL}/patients/${id}`,
             headers: {
-				Authorization: token,
-			}
+                Authorization: token,
+            }
         }
     }
 
 
-    GET_TREATMENTS_BY_ID = ( id:string | undefined, token:string | null) => {
+    GET_TREATMENTS_BY_ID = (id: string | undefined, token: string | null) => {
         return {
             url: `${BASE_URL}/treatments/patients/${id}`,
             headers: {
@@ -59,5 +59,23 @@ export class UserRequest {
             }
         }
     }
-   
+
+    GET_PHASES_BY_TREATMENTS_ID = (id: string | undefined, token: string | null) => {
+        return {
+            url: `${BASE_URL}/phases/treatments/${id}`,
+            headers: {
+                Authorization: token
+            }
+        }
+    }
+
+    GET_VACCINES_BY_PHASES_ID = (id: string | undefined, token: string | null) => {
+        return {
+            url: `${BASE_URL}/vaccines/phases/${id}`,
+            headers: {
+                Authorization: token
+            }
+        }
+    }
+
 }

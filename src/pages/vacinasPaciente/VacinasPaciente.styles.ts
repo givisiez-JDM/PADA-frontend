@@ -1,4 +1,5 @@
 import styled from "styled-components"
+import calendarIcon from '../../assets/calendar.svg';
 
 export const VaccinesContainer = styled.section`
     display: flex;
@@ -47,6 +48,12 @@ export const VaccinesDate = styled.div`
         border: none;
         background: none;
         text-align: center;
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+        background: url(${calendarIcon}) no-repeat;
+        width: 20px;
+        height: 20px;
     }
 `
 
