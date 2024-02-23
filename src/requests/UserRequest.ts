@@ -1,4 +1,4 @@
-const BASE_URL = 'https://app-vacina-production.up.railway.app'
+export const BASE_URL = 'https://app-vacina-production.up.railway.app'
 
 type SignupRequestBody = {
     name: string,
