@@ -5,12 +5,12 @@ import { PhaseType, TreatmentType, VaccineType } from "../types/TreatmentTypes";
 export class TreatmentRequest {
 
     GET_TREATMENTS_BY_PATIENT_ID = (id: string | undefined) => {
-        const treatments = useAxios<TreatmentType[]>();
+        const treatment = useAxios<TreatmentType>();
         const token = window.localStorage.getItem("token");
         const url = `${BASE_URL}/treatments/patients/${id}`;
         const headers = { Authorization: token };
-        treatments.get(url, { headers })
-        return treatments
+        treatment.get(url, { headers })
+        return treatment
     }
 
     GET_PHASES_BY_TREATMENTS_ID = (id: string | undefined) => {
