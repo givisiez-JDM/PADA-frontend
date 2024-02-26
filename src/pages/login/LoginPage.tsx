@@ -6,7 +6,7 @@ import iconPerson from "../../assets/icon-person.svg";
 import key from "../../assets/key.svg";
 import { useLogin } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ForgotPassword,IncorrectUser,Main,TopWave,} from "./LoginPage.styles";
+import { BottomWave, Box, Checkbox, ForgotPassword, IncorrectUser, Main, TopWave, } from "./LoginPage.styles";
 import { useData } from "../../global/UserContext";
 
 
@@ -14,31 +14,31 @@ const Login = () => {
   const { onSubmit, errors, register, getValues } = useLogin();
   const [saveUser, setSaveUser] = React.useState(false)
   const navigate = useNavigate();
- 
-  const {error} = useData()
+
+  const { error } = useData()
   const values = getValues('password')
-  
+
   const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if(event.target.checked === true){
+    if (event.target.checked === true) {
       setSaveUser(true)
-      
-    }else {
+
+    } else {
       setSaveUser(false)
-      
+
     }
   }
 
-  const sendreq = (e:React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+  const sendreq = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     onSubmit()
     saveUser && window.localStorage.setItem('password', values)
   }
 
-   
+
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
-      <Box onSubmit={e=>sendreq(e)}>
+      <Box onSubmit={event => sendreq(event)}>
         <Input
           style={{ backgroundImage: `url(${iconPerson})` }}
           type="email"
@@ -54,15 +54,15 @@ const Login = () => {
           {...register("password")}
           error={errors.password?.message}
         />
-            
+
         {error && <IncorrectUser>{error}</IncorrectUser>}
-       
+
         <Checkbox>
-          <input 
-            type="checkbox" 
+          <input
+            type="checkbox"
             checked={saveUser}
             onChange={savePasswordLocally}
-           
+
           />
           Lembre da senha
         </Checkbox>

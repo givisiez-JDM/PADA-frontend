@@ -1,9 +1,9 @@
 import { useState } from "react";
 
-import ArrowUpIco from '../../../assets/arrow-up.svg';
-import ArrowDownIco from '../../../assets/arrow-down.svg';
+import iconArrowUp from '../../../assets/arrow-up.svg';
+import iconArrowDown from '../../../assets/arrow-down.svg';
 
-import { VaccineType } from "../../../types/VaccineTypes";
+import { VaccineType } from "../../../types/TreatmentTypes";
 
 import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle } from "./Vaccine.style";
 
@@ -17,17 +17,21 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
 
     function getVaccineStatus() {
         return {
-            'applied': 'applied',
-            'not applied': 'not-applied',
-            'late': 'late',
-            'schedule': 'schedule',
+            'aplicado': 'applied',
+            'não aplicado': 'not-applied',
+            'aplicado com atraso': 'late',
+            'agendado': 'schedule',
         }[status] || ''
     }
 
-    return (
+    function getDate() {
+        const date = new Date(applicationDate || scheduledDate)
+        return date.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', dateStyle: 'long', timeStyle: 'medium' })
+    }
 
+    return (
         <VaccineContainer>
-            {/* <VaccineDate className={getVaccineStatus()}>{applicationDate || scheduledDate}</VaccineDate> */}
+            <VaccineDate className={getVaccineStatus()}>{getDate()}</VaccineDate>
             <VaccineDescription>
                 <VaccineTitle>{title}</VaccineTitle>
                 <VaccineText
@@ -36,7 +40,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
             </VaccineDescription>
             <VaccineButton
                 onClick={toggledescription}
-            ><img src={showDescription ? ArrowUpIco : ArrowDownIco} alt="Mostrar descrição" /></VaccineButton>
+            ><img src={showDescription ? iconArrowUp : iconArrowDown} alt="Mostrar descrição" /></VaccineButton>
 
         </VaccineContainer>
     );
