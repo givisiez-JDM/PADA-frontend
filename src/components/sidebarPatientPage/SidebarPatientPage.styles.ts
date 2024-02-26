@@ -7,6 +7,7 @@ export const SideBar = styled.div`
     min-width: 130px;
     border-right: 2px solid ${props => props.theme.colors.buttonOff};
 `
+
 export const Menu = styled.ul`
     padding: 5rem 0;
 `
