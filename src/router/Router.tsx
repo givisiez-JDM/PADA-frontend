@@ -5,7 +5,7 @@ import Login from "../pages/login/LoginPage";
 import GlobalStorage from "../global/UserContext";
 import MenuMedico from "../pages/menuMedico/MenuMedicoPage";
 import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
-import FaseDeTratamento from "../pages/faseDeTratamento";
+import FaseDeTratamento from "../pages/faseDeTratamento/FaseDeTratamento";
 
 const Router = () => {
   return (

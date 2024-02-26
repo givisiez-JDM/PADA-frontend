@@ -1,7 +1,7 @@
 
 import IconPatient from '../../assets/iconPatient.svg'
 import X from '../../assets/X.svg'
-import { IconX, Logo, Main } from "./styles"
+import { IconX, Logo, Main } from "./Header.styles"
 import { ReactNode } from "react";
 import { useNavigate } from 'react-router-dom';
 
