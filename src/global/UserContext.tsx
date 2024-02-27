@@ -1,4 +1,4 @@
-import React, { ReactNode, createContext, useState } from "react";
+import React, { ReactNode, createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserRequest } from "../requests/UserRequest";
@@ -134,6 +134,19 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
   }
 
+  
+  useEffect(() => {
+    const id = window.localStorage.getItem("id")
+
+    if (token) {
+      setLogin(true)
+      getProfile(id)
+
+    } else {
+      userLogout()
+    }
+
+  }, []);
 
   return (
     <GlobalContext.Provider
