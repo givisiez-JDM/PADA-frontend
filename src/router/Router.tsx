@@ -6,6 +6,7 @@ import GlobalStorage from "../global/UserContext";
 import MenuMedico from "../pages/menuMedico/MenuMedicoPage";
 import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
 import FaseDeTratamento from "../pages/faseDeTratamento/FaseDeTratamento";
+import VacinasPaciente from "../pages/vacinasPaciente/VacinasPaciente";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Route path="login" element={<Login />} />
         <Route path="cadastro" element={<Cadastro />} />
         <Route path="menu-medico" element={<MenuMedico />} />
+        <Route path="vacinas/paciente/:id" element={<VacinasPaciente />} />
         <Route path="fase/tratamento" element={<FaseDeTratamento />} />
       </Routes>
       </GlobalStorage>
