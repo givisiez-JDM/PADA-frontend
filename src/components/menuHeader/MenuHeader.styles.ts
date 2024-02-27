@@ -11,8 +11,7 @@ export const HeadDiv = styled.header`
 
 export const HeaderContent = styled.div`
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin: 0 2rem;
-  font-weight: 500;
-  font-size: 2rem;
 `;

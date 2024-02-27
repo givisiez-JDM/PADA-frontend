@@ -4,17 +4,7 @@ import styled from "styled-components"
 export const Main = styled.main`
     display: flex;
     height: 100vh;
-    font-family: 'Poppins', sans-serif;
     flex-direction: column;
-`
-
-export const Header = styled.header`
-    display: flex;
-    width: 100%;
-    background-color: red;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #4C7ABB;
 `
 
 export const Logo = styled.img`
