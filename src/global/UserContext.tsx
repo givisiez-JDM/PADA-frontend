@@ -1,7 +1,7 @@
 import React, { ReactNode, createContext, useEffect, useState } from "react";
-import { UserRequest } from "../requests/UserRequest";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { UserRequest } from "../requests/UserRequest";
 
 type GlobalContextProps = {
   userLogin: (email: string, password: string) => void;
@@ -134,7 +134,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
   }
 
-
+  
   useEffect(() => {
     const id = window.localStorage.getItem("id")
 

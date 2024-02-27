@@ -3,8 +3,8 @@ import { GlobalStyle } from "./global/Global";
 import Router from "./router/Router";
 import { Theme } from "./global/GlobalTheme";
 
-function App() {
 
+function App() {
   return (
     <>
       <ThemeProvider theme={Theme}>
