@@ -1,28 +1,25 @@
-
-import IconPatient from '../../assets/iconPatient.svg'
-import X from '../../assets/X.svg'
-import { IconX, Logo, Main } from "./PatientHeader.styles"
-import { ReactNode } from "react";
-import { useNavigate } from 'react-router-dom';
+import IconPatient from "../../assets/iconPatient.svg"
+import IconClose from "../../assets/close.svg"
+import MenuHeader from "../menuHeader/MenuHeader";
+import { PatientType } from "../../types/PatientTypes";
+import { Close, IconX, Logo, PatientData } from "./PatientHeader.styles"
 
 interface HeaderProps {
-  children?: ReactNode  
+  patient: PatientType | null
 }
 
-const PatientHeader: React.FC<HeaderProps> = ({ children }) => {
-  
-  const navigate = useNavigate()
-
-  const handleBackClick = () => {
-    navigate(-1);
-  };
+const PatientHeader: React.FC<HeaderProps> = ({ patient }) => {
   
   return (
-    <Main>
-        <Logo src={IconPatient} />
-        {children && <>{children}</>}
-        <IconX onClick={handleBackClick} src={X} alt="icon x" />
-    </Main>
+    <MenuHeader>
+      <PatientData>
+        <Logo src={patient?.photo || IconPatient} />
+        <p>{patient?.name}</p>
+      </PatientData>
+      <Close  to={'/menu-medico'}>
+        <IconX src={IconClose} alt="Fechar" />
+      </Close>
+    </MenuHeader>
   )
 }
 
