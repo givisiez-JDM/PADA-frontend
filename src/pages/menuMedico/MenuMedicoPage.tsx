@@ -29,7 +29,7 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <li onClick={() => navigate(`/perfil/paciente/${patient.id}`)} key={patient.id}>
+      <li onClick={() => navigate(`/paciente/tratamento/${patient.id}`)} key={patient.id}>
         {patient.name}
       </li>
     );
