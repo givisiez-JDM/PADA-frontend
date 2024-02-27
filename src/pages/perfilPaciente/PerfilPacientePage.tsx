@@ -1,18 +1,18 @@
 import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { UserRequest } from "../../requests/UserRequest";
-import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Nav, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration} from "./PerfilPacientePage.styles";
+import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration} from "./PerfilPacientePage.styles";
 import useAxios from "../../hooks/useAxios";
 import arrow from "../../assets/arrow.png";
 import Header from "../../components/header/Header";
 import { formatDate } from "../../utils/DateFns";
+import SidebarPatientPage from "../../components/sidebarPatientPage/SidebarPatientPage";
 
 const PerfilPaciente = () => {
   const userRequest = new UserRequest();
   const useReq = useAxios();
   const treatmentReq = useAxios();
   const treatmentPhasesReq = useAxios();
-  const navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -39,14 +39,16 @@ const PerfilPaciente = () => {
     treatmentPhasesReq.get(url, { headers });
   }, [treatmentId]);
 
-  const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => <p key={allergie}>{allergie}</p>);
+  const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => (
+     <p key={allergie}>{allergie}</p>
+  ));
 
   const treatmentPhaseMap = treatmentPhasesReq?.data && treatmentPhasesReq.data.map((treatment: any) => (
-    <TreatmentDuration key={treatment.id}>
-      <h1>Duração do tratamento</h1>
-      <p>Início: {formatDate(treatment.startTreatment)}</p>
-      <p>Fim: {formatDate(treatment.endTreatment)}</p>
-    </TreatmentDuration>
+     <TreatmentDuration key={treatment.id}>
+        <h1>Duração do tratamento</h1>
+        <p>Início: {formatDate(treatment.startTreatment)}</p>
+        <p>Fim: {formatDate(treatment.endTreatment)}</p>
+     </TreatmentDuration>
   ));
 
   return (
@@ -55,11 +57,12 @@ const PerfilPaciente = () => {
         <p>{useReq?.data?.name}</p>
       </Header>
       <Middle>
-        <Nav>
-          <p>Perfil</p>
-          <p onClick={() => navigate('/fase-tratamento')}>Fases</p>
-          <p onClick={() => navigate(`/vacinas/paciente/${id}`)}>Vacinas</p>
-        </Nav>
+        {useReq?.data ? (
+          <SidebarPatientPage patient={useReq.data} />
+        ) : (
+          <p>Carregando informações do paciente...</p>
+        )}
+
         <Section>
           <Title>Perfil</Title>
 
@@ -100,7 +103,7 @@ const PerfilPaciente = () => {
               Tratamento
               <img src={arrow} />
             </TitleTreatment>
-            
+
             <TreatmentContainer>
               {treatmentPhaseMap}
               <MethodTreatment>

@@ -78,5 +78,14 @@ export class UserRequest {
         }
     }
 
+    GET_TREATMENTS_PHASES_BY_ID = (id: string | undefined, token: string | null) => {
+        return {
+          url: `${BASE_URL}/phases/treatments/${id}`,
+          headers: {
+            Authorization: token,
+          },
+        };
+      };
+
 
 }

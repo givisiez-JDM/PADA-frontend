@@ -17,7 +17,7 @@ const Router = () => {
         <Route path="login" element={<Login />} />
         <Route path="cadastro" element={<Cadastro />} />
         <Route path="menu-medico" element={<MenuMedico />} />
-        <Route path="fase-tratamento" element={<FaseDeTratamento />} />
+        <Route path="fase/tratamento" element={<FaseDeTratamento />} />
       </Routes>
       </GlobalStorage>
     </BrowserRouter>

@@ -7,16 +7,6 @@ export const Main = styled.main`
     font-family: 'Poppins', sans-serif; 
 `
 
-export const Nav = styled.nav`
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 2rem;
-    gap: 1rem;
-    border-right: 2.5px solid #B4B4B4;
-    font-weight: 500;
-    cursor: pointer;  
-`
-
 export const Section = styled.section`
     display: flex;
     width: 100%;
