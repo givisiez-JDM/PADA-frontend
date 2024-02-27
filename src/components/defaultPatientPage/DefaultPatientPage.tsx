@@ -9,6 +9,8 @@ import MenuHeader from '../menuHeader/MenuHeader';
 import { PatientType } from "../../types/PatientTypes";
 
 import { Close, Content, Main, Menu, MenuItem, PatientData, Picture, SideBar } from './DefaultPatientPage.styles';
+import PatientHeader from "../patientHeader/PatientHeader";
+import SidebarPatientPage from "../sidebarPatientPage/SidebarPatientPage";
 
 interface Props
     extends React.ComponentProps<"main"> {
@@ -17,29 +19,15 @@ interface Props
 
 const DefaultPatientPage = ({ patient, ...props }: Props) => {
 
-    const navigate = useNavigate();
-
-    return (
-        <Main>
-            <MenuHeader>
-                <PatientData>
-                    <Picture src={patient?.photo || iconPatient} alt='foto do paciente' />
-                    <p>{patient?.name}</p>
-                </PatientData>
-                <Close to={'/menu-medico'}> <img src={iconClose} alt="voltar para Home" /></Close>
-            </MenuHeader>
-            <Content>
-                <SideBar>
-                    <Menu>
-                        <MenuItem to={`/perfil/paciente/${patient?.id}`}><p>Perfil</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
-                        <MenuItem to={'#'}><p>Fases</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
-                        <MenuItem to={`/vacinas/paciente/${patient?.id}`}><p>Vacinas</p> <img src={iconArrowRight} alt="seta direita" /></MenuItem>
-                    </Menu>
-                </SideBar>
-                {props.children}
-            </Content>
-        </Main>
-    );
+  return (
+    <Main>
+      <PatientHeader patient={patient}/>
+      <Content>
+        <SidebarPatientPage patient={patient}/>
+        {props.children}
+      </Content>
+    </Main>
+  );
 }
 
 export default DefaultPatientPage;
