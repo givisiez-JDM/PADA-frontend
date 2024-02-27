@@ -1,32 +1,18 @@
-import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Nav, Section, SubTitle, Title, TreatmentDuration} from "./FaseDeTratamento.styles";
-import greyArrow from "../../assets/greyArrow.svg";
+import { useState } from "react";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
-import React from "react";
-import Header from "../../components/patientHeader/PatientHeader";
+import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
+import { PatientType } from "../../types/PatientTypes";
+import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Nav, Section, SubTitle, Title, TreatmentDuration} from "./FaseDeTratamento.styles";
+
+const patient:PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate:'', email: '',telephone:''}
 
 const FaseDeTratamento = () => {
-  const [modal, setModal] = React.useState(false);
+  const [modal, setModal] = useState(false);
 
   return (
     <Main>
-      <Header>
-        <p>Maria</p>
-      </Header>
+      <DefaultPatientPage patient={patient} >
       <Middle>
-        <Nav>
-          <p>
-            Perfil
-            <img src={greyArrow} alt="" />
-          </p>
-          <p>
-            Fases
-            <img src={greyArrow} alt="" />
-          </p>
-          <p>
-            Vacinas
-            <img src={greyArrow} alt="" />
-          </p>
-        </Nav>
         <Section>
           <Title>Fase</Title>
           <SubTitle>Fase 1</SubTitle>
@@ -62,6 +48,7 @@ const FaseDeTratamento = () => {
       </Middle>
 
       {modal && <ModalTreatmentPhase setModal={setModal}/>}
+      </DefaultPatientPage>
     </Main>
   );
 };
