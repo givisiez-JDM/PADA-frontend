@@ -12,14 +12,11 @@ export const Logo = styled.img `
     margin-left: 2rem;
     margin-right: 2rem;
     height: 6rem;
-    padding-top: 1rem ;
-    padding-bottom: 1rem;
-    border: 1px solid white;
 `
 
 export const Close = styled(Link)`
     width: 1,12rem;
-    margin: auto 0;
+    margin: 2rem;
 `
 
 export const IconX = styled.img `
