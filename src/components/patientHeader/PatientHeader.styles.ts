@@ -34,6 +34,3 @@ export const Close = styled(Link)`
 export const IconX = styled.img `
   cursor: pointer;
 `
-
-
-
