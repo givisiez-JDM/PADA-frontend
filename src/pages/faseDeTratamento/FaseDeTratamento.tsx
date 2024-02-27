@@ -2,7 +2,7 @@ import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, 
 import greyArrow from "../../assets/greyArrow.svg";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import React from "react";
-import Header from "../../components/header/Header";
+import Header from "../../components/patientHeader/PatientHeader";
 
 const FaseDeTratamento = () => {
   const [modal, setModal] = React.useState(false);
