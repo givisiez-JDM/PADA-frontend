@@ -46,15 +46,12 @@ const MenuMedico = () => {
           </SectionDoctor>
         </Header>
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
-
         <Middle>
           <BoxAddPacient>
             <Button>Cadastrar Paciente</Button>
           </BoxAddPacient>
-
           <PacientList>
             <h1>Pacientes</h1>
-
             <TitlePacient>{getAllPatients}</TitlePacient>
           </PacientList>
         </Middle>

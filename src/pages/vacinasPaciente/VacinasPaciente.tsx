@@ -22,10 +22,8 @@ const VacinasPaciente = () => {
     const phase = useAxios<PhaseType[]>();
     const vaccine = useAxios<VaccineType[]>();
 
-
     const { id } = useParams();
     const token = window.localStorage.getItem("token");
-
 
     const [pageError, setPageError] = useState('');
     const [initDate, setInitDate] = useState('');
