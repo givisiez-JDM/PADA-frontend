@@ -1,7 +1,7 @@
 
 import IconPatient from '../../assets/iconPatient.svg'
 import X from '../../assets/X.svg'
-import { IconX, Logo, Main } from "./Header.styles"
+import { IconX, Logo, Main } from "./PatientHeader.styles"
 import { ReactNode } from "react";
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +9,7 @@ interface HeaderProps {
   children?: ReactNode  
 }
 
-const Header: React.FC<HeaderProps> = ({ children }) => {
+const PatientHeader: React.FC<HeaderProps> = ({ children }) => {
   
   const navigate = useNavigate()
 
@@ -26,4 +26,4 @@ const Header: React.FC<HeaderProps> = ({ children }) => {
   )
 }
 
-export default Header
+export default PatientHeader
