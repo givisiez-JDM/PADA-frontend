@@ -4,7 +4,7 @@ import { UserRequest } from "../../requests/UserRequest";
 import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration} from "./PerfilPacientePage.styles";
 import useAxios from "../../hooks/useAxios";
 import arrow from "../../assets/arrow.png";
-import Header from "../../components/header/Header";
+import Header from "../../components/patientHeader/PatientHeader";
 import { formatDate } from "../../utils/DateFns";
 import SidebarPatientPage from "../../components/sidebarPatientPage/SidebarPatientPage";
 
