@@ -7,6 +7,7 @@ import useAxios from "../../hooks/useAxios";
 import { useData } from "../../global/UserContext";
 import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
 import whiteArrow from "../../assets/white-arrow.svg";
+import MenuHeader from "../../components/menuHeader/MenuHeader";
 
 const MenuMedico = () => {
   const userRequest = new UserRequest();
@@ -29,7 +30,7 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <li onClick={() => navigate(`/perfil/paciente/${patient.id}`)} key={patient.id}>
+      <li onClick={() => navigate(`/paciente/tratamento/${patient.id}`)} key={patient.id}>
         {patient.name}
       </li>
     );
@@ -38,13 +39,13 @@ const MenuMedico = () => {
   return (
     <>
       <Main>
-        <Header>
+        <MenuHeader>
           <Logo src={logo} />
           <SectionDoctor onClick={() => setModal(!modal)}>
             {data?.name}
             <img src={whiteArrow} alt="" />
           </SectionDoctor>
-        </Header>
+        </MenuHeader>
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
         <Middle>
           <BoxAddPacient>

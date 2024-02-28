@@ -13,13 +13,13 @@ const Router = () => {
     <BrowserRouter>
       <GlobalStorage>
       <Routes>
-        <Route path="perfil/paciente/:id" element={<PerfilPaciente/>} />
         <Route path="/" element={<Home />} />
         <Route path="login" element={<Login />} />
         <Route path="cadastro" element={<Cadastro />} />
         <Route path="menu-medico" element={<MenuMedico />} />
-        <Route path="vacinas/paciente/:id" element={<VacinasPaciente />} />
-        <Route path="fase/tratamento" element={<FaseDeTratamento />} />
+        <Route path="/paciente/perfil/:id" element={<PerfilPaciente/>} />
+        <Route path="/paciente/tratamento/:id" element={<FaseDeTratamento />} />
+        <Route path="/paciente/vacinas/:id" element={<VacinasPaciente />} />
       </Routes>
       </GlobalStorage>
     </BrowserRouter>
