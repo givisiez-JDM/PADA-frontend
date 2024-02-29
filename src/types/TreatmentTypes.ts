@@ -11,7 +11,7 @@ export type TreatmentType = {
 }
 
 export type PhaseType = {
-    id: number,
+    id: string,
     phaseNumber: number,
     dosage: DosageType,
     frequency:  FrequencyType,
@@ -21,7 +21,7 @@ export type PhaseType = {
 }
 
 export type VaccineType = {
-    id: number,
+    id: string,
     title: string,
     observation: string,
     status: string,
