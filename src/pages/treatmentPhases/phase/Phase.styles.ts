@@ -26,21 +26,3 @@ export const PhaseSubtitle = styled.div`
 export const PhaseContent = styled.div`
   padding-bottom: 1rem;
 `;
-
-export const ChangeButton = styled.button`
-  background-color: #76a7ed;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  width: 9rem;
-  height: 2rem;
-  font-weight: 500;
-  margin-top: 1rem;
-  margin-left: 2rem;
-  color: white;
-
-  &:hover {
-    color: black;
-    transition: 0.3s ease-in-out;
-  }
-`;

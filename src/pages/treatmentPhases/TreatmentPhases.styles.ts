@@ -45,37 +45,3 @@ export const BoxButton = styled.div`
   gap: 5rem;
   margin-top: 1.5rem;
 `;
-
-export const FinalButton = styled.button`
-  height: 3rem;
-  width: 10rem;
-  background-color: #b4b4b4;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: white;
-
-  &:hover {
-    color: black;
-    transition: 0.3s ease-in-out;
-  }
-`;
-
-export const AddButton = styled.button`
-  height: 3rem;
-  width: 10rem;
-  background-color: #76a7ed;
-  color: black;
-  border: none;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: white;
-
-  &:hover {
-    color: black;
-    transition: 0.3s ease-in-out;
-  }
-`;

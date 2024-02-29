@@ -1,10 +1,11 @@
 import { useState } from "react";
-import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
+import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
+import Phase from "./phase/Phase";
+import Button from "../../components/button/Button";
 import { PatientType } from "../../types/PatientTypes";
 import { PhaseType, TreatmentType } from "../../types/TreatmentTypes";
-import Phase from "./phase/Phase";
-import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, PhaseBlock, PhaseTitle, Section, Title, TreatmentDuration } from "./TreatmentPhases.styles";
+import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from "./TreatmentPhases.styles";
 
 const patient: PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate: '', email: '', telephone: '' }
 const traetment: TreatmentType = {
@@ -55,8 +56,8 @@ const TreatmentPhases = () => {
             </PhaseBlock>
           )}
           <BoxButton>
-            <FinalButton>Finalizar Fase</FinalButton>
-            <AddButton onClick={() => setModal(!modal)}>Adicionar Fase</AddButton>
+            <Button disabled={!phaseSelected?.active}>Finalizar Fase</Button>
+            <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
         {modal && <ModalTreatmentPhase setModal={setModal} />}

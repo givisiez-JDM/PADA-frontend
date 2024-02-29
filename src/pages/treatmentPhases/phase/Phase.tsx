@@ -1,3 +1,4 @@
+import Button from "../../../components/button/Button";
 import { PhaseType } from "../../../types/TreatmentTypes";
 import { formatDate } from "../../../utils/DateFns";
 import { ChangeButton, PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
@@ -9,7 +10,6 @@ interface Props {
 const Phase = ({ phase }: Props) => {
   return (
     <>
-
       <PhaseField>
         <PhaseSubtitle>Duração da fase</PhaseSubtitle>
         <PhaseContent>Início: {formatDate(phase.startTreatment)}</PhaseContent>
@@ -30,7 +30,7 @@ const Phase = ({ phase }: Props) => {
         <PhaseSubtitle>Progresso da fase</PhaseSubtitle>
         <PhaseContent>60%</PhaseContent>
         <input type="range" min="0" max="100" step="1" />
-        <ChangeButton>Alterar</ChangeButton>
+        <Button size="small">Alterar</Button>
       </PhaseField>
     </>
   );
