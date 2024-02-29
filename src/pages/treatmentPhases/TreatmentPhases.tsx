@@ -2,11 +2,11 @@ import { useState } from "react";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
-import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Section, SubTitle, Title, TreatmentDuration} from "./FaseDeTratamento.styles";
+import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Section, SubTitle, Title, TreatmentDuration} from "./TreatmentPhases.styles";
 
 const patient:PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate:'', email: '',telephone:''}
 
-const FaseDeTratamento = () => {
+const TreatmentPhases = () => {
   const [modal, setModal] = useState(false);
 
   return (
@@ -51,4 +51,4 @@ const FaseDeTratamento = () => {
   );
 };
 
-export default FaseDeTratamento;
+export default TreatmentPhases;
