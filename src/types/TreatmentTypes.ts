@@ -3,9 +3,9 @@ export type DosageType = '1:10' | '1:100' | '1:1.000'| '1:10.000'
 export type FrequencyType =  '7 dias' | '2 semanas' | '3 semanas' | '4 semanas'
 
 export type TreatmentType = {
-    id: number,
+    id: string,
     allergies: AllergieType[],
-    method: string[],
+    method: string,
     active: boolean,
     patientId?: number,
 }
