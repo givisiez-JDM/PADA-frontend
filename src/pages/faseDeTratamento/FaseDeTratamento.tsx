@@ -2,7 +2,7 @@ import { useState } from "react";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
-import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Nav, Section, SubTitle, Title, TreatmentDuration} from "./FaseDeTratamento.styles";
+import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Section, SubTitle, Title, TreatmentDuration} from "./FaseDeTratamento.styles";
 
 const patient:PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate:'', email: '',telephone:''}
 
@@ -12,7 +12,6 @@ const FaseDeTratamento = () => {
   return (
     <Main>
       <DefaultPatientPage patient={patient} >
-      <Middle>
         <Section>
           <Title>Fase</Title>
           <SubTitle>Fase 1</SubTitle>
@@ -45,7 +44,6 @@ const FaseDeTratamento = () => {
             <AddButton onClick={() => setModal(!modal)}>Adicionar Fase</AddButton>
           </BoxButton>
         </Section>
-      </Middle>
 
       {modal && <ModalTreatmentPhase setModal={setModal}/>}
       </DefaultPatientPage>

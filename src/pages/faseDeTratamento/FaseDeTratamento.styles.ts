@@ -7,28 +7,6 @@ export const Main = styled.main`
     font-family: 'Poppins', sans-serif;
     height: 100vh;
 `
-export const Middle = styled.div `
-    display: flex;
-    height: 100%;   
-    width: 100%;   
-`
-
-export const Nav = styled.nav `
-    display: flex;
-    flex-direction: column;
-    padding: 3rem 2rem;
-    gap: 1rem;
-    border-right: 2.5px solid #B4B4B4;
-    font-weight: 500;
-    cursor: pointer;
-    
-    p {
-        display: flex;
-        justify-content: space-between;
-        width: 6rem;
-    } 
-`
-
 export const Section = styled.section`
     display: flex;
     width: 100%;
@@ -37,7 +15,7 @@ export const Section = styled.section`
     gap: 2rem; 
 `
 
-export const Title = styled.p`
+export const Title = styled.h1`
     font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 2rem;
