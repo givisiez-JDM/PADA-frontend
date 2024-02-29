@@ -2,50 +2,64 @@ import { useState } from "react";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
-import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, Middle, Section, SubTitle, Title, TreatmentDuration} from "./TreatmentPhases.styles";
+import { PhaseType, TreatmentType } from "../../types/TreatmentTypes";
+import Phase from "./phase/Phase";
+import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, Frequency, Main, PhaseBlock, PhaseTitle, Section, Title, TreatmentDuration } from "./TreatmentPhases.styles";
 
-const patient:PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate:'', email: '',telephone:''}
+const patient: PatientType = { name: 'Ana', photo: '', id: '62d08a04-5eb6-41b1-92fc-52f6c705dc1c', birthDate: '', email: '', telephone: '' }
+const traetment: TreatmentType = {
+  id: "5b184e74-8284-487c-a48b-3c00ca3146e6",
+  allergies: [
+    "comida",
+    "ácaro"
+  ],
+  method: "vacina",
+  active: true
+}
+const phases: PhaseType[] = [
+  {
+    id: "d8ed2f0e-18ef-408f-aaa4-78b91f975902",
+    phaseNumber: 1,
+    dosage: "1:10",
+    frequency: "2 semanas",
+    startTreatment: "2024-02-06",
+    endTreatment: "2024-03-15",
+    active: false
+  },
+  {
+    id: "673abed4-ee3a-4566-84e6-18bb8d67199d",
+    phaseNumber: 2,
+    dosage: "1:100",
+    frequency: "7 dias",
+    startTreatment: "2024-05-01",
+    endTreatment: "2024-06-15",
+    active: true
+  }
+]
 
 const TreatmentPhases = () => {
   const [modal, setModal] = useState(false);
+  const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
 
   return (
     <Main>
       <DefaultPatientPage patient={patient} >
         <Section>
           <Title>Fase</Title>
-          <SubTitle>Fase 1</SubTitle>
-
-          <TreatmentDuration>
-            <h1>Duração da fase</h1>
-            <p>Início: 27/03/2023</p>
-            <p>Fim: 27/09/2023</p>
-          </TreatmentDuration>
-
-          <Frequency>
-            <h1>Periodicidade</h1>
-            <p>A cada 7 dias</p>
-          </Frequency>
-
-          <Dosage>
-            <h1>Dosagem do medicamento</h1>
-            <p>1:10</p>
-          </Dosage>
-
-          <FaseProgress>
-            <h1>Progresso da fase</h1>
-            <p>60%</p>
-            <input type="range" min="0" max="100" step="1" />
-            <ChangeButtom>Alterar</ChangeButtom>
-          </FaseProgress>
-
+          {phases.map((phase: PhaseType) =>
+            <PhaseBlock key={phase.phaseNumber}>
+              <PhaseTitle onClick={() => setPhaseSelected(phase)}>
+                Fase {phase.phaseNumber}
+              </PhaseTitle>
+              {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} />}
+            </PhaseBlock>
+          )}
           <BoxButton>
             <FinalButton>Finalizar Fase</FinalButton>
             <AddButton onClick={() => setModal(!modal)}>Adicionar Fase</AddButton>
           </BoxButton>
         </Section>
-
-      {modal && <ModalTreatmentPhase setModal={setModal}/>}
+        {modal && <ModalTreatmentPhase setModal={setModal} />}
       </DefaultPatientPage>
     </Main>
   );
