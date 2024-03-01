@@ -42,6 +42,11 @@ const TreatmentPhases = () => {
   const [modal, setModal] = useState(false);
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
 
+  function selectPhase(phase: PhaseType) {
+    setPhaseSelected(
+      phase === phaseSelected ? null : phase
+    )
+  }
   return (
     <Main>
       <DefaultPatientPage patient={patient} >
@@ -49,7 +54,7 @@ const TreatmentPhases = () => {
           <Title>Fase</Title>
           {phases.map((phase: PhaseType) =>
             <PhaseBlock key={phase.phaseNumber}>
-              <PhaseTitle onClick={() => setPhaseSelected(phase)}>
+              <PhaseTitle onClick={() => selectPhase(phase)}>
                 Fase {phase.phaseNumber}
               </PhaseTitle>
               {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} />}

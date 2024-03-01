@@ -1,7 +1,7 @@
 import Button from "../../../components/button/Button";
 import { PhaseType } from "../../../types/TreatmentTypes";
 import { formatDate } from "../../../utils/DateFns";
-import { ChangeButton, PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
+import { PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
 
 interface Props {
   phase: PhaseType
