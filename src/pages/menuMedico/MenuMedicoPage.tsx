@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/logo.png";
 import { UserRequest } from "../../requests/UserRequest";
-import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./MenuMedico.styles";
+import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient } from "./MenuMedico.styles";
 import { useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { useData } from "../../global/UserContext";
@@ -30,7 +30,7 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <li onClick={() => navigate(`/paciente/tratamento/${patient.id}`)} key={patient.id}>
+      <li onClick={() => navigate(`/paciente/perfil/${patient.id}`)} key={patient.id}>
         {patient.name}
       </li>
     );
