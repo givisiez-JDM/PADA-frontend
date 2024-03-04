@@ -18,7 +18,7 @@ const Phase = ({ phase }: Props) => {
     if (today > end) return 1
     const total = end.getTime() - start.getTime()
     const progress = today.getTime() - start.getTime()
-    return (progress / total).toFixed(2);
+    return parseFloat((progress / total).toFixed(2));
   }
   return (
     <>
