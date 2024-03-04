@@ -1,4 +1,6 @@
 import { useState } from "react";
+import IconArrowUp from '../../assets/arrow-up.svg';
+import IconArrowDown from '../../assets/arrow-down.svg';
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import Phase from "./phase/Phase";
@@ -23,8 +25,8 @@ const phases: PhaseType[] = [
     phaseNumber: 1,
     dosage: "1:10",
     frequency: "2 semanas",
-    startTreatment: "2024-03-01",
-    endTreatment: "2024-03-11",
+    startTreatment: "2024-03-02",
+    endTreatment: "2024-03-30",
     active: false
   },
   {
@@ -56,6 +58,7 @@ const TreatmentPhases = () => {
             <PhaseBlock key={phase.phaseNumber}>
               <PhaseTitle onClick={() => selectPhase(phase)}>
                 Fase {phase.phaseNumber}
+                <img src={phaseSelected?.phaseNumber === phase.phaseNumber ? IconArrowUp : IconArrowDown} alt="Mostrar descrição" />
               </PhaseTitle>
               {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} />}
             </PhaseBlock>

@@ -30,6 +30,7 @@ export const PhaseTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
   padding: 1rem 0;
+  cursor: pointer;
 
   &::before {
     content: ".";
@@ -37,6 +38,11 @@ export const PhaseTitle = styled.h2`
     border-radius: 1rem;
     margin-right: 0.9rem;
     background-color: ${(props) => props.theme.colors.variant2};
+  }
+
+  img {
+    margin-left: 1rem;
+    width: 1rem;
   }
 `;
 
