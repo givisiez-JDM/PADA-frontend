@@ -58,7 +58,7 @@ const TreatmentPhases = () => {
             <PhaseBlock key={phase.phaseNumber}>
               <PhaseTitle onClick={() => selectPhase(phase)}>
                 Fase {phase.phaseNumber}
-                <img src={phaseSelected?.phaseNumber === phase.phaseNumber ? IconArrowUp : IconArrowDown} alt="Mostrar descrição" />
+                <img src={phaseSelected?.phaseNumber === phase.phaseNumber ? IconArrowUp : IconArrowDown} alt="Mostrar conteúdo" />
               </PhaseTitle>
               {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} />}
             </PhaseBlock>
