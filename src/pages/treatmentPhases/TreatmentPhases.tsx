@@ -23,8 +23,8 @@ const phases: PhaseType[] = [
     phaseNumber: 1,
     dosage: "1:10",
     frequency: "2 semanas",
-    startTreatment: "2024-02-06",
-    endTreatment: "2024-03-15",
+    startTreatment: "2024-03-01",
+    endTreatment: "2024-03-11",
     active: false
   },
   {

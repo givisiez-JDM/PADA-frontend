@@ -10,5 +10,8 @@ export const PhaseSubtitle = styled.div`
 `;
 
 export const PhaseContent = styled.div`
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   padding-bottom: 1rem;
 `;
