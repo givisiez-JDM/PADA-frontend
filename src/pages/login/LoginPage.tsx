@@ -72,7 +72,7 @@ const Login = () => {
 
       <ForgotPassword>
         Ainda não tem conta?{" "}
-        <span onClick={() => navigate("/cadastro")}>Entrar</span>
+        <span onClick={() => navigate("/cadastro")}>Casdastrar</span>
       </ForgotPassword>
 
       <BottomWave style={{ backgroundImage: `url(${Wave})` }} />

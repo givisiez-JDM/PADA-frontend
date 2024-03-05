@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes, forwardRef } from "react";
-import { InputError, InputLogin } from "./Input.styles";
+import { InputError, InputLogin, Teste } from "./Input.styles";
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string;
@@ -10,7 +10,7 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> & {
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ name, style, error = "", ...props }, ref) => {
     return (
-      <div>
+      <Teste>
         <InputLogin 
           type="text" 
           style={style} 
@@ -20,7 +20,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         />
 
         {error && <InputError>{error}</InputError>}
-      </div>
+      </Teste>
     );
   }
 );

@@ -51,13 +51,13 @@ import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
   export const formValidateSignup = z
     .object({
-      name: z.string().nonempty("Preencha um valor").min(5, "Informe um nome válido"),
+      name: z.string().nonempty("Digite seu nome"),
 
-      email: z.string().nonempty("Preencha um valor").email("Email inválido"),
+      email: z.string().nonempty("Digite seu email").email("Email inválido"),
 
       password: z
         .string()
-        .nonempty("Preencha um valor")
+        .nonempty("Digite sua senha")
         .min(8, "Sua senha deve ter 8 caracteres")
         // eslint-disable-next-line no-useless-escape
         .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
@@ -69,7 +69,7 @@ import { FormPropsSignup, SignupType } from "../types/SignupTypes";
     })
     .refine((fields) => fields.password === fields.confirmPassword, {
       path: ["confirmPassword"],
-      message: "As senha precisam ser iguais",
+      message: "As senhas devem ser iguais",
     });
 
   export const useSignup = () => {

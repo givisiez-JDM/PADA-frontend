@@ -9,15 +9,18 @@ export const InputError = styled.p `
     max-width: 12rem;
 `
 
-
-
 export const InputLogin = styled.input `
     height: 2.2rem;
     width: 13rem;
     border-radius: 1rem;
+    background-color: transparent;
     border: 2px solid #4C7ABB ;
-    padding-left: 3.5rem;
-    background-repeat: no-repeat;
-    background-size: 1.5rem;
-    background-position: 1rem;
+    outline: none;
+    padding-left: 2.5rem;
+    /* background-repeat: no-repeat;
+    -webkit-box-shadow: 0 0 0px 1000px white inset; */
+`
+
+export const Teste = styled.div `
+    
 `

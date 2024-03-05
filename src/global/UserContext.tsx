@@ -81,7 +81,6 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         name,
         email,
         password
-
       }
 
       const { url } = userRequest.USER_SIGNUP(body)

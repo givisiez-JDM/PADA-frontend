@@ -53,6 +53,20 @@ export const Box = styled.form `
 ` 
 
 
+export const InputBox = styled.div `
+    display: flex;
+    position: relative;
+`
+
+export const I = styled.img `
+    position: absolute;
+    height: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0.6rem ;
+    
+`
+
 export const Checkbox = styled.p `
     display: flex;
     align-items: center;
@@ -68,6 +82,7 @@ export const ButtonSignup = styled.button `
     width: 13rem;
     height: 2rem;
     font-weight: 500;
+    font-size: 0.9rem;
 `
 
 export const FooterDescription = styled.p `
@@ -93,4 +108,30 @@ export const ErrorMessage = styled.p `
     font-weight: 500;
     word-wrap: break-word;
     max-width: 12rem;
+`
+export const Sucess = styled.div `
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+        height: 8rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+        color: #4C7ABB;
+    }
+
+    button {
+        background-color: #4C7ABB;
+        color: white;
+        border: none;
+        border-radius: 15px;
+        width: 8rem;
+        font-weight: 500;
+        font-size: 1rem;
+        height: 2rem;
+    }
 `

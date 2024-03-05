@@ -6,8 +6,22 @@ import iconKey from "../../assets/key.svg";
 import { useSignup } from "../../hooks/useForm";
 import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
+import check from  '../../assets/check.svg'
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./CadastroPage.styles";
+import {
+  BottomWave,
+  Box,
+  ButtonSignup,
+  Checkbox,
+  ErrorMessage,
+  FooterDescription,
+  I,
+  InputBox,
+  Main,
+  Sucess,
+  Title,
+  TopWave,
+} from "./CadastroPage.styles";
 import { useData } from "../../global/UserContext";
 
 
@@ -27,7 +41,8 @@ const Signup = () => {
     }
   };
 
-  const sendReq = () => {
+  const sendReq = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     onSubmit();
     saveUser && window.localStorage.setItem("password", values);
   };
@@ -36,38 +51,52 @@ const Signup = () => {
     <Main>
       <TopWave style={{ backgroundImage: `url(${wave})` }} />
       <Title>Crie sua conta</Title>
-      <Box onSubmit={sendReq}>
-        <Input
-          type="text"
-          placeholder="Nome do usuário"
-          style={{ backgroundImage: `url(${iconPerson})` }}
-          {...register("name")}
-          error={errors.name?.message}
-        />
+      <Box onSubmit={event => sendReq(event)}>
+         <InputBox>
+          <I src={iconPerson} alt="key" />
+          <Input
+            type="text"
+            placeholder="Nome do usuário"
+            // style={{ backgroundImage: `url(${iconPerson})` }}
+            {...register("name")}
+            error={errors.name?.message}
+          />
+        </InputBox>
 
-        <Input
-          type="email"
-          placeholder="Email"
-          style={{ backgroundImage: `url(${iconEmail})` }}
-          {...register("email")}
-          error={errors.email?.message}
-        />
+        <InputBox>
+          <I src={iconEmail} alt="key" />
+          <Input
+            type="email"
+            placeholder="Email"
+            // style={{ backgroundImage: `url(${iconEmail})` }}
+            {...register("email")}
+            error={errors.email?.message}
+          />
+        </InputBox>
 
-        <Input
-          type="password"
-          placeholder="Senha"
-          style={{ backgroundImage: `url(${iconKey})` }}
-          {...register("password")}
-          error={errors.password?.message}
-        />
+        <InputBox>
+          <I src={iconKey} alt="key" />
+          <Input
+            type="password"
+            placeholder="Senha"
+            // style={{ backgroundImage: `url(${iconKey})` }}
+            {...register("password")}
+            error={errors.password?.message}
+          />
+        </InputBox>
 
-        <Input
-          type="password"
-          placeholder="confirmar senha"
-          style={{ backgroundImage: `url(${iconKey})` }}
-          {...register("confirmPassword")}
-          error={errors.confirmPassword?.message}
-        />
+        <InputBox>
+          <I src={iconKey} alt="key" />
+          <Input
+            type="password"
+            placeholder="confirmar senha"
+            // style={{ backgroundImage: `url(${iconKey})` }}
+            {...register("confirmPassword")}
+            error={errors.confirmPassword?.message}
+            />
+
+        </InputBox>
+
 
         {error && <ErrorMessage>{error}</ErrorMessage>}
 
@@ -76,9 +105,10 @@ const Signup = () => {
           Lembre da senha
         </Checkbox>
 
-        <Button type="submit" onClick={onSubmit}>
-          Entrar
-        </Button>
+        <ButtonSignup type="submit" onClick={onSubmit}>
+          Cadastrar
+        </ButtonSignup> 
+            
       </Box>
 
       <FooterDescription>
