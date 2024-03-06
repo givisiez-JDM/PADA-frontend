@@ -26,11 +26,13 @@ const TreatmentPhases = () => {
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
   const [phases, setPhases] = useState<PhaseType[]>([]);
 
-  function selectPhase(phase: PhaseType) {
+  const selectPhase = (phase: PhaseType) => {
     setPhaseSelected(
       phase === phaseSelected ? null : phase
     )
   }
+
+  const hasPhases = () => phases.length > 0
 
   useEffect(() => {
     const { url, headers } = userRequest.GET_PATIENTS_BY_ID(patientId, token);
@@ -73,8 +75,8 @@ const TreatmentPhases = () => {
               {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} />}
             </PhaseBlock>
           )}
-          <BoxButton>
-            <Button disabled={!phaseSelected?.active}>Finalizar Fase</Button>
+          <BoxButton className={hasPhases() ? '' : 'centered'}>
+            {hasPhases() && <Button disabled={!phaseSelected?.active}>Finalizar Fase</Button>}
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>

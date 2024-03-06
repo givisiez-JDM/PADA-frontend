@@ -50,4 +50,11 @@ export const BoxButton = styled.div`
   display: flex;
   gap: 5rem;
   margin-top: 1.5rem;
+
+  &.centered {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
 `;
