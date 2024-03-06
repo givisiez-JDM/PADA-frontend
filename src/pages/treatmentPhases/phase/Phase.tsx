@@ -39,8 +39,9 @@ const Phase = ({ phase }: Props) => {
       </PhaseField>
 
       <PhaseContent>
-        <PhaseProgress value={getProgress()} />
-        <Button size="small">Alterar</Button>
+        <PhaseProgress value={getProgress()}>
+          <Button size="small">Alterar</Button>
+        </PhaseProgress>
       </PhaseContent>
 
     </>
