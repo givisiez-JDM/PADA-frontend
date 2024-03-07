@@ -23,6 +23,7 @@ const TreatmentPhases = () => {
   const phasesReq = useAxios<PhaseType[]>();
 
   const [modal, setModal] = useState(false);
+  const [newRequest, setNewRequest] = useState(false);
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
   const [phases, setPhases] = useState<PhaseType[]>([]);
 
@@ -33,6 +34,18 @@ const TreatmentPhases = () => {
   }
 
   const hasPhases = () => phases.length > 0
+
+  const finish_phase = () => {
+    if (confirm('Tem certeza que deseja finalizar essa fase?')) {
+      const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmantReq.data?.id), token);
+      console.log(phaseSelected)
+      // const body = phaseSelected;
+      // setNewRequest(true)
+      // .then(()=>{
+      //   phasesReq.put(url, body, { headers })
+      // });
+    }
+  }
 
   useEffect(() => {
     const { url, headers } = userRequest.GET_PATIENTS_BY_ID(patientId, token);
@@ -45,6 +58,7 @@ const TreatmentPhases = () => {
   }, [patientId, token]);
 
   useEffect(() => {
+    setNewRequest(false)
     try {
       const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmantReq.data?.id), token);
       phasesReq.get(url, { headers });
@@ -52,7 +66,7 @@ const TreatmentPhases = () => {
     catch (error) {
       console.error(error);
     }
-  }, [token, treatmantReq.data]);
+  }, [token, treatmantReq.data, newRequest]);
 
   useEffect(() => {
     if (phasesReq.data) {
@@ -76,7 +90,11 @@ const TreatmentPhases = () => {
             </PhaseBlock>
           )}
           <BoxButton className={hasPhases() ? '' : 'centered'}>
-            {hasPhases() && <Button disabled={!phaseSelected?.active}>Finalizar Fase</Button>}
+            {hasPhases() &&
+              <Button
+                disabled={!phaseSelected?.active}
+                onClick={finish_phase}
+              >Finalizar Fase</Button>}
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>

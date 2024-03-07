@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
-  font-family: "Poppins", sans-serif;
   height: 100vh;
 `;
 
@@ -42,7 +41,7 @@ export const PhaseTitle = styled.h2`
 
   img {
     margin-left: 1rem;
-    width: 1rem;
+    width: 0.5rem;
   }
 `;
 
