@@ -1,27 +1,26 @@
-import React, { useState } from "react";
-import logo from "../../assets/logo.png";
-import { UserRequest } from "../../requests/UserRequest";
-import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./MenuMedico.styles";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
+import { UserRequest } from "../../requests/UserRequest";
 import { useData } from "../../global/UserContext";
+import ImageLogo from "../../assets/logo.png";
+import IconArrow from "../../assets/white-arrow.svg";
 import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
-import whiteArrow from "../../assets/white-arrow.svg";
 import MenuHeader from "../../components/menuHeader/MenuHeader";
+import { BoxAddPacient, Button, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient } from "./MenuMedico.styles";
 
 const MenuMedico = () => {
   const userRequest = new UserRequest();
-  const navigate = useNavigate();
   const patients = useAxios();
   const { userId, getProfile, data } = useData();
 
   const [modal, setModal] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getProfile(userId);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const token = window.localStorage.getItem("token");
     const { url, headers } = userRequest.GET_PATIENTS(token);
 
@@ -30,9 +29,9 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <li onClick={() => navigate(`/paciente/tratamento/${patient.id}`)} key={patient.id}>
-        {patient.name}
-      </li>
+      <Link to={`/paciente/tratamento/${patient.id}`} key={patient.id}>
+        <li>{patient.name}</li>
+      </Link>
     );
   });
 
@@ -40,25 +39,24 @@ const MenuMedico = () => {
     <>
       <Main>
         <MenuHeader>
-          <Logo src={logo} />
+          <Logo src={ImageLogo} />
           <SectionDoctor onClick={() => setModal(!modal)}>
             {data?.name}
-            <img src={whiteArrow} alt="" />
+            <img src={IconArrow} alt="" />
           </SectionDoctor>
         </MenuHeader>
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
         <Middle>
           <BoxAddPacient>
-          <NavLink to="/cadastro-paciente">
-            <Button>Cadastrar Paciente</Button>
-          </NavLink>
+            <Link to="/cadastro-paciente">
+              <Button>Cadastrar Paciente</Button>
+            </Link>
           </BoxAddPacient>
           <PacientList>
             <h1>Pacientes</h1>
             <TitlePacient>{getAllPatients}</TitlePacient>
           </PacientList>
         </Middle>
-        <NavLink to="/fase-tratamento">aqui</NavLink>
       </Main>
 
       {modal && <ModalDoctor />}
