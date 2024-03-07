@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./CadastroPage.styles";
 import { useData } from "../../global/UserContext";
 
+
 const Signup = () => {
   const { onSubmit, errors, register, getValues } = useSignup();
   const [saveUser, setSaveUser] = React.useState(false);
