@@ -1,9 +1,12 @@
-import React, { ReactNode, createContext, useEffect, useState } from "react";
+import React, { Dispatch, ReactNode, createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserRequest } from "../requests/UserRequest";
+import { PatientType } from "../types/PatientTypes";
+import { PhaseType, TreatmentType } from "../types/TreatmentTypes";
 
 type GlobalContextProps = {
+  getToken: () => string;
   userLogin: (email: string, password: string) => void;
   userSignup: (name: string, email: string, password: string, confirmPassword: string) => void;
   data: any | null;
@@ -14,6 +17,19 @@ type GlobalContextProps = {
   setUserId: any;
   getProfile: any;
   userLogout: any;
+  patientList: PatientType[];
+  getPatientList: () => void
+  patientId: string
+  setPatientId: Dispatch<React.SetStateAction<string>>
+  patient: PatientType | null;
+  getPatient: () => void
+  treatmentId: string
+  setTreatmentId: Dispatch<React.SetStateAction<string>>
+  treatment: TreatmentType | null;
+  getTreatment: () => void
+  phaseList: PhaseType[]
+  getPhaseList: () => void
+
 };
 
 type GlobalStorageProps = {
@@ -38,9 +54,33 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
   const [loading, setLoading] = useState<boolean | null>(null);
   const [userId, setUserId] = useState<any | null>(null)
 
+
+  const [tokenState, setTokenState] = useState('');
+  const [patientList, setPatientList] = useState<PatientType[]>([]);
+  const [patientId, setPatientId] = useState<string>("");
+  const [patient, setPatient] = useState<PatientType | null>(null);
+  const [treatmentId, setTreatmentId] = useState<string>("");
+  const [treatment, setTreatment] = useState<TreatmentType | null>(null);
+  const [phaseList, setPhaseList] = useState<PhaseType[]>([]);
+
   const navigate = useNavigate();
 
-  const token = window.localStorage.getItem("token");
+  const getToken = () => {
+    if (tokenState) return tokenState;
+    else {
+      const storedToken = window.localStorage.getItem("token");
+      if (storedToken) {
+        setTokenState(storedToken);
+        return storedToken;
+      }
+    }
+    return "";
+  }
+
+  const setToken = (newToken: string) => {
+    setTokenState(newToken);
+    window.localStorage.setItem("token", newToken);
+  }
 
   const userLogin = async (email: string, password: string) => {
     try {
@@ -55,7 +95,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       const { url } = userRequest.USER_LOGIN();
       const req = await axios.post(url, body);
 
-      window.localStorage.setItem('token', req.data.token)
+      setToken(req.data.token)
       window.localStorage.setItem('id', req.data.user.id)
 
       setUserId(req.data.user.id)
@@ -87,12 +127,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       const { url } = userRequest.USER_SIGNUP(body)
       const req = await axios.post(url, body);
 
-      window.localStorage.setItem('token', req.data.token);
-      window.localStorage.setItem('id', req.data.user.id)
+      // window.localStorage.setItem('token', req.data.token);
+      // window.localStorage.setItem('id', req.data.user.id)
 
 
-      setLogin(true);
-      navigate('/menu-medico');
+      // setLogin(true);
+      // navigate('/menu-medico');
     } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
@@ -101,11 +141,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     }
   }
 
-  const getProfile = async (userId: any) => {
+  const getProfile = async (userId: string) => {
     try {
       setError(null);
       setLoading(true);
 
+      const token = getToken();
       const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token)
 
       const req = await axios.get(url, { headers })
@@ -120,37 +161,120 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     }
   }
 
+  const getPatientList = async () => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PATIENTS(token);
+
+      const req = await axios.get(url, { headers });
+
+      setPatientList(req.data);
+
+    } catch (err: any) {
+      setPatientList([]);
+      setError(err.response.data.error);
+      setLoading(false);
+    }
+  }
+
+  const getPatient = async () => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PATIENTS_BY_ID(patientId, token);
+
+      const req = await axios.get(url, { headers });
+
+      setPatient(req.data);
+
+    } catch (err: any) {
+      setPatient(null);
+      setError(err.response.data.error);
+      setLoading(false);
+    }
+  }
+
+  const getTreatment = async () => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const token = getToken();
+      const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(patientId, token);
+
+      const req = await axios.get(url, { headers });
+
+      setTreatment(req.data);
+      setTreatmentId(req.data.id);
+
+    } catch (err: any) {
+      setTreatment(null);
+      setTreatmentId("");
+      setError(err.response.data.error);
+      setLoading(false);
+    }
+  }
+
+  const getPhaseList = async () => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(treatmentId, token);
+
+      const req = await axios.get(url, { headers });
+
+      setPhaseList(req.data);
+
+    } catch (err: any) {
+      setPhaseList([]);
+      setError(err.response.data.error);
+      setLoading(false);
+    }
+  }
+
   const userLogout = () => {
-    setData(null)
-    setError(null)
-    setLoading(false)
+    setData(null);
+    setPatientList([]);
+    setError(null);
+    setLoading(false);
+    setTreatment(null);
+    setTreatmentId("");
+    setPhaseList([]);
 
-    window.localStorage.removeItem('token')
-    window.localStorage.removeItem('id')
-    window.localStorage.removeItem('password')
+    setToken('');
+    window.localStorage.removeItem('id');
+    window.localStorage.removeItem('password');
 
-    setLogin(false)
-    navigate('/')
+    setLogin(false);
+    navigate('/');
 
   }
 
-  
-  useEffect(() => {
-    const id = window.localStorage.getItem("id")
+  // TODO Verificar se essa parte é necessaria 
+  // useEffect(() => {
+  //   const id = window.localStorage.getItem("id")
 
-    if (token) {
-      setLogin(true)
-      getProfile(id)
+  //   if (token) {
+  //     setLogin(true)
+  //     getProfile(id)
 
-    } else {
-      userLogout()
-    }
+  //   } else {
+  //     userLogout()
+  //   }
 
-  }, []);
+  // }, []);
 
   return (
     <GlobalContext.Provider
       value={{
+        getToken,
         userLogin,
         userSignup,
         data,
@@ -160,8 +284,19 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         userId,
         setUserId,
         getProfile,
-        userLogout
-
+        userLogout,
+        patientList,
+        getPatientList,
+        patient,
+        getPatient,
+        patientId,
+        setPatientId,
+        treatmentId,
+        setTreatmentId,
+        treatment,
+        getTreatment,
+        phaseList,
+        getPhaseList,
       }}
     >
       {children}

@@ -70,6 +70,15 @@ export class UserRequest {
     };
   };
 
+  GET_PHASES_BY_ID = (id: string | undefined, token: string | null) => {
+    return {
+      url: `${BASE_URL}/phases/${id}`,
+      headers: {
+        Authorization: token,
+      },
+    };
+  };
+
   GET_VACCINES_BY_PHASES_ID = (
     id: string | undefined,
     token: string | null

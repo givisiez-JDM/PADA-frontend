@@ -13,7 +13,7 @@ const MenuMedico = () => {
   const userRequest = new UserRequest();
   const navigate = useNavigate();
   const patients = useAxios();
-  const { userId, getProfile, data } = useData();
+  const { userId, getProfile, data, setPatientId } = useData();
 
   const [modal, setModal] = useState(false);
 
@@ -28,9 +28,14 @@ const MenuMedico = () => {
     patients.get(url, { headers });
   }, []);
 
+  const setPatient = (patientId: string) => {
+    setPatientId(patientId)
+    navigate(`/paciente/perfil/${patientId}`);
+  }
+
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <li onClick={() => navigate(`/paciente/perfil/${patient.id}`)} key={patient.id}>
+      <li onClick={() => setPatient(patient.id)} key={patient.id}>
         {patient.name}
       </li>
     );
