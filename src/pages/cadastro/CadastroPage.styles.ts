@@ -9,7 +9,6 @@ export const Main = styled.main`
     height: 100vh;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
-
 `
 
 export const TopWave = styled.div `
@@ -30,7 +29,6 @@ export const BottomWave = styled.div`
     bottom: 0;
     background-repeat: no-repeat;
     background-size:cover;
-
 `
 
 export const Title = styled.h1`
@@ -61,10 +59,9 @@ export const InputBox = styled.div `
 export const I = styled.img `
     position: absolute;
     height: 1.2rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 8px;
     left: 0.6rem ;
-    
+    box-sizing: border-box;
 `
 
 export const Checkbox = styled.p `
@@ -96,8 +93,7 @@ export const FooterDescription = styled.p `
     
     span {
         text-indent: 2px;
-        color: #4C7ABB;
-        
+        color: #4C7ABB;    
     }
 `
 
