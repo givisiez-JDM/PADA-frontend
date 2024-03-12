@@ -35,7 +35,7 @@ export const Title = styled.h1`
     display: flex;
     position: relative;
     bottom: 1.5rem;
-    color: #4C7ABB;
+    color: ${props => props.theme.colors.variant2};
 `
 
 export const Box = styled.form `
@@ -59,7 +59,7 @@ export const InputBox = styled.div `
 export const I = styled.img `
     position: absolute;
     height: 1.2rem;
-    top: 8px;
+    top: 0.5rem;
     left: 0.6rem ;
     box-sizing: border-box;
 `
@@ -72,7 +72,7 @@ export const Checkbox = styled.p `
 `
 
 export const ButtonSignup = styled.button `
-    background-color: #4C7ABB;
+    background-color: ${props => props.theme.colors.variant2};
     color: white;
     border: none;
     border-radius: 15px;
@@ -93,7 +93,7 @@ export const FooterDescription = styled.p `
     
     span {
         text-indent: 2px;
-        color: #4C7ABB;    
+        color: ${props => props.theme.colors.variant2};    
     }
 `
 
@@ -117,11 +117,11 @@ export const Sucess = styled.div `
 
     h1 {
         font-size: 1.2rem;
-        color: #4C7ABB;
+        color: ${props => props.theme.colors.variant2};
     }
 
     button {
-        background-color: #4C7ABB;
+        background-color: ${props => props.theme.colors.variant2};
         color: white;
         border: none;
         border-radius: 15px;
