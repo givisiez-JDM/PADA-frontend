@@ -5,7 +5,7 @@ import { useData } from "../global/UserContext";
 import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
-export const formLogiValidate = zod.object({
+export const formLoginValidate = zod.object({
   email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
 
   password: zod
@@ -27,7 +27,7 @@ export const useLogin = () => {
     formState: { errors },
   } = useForm<FormPropsLogin>({
     mode: "onBlur",
-    resolver: zodResolver(formLogiValidate),
+    resolver: zodResolver(formLoginValidate),
   });
 
   const { userLogin } = useData();
