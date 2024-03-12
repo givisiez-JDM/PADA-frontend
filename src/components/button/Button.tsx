@@ -11,7 +11,6 @@ const Button = ({ children }: ButtonProps) => {
     <ButtonLogin
     >
       {children}
-
     </ButtonLogin>
   )
 }
