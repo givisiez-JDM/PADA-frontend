@@ -1,16 +1,24 @@
-import Button from "../../components/button/Button";
-import { z } from "zod";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
-import { UserRequest } from "../../requests/UserRequest";
 import useAxios from "../../hooks/useAxios";
+import { UserRequest } from "../../requests/UserRequest";
 import { useData } from "../../global/UserContext";
-import React from "react";
+import Button from "../../components/button/Button";
 import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
-import { ButtonLocal, ContainerCheckbox, ConteinerCheckBox, ConteinerTreatment, FaseContentContainer, SwitchContainer, TextInputTime, Title } from "./FasesDeTratamentoPage.styles";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
+import {
+  ButtonLocal,
+  ContainerCheckbox,
+  ConteinerCheckBox,
+  ConteinerTreatment,
+  FaseContentContainer,
+  SwitchContainer,
+  TextInputTime,
+  Title
+} from "./FasesDeTratamentoPage.styles";
 
 const faseOne = z.object({
   start: z.string().nonempty('Data inválida'),
@@ -23,6 +31,10 @@ const faseOne = z.object({
 type RegisterFaseOne = z.infer<typeof faseOne>
 
 
+const times: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas']
+const dosagens: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10']
+
+
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' }
 
 export default function FasesDeTratamento() {
@@ -31,20 +43,19 @@ export default function FasesDeTratamento() {
   const patients = useAxios();
   const { userId, getProfile, data } = useData();
 
+  const [value, setValue] = useState(false)
   const [modal, setModal] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     getProfile(userId);
   }, []);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const token = window.localStorage.getItem("token");
     const { url, headers } = userRequest.GET_PATIENTS(token);
 
     patients.get(url, { headers });
   }, []);
-
-
 
   const {
     register,
@@ -66,82 +77,14 @@ export default function FasesDeTratamento() {
     }
   })
 
-  const onSubmit = handleSubmit((data) => {
-    console.log("DATA SENT", data)
-
-  })
-
-
-  const times: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas']
-
-  const dosagens: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10']
-
-
-
-
-  // const AntSwitch = styled(Switch)(({ theme }) => ({
-  //   width: 28,
-  //   height: 16,
-  //   padding: 0,
-  //   display: 'flex',
-  //   '&:active': {
-  //     '& .MuiSwitch-thumb': {
-  //       width: 15,
-  //     },
-  //     '& .MuiSwitch-switchBase.Mui-checked': {
-  //       transform: 'translateX(9px)',
-  //     },
-  //   },
-  //   '& .MuiSwitch-switchBase': {
-  //     padding: 2,
-  //     '&.Mui-checked': {
-  //       transform: 'translateX(12px)',
-  //       color: '#fff',
-  //       '& + .MuiSwitch-track': {
-  //         opacity: 1,
-  //         backgroundColor: theme.palette.mode === 'dark' ? '#177ddc' : '#1890ff',
-  //       },
-  //     },
-  //   },
-  //   '& .MuiSwitch-thumb': {
-  //     boxShadow: '0 2px 4px 0 rgb(0 35 11 / 20%)',
-  //     width: 12,
-  //     height: 12,
-  //     borderRadius: 6,
-  //     transition: theme.transitions.create(['width'], {
-  //       duration: 200,
-  //     }),
-  //   },
-  //   '& .MuiSwitch-track': {
-  //     borderRadius: 16 / 2,
-  //     opacity: 1,
-  //     backgroundColor:
-  //       theme.palette.mode === 'dark' ? 'rgba(255,255,255,.35)' : 'rgba(0,0,0,.25)',
-  //     boxSizing: 'border-box',
-  //   },
-  // }));
-
-
-  const [value, setValue] = useState(false)
-
-  const handleChange = (event: any) => {
-    setValue(event.target.checked)
-    console.log(value)
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSubmit();
   }
 
   return (
     <DefaultPatientPage patient={patient}>
-      {/* <HeaderContainer>
-        <h1>Fase de Tratamento</h1>
-        <SectionDoctor onClick={() => setModal(!modal)}>
-          {data?.name}
-          <img src={whiteArrow} alt="" />
-        </SectionDoctor>
-      </HeaderContainer> */}
-      {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
-
-
-      <form onSubmit={onSubmit}>
+      <form onSubmit={event => handleSubmit(event)}>
         <FaseContentContainer>
           <h2 className="faseOne">Fase 1</h2>
           <ConteinerTreatment>
@@ -228,7 +171,6 @@ export default function FasesDeTratamento() {
         </FaseContentContainer>
 
       </form>
-      {modal && <ModalDoctor />}
     </DefaultPatientPage>
   );
 }
