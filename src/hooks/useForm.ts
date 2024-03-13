@@ -31,12 +31,28 @@ export const useLogin = () => {
   });
 
   const { userLogin } = useData();
+  const { userLogin } = useData();
 
   const onSubmit = handleSubmit(async (data: loginType) => {
     const { email, password } = data;
     userLogin(email, password);
   });
+  const onSubmit = handleSubmit(async (data: loginType) => {
+    const { email, password } = data;
+    userLogin(email, password);
+  });
 
+  return {
+    handleSubmit,
+    register,
+    useData,
+    errors,
+    onSubmit,
+    useLogin,
+    getValues,
+    getFieldState,
+  };
+};
   return {
     handleSubmit,
     register,
@@ -84,6 +100,10 @@ export const useSignup = () => {
 
   const { userSignup } = useData();
 
+  const onSubmit = handleSubmit(async (data: SignupType) => {
+    const { name, email, password, confirmPassword } = data;
+    userSignup(name, email, password, confirmPassword);
+  });
   const onSubmit = handleSubmit(async (data: SignupType) => {
     const { name, email, password, confirmPassword } = data;
     userSignup(name, email, password, confirmPassword);

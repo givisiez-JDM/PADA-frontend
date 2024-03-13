@@ -5,15 +5,15 @@ import iconEmail from "../../assets/email.svg";
 import iconKey from "../../assets/key.svg";
 import { useSignup } from "../../hooks/useForm";
 import Input from "../../components/input/Input";
-import Button from "../../components/button/Button";
+import check from "../../assets/check.svg";
 import { useNavigate } from "react-router-dom";
-import { BottomWave,Box,Checkbox,ErrorMessage,FooterDescription,Main,Title,TopWave,} from "./CadastroPage.styles";
+import { BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, InputBox, Main, Sucess, Title, TopWave} from "./CadastroPage.styles";
 import { useData } from "../../global/UserContext";
 
-
 const Signup = () => {
-  const { onSubmit, errors, register, getValues } = useSignup();
+  const {onSubmit, errors, data, register, getValues} = useSignup();
   const [saveUser, setSaveUser] = React.useState(false);
+  const [modal, setModal] = React.useState(false);
 
   const navigate = useNavigate();
   const { error } = useData();
@@ -26,64 +26,95 @@ const Signup = () => {
       setSaveUser(false);
     }
   };
-
-  const sendReq = () => {
+  
+  const sendReq = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     onSubmit();
+
     saveUser && window.localStorage.setItem("password", values);
   };
+
+  React.useEffect(() => {
+    if (data === 201) setModal(true);
+  }, [modal, data]);
 
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${wave})` }} />
-      <Title>Crie sua conta</Title>
-      <Box onSubmit={sendReq}>
-        <Input
-          type="text"
-          placeholder="Nome do usuário"
-          style={{ backgroundImage: `url(${iconPerson})` }}
-          {...register("name")}
-          error={errors.name?.message}
-        />
+      {modal ? (
+        <>
+          <Box>
+            <Sucess>
+              <img src={check} alt="check" />
 
-        <Input
-          type="email"
-          placeholder="Email"
-          style={{ backgroundImage: `url(${iconEmail})` }}
-          {...register("email")}
-          error={errors.email?.message}
-        />
+              <h1>Cadastro realizado</h1>
+              <h1>com sucesso!</h1>
 
-        <Input
-          type="password"
-          placeholder="Senha"
-          style={{ backgroundImage: `url(${iconKey})` }}
-          {...register("password")}
-          error={errors.password?.message}
-        />
+              <button onClick={() => navigate("/login")}>Entrar</button>
+            </Sucess>
+          </Box>
+        </>
+      ) : (
+        <>
+          <Title>Crie sua conta</Title>
+          <Box onSubmit={(event) => sendReq(event)}>
+            <InputBox>
+              <I src={iconPerson} alt="key" />
+              <Input
+                type="text"
+                placeholder="Nome do usuário"
+                {...register("name")}
+                error={errors.name?.message}
+              />
+            </InputBox>
 
-        <Input
-          type="password"
-          placeholder="confirmar senha"
-          style={{ backgroundImage: `url(${iconKey})` }}
-          {...register("confirmPassword")}
-          error={errors.confirmPassword?.message}
-        />
+            <InputBox>
+              <I src={iconEmail} alt="key" />
+              <Input
+                type="email"
+                placeholder="Email"
+                {...register("email")}
+                error={errors.email?.message}
+              />
+            </InputBox>
 
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+            <InputBox>
+              <I src={iconKey} alt="key" />
+              <Input
+                type="password"
+                placeholder="Senha"
+                {...register("password")}
+                error={errors.password?.message}
+              />
+            </InputBox>
 
-        <Checkbox>
-          <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
-          Lembre da senha
-        </Checkbox>
+            <InputBox>
+              <I src={iconKey} alt="key" />
+              <Input
+                type="password"
+                placeholder="confirmar senha"
+                {...register("confirmPassword")}
+                error={errors.confirmPassword?.message}
+              />
+            </InputBox>
 
-        <Button type="submit" onClick={onSubmit}>
-          Entrar
-        </Button>
-      </Box>
+            {error && <ErrorMessage>{error}</ErrorMessage>}
 
-      <FooterDescription>
-        Já tem conta? <span onClick={() => navigate("/login")}>Entrar</span>
-      </FooterDescription>
+            <Checkbox>
+              <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
+              Lembre da senha
+            </Checkbox>
+
+            <ButtonSignup type="submit" onClick={onSubmit}>
+              Cadastrar
+            </ButtonSignup>
+          </Box>
+
+          <FooterDescription>
+            Já tem conta? <span onClick={() => navigate("/login")}>Entrar</span>
+          </FooterDescription>
+        </>
+      )}
 
       <BottomWave style={{ backgroundImage: `url(${wave})` }} />
     </Main>
@@ -91,3 +122,4 @@ const Signup = () => {
 };
 
 export default Signup;
+
