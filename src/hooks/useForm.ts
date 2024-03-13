@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
-import { z as zod } from "zod";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useData } from "../global/UserContext";
 import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
-export const formLoginValidate = zod.object({
-  email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
+export const formLoginValidate = z.object({
+  email: z.string().min(5, "Preencha um valor").email("Email inválido"),
 
-  password: zod
+  password: z
     .string()
     .min(8, "Sua senha deve ter 8 caracteres")
     // eslint-disable-next-line no-useless-escape
@@ -31,12 +31,7 @@ export const useLogin = () => {
   });
 
   const { userLogin } = useData();
-  const { userLogin } = useData();
 
-  const onSubmit = handleSubmit(async (data: loginType) => {
-    const { email, password } = data;
-    userLogin(email, password);
-  });
   const onSubmit = handleSubmit(async (data: loginType) => {
     const { email, password } = data;
     userLogin(email, password);
@@ -53,25 +48,13 @@ export const useLogin = () => {
     getFieldState,
   };
 };
-  return {
-    handleSubmit,
-    register,
-    useData,
-    errors,
-    onSubmit,
-    useLogin,
-    getValues,
-    getFieldState,
-  };
-};
 
-export const formValidateSignup = zod
+export const formValidateSignup = z
   .object({
-    name: zod.string().min(5, "Informe um nome válido"),
+    name: z.string().min(5, "Informe um nome válido"),
 
-    email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
-
-    password: zod
+    email: z.string().min(5, "Preencha um valor").email("Email inválido"),
+    password: z
       .string()
       .min(8, "Sua senha deve ter 8 caracteres")
       // eslint-disable-next-line no-useless-escape
@@ -80,7 +63,7 @@ export const formValidateSignup = zod
           "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
       }),
 
-    confirmPassword: zod.string(),
+    confirmPassword: z.string(),
   })
   .refine((fields) => fields.password === fields.confirmPassword, {
     path: ["confirmPassword"],
@@ -100,10 +83,6 @@ export const useSignup = () => {
 
   const { userSignup } = useData();
 
-  const onSubmit = handleSubmit(async (data: SignupType) => {
-    const { name, email, password, confirmPassword } = data;
-    userSignup(name, email, password, confirmPassword);
-  });
   const onSubmit = handleSubmit(async (data: SignupType) => {
     const { name, email, password, confirmPassword } = data;
     userSignup(name, email, password, confirmPassword);
