@@ -6,17 +6,13 @@ import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
 export const formLogiValidate = z.object({
-  email: z.string().nonempty("Preencha um valor").email("Email inválido"),
+  email: z.string().nonempty("Digite seu email").email("Email inválido"),
 
   password: z
     .string()
-    .nonempty("Preencha um valor")
+    .nonempty("Digite sua senha")
     .min(8, "Sua senha deve ter 8 caracteres")
-    // eslint-disable-next-line no-useless-escape
-    .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
-      message:
-        "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
-    }),
+   
 });
 
 export const useLogin = () => {

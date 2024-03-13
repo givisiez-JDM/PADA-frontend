@@ -18,7 +18,7 @@ export const TopWave = styled.div `
     left: 0;
     transform: rotate(180deg);
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 `
 
 export const BottomWave = styled.div`
@@ -27,7 +27,7 @@ export const BottomWave = styled.div`
     position: absolute;
     bottom: 0;
     background-repeat: no-repeat;
-    background-size:cover;
+    background-size: cover;
 `
 
 export const Box = styled.form `
@@ -42,15 +42,17 @@ export const Box = styled.form `
     border-radius: 6px;
 ` 
 
-export const InputLogin = styled.input `
-    height: 2.2rem;
-    width: 13rem;
-    border-radius: 1rem;
-    border: 2px solid #4C7ABB ;
-    padding-left: 3.5rem;
-    background-repeat: no-repeat;
-    background-size: 1.5rem;
-    background-position: 1rem;
+export const InputBox = styled.div `
+    display: flex;
+    position: relative;
+`
+
+export const I = styled.img `
+    position: absolute;
+    height: 1.2rem;
+    top: 0.5rem;
+    left: 0.6rem ;
+    box-sizing: border-box;
 `
 
 export const Checkbox = styled.p `
@@ -61,8 +63,8 @@ export const Checkbox = styled.p `
 `
 
 export const ButtonLogin = styled.button `
-    background-color: #4C7ABB;
-    color: white;
+    background-color: ${props => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.white};
     border: none;
     border-radius: 15px;
     width: 13rem;
@@ -77,10 +79,11 @@ export const ForgotPassword = styled.p `
     font-weight: 500;
 
     span {
-        color: #4C7ABB;
+        color: ${props => props.theme.colors.variant2};
         cursor: pointer;
     }
 `
+
 export const IncorrectUser = styled.p `
     text-indent:-3.3rem;
     color: red;
