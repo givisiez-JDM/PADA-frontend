@@ -74,6 +74,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
   const userSignup = async (name: string, email: string, password: string) => {
     try {
+      setData(null);
       setError(null);
       setLoading(true);
 
@@ -81,18 +82,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         name,
         email,
         password
-
       }
 
-      const { url } = userRequest.USER_SIGNUP(body)
-      const req = await axios.post(url, body);
+      const { url } = userRequest.USER_SIGNUP(body);
+      const signup = await axios.post(url, body);
 
-      window.localStorage.setItem('token', req.data.token);
-      window.localStorage.setItem('id', req.data.user.id)
-
-
-      setLogin(true);
-      navigate('/menu-medico');
+      setData(signup.status);
     } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
@@ -134,19 +129,6 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
   }
 
-  
-  useEffect(() => {
-    const id = window.localStorage.getItem("id")
-
-    if (token) {
-      setLogin(true)
-      getProfile(id)
-
-    } else {
-      userLogout()
-    }
-
-  }, []);
 
   return (
     <GlobalContext.Provider
