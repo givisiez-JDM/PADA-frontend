@@ -6,7 +6,7 @@ import iconPerson from "../../assets/icon-person.svg";
 import key from "../../assets/key.svg";
 import { useLogin } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave, Box, Checkbox, ForgotPassword, I, IncorrectUser, InputBox, Main, TopWave, } from "./LoginPage.styles";
+import { BottomWave, Box, Checkbox, ForgotPassword, Image, IncorrectUser, InputBox, Main, TopWave, } from "./LoginPage.styles";
 import { useData } from "../../global/UserContext";
 
 
@@ -34,13 +34,13 @@ const Login = () => {
     saveUser && window.localStorage.setItem('password', values)
   }
 
-  
+
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
       <Box onSubmit={event => sendreq(event)}>
         <InputBox>
-          <I src={iconPerson} alt="icon person"/>
+          <Image src={iconPerson} alt="icon person" />
           <Input
             type="email"
             placeholder="Email"
@@ -50,7 +50,7 @@ const Login = () => {
         </InputBox>
 
         <InputBox>
-          <I src={key} alt="icon person"/>
+          <Image src={key} alt="icon person" />
           <Input
             type="password"
             placeholder="Senha"
