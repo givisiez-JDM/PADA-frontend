@@ -1,18 +1,14 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { z as zod } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useData } from "../global/UserContext";
 import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
-export const formLogiValidate = z.object({
-  email: z.string().nonempty("Digite seu email").email("Email inválido"),
+export const formLoginValidate = zod.object({
+  email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
 
-  password: z
-    .string()
-    .nonempty("Digite sua senha")
-    .min(8, "Sua senha deve ter 8 caracteres")
-   
+  password: zod.string().min(8, "Sua senha deve ter 8 caracteres"),
 });
 
 export const useLogin = () => {
@@ -22,7 +18,10 @@ export const useLogin = () => {
     getValues,
     getFieldState,
     formState: { errors },
-  } = useForm<FormPropsLogin>({ mode: "onBlur", resolver: zodResolver(formLogiValidate) });
+  } = useForm<FormPropsLogin>({
+    mode: "onBlur",
+    resolver: zodResolver(formLoginValidate),
+  });
 
   const { userLogin } = useData();
 
@@ -43,15 +42,14 @@ export const useLogin = () => {
   };
 };
 
-export const formValidateSignup = z
+export const formValidateSignup = zod
   .object({
-    name: z.string().nonempty("Digite seu nome").min(3, "Deve conter no minímo 3 caracteres"),
+    name: zod.string().min(5, "Informe um nome válido"),
 
-    email: z.string().nonempty("Digite seu email").email("Email inválido"),
+    email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
 
-    password: z
+    password: zod
       .string()
-      .nonempty("Digite sua senha")
       .min(8, "Sua senha deve ter 8 caracteres")
       // eslint-disable-next-line no-useless-escape
       .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
@@ -59,11 +57,11 @@ export const formValidateSignup = z
           "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
       }),
 
-    confirmPassword: z.string(),
+    confirmPassword: zod.string(),
   })
   .refine((fields) => fields.password === fields.confirmPassword, {
     path: ["confirmPassword"],
-    message: "As senhas devem ser iguais",
+    message: "As senha precisam ser iguais",
   });
 
 export const useSignup = () => {
@@ -72,7 +70,10 @@ export const useSignup = () => {
     handleSubmit,
     getValues,
     formState: { errors },
-  } = useForm<FormPropsSignup>({ mode: "onBlur", resolver: zodResolver(formValidateSignup) });
+  } = useForm<FormPropsSignup>({
+    mode: "onBlur",
+    resolver: zodResolver(formValidateSignup),
+  });
 
   const { userSignup, data } = useData();
 
