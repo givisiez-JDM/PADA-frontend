@@ -5,7 +5,7 @@ import { useData } from "../global/UserContext";
 import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
-export const formLoginValidate = z.object({
+export const formLoginValidate = zod.object({
   email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
 
   password: zod.string().min(8, "Sua senha deve ter 8 caracteres"),
@@ -47,6 +47,7 @@ export const formValidateSignup = zod
     name: zod.string().min(5, "Informe um nome válido"),
 
     email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
+
     password: zod
       .string()
       .min(8, "Sua senha deve ter 8 caracteres")
