@@ -139,6 +139,6 @@ const FasesDeTratamento = () => {
       </PhaseForm>
     </DefaultPatientPage>
   );
-}
+};
 
 export default FasesDeTratamento;
