@@ -6,7 +6,7 @@ import iconPerson from "../../assets/icon-person.svg";
 import key from "../../assets/key.svg";
 import { useLogin } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave, Box, Checkbox, ForgotPassword, IncorrectUser, Main, TopWave, } from "./LoginPage.styles";
+import { BottomWave, Box, Checkbox, ForgotPassword, Image, IncorrectUser, InputBox, Main, TopWave, } from "./LoginPage.styles";
 import { useData } from "../../global/UserContext";
 
 
@@ -39,21 +39,26 @@ const Login = () => {
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
       <Box onSubmit={event => sendreq(event)}>
-        <Input
-          style={{ backgroundImage: `url(${iconPerson})` }}
-          type="email"
-          placeholder="Usuário"
-          {...register("email")}
-          error={errors.email?.message}
-        />
+        <InputBox>
+          <Image src={iconPerson} alt="icon person" />
+          <Input
+            type="email"
+            placeholder="Email"
+            {...register("email")}
+            error={errors.email?.message}
+          />
+        </InputBox>
 
-        <Input
-          style={{ backgroundImage: `url(${key})` }}
-          type="password"
-          placeholder="Senha"
-          {...register("password")}
-          error={errors.password?.message}
-        />
+        <InputBox>
+          <Image src={key} alt="icon person" />
+          <Input
+            type="password"
+            placeholder="Senha"
+            {...register("password")}
+            error={errors.password?.message}
+          />
+        </InputBox>
+
 
         {error && <IncorrectUser>{error}</IncorrectUser>}
 
@@ -72,7 +77,7 @@ const Login = () => {
 
       <ForgotPassword>
         Ainda não tem conta?{" "}
-        <span onClick={() => navigate("/cadastro")}>Entrar</span>
+        <span onClick={() => navigate("/cadastro")}>Criar conta</span>
       </ForgotPassword>
 
       <BottomWave style={{ backgroundImage: `url(${Wave})` }} />

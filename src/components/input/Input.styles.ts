@@ -4,20 +4,23 @@ export const InputError = styled.p `
     color: red;
     font-size: x-small;
     font-weight: 500;
-    margin-top: 3px;
+    margin-left: 0.19rem;
     word-wrap: break-word;
     max-width: 12rem;
 `
-
-
 
 export const InputLogin = styled.input `
     height: 2.2rem;
     width: 13rem;
     border-radius: 1rem;
-    border: 2px solid #4C7ABB ;
-    padding-left: 3.5rem;
-    background-repeat: no-repeat;
-    background-size: 1.5rem;
-    background-position: 1rem;
+    background-color: transparent;
+    border: 2px solid ${props => props.theme.colors.variant1} ;
+    outline: none;
+    padding-left: 2.5rem;
+`
+
+export const BoxInput = styled.div `
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem 0;
 `
