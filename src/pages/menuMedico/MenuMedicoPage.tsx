@@ -29,7 +29,7 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <Link to={`/paciente/tratamento/${patient.id}`} key={patient.id}>
+      <Link to={`/paciente/perfil/${patient.id}`} key={patient.id}>
         <li>{patient.name}</li>
       </Link>
     );
