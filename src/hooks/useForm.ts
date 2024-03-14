@@ -75,7 +75,7 @@ export const useSignup = () => {
     resolver: zodResolver(formValidateSignup),
   });
 
-  const { userSignup } = useData();
+  const { userSignup, data } = useData();
 
   const onSubmit = handleSubmit(async (data: SignupType) => {
     const { name, email, password, confirmPassword } = data;
@@ -86,6 +86,7 @@ export const useSignup = () => {
     handleSubmit,
     register,
     useData,
+    data,
     errors,
     onSubmit,
     useSignup,
