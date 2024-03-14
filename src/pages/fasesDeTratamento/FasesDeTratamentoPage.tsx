@@ -16,7 +16,7 @@ import {
   PhaseForm,
   PhaseStatus,
   PhaseTitle,
-  Title
+  Title,
 } from "./FasesDeTratamentoPage.styles";
 
 const faseOne = zod.object({
@@ -28,17 +28,16 @@ const faseOne = zod.object({
   frequency: zod.array(zod.object({ frequency: zod.string() })),
   dosage: zod.array(zod.object(
     { dosage: zod.string() })),
+});
 
-})
-type RegisterFaseOne = zod.infer<typeof faseOne>
+type RegisterFaseOne = zod.infer<typeof faseOne>;
 
+const frequency: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
+const dosage: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
-const frequency: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas']
-const dosage: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10']
+const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
 
-const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' }
-
-export default function FasesDeTratamento() {
+const FasesDeTratamento = () => {
   const [checked, setChecked] = useState(false);
   const {
     register,
@@ -58,12 +57,12 @@ export default function FasesDeTratamento() {
       { dosage: '1:10' },
       ]
     }
-  })
+  });
 
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-  }
+  };
 
   return (
     <DefaultPatientPage patient={patient}>
@@ -86,7 +85,6 @@ export default function FasesDeTratamento() {
           <Title>
             Periodicidade do Tratamento
           </Title>
-
           <ConteinerCheckBox>
             {frequency.map(frequency => (
               <ContainerCheckbox key={frequency}>
@@ -99,13 +97,10 @@ export default function FasesDeTratamento() {
                   <label htmlFor={frequency}>{frequency}</label>
                 </div>
               </ ContainerCheckbox>
-
             ))}
           </ConteinerCheckBox>
-
         </PhaseField>
         <PhaseField>
-
           <Title>
             Dosagem do Medicamento
           </Title>
@@ -121,12 +116,10 @@ export default function FasesDeTratamento() {
                   <label htmlFor={dosage}>{dosage}</label>
                 </div>
               </ ContainerCheckbox>
-
             ))}
           </ConteinerCheckBox>
         </PhaseField>
         <PhaseField>
-
           <PhaseStatus>
             <Switch
               activeLabel="Ativo"
@@ -146,3 +139,4 @@ export default function FasesDeTratamento() {
   );
 }
 
+export default FasesDeTratamento;

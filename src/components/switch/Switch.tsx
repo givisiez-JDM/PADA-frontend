@@ -9,7 +9,6 @@ interface Props {
 
 
 const ToggleSwitch = ({ status, setStatus, activeLabel, inactiveLabel }: Props) => {
-
   return (
     <Label>
       <span>{status ? activeLabel : inactiveLabel}</span>
@@ -17,8 +16,7 @@ const ToggleSwitch = ({ status, setStatus, activeLabel, inactiveLabel }: Props) 
         type="checkbox"
         checked={status}
         onChange={event => setStatus(event.target.checked)}
-      />
-      <Switch />
+      /><Switch />
     </Label>
   );
 };
