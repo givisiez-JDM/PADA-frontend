@@ -8,7 +8,8 @@ import { AddButton, BoxButton, ChangeButtom, Dosage, FaseProgress, FinalButton, 
 
 const FaseDeTratamento = () => {
   const { id } = useParams();
-  const patient: PatientType = { birthDate: '', email: '', id: String(id), name: 'Teste', photo: '', telephone: '' }
+  // TODO retirar mock 'patient'
+  const patient: PatientType = { birthDate: '', email: '', id: String(id), name: 'Teste', photo: '', telephone: '' };
   const [modal, setModal] = useState(false);
 
   return (
