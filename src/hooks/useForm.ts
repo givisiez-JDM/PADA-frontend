@@ -8,14 +8,7 @@ import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 export const formLoginValidate = z.object({
   email: z.string().min(5, "Preencha um valor").email("Email inválido"),
 
-  password: z
-    .string()
-    .min(8, "Sua senha deve ter 8 caracteres")
-    // eslint-disable-next-line no-useless-escape
-    .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
-      message:
-        "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
-    }),
+  password: z.string().min(8, "Sua senha deve ter 8 caracteres"),
 });
 
 export const useLogin = () => {
