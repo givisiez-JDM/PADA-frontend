@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
 import { UserRequest } from "../../requests/UserRequest";
 import { useData } from "../../global/UserContext";
@@ -11,6 +11,7 @@ import { BoxAddPacient, Button, Logo, Main, Middle, PacientList, SectionDoctor, 
 
 const MenuMedico = () => {
   const userRequest = new UserRequest();
+  const navigate = useNavigate()
   const patients = useAxios();
   const { userId, getProfile, data, setPatientId } = useData();
 
@@ -34,9 +35,9 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <Link to={`/paciente/tratamento/${patient.id}`} key={patient.id}>
-        <li>{patient.name}</li>
-      </Link>
+      <li onClick={() => setPatient(patient.id)} key={patient.id}>
+        {patient.name}
+      </li>
     );
   });
 
