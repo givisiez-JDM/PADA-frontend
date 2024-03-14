@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { z as zod } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useData } from "../global/UserContext";
 import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
 export const formLoginValidate = z.object({
-  email: z.string().min(5, "Preencha um valor").email("Email inválido"),
+  email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
 
-  password: z.string().min(8, "Sua senha deve ter 8 caracteres"),
+  password: zod.string().min(8, "Sua senha deve ter 8 caracteres"),
 });
 
 export const useLogin = () => {
@@ -42,12 +42,12 @@ export const useLogin = () => {
   };
 };
 
-export const formValidateSignup = z
+export const formValidateSignup = zod
   .object({
-    name: z.string().min(5, "Informe um nome válido"),
+    name: zod.string().min(5, "Informe um nome válido"),
 
-    email: z.string().min(5, "Preencha um valor").email("Email inválido"),
-    password: z
+    email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
+    password: zod
       .string()
       .min(8, "Sua senha deve ter 8 caracteres")
       // eslint-disable-next-line no-useless-escape
@@ -56,7 +56,7 @@ export const formValidateSignup = z
           "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
       }),
 
-    confirmPassword: z.string(),
+    confirmPassword: zod.string(),
   })
   .refine((fields) => fields.password === fields.confirmPassword, {
     path: ["confirmPassword"],
