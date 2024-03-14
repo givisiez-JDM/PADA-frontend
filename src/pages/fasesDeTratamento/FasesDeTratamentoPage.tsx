@@ -25,15 +25,15 @@ const faseOne = zod.object({
   active: zod.boolean(),
   startTreatment: zod.string().min(10, 'Data inválida'),
   endTreatment: zod.string().min(10, 'Data inválida'),
-  frequency: zod.array(zod.object({ frequency: zod.string() })),
-  dosage: zod.array(zod.object(
+  frequencies: zod.array(zod.object({ frequency: zod.string() })),
+  dosages: zod.array(zod.object(
     { dosage: zod.string() })),
 });
 
 type RegisterFaseOne = zod.infer<typeof faseOne>;
 
-const frequency: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
-const dosage: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
+const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
+const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
 
@@ -46,15 +46,17 @@ const FasesDeTratamento = () => {
   } = useForm<RegisterFaseOne>({
     resolver: zodResolver(faseOne),
     defaultValues: {
-      frequency: [{ frequency: ' cada 7 dias' },
-      { frequency: 'cada 3 semanas' },
-      { frequency: 'cada 2 semanas' },
-      { frequency: 'A cada 4 semanas' },
+      frequencies: [
+        { frequency: ' cada 7 dias' },
+        { frequency: 'cada 3 semanas' },
+        { frequency: 'cada 2 semanas' },
+        { frequency: 'A cada 4 semanas' },
       ],
-      dosage: [{ dosage: '1:10.000' },
-      { dosage: '1:100' },
-      { dosage: '1:1.000' },
-      { dosage: '1:10' },
+      dosages: [
+        { dosage: '1:10.000' },
+        { dosage: '1:100' },
+        { dosage: '1:1.000' },
+        { dosage: '1:10' },
       ]
     }
   });
@@ -86,13 +88,13 @@ const FasesDeTratamento = () => {
             Periodicidade do Tratamento
           </Title>
           <ConteinerCheckBox>
-            {frequency.map(frequency => (
+            {frequencies.map(frequency => (
               <ContainerCheckbox key={frequency}>
                 <div className="custom-checkbox" >
                   <input id={frequency} className="checkbox"
                     type="radio"
                     value={frequency}
-                    {...register('frequency')}
+                    {...register('frequencies')}
                   />
                   <label htmlFor={frequency}>{frequency}</label>
                 </div>
@@ -105,13 +107,13 @@ const FasesDeTratamento = () => {
             Dosagem do Medicamento
           </Title>
           <ConteinerCheckBox>
-            {dosage.map(dosage => (
+            {dosages.map(dosage => (
               <ContainerCheckbox key={dosage}>
                 <div className="custom-checkbox" >
                   <input id={dosage} className="checkbox"
                     type="radio"
                     value={dosage}
-                    {...register('dosage')}
+                    {...register('dosages')}
                   />
                   <label htmlFor={dosage}>{dosage}</label>
                 </div>
