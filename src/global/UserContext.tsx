@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserRequest } from "../requests/UserRequest";
 import { PatientType } from "../types/PatientTypes";
-import { PhaseType, TreatmentType } from "../types/TreatmentTypes";
+import { PhaseType, TreatmentType, VaccineType } from "../types/TreatmentTypes";
 
 type GlobalContextProps = {
   getToken: () => string;
@@ -18,18 +18,21 @@ type GlobalContextProps = {
   getProfile: any;
   userLogout: any;
   patientList: PatientType[];
-  getPatientList: () => void
-  patientId: string
-  setPatientId: Dispatch<React.SetStateAction<string>>
+  getPatientList: () => void;
+  patientId: string;
+  setPatientId: Dispatch<React.SetStateAction<string>>;
   patient: PatientType | null;
-  getPatient: () => void
-  treatmentId: string
-  setTreatmentId: Dispatch<React.SetStateAction<string>>
+  getPatient: () => void;
+  treatmentId: string;
+  setTreatmentId: Dispatch<React.SetStateAction<string>>;
   treatment: TreatmentType | null;
-  getTreatment: () => void
-  phaseList: PhaseType[]
-  getPhaseList: () => void
-
+  getTreatment: () => void;
+  phaseList: PhaseType[];
+  getPhaseList: () => void;
+  phaseId: string;
+  setPhaseId: Dispatch<React.SetStateAction<string>>;
+  getVaccineList: () => void;
+  vaccineList: VaccineType[];
 };
 
 type GlobalStorageProps = {
@@ -62,6 +65,8 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
   const [treatmentId, setTreatmentId] = useState<string>("");
   const [treatment, setTreatment] = useState<TreatmentType | null>(null);
   const [phaseList, setPhaseList] = useState<PhaseType[]>([]);
+  const [phaseId, setPhaseId] = useState<string>("");
+  const [vaccineList, setVaccineList] = useState<VaccineType[]>([]);
 
   const navigate = useNavigate();
 
@@ -234,6 +239,25 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     }
   }
 
+  const getVaccineList = async () => {
+    try {
+      setError(null);
+      setLoading(true);
+
+      const token = getToken();
+      const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(phaseId, token);
+
+      const req = await axios.get(url, { headers });
+
+      setVaccineList(req.data);
+
+    } catch (err: any) {
+      setVaccineList([]);
+      setError(err.response.data.error);
+      setLoading(false);
+    }
+  }
+
   const userLogout = () => {
     setData(null);
     setPatientList([]);
@@ -279,6 +303,10 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         getTreatment,
         phaseList,
         getPhaseList,
+        phaseId,
+        setPhaseId,
+        getVaccineList,
+        vaccineList,
       }}
     >
       {children}

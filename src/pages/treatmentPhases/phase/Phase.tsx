@@ -5,21 +5,13 @@ import { formatDate } from "../../../utils/DateFns";
 import { PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
 
 interface Props {
-  phase: PhaseType
+  phase: PhaseType,
+  progress: number
 }
 
 
-const Phase = ({ phase }: Props) => {
-  const getProgress = () => {
-    const start = new Date(phase.startTreatment)
-    const end = new Date(phase.endTreatment)
-    const today = new Date()
-    if (today < start) return 0
-    if (today > end) return 1
-    const total = end.getTime() - start.getTime()
-    const progress = today.getTime() - start.getTime()
-    return parseFloat((progress / total).toFixed(2));
-  }
+const Phase = ({ phase, progress }: Props) => {
+
   return (
     <>
       <PhaseField>
@@ -39,7 +31,7 @@ const Phase = ({ phase }: Props) => {
       </PhaseField>
 
       <PhaseContent>
-        <PhaseProgress value={getProgress()}>
+        <PhaseProgress value={progress}>
           <Button size="small">Alterar</Button>
         </PhaseProgress>
       </PhaseContent>

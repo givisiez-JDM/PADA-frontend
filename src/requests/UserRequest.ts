@@ -79,6 +79,15 @@ export class UserRequest {
     };
   };
 
+  PUT_PHASE_STATUS_BY_ID = (id: string | undefined, token: string | null) => {
+    return {
+      url: `${BASE_URL}/phases/status/${id}`,
+      headers: {
+        Authorization: token,
+      },
+    };
+  };
+
   GET_VACCINES_BY_PHASES_ID = (
     id: string | undefined,
     token: string | null
