@@ -16,7 +16,8 @@ const ToggleSwitch = ({ status, setStatus, activeLabel, inactiveLabel }: Props) 
         type="checkbox"
         checked={status}
         onChange={event => setStatus(event.target.checked)}
-      /><Switch />
+      />
+      <Switch />
     </Label>
   );
 };
