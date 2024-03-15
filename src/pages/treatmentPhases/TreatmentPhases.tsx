@@ -66,12 +66,15 @@ const TreatmentPhases = () => {
   }
 
   useEffect(() => {
-    if (idPatient) setPatientId(idPatient);
+    if (idPatient && idPatient !== patientId)
+      setPatientId(idPatient);
   }, [idPatient]);
 
   useEffect(() => {
-    getPatient();
-    getTreatment();
+    if (patientId) {
+      getPatient();
+      getTreatment();
+    }
   }, [patientId]);
 
   useEffect(() => {
