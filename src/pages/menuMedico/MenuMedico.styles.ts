@@ -4,17 +4,9 @@ import styled from "styled-components"
 export const Main = styled.main`
     display: flex;
     height: 100vh;
-    font-family: 'Poppins', sans-serif;
     flex-direction: column;
 `
-export const Header = styled.header`
-    display: flex;
-    width: 100%;
-    background-color: red;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #4C7ABB;
-`
+
 export const Logo = styled.img`
     display: flex;
     margin-left: 6rem;
@@ -22,13 +14,13 @@ export const Logo = styled.img`
     padding-top: 1rem ;
     padding-bottom: 1rem;
 `
+
 export const SectionDoctor = styled.div`
     display: flex;
     margin-right: 6rem;
     color: white;
     font-size: larger;
     
-
     img {
        margin-left: 1rem;
        height: 1.3rem;
@@ -48,9 +40,9 @@ export const Button = styled.button`
     border-radius: 20px;
     width: 10rem;
     height: 2rem;
-    font-weight: 500;
-    
+    font-weight: 500;  
 `
+
 export const PacientList = styled.div`
     height: 30rem;
     width: 12rem;
@@ -58,7 +50,6 @@ export const PacientList = styled.div`
     display: flex;
     flex-direction: column;
     
-
     h1{
         font-size: large;
         position: absolute;
@@ -80,11 +71,11 @@ export const PacientList = styled.div`
             background-color: #b1b1b1;
         }
     }
-    
 `
 
 export const TitlePacient = styled.ul`
     padding-top: 3rem;
+
     li{
         margin-bottom: 1.2rem;
         font-weight: 500;
@@ -98,9 +89,7 @@ export const TitlePacient = styled.ul`
             background-color: #4C7ABB;
             
         }
-    }
-     
-    
+    }  
 `
 
 export const Middle = styled.section`

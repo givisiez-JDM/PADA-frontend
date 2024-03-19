@@ -1,67 +1,81 @@
 import styled from "styled-components";
 
-export const FaseContentContainer = styled.div`
+export const PhaseForm = styled.form`
   display: flex;
   flex-direction: column;
-  color: #334c76;
-  max-width: 25vw;
-  margin-top: 2vh;
-  margin-left: 5vw;
-  padding-bottom: 1rem;
+  gap: 1rem;
+  margin: 2rem;
+  color: ${(props) => props.theme.colors.variant3};
+`;
 
- .faseOne{
-  border-left:4px solid ${(props) => props.theme['variant-2']} ;
-  border-radius: 2px;
-  padding-left: 0.875rem;
-  margin-bottom: 1.1rem;
- }
+export const PhaseTitle = styled.p`
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  &::before {
+    content: ".";
+    color: ${(props) => props.theme.colors.variant2};
+    border-radius: 1rem;
+    margin-right: 0.9rem;
+    background-color: ${(props) => props.theme.colors.variant2};
+  }
 `;
 
 export const ConteinerTreatment = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  color: #334c76;
-  margin-bottom: 2rem;
-`;
-
-export const PeriodicidadeTratamento = styled.div`
-
-
-`;
-
-export const DosagemMedicamento = styled.div`
-
 `;
 
 export const Title = styled.h3`
-font-family: sans-serif;
-font-weight: bold;
-font-size: 1.125rem;
-color: ${(props) => props.theme['keyboard']};
-margin-top: 1rem;
-margin-bottom: 1rem;
-
-`;
-
-export const Inativa = styled.div`
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 1.125rem;
+  color: ${(props) => props.theme.colors.keyboard};
 `;
 
 export const ConteinerCheckBox = styled.div`
- 
- display: grid;
- grid-template-columns: 1fr 1fr;
- margin-top: 1rem;
- gap: 0.563rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+  gap: 0.563rem;
+`;
 
-`
+export const ContainerCheckbox = styled.div`
+  .checkbox {
+    display: none;
+  }
+  .checkbox + label:before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+    border: 2px solid ${(props) => props.theme.colors.variant3};
+    background: ${(props) => props.theme.colors.buttonOff};
+  }
+
+  .custom-checkbox input:checked + label:before {
+    background-image: url("../../../src/assets/Vector.png");
+    background-position: center;
+  }
+`;
 
 export const ButtonLocal = styled.div`
-position: relative;
-left: 50rem;
-width: 12rem;
+  margin-top: 40px;
+`;
 
-`
+export const DateInput = styled.input`
+  background-color: ${(props) => props.theme.colors.background};
+  width: 12rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  border: 1px solid ${(props) => props.theme.colors.variant3};
+  color: ${(props) => props.theme.colors.variant3};
+`;
+
+export const PhaseField = styled.div``;
+
+export const PhaseStatus = styled.div`
+  width: 13rem;
+`;

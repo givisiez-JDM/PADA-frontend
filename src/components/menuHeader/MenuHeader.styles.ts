@@ -1,15 +1,17 @@
 import styled from "styled-components";
 
-export const StyledHeadDiv = styled.div`
-  background-color: #4c7abb;
-  color: #fff;
+export const HeadDiv = styled.header`
+  padding: 1rem 0;
+  background-color: ${props => props.theme.colors.variant2};
+  color: ${props => props.theme.colors.white};
   width: 100%;
-  height: 20%;
+  height: 130px;
   border-radius: 0 0 1rem 1rem;
 `;
 
-export const StyledHeaderTitle = styled.h1`
-  margin: 2rem 0 0 2rem;
-  font-weight: 500;
-  font-size: 2rem;
+export const HeaderContent = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 2rem;
 `;
