@@ -128,13 +128,15 @@ const TreatmentPhases = () => {
           <Title>Fases</Title>
           {getPhases()}
           <BoxButton className={hasPhases() ? '' : 'centered'}>
-            {hasPhases() &&
+            {
+              hasPhases() &&
               <Button
                 disabled={!phaseSelected?.active}
                 onClick={finishPhase}
               >
                 Finalizar Fase
-              </Button>}
+              </Button>
+            }
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
