@@ -7,7 +7,7 @@ import { PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
 
 interface Props {
   phase: PhaseType,
-  progress: number
+  progress: number,
 }
 
 const Phase = ({ phase, progress }: Props) => {
