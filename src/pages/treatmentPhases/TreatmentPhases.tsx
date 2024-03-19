@@ -1,21 +1,16 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useAxios from "../../hooks/useAxios";
-
 import { useData } from "../../global/UserContext";
 import { UserRequest } from "../../requests/UserRequest";
 import { PhaseType, VaccineType } from "../../types/TreatmentTypes";
-
 import IconArrowUp from '../../assets/arrow-up.svg';
 import IconArrowDown from '../../assets/arrow-down.svg';
-
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import Button from "../../components/button/Button";
 import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
 import Phase from "./phase/Phase";
-
 import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from "./TreatmentPhases.styles";
-
 
 const TreatmentPhases = () => {
   const { id: idPatient } = useParams();
@@ -32,7 +27,7 @@ const TreatmentPhases = () => {
     setPhaseId,
     phaseId,
     getVaccineList,
-    vaccineList
+    vaccineList,
   } = useData();
 
   const userRequest = new UserRequest();
@@ -43,15 +38,15 @@ const TreatmentPhases = () => {
   const [phaseProgress, setPhaseProgress] = useState<number>(0);
 
   const selectPhase = (phase: PhaseType) => {
-    const newPhase = phase === phaseSelected ? null : phase
+    const newPhase = phase === phaseSelected ? null : phase;
     setPhaseSelected(newPhase);
     setPhaseId(newPhase ? newPhase.id : '');
-  }
+  };
 
-  const hasPhases = () => phaseList.length > 0
+  const hasPhases = () => phaseList.length > 0;
 
   const finishPhase = () => {
-    if (!phaseSelected) return
+    if (!phaseSelected) return;
 
     const token = getToken();
     if (confirm('Tem certeza que deseja finalizar essa fase?')) {
@@ -59,11 +54,12 @@ const TreatmentPhases = () => {
 
       const body = {
         phaseNumber: phaseSelected,
-        active: false
+        active: false,
       };
-      phaseReq.put(url, body, { headers })
+
+      phaseReq.put(url, body, { headers });
     }
-  }
+  };
 
   useEffect(() => {
     if (idPatient && idPatient !== patientId)
@@ -86,14 +82,30 @@ const TreatmentPhases = () => {
   }, [phaseId]);
 
   useEffect(() => {
-    const total = vaccineList.length
+    const total = vaccineList.length;
     const applied = vaccineList.reduce((total: number, vaccine: VaccineType) => {
-      if (vaccine.status !== 'agendado')
-        return total + 1
-      return total
-    }, 0)
-    setPhaseProgress(applied / total)
+      if (vaccine.status !== 'agendado') {
+        return total + 1;
+      }
+      return total;
+    }, 0);
+    setPhaseProgress(applied / total);
   }, [vaccineList]);
+
+  const getArrow = (phaseNumber: number) => {
+    if (phaseSelected?.phaseNumber === phaseNumber) {
+      return IconArrowUp;
+    }
+    return IconArrowDown;
+  };
+
+  const showPhase = (phase: PhaseType) => {
+    if (phaseSelected?.phaseNumber === phase.phaseNumber) {
+      return (
+        <Phase phase={phase} progress={phaseProgress} />
+      );
+    }
+  };
 
   const getPhases = () => {
     return phaseList
@@ -102,12 +114,12 @@ const TreatmentPhases = () => {
         <PhaseBlock key={phase.phaseNumber}>
           <PhaseTitle onClick={() => selectPhase(phase)}>
             Fase {phase.phaseNumber}
-            <img src={phaseSelected?.phaseNumber === phase.phaseNumber ? IconArrowUp : IconArrowDown} alt="Mostrar conteúdo" />
+            <img src={getArrow(phase.phaseNumber)} alt="Mostrar conteúdo" />
           </PhaseTitle>
-          {phaseSelected?.phaseNumber === phase.phaseNumber && <Phase phase={phase} progress={phaseProgress} />}
+          {showPhase(phase)}
         </PhaseBlock>
-      )
-  }
+      );
+  };
 
   return (
     <Main>
@@ -120,7 +132,9 @@ const TreatmentPhases = () => {
               <Button
                 disabled={!phaseSelected?.active}
                 onClick={finishPhase}
-              >Finalizar Fase</Button>}
+              >
+                Finalizar Fase
+              </Button>}
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
