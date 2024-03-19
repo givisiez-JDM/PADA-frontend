@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, FC } from 'react';
 import { ButtonBase } from './Button.styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  size?: 'small' | 'normal' | 'large'
+  size?: 'small' | 'normal' | 'large';
 }
 
 const Button: FC<ButtonProps> = ({ size, ...props }) => {

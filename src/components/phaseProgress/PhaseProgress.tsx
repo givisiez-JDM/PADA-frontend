@@ -2,7 +2,7 @@ import { FC, HTMLProps } from "react";
 import { Card, ProgressContent, Title } from "./PhaseProgress.styles";
 
 interface Props {
-  value: number
+  value: number;
 }
 
 const PhaseProgress: FC<Props & HTMLProps<HTMLDivElement>> = ({ value, children }) => {
@@ -16,6 +16,6 @@ const PhaseProgress: FC<Props & HTMLProps<HTMLDivElement>> = ({ value, children 
       {children}
     </Card>
   );
-}
+};
 
 export default PhaseProgress;

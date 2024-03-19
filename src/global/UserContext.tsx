@@ -1,4 +1,4 @@
-import React, { Dispatch, ReactNode, createContext, useEffect, useState } from "react";
+import React, { Dispatch, ReactNode, createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { UserRequest } from "../requests/UserRequest";
@@ -36,17 +36,17 @@ type GlobalContextProps = {
 };
 
 type GlobalStorageProps = {
-  children: ReactNode
-}
+  children: ReactNode;
+};
 
-export const GlobalContext = createContext<GlobalContextProps | undefined>(undefined)
+export const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
-const userRequest = new UserRequest()
+const userRequest = new UserRequest();
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useData = () => {
   const context = React.useContext(GlobalContext);
-  if (!context) throw new Error("useData precisa estar em DataContextProvider")
+  if (!context) throw new Error("useData precisa estar em DataContextProvider");
   return context;
 };
 
@@ -55,10 +55,8 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
   const [error, setError] = useState<any | null>(null);
   const [login, setLogin] = useState<boolean | null>(null);
   const [loading, setLoading] = useState<boolean | null>(null);
-  const [userId, setUserId] = useState<any | null>(null)
-
-
-  const [tokenState, setTokenState] = useState('');
+  const [userId, setUserId] = useState<any | null>(null);
+  const [tokenState, setTokenState] = useState("");
   const [patientList, setPatientList] = useState<PatientType[]>([]);
   const [patientId, setPatientId] = useState<string>("");
   const [patient, setPatient] = useState<PatientType | null>(null);
@@ -80,12 +78,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       }
     }
     return "";
-  }
+  };
 
   const setToken = (newToken: string) => {
     setTokenState(newToken);
     window.localStorage.setItem("token", newToken);
-  }
+  };
 
   const userLogin = async (email: string, password: string) => {
     try {
@@ -100,13 +98,14 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       const { url } = userRequest.USER_LOGIN();
       const req = await axios.post(url, body);
 
-      setToken(req.data.token)
-      window.localStorage.setItem('id', req.data.user.id)
+      setToken(req.data.token);
+      window.localStorage.setItem('id', req.data.user.id);
 
-      setUserId(req.data.user.id)
+      setUserId(req.data.user.id);
 
       setLogin(true);
       navigate('/menu-medico');
+
     } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
@@ -127,19 +126,19 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
         name,
         email,
         password
-      }
+      };
 
       const { url } = userRequest.USER_SIGNUP(body);
       const signup = await axios.post(url, body);
 
       setData(signup.status);
+
     } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
       setLoading(false);
-
     }
-  }
+  };
 
   const getProfile = async (userId: string) => {
     try {
@@ -147,17 +146,16 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setLoading(true);
 
       const token = getToken();
-      const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token)
+      const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setData(req.data)
+      setData(req.data);
 
     } catch (err: any) {
       setData(null);
       setError(err.response.data.error);
       setLoading(false);
-
     }
   }
 
@@ -273,9 +271,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
     setLogin(false);
     navigate('/');
-
   }
-
 
   return (
     <GlobalContext.Provider
@@ -311,7 +307,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     >
       {children}
     </GlobalContext.Provider>
-  )
+  );
 };
 
 export default UserContext;
