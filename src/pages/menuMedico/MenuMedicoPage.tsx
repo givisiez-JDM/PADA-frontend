@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import logo from "../../assets/logo.png";
-import { UserRequest } from "../../Requests/UserRequest";
-import { BoxAddPacient, Button, Header, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient} from "./MenuMedico.styles";
-import { NavLink, useNavigate } from "react-router-dom";
-import useAxios from "../../Hooks/useAxios";
-import { useData } from "../../Global/UserContext";
-import ModalDoctor from "../../components/ModalDoctor/ModalDoctor";
-import whiteArrow from "../../assets/white-arrow.svg";
-=======
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useAxios from "../../hooks/useAxios";
@@ -19,7 +8,6 @@ import IconArrow from "../../assets/white-arrow.svg";
 import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
 import MenuHeader from "../../components/menuHeader/MenuHeader";
 import { BoxAddPacient, Button, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient } from "./MenuMedico.styles";
->>>>>>> eed81b08c5cd90fb795bd2759bf7ef8c30460528
 
 const MenuMedico = () => {
   const userRequest = new UserRequest();
@@ -60,15 +48,9 @@ const MenuMedico = () => {
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
         <Middle>
           <BoxAddPacient>
-<<<<<<< HEAD
-          <NavLink to="/cadastro-paciente">
-            <Button>Cadastrar Paciente</Button>
-          </NavLink>
-=======
             <Link to="/cadastro-paciente">
               <Button>Cadastrar Paciente</Button>
             </Link>
->>>>>>> eed81b08c5cd90fb795bd2759bf7ef8c30460528
           </BoxAddPacient>
           <PacientList>
             <h1>Pacientes</h1>
