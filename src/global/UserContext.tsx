@@ -157,7 +157,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const getPatientList = async () => {
     try {
@@ -176,7 +176,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const getPatient = async () => {
     try {
@@ -195,7 +195,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const getTreatment = async () => {
     try {
@@ -216,7 +216,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const getPhaseList = async () => {
     try {
@@ -235,7 +235,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const getVaccineList = async () => {
     try {
@@ -254,7 +254,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setError(err.response.data.error);
       setLoading(false);
     }
-  }
+  };
 
   const userLogout = () => {
     setData(null);
@@ -271,7 +271,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
 
     setLogin(false);
     navigate('/');
-  }
+  };
 
   return (
     <GlobalContext.Provider
