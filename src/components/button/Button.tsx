@@ -12,4 +12,4 @@ const Button: FC<ButtonProps> = ({ size, ...props }) => {
   );
 };
 
-export default Button
+export default Button;
