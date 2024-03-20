@@ -99,12 +99,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       const req = await axios.post(url, body);
 
       setToken(req.data.token);
-      window.localStorage.setItem('id', req.data.user.id);
+      window.localStorage.setItem("id", req.data.user.id);
 
       setUserId(req.data.user.id);
 
       setLogin(true);
-      navigate('/menu-medico');
+      navigate("/menu-medico");
 
     } catch (err: any) {
       setData(null);
@@ -265,12 +265,12 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     setTreatmentId("");
     setPhaseList([]);
 
-    setToken('');
+    setToken("");
     window.localStorage.removeItem('id');
     window.localStorage.removeItem('password');
 
     setLogin(false);
-    navigate('/');
+    navigate("/");
   };
 
   return (
