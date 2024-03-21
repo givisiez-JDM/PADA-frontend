@@ -266,8 +266,8 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     setPhaseList([]);
 
     setToken("");
-    window.localStorage.removeItem('id');
-    window.localStorage.removeItem('password');
+    window.localStorage.removeItem("id");
+    window.localStorage.removeItem("password");
 
     setLogin(false);
     navigate("/");
