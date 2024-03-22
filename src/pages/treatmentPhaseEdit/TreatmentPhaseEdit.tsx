@@ -17,7 +17,7 @@ import {
   PhaseStatus,
   PhaseTitle,
   Title,
-} from "./FasesDeTratamentoPage.styles";
+} from "./TreatmentPhaseEdit.styles";
 
 const faseOne = zod.object({
   id: zod.string(),
@@ -37,7 +37,7 @@ const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
 
-const FasesDeTratamento = () => {
+const TreatmentPhaseEdit = () => {
   const [checked, setChecked] = useState(false);
   const {
     register,
@@ -141,4 +141,4 @@ const FasesDeTratamento = () => {
   );
 };
 
-export default FasesDeTratamento;
+export default TreatmentPhaseEdit;
