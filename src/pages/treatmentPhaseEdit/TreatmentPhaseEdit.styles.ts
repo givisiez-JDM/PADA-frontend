@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const PhaseForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   margin: 2rem;
   color: ${(props) => props.theme.colors.variant3};
 `;
@@ -21,11 +21,7 @@ export const PhaseTitle = styled.p`
   }
 `;
 
-export const ConteinerTreatment = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
+export const PhaseField = styled.div``;
 
 export const Title = styled.h3`
   font-weight: bold;
@@ -33,36 +29,11 @@ export const Title = styled.h3`
   color: ${(props) => props.theme.colors.keyboard};
 `;
 
-export const ConteinerCheckBox = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+export const DateContainer = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 1rem;
-  gap: 0.563rem;
-`;
-
-export const ContainerCheckbox = styled.div`
-  .checkbox {
-    display: none;
-  }
-  .checkbox + label:before {
-    content: "";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 0.3rem;
-    margin-right: 0.5rem;
-    border: 2px solid ${(props) => props.theme.colors.variant3};
-    background: ${(props) => props.theme.colors.buttonOff};
-  }
-
-  .custom-checkbox input:checked + label:before {
-    background-image: url("../../../src/assets/Vector.png");
-    background-position: center;
-  }
-`;
-
-export const ButtonLocal = styled.div`
-  margin-top: 40px;
+  gap: 0.5rem;
 `;
 
 export const DateInput = styled.input`
@@ -74,7 +45,34 @@ export const DateInput = styled.input`
   color: ${(props) => props.theme.colors.variant3};
 `;
 
-export const PhaseField = styled.div``;
+export const CheckBoxContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+  gap: 0.563rem;
+`;
+
+export const CheckboxField = styled.div`
+  .checkbox {
+    display: none;
+  }
+
+  .checkbox + label:before {
+    content: "";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+    border: 2px solid ${(props) => props.theme.colors.variant3};
+    background: ${(props) => props.theme.colors.buttonOff};
+  }
+
+  .checkbox:checked + label:before {
+    background-image: url("../../../src/assets/Vector.png");
+    background-position: center;
+  }
+`;
 
 export const PhaseStatus = styled.div`
   width: 13rem;

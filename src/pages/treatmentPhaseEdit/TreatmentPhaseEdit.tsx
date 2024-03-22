@@ -1,16 +1,12 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z as zod } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect, useState } from "react";
 import Button from "../../components/button/Button";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
 import Switch from "../../components/switch/Switch";
 import {
-  ButtonLocal,
-  ContainerCheckbox,
-  ConteinerCheckBox,
-  ConteinerTreatment,
+  CheckboxField,
+  CheckBoxContainer,
+  DateContainer,
   DateInput,
   PhaseField,
   PhaseForm,
@@ -18,124 +14,126 @@ import {
   PhaseTitle,
   Title,
 } from "./TreatmentPhaseEdit.styles";
+import { PhaseType } from "../../types/TreatmentTypes";
 
-const faseOne = zod.object({
-  id: zod.string(),
-  phaseNumber: zod.number(),
-  active: zod.boolean(),
-  startTreatment: zod.string().min(10, 'Data inválida'),
-  endTreatment: zod.string().min(10, 'Data inválida'),
-  frequencies: zod.array(zod.object({ frequency: zod.string() })),
-  dosages: zod.array(zod.object(
-    { dosage: zod.string() })),
-});
-
-type RegisterFaseOne = zod.infer<typeof faseOne>;
-
+// TODO trocar para frequencyType e DosageType
 const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
-const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
+const dosages: Array<string> = ['1:10.000', '1:100', '1:1.000', '1:10'];
 
+// TODO retirar mocks e coocar pagina como componente de treatmentPhase
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
+const phase: PhaseType = { active: true, frequency: 'cada 7 dias', endTreatment: '2024-04-30', dosage: '1:10.000', id: 1, phaseNumber: 1, startTreatment: '2024-03-15' }
 
 const TreatmentPhaseEdit = () => {
-  const [checked, setChecked] = useState(false);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<RegisterFaseOne>({
-    resolver: zodResolver(faseOne),
-    defaultValues: {
-      frequencies: [
-        { frequency: ' cada 7 dias' },
-        { frequency: 'cada 3 semanas' },
-        { frequency: 'cada 2 semanas' },
-        { frequency: 'A cada 4 semanas' },
-      ],
-      dosages: [
-        { dosage: '1:10.000' },
-        { dosage: '1:100' },
-        { dosage: '1:1.000' },
-        { dosage: '1:10' },
-      ]
-    }
-  });
-
+  const [phaseActive, setPhaseActive] = useState(phase.active);
+  const [phaseEdit, setPhaseEdit] = useState<PhaseType>(phase);
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log(phaseEdit);
   };
+
+  const handleChange = (name: string, value: string | number) => {
+    setPhaseEdit({
+      ...phaseEdit,
+      [name]: value,
+    })
+  }
+
+  // TODO remover console eincluir servico
+  useEffect(() => {
+    console.log(phaseEdit);
+  }, [phaseEdit]);
+
+  useEffect(() => {
+    setPhaseEdit({
+      ...phaseEdit,
+      active: phaseActive,
+    })
+  }, [phaseActive]);
 
   return (
     <DefaultPatientPage patient={patient}>
       <PhaseForm onSubmit={event => handleFormSubmit(event)}>
         <PhaseTitle>Fase {2}</PhaseTitle>
-        <ConteinerTreatment>
-          <Title>
-            Duração do Tratamento
-          </Title>
-          <p>Início</p>
-          <DateInput type="date" style={{ width: "12em" }}
-            {...register('startTreatment')} />
-          {errors.startTreatment && <span>{errors.startTreatment.message}</span>}
-          <p>Fim</p>
-          <DateInput type="date" style={{ width: "12em" }}
-            {...register('endTreatment')} />
-          {errors.endTreatment && <span>{errors.endTreatment.message}</span>}
-        </ConteinerTreatment>
+        <PhaseField>
+          <Title>Duração do Tratamento</Title>
+          <DateContainer>
+            <p>Início</p>
+            <DateInput
+              type="date"
+              value={phaseEdit.startTreatment}
+              onChange={event => handleChange('startTreatment', event.target.value)}
+            />
+          </DateContainer>
+          <DateContainer>
+            <p>Fim</p>
+            <DateInput
+              type="date"
+              value={phaseEdit.endTreatment}
+              onChange={event => handleChange('endTreatment', event.target.value)}
+            />
+          </DateContainer>
+        </PhaseField>
         <PhaseField>
           <Title>
             Periodicidade do Tratamento
           </Title>
-          <ConteinerCheckBox>
+          <CheckBoxContainer>
             {frequencies.map(frequency => (
-              <ContainerCheckbox key={frequency}>
-                <div className="custom-checkbox" >
-                  <input id={frequency} className="checkbox"
-                    type="radio"
-                    value={frequency}
-                    {...register('frequencies')}
-                  />
-                  <label htmlFor={frequency}>{frequency}</label>
-                </div>
-              </ ContainerCheckbox>
+              <CheckboxField key={frequency}>
+                <input
+                  type="radio"
+                  id={frequency}
+                  name="frequency"
+                  className="checkbox"
+                  value={frequency}
+                  checked={frequency === phaseEdit.frequency}
+                  onChange={event => handleChange('frequency', event.target.value)}
+                />
+                <label htmlFor={frequency}>{frequency}</label>
+              </ CheckboxField>
             ))}
-          </ConteinerCheckBox>
+          </CheckBoxContainer>
         </PhaseField>
         <PhaseField>
           <Title>
             Dosagem do Medicamento
           </Title>
-          <ConteinerCheckBox>
+          <CheckBoxContainer>
             {dosages.map(dosage => (
-              <ContainerCheckbox key={dosage}>
-                <div className="custom-checkbox" >
-                  <input id={dosage} className="checkbox"
-                    type="radio"
-                    value={dosage}
-                    {...register('dosages')}
-                  />
-                  <label htmlFor={dosage}>{dosage}</label>
-                </div>
-              </ ContainerCheckbox>
+              <CheckboxField key={dosage}>
+                <input
+                  type="radio"
+                  id={dosage}
+                  name="dosage"
+                  className="checkbox"
+                  value={dosage}
+                  checked={dosage === phaseEdit.dosage}
+                  onChange={event => handleChange('dosage', event.target.value)}
+                />
+                <label htmlFor={dosage}>{dosage}</label>
+              </ CheckboxField>
             ))}
-          </ConteinerCheckBox>
+          </CheckBoxContainer>
         </PhaseField>
         <PhaseField>
           <PhaseStatus>
             <Switch
               activeLabel="Ativo"
               inactiveLabel="Inativo"
-              status={checked}
-              setStatus={setChecked}
+              status={phaseActive}
+              setStatus={setPhaseActive}
             />
           </PhaseStatus>
         </PhaseField>
-        <ButtonLocal>
-          <Button type="submit">
-            Enviar
-          </Button>
-        </ButtonLocal>
+        {/*
+         TODO colocar erros do backend
+         {errors.endTreatment && <span>{errors.endTreatment.message}</span>} 
+         */}
+        <Button type="submit">
+          Salvar
+        </Button>
       </PhaseForm>
     </DefaultPatientPage>
   );
