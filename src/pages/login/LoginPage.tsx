@@ -4,15 +4,18 @@ import Input from "../../components/input/Input";
 import Button from "../../components/button/Button";
 import iconPerson from "../../assets/icon-person.svg";
 import key from "../../assets/key.svg";
+import eyesOpen from "../../assets/eyes-open.svg";
+import eyesClosed from "../../assets/eyes-closed.svg";
 import { useLogin } from "../../hooks/useForm";
 import { useNavigate } from "react-router-dom";
-import { BottomWave, Box, Checkbox, ForgotPassword, Image, IncorrectUser, InputBox, Main, TopWave, } from "./LoginPage.styles";
+import { BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes, IncorrectUser, InputBox, Main, TopWave, } from "./LoginPage.styles";
 import { useData } from "../../global/UserContext";
 
 
 const Login = () => {
   const { onSubmit, errors, register, getValues } = useLogin();
   const [saveUser, setSaveUser] = React.useState(false)
+  const [visible, setVisible] = React.useState(false)
   const navigate = useNavigate();
 
   const { error } = useData()
@@ -52,11 +55,12 @@ const Login = () => {
         <InputBox>
           <Image src={key} alt="icon person" />
           <Input
-            type="password"
+            type={visible ? "text" : "password"}
             placeholder="Senha"
             {...register("password")}
             error={errors.password?.message}
           />
+          <Eyes src={visible ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisible(!visible)} />
         </InputBox>
 
 
