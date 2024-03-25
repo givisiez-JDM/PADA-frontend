@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const PhaseForm = styled.form`
   display: flex;
   flex-direction: column;
+  align-items: start;
   gap: 2rem;
   margin: 2rem;
   color: ${(props) => props.theme.colors.variant3};
@@ -11,6 +12,7 @@ export const PhaseForm = styled.form`
 export const PhaseTitle = styled.p`
   font-size: 1.4rem;
   font-weight: 600;
+  color: ${(props) => props.theme.colors.keyboard};
 
   &::before {
     content: ".";
@@ -21,11 +23,13 @@ export const PhaseTitle = styled.p`
   }
 `;
 
-export const PhaseField = styled.div``;
+export const PhaseField = styled.div`
+  width: 100%;
+`;
 
 export const Title = styled.h3`
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 1.12rem;
   color: ${(props) => props.theme.colors.keyboard};
 `;
 
@@ -75,5 +79,8 @@ export const CheckboxField = styled.div`
 `;
 
 export const PhaseStatus = styled.div`
-  width: 13rem;
+  width: 8rem;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: ${(props) => props.theme.colors.keyboard};
 `;

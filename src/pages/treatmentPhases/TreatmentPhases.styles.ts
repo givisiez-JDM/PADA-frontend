@@ -18,6 +18,7 @@ export const Title = styled.h1`
   font-weight: 600;
   padding-bottom: 2rem;
   border-bottom: 3px solid ${(props) => props.theme.colors.separation};
+  color: ${(props) => props.theme.colors.keyboard};
 `;
 
 export const PhaseBlock = styled.section`
@@ -30,6 +31,7 @@ export const PhaseTitle = styled.h2`
   font-weight: 600;
   padding: 1rem 0;
   cursor: pointer;
+  color: ${(props) => props.theme.colors.keyboard};
 
   &::before {
     content: ".";

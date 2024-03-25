@@ -7,6 +7,7 @@ export const PhaseField = styled.div`
 export const PhaseSubtitle = styled.div`
   padding-bottom: 1.2rem;
   font-weight: 600;
+  color: ${(props) => props.theme.colors.keyboard};
 `;
 
 export const PhaseContent = styled.div`
@@ -14,4 +15,5 @@ export const PhaseContent = styled.div`
   gap: 1rem;
   align-items: center;
   padding-bottom: 1rem;
+  color: ${(props) => props.theme.colors.keyboard};
 `;

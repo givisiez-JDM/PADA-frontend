@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import Button from "../../../components/button/Button";
 import PhaseProgress from "../../../components/phaseProgress/PhaseProgress";
 import { PhaseType } from "../../../types/TreatmentTypes";
@@ -6,12 +5,12 @@ import { formatDate } from "../../../utils/DateFns";
 import { PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
 
 interface Props {
-  phase: PhaseType,
-  progress: number,
+  phase: PhaseType;
+  progress: number;
+  setPhase: React.Dispatch<React.SetStateAction<PhaseType | null>>;
 }
 
-const Phase = ({ phase, progress }: Props) => {
-  const navigate = useNavigate();
+const Phase = ({ phase, progress, setPhase }: Props) => {
 
   return (
     <>
@@ -31,7 +30,7 @@ const Phase = ({ phase, progress }: Props) => {
       <PhaseContent>
         <PhaseProgress value={progress}>
           <Button
-            onClick={() => navigate('/paciente/fase/edit')}
+            onClick={() => setPhase(phase)}
             size="small"
           >
             Alterar
