@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { UserRequest } from "../../requests/UserRequest";
-import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration} from "./PerfilPacientePage.styles";
+import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment, Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer, TreatmentDuration } from "./PerfilPacientePage.styles";
 import useAxios from "../../hooks/useAxios";
 import arrow from "../../assets/arrow.png";
 import Header from "../../components/patientHeader/PatientHeader";
@@ -40,22 +40,20 @@ const PerfilPaciente = () => {
   }, [treatmentId]);
 
   const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => (
-     <p key={allergie}>{allergie}</p>
+    <p key={allergie}>{allergie}</p>
   ));
 
   const treatmentPhaseMap = treatmentPhasesReq?.data && treatmentPhasesReq.data.map((treatment: any) => (
-     <TreatmentDuration key={treatment.id}>
-        <h1>Duração do tratamento</h1>
-        <p>Início: {formatDate(treatment.startTreatment)}</p>
-        <p>Fim: {formatDate(treatment.endTreatment)}</p>
-     </TreatmentDuration>
+    <TreatmentDuration key={treatment.id}>
+      <h1>Duração do tratamento</h1>
+      <p>Início: {formatDate(treatment.startTreatment)}</p>
+      <p>Fim: {formatDate(treatment.endTreatment)}</p>
+    </TreatmentDuration>
   ));
 
   return (
     <Main>
-      <Header>
-        <p>{useReq?.data?.name}</p>
-      </Header>
+      <Header patient={useReq?.data} />
       <Middle>
         {useReq?.data ? (
           <SidebarPatientPage patient={useReq.data} />
