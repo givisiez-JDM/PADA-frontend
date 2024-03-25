@@ -1,18 +1,16 @@
-import React from 'react'
-import { ButtonLogin } from './Button.styles';
+import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonBase } from './Button.styles';
 
-type ButtonProps = React.ComponentProps<'button'> & {
-  children?: React.ReactNode,
-  style?: React.CSSProperties;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  size?: 'small' | 'normal' | 'large';
 }
 
-const Button = ({ children }: ButtonProps) => {
+const Button: FC<ButtonProps> = ({ size, ...props }) => {
+  const className = size ?? 'normal';
   return (
-    <ButtonLogin
-    >
-      {children}
-    </ButtonLogin>
-  )
-}
+    <ButtonBase className={className} {...props} />
+  );
+};
 
-export default Button
+export default Button;
+

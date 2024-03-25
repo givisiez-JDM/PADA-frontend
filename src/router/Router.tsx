@@ -5,7 +5,7 @@ import Login from "../pages/login/LoginPage";
 import GlobalStorage from "../global/UserContext";
 import MenuMedico from "../pages/menuMedico/MenuMedicoPage";
 import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
-import FaseDeTratamento from "../pages/faseDeTratamento/FaseDeTratamento";
+import TreatmentPhases from "../pages/treatmentPhases/TreatmentPhases";
 import VacinasPaciente from "../pages/vacinasPaciente/VacinasPaciente";
 import FasesDeTratamento from "../pages/fasesDeTratamento/FasesDeTratamentoPage";
 import CadastroPacientePage from "../pages/cadastroPaciente/CadastroPacientePage";
@@ -22,7 +22,7 @@ const Router = () => {
           <Route path="cadastro/paciente" element={<CadastroPacientePage />} />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
           <Route path="/paciente/fase/edit" element={<FasesDeTratamento />} />
-          <Route path="/paciente/tratamento/:id" element={<FaseDeTratamento />} />
+          <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
           <Route path="/paciente/vacinas/:id" element={<VacinasPaciente />} />
         </Routes>
       </GlobalStorage>

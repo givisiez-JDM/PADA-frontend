@@ -12,7 +12,7 @@ import { BoxAddPacient, Button, Logo, Main, Middle, PacientList, SectionDoctor, 
 const MenuMedico = () => {
   const userRequest = new UserRequest();
   const patients = useAxios();
-  const { userId, getProfile, data } = useData();
+  const { userId, getProfile, data, setPatientId } = useData();
 
   const [modal, setModal] = useState(false);
 
@@ -29,7 +29,11 @@ const MenuMedico = () => {
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
-      <Link to={`/paciente/perfil/${patient.id}`} key={patient.id}>
+      <Link
+        key={patient.id}
+        to={`/paciente/perfil/${patient.id}`}
+        onClick={() => setPatientId(patient.id)}
+      >
         <li>{patient.name}</li>
       </Link>
     );
