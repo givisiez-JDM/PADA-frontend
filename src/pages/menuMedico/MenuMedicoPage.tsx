@@ -48,7 +48,7 @@ const MenuMedico = () => {
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
         <Middle>
           <BoxAddPacient>
-            <Link to="/cadastro-paciente">
+            <Link to="/cadastro/paciente">
               <Button>Cadastrar Paciente</Button>
             </Link>
           </BoxAddPacient>
