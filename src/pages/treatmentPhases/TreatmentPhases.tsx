@@ -13,8 +13,6 @@ import Phase from "./phase/Phase";
 import TreatmentPhaseEdit from "./treatmentPhaseEdit/TreatmentPhaseEdit";
 import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from "./TreatmentPhases.styles";
 
-const phase: PhaseType = { active: true, frequency: '7 dias', endTreatment: '2024-04-30', dosage: '1:10.000', id: "1", phaseNumber: 1, startTreatment: '2024-03-15' }
-
 const TreatmentPhases = () => {
   const { id: idPatient } = useParams();
   const {
