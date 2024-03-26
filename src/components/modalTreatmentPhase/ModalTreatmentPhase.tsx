@@ -1,7 +1,18 @@
-import { BoxButton, Dosage, DosageBox, Frequency, FrequencyBox, MdButton, Modal, ModalBox, ModalContent, TreatmentDuration } from "./ModalTreatmentPhase.styles";
 import X from '../../assets/X.svg'
+import {
+  BoxButton,
+  Dosage,
+  DosageBox,
+  Frequency,
+  FrequencyBox,
+  MdButton,
+  Modal,
+  ModalBox,
+  ModalContent,
+  TreatmentDuration
+} from "./ModalTreatmentPhase.styles";
 
-const ModalTreatmentPhase = ( {setModal} : {setModal: React.Dispatch<React.SetStateAction<boolean>>} ) => {
+const ModalTreatmentPhase = ({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
 
   return (
     <Modal>
@@ -9,7 +20,7 @@ const ModalTreatmentPhase = ( {setModal} : {setModal: React.Dispatch<React.SetSt
         <ModalContent>
           <TreatmentDuration>
             <div onClick={() => setModal(false)}>
-              <img src={X}/>
+              <img src={X} />
             </div>
             <h1>Duração da fase</h1>
 
@@ -23,22 +34,34 @@ const ModalTreatmentPhase = ( {setModal} : {setModal: React.Dispatch<React.SetSt
             <h1>Periodicidade</h1>
             <FrequencyBox>
               <div>
-                <input type="checkbox"/>
+                <input
+                  type="radio"
+                  name='frequency'
+                />
                 <label htmlFor="">A cada 7 dias</label>
               </div>
 
               <div>
-                <input type="checkbox"  />
+                <input
+                  type="radio"
+                  name='frequency'
+                />
                 <label htmlFor="">A cada 2 semanas</label>
               </div>
 
               <div>
-                <input type="checkbox"  />
+                <input
+                  type="radio"
+                  name='frequency'
+                />
                 <label htmlFor="">A cada 3 semanas</label>
               </div>
 
               <div>
-                <input type="checkbox" />
+                <input
+                  type="radio"
+                  name='frequency'
+                />
                 <label htmlFor="">A cada 4 semanas</label>
               </div>
             </FrequencyBox>
@@ -46,22 +69,22 @@ const ModalTreatmentPhase = ( {setModal} : {setModal: React.Dispatch<React.SetSt
           <Dosage>
             <h1>Dosagem do medicamento</h1>
             <DosageBox>
-                <div>
-                  <input type="checkbox"/>
-                  <p>1.3ml</p>
-                </div>
-                <div>
-                  <input type="checkbox"/>
-                  <p>1.98ml</p>
-                </div>
-                <div>
-                  <input type="checkbox"/>
-                  <p>1.985ml</p>
-                </div>
-                <div>
-                  <input type="checkbox"/>
-                  <p>1.53ml</p>
-                </div>
+              <div>
+                <input type="checkbox" />
+                <p>1.3ml</p>
+              </div>
+              <div>
+                <input type="checkbox" />
+                <p>1.98ml</p>
+              </div>
+              <div>
+                <input type="checkbox" />
+                <p>1.985ml</p>
+              </div>
+              <div>
+                <input type="checkbox" />
+                <p>1.53ml</p>
+              </div>
             </DosageBox>
           </Dosage>
           <BoxButton>
