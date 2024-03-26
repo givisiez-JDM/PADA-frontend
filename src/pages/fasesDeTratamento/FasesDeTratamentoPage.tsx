@@ -6,9 +6,9 @@ import Button from "../../components/button/Button";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
 import Switch from "../../components/switch/Switch";
+import Checkbox from "../../components/checkbox/Checkbox";
 import {
   ButtonLocal,
-  ContainerCheckbox,
   ConteinerCheckBox,
   ConteinerTreatment,
   DateInput,
@@ -89,16 +89,7 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {frequencies.map(frequency => (
-              <ContainerCheckbox key={frequency}>
-                <div className="custom-checkbox" >
-                  <input id={frequency} className="checkbox"
-                    type="radio"
-                    value={frequency}
-                    {...register('frequencies')}
-                  />
-                  <label htmlFor={frequency}>{frequency}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox name="frequency" type="radio" value={frequency} key={frequency} />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
@@ -108,16 +99,7 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {dosages.map(dosage => (
-              <ContainerCheckbox key={dosage}>
-                <div className="custom-checkbox" >
-                  <input id={dosage} className="checkbox"
-                    type="radio"
-                    value={dosage}
-                    {...register('dosages')}
-                  />
-                  <label htmlFor={dosage}>{dosage}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox name="dosage" type="radio" value={dosage} key={dosage} />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
