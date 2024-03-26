@@ -10,6 +10,14 @@ interface Props {
   setPhase: React.Dispatch<React.SetStateAction<PhaseType | null>>;
 }
 
+/**
+ * Statically shows the data of a phase
+ * @param { PhaseType } phase A data values to show
+ * @param { number } progress The pregress value of treatment [0.0-1.0] 
+ * @param { React.Dispatch<React.SetStateAction<PhaseType | null>> } setPhase function to set data for edition
+ * @example
+ * <Phase phase={{id:"",...}} progress={0.6} setPhase={setPhaseEdit} />
+ */
 const Phase = ({ phase, progress, setPhase }: Props) => {
 
   return (
