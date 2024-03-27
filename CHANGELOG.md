@@ -11,6 +11,7 @@ Changelog
 - [PADA-137](https://givisiez.atlassian.net/browse/PADA-137) Layout da tela Atualização de Fases de Tratamento
 - [PADA-180](https://givisiez.atlassian.net/browse/PADA-180) Serviço da tela Atualização de Fases de Tratamento
 - [PADA-195](https://givisiez.atlassian.net/browse/PADA-195) Logica e serviço da página de Fases
+- [PADA-249](https://givisiez.atlassian.net/browse/PADA-249) Componentizando checkbox
 
 ## Fix
 
