@@ -56,31 +56,13 @@ export const CheckBoxContainer = styled.div`
   gap: 0.563rem;
 `;
 
-export const CheckboxField = styled.div`
-  .checkbox {
-    display: none;
-  }
-
-  .checkbox + label:before {
-    content: "";
-    display: inline-block;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 0.3rem;
-    margin-right: 0.5rem;
-    border: 2px solid ${(props) => props.theme.colors.variant3};
-    background: ${(props) => props.theme.colors.buttonOff};
-  }
-
-  .checkbox:checked + label:before {
-    background-image: url("../../../src/assets/Vector.png");
-    background-position: center;
-  }
-`;
-
 export const PhaseStatus = styled.div`
   width: 8rem;
   font-size: 1.12rem;
   font-weight: 700;
   color: ${(props) => props.theme.colors.keyboard};
+`;
+
+export const Error = styled.span`
+  color: ${(props) => props.theme.colors.error};
 `;

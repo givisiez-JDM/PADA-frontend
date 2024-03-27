@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { UserRequest } from "../../../requests/UserRequest";
+import { formatDate } from "../../../utils/DateFns";
+import { useData } from "../../../global/UserContext";
+import useAxios from "../../../hooks/useAxios";
 import Button from "../../../components/button/Button";
 import Switch from "../../../components/switch/Switch";
 import Checkbox from "../../../components/checkbox/Checkbox";
 import { DosageType, FrequencyType, PhaseType } from "../../../types/TreatmentTypes";
 import {
-  CheckboxField,
   CheckBoxContainer,
   DateContainer,
   DateInput,
+  Error,
   PhaseField,
   PhaseForm,
   PhaseStatus,
@@ -15,8 +19,8 @@ import {
   Title,
 } from "./TreatmentPhaseEdit.styles";
 
-const frequencies: Array<FrequencyType> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
-const dosages: Array<DosageType> = ['1:10.000', '1:100', '1:1.000', '1:10'];
+const frequencies: Array<FrequencyType> = ['7 dias', '2 semanas', '3 semanas', '4 semanas'];
+const dosages: Array<DosageType> = ['1:10', '1:100', '1:1.000', '1:10.000'];
 
 interface Props {
   phase: PhaseType;
@@ -24,12 +28,22 @@ interface Props {
 }
 
 const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
+  const userRequest = new UserRequest();
+  const { getToken } = useData();
+  const phaseReq = useAxios<PhaseType>();
+
   const [phaseActive, setPhaseActive] = useState(phase.active);
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(phase);
-    setPhase(null);
+    const token = getToken();
+    const { url, headers } = userRequest.PUT_PHASES_BY_ID(phase.id, token);
+    const body = {
+      ...phase,
+      startTreatment: formatDate(phase.startTreatment),
+      endTreatment: formatDate(phase.endTreatment),
+    };
+    phaseReq.put(url, body, { headers });
   };
 
   const handleChange = (name: string, value: string | number) => {
@@ -41,8 +55,10 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
 
   // TODO remover console e incluir servico
   useEffect(() => {
-    console.log(phase);
-  }, [phase]);
+    if (phaseReq.data) {
+      setPhase(null);
+    }
+  }, [phaseReq.data]);
 
   useEffect(() => {
     setPhase({
@@ -77,9 +93,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
         <Title>
           Periodicidade do Tratamento
         </Title>
-        <CheckBoxContainer
-
-        >
+        <CheckBoxContainer>
           {frequencies.map(frequency => (
             <Checkbox
               key={frequency}
@@ -88,7 +102,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
               name="frequency"
               className="checkbox"
               value={frequency}
-              label={'A cada ' + frequency}
+              label={"A cada " + frequency}
               checked={frequency === phase.frequency}
               onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                 handleChange('frequency', event.target.value)
@@ -103,18 +117,19 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
         </Title>
         <CheckBoxContainer>
           {dosages.map(dosage => (
-            <CheckboxField key={dosage}>
-              <input
-                type="radio"
-                id={dosage}
-                name="dosage"
-                className="checkbox"
-                value={dosage}
-                checked={dosage === phase.dosage}
-                onChange={event => handleChange('dosage', event.target.value)}
-              />
-              <label htmlFor={dosage}>{dosage}</label>
-            </ CheckboxField>
+            <Checkbox
+              key={dosage}
+              type="radio"
+              id={dosage}
+              name="dosage"
+              className="checkbox"
+              value={dosage}
+              label={dosage + " g"}
+              checked={dosage === phase.dosage}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange('dosage', event.target.value)
+              }
+            />
           ))}
         </CheckBoxContainer>
       </PhaseField>
@@ -128,10 +143,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
           />
         </PhaseStatus>
       </PhaseField>
-      {/*
-         TODO colocar erros do backend
-         {errors.endTreatment && <span>{errors.endTreatment.message}</span>} 
-         */}
+      {phaseReq.error && <Error>{phaseReq.error.error || phaseReq.error}</Error>}
       <Button type="submit">
         Salvar
       </Button>
