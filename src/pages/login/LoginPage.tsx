@@ -15,7 +15,7 @@ import { useData } from "../../global/UserContext";
 const Login = () => {
   const { onSubmit, errors, register, getValues } = useLogin();
   const [saveUser, setSaveUser] = React.useState(false)
-  const [visible, setVisible] = React.useState(false)
+  const [visiblePassword, setVisiblePassword] = React.useState(false)
   const navigate = useNavigate();
 
   const { error } = useData()
@@ -55,12 +55,12 @@ const Login = () => {
         <InputBox>
           <Image src={key} alt="icon person" />
           <Input
-            type={visible ? "text" : "password"}
+            type={visiblePassword ? "text" : "password"}
             placeholder="Senha"
             {...register("password")}
             error={errors.password?.message}
           />
-          <Eyes src={visible ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisible(!visible)} />
+          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisiblePassword(!visiblePassword)} />
         </InputBox>
 
 
