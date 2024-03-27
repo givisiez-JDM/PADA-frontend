@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Button from "../../../components/button/Button";
 import Switch from "../../../components/switch/Switch";
+import Checkbox from "../../../components/checkbox/Checkbox";
 import { DosageType, FrequencyType, PhaseType } from "../../../types/TreatmentTypes";
 import {
   CheckboxField,
@@ -76,20 +77,23 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
         <Title>
           Periodicidade do Tratamento
         </Title>
-        <CheckBoxContainer>
+        <CheckBoxContainer
+
+        >
           {frequencies.map(frequency => (
-            <CheckboxField key={frequency}>
-              <input
-                type="radio"
-                id={frequency}
-                name="frequency"
-                className="checkbox"
-                value={frequency}
-                checked={frequency === phase.frequency}
-                onChange={event => handleChange('frequency', event.target.value)}
-              />
-              <label htmlFor={frequency}>{"A cada " + frequency}</label>
-            </ CheckboxField>
+            <Checkbox
+              key={frequency}
+              type="radio"
+              id={frequency}
+              name="frequency"
+              className="checkbox"
+              value={frequency}
+              label={'A cada ' + frequency}
+              checked={frequency === phase.frequency}
+              onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+                handleChange('frequency', event.target.value)
+              }
+            />
           ))}
         </CheckBoxContainer>
       </PhaseField>
