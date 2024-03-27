@@ -56,6 +56,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
   // TODO remover console e incluir servico
   useEffect(() => {
     if (phaseReq.data) {
+      // TODO recarregar as fases com as alterações feitas
       setPhase(null);
     }
   }, [phaseReq.data]);
