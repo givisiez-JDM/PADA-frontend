@@ -6,14 +6,18 @@ import iconKey from "../../assets/key.svg";
 import { useSignup } from "../../hooks/useForm";
 import Input from "../../components/input/Input";
 import check from "../../assets/check.svg";
+import eyesOpen from "../../assets/eyes-open.svg";
+import eyesClosed from "../../assets/eyes-closed.svg";
 import { useNavigate } from "react-router-dom";
-import { BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, InputBox, Main, Sucess, Title, TopWave} from "./CadastroPage.styles";
+import { BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, Eyes, InputBox, Main, Sucess, Title, TopWave} from "./CadastroPage.styles";
 import { useData } from "../../global/UserContext";
 
 const Signup = () => {
   const {onSubmit, errors, data, register, getValues} = useSignup();
   const [saveUser, setSaveUser] = React.useState(false);
   const [modal, setModal] = React.useState(false);
+  const [visiblePassword, setVisiblePassword] = React.useState(false);
+  const [visibleConfirmPassword, setVisibleConfirmPassword] = React.useState(false);
 
   const navigate = useNavigate();
   const { error } = useData();
@@ -81,21 +85,23 @@ const Signup = () => {
             <InputBox>
               <I src={iconKey} alt="key" />
               <Input
-                type="password"
+                type={visiblePassword ? "text" : "password"}
                 placeholder="Senha"
                 {...register("password")}
                 error={errors.password?.message}
               />
+              <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisiblePassword(!visiblePassword)} />
             </InputBox>
 
             <InputBox>
               <I src={iconKey} alt="key" />
               <Input
-                type="password"
+                type={visibleConfirmPassword ? "text" : "password"}
                 placeholder="confirmar senha"
                 {...register("confirmPassword")}
                 error={errors.confirmPassword?.message}
               />
+              <Eyes src={visibleConfirmPassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)} />
             </InputBox>
 
             {error && <ErrorMessage>{error}</ErrorMessage>}

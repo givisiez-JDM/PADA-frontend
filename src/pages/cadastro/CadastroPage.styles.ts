@@ -64,6 +64,14 @@ export const I = styled.img `
     box-sizing: border-box;
 `
 
+export const Eyes = styled.img`
+  position: absolute;
+  height: 1.2rem;
+  top: 0.5rem;
+  right: 0.6rem;
+  box-sizing: border-box;
+`;
+
 export const Checkbox = styled.p `
     display: flex;
     align-items: center;
