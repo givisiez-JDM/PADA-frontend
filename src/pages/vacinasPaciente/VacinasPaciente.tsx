@@ -62,7 +62,7 @@ const VacinasPaciente = () => {
     }, [token, phase.data]);
 
     useEffect(() => {
-        try {
+        if (vaccine.data) {
             const newList = initDate || endDate ?
                 vaccine.data.filter(item => {
                     const isInit = initDate ?
@@ -77,9 +77,8 @@ const VacinasPaciente = () => {
             setVaccineList(newList);
             setPageError('')
         }
-        catch (error) {
+        else {
             setPageError('error')
-            console.error(error)
         }
     }, [token, initDate, endDate, vaccine.data]);
 

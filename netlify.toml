@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "https://pada-develop.netlify.app"
+  to = "https://app-vacina-production.up.railway.app"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
