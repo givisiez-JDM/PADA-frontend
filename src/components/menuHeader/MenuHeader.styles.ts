@@ -5,9 +5,9 @@ export const HeadDiv = styled.header`
   background-color: ${(props) => props.theme.colors.variant2};
   color: ${(props) => props.theme.colors.white};
   width: 100%;
-  height: 115px;
+  height: 7.5rem;
   border-radius: 0 0 1rem 1rem;
-`;
+`
 
 export const HeaderContent = styled.div`
   display: flex;
@@ -16,4 +16,4 @@ export const HeaderContent = styled.div`
   padding: 0 2rem;
   width: 100%;
   height: 100%;
-`;
+`
