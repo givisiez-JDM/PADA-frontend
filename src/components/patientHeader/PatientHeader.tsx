@@ -8,14 +8,14 @@ interface HeaderProps {
 }
 
 const PatientHeader: React.FC<HeaderProps> = ({ patient }) => {
-  
+
   return (
     <Header>
       <PatientData>
         <Logo src={patient?.photo || IconPatient} />
         <p>{patient?.name}</p>
       </PatientData>
-      <Close  to={'/menu-medico'}>
+      <Close to={'/menu-medico'}>
         <IconX src={IconClose} alt="Fechar" />
       </Close>
     </Header>

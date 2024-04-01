@@ -6,9 +6,12 @@ import { FormPropsLogin, loginType } from "../types/LoginTypes";
 import { FormPropsSignup, SignupType } from "../types/SignupTypes";
 
 export const formLoginValidate = zod.object({
-  email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
+  email: zod.string().min(1, "Digite seu email").email("Email inválido"),
 
-  password: zod.string().min(8, "Sua senha deve ter 8 caracteres"),
+  password: zod
+    .string()
+    .min(1, "Digite sua senha")
+    .min(8, "Sua senha deve ter 8 caracteres"),
 });
 
 export const useLogin = () => {
@@ -44,12 +47,16 @@ export const useLogin = () => {
 
 export const formValidateSignup = zod
   .object({
-    name: zod.string().min(5, "Informe um nome válido"),
+    name: zod
+      .string()
+      .min(1, "Digite seu nome")
+      .min(3, "Deve conter no minímo 3 caracteres"),
 
-    email: zod.string().min(5, "Preencha um valor").email("Email inválido"),
+    email: zod.string().min(1, "Digite seu email").email("Email inválido"),
 
     password: zod
       .string()
+      .min(1, "Digite sua senha")
       .min(8, "Sua senha deve ter 8 caracteres")
       // eslint-disable-next-line no-useless-escape
       .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
