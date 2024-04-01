@@ -42,7 +42,7 @@ const ModalTreatmentPhase = ({ setModal }: Props) => {
                   name='frequency'
                   value={frequency}
                 />
-                A caada {frequency}
+                A cada {frequency}
               </ label>
             ))}
           </ContainerCheckBox>

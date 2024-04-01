@@ -50,7 +50,7 @@ export const DateInput = styled.input`
   width: 10rem;
   height: 2rem;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
   border: 1px solid ${(props) => props.theme.colors.variant3};
   color: ${(props) => props.theme.colors.variant3};
 `;
