@@ -90,7 +90,7 @@ const Signup = () => {
                 {...register("password")}
                 error={errors.password?.message}
               />
-              <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisiblePassword(!visiblePassword)} />
+              <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? "Ocultar senha" : "Mostrar senha"} onClick={() => setVisiblePassword(!visiblePassword)} />
             </InputBox>
 
             <InputBox>
@@ -101,7 +101,7 @@ const Signup = () => {
                 {...register("confirmPassword")}
                 error={errors.confirmPassword?.message}
               />
-              <Eyes src={visibleConfirmPassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)} />
+              <Eyes src={visibleConfirmPassword ? eyesOpen : eyesClosed} alt={visibleConfirmPassword ? "Ocultar senha" : "Mostrar senha"} onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)} />
             </InputBox>
 
             {error && <ErrorMessage>{error}</ErrorMessage>}

@@ -57,9 +57,9 @@ export const Image = styled.img`
 
 export const Eyes = styled.img`
   position: absolute;
-  height: 1.2rem;
-  top: 0.5rem;
-  right: 0.6rem;
+  height: 1.44rem;
+  top: 0.38rem;
+  right: 0.48rem;
   box-sizing: border-box;
 `;
 

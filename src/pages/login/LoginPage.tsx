@@ -60,7 +60,7 @@ const Login = () => {
             {...register("password")}
             error={errors.password?.message}
           />
-          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt="icon person" onClick={() => setVisiblePassword(!visiblePassword)} />
+          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? "Ocultar senha" : "Mostrar senha"} onClick={() => setVisiblePassword(!visiblePassword)} />
         </InputBox>
 
 
