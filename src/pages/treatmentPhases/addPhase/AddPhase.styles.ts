@@ -1,137 +1,70 @@
+import styled from "styled-components";
 
-import styled from "styled-components"
+export const Modal = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backdrop-filter: brightness(0.7);
+`;
 
+export const ModalBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  height: 38rem;
+  width: 32rem;
+  background-color: ${(props) => props.theme.colors.variant1};
+  color: ${(props) => props.theme.colors.variant3};
+  border-radius: 3.13rem;
+  gap: 1.5rem;
+`;
 
-export const Modal = styled.div `
-    display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 115%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	backdrop-filter: brightness(0.7);
-	z-index: 2;
-    font-family: 'Poppins', sans-serif;
-`
+export const Close = styled.img`
+  width: 1.2rem;
+  margin-left: auto;
+`;
 
-export const ModalBox = styled.div `
-    display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 2rem;
-	height: 31rem;
-	width: 26rem;
-	background-color: #76A7ED;
-	border-radius: 10px;
-	gap: 2rem 0;
-`
+export const PhaseField = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
+  p {
+    padding-left: 0.5rem;
+  }
+`;
 
-export const ModalContent = styled.div `
-    display: flex;
-	flex-direction: column;
-	gap: 1rem 0;
-    
-`
+export const Title = styled.h3`
+  font-weight: bold;
+  font-size: 1.13rem;
+  color: ${(props) => props.theme.colors.keyboard};
+`;
 
-export const TreatmentDuration = styled.div `
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+export const DateInput = styled.input`
+  background-color: ${(props) => props.theme.colors.background};
+  width: 10rem;
+  height: 2rem;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  border: 1px solid ${(props) => props.theme.colors.variant3};
+  color: ${(props) => props.theme.colors.variant3};
+`;
 
-    h1{
-        padding-bottom: 0.6rem;
-        font-weight: 600;
-    }
+export const ContainerCheckBox = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1rem;
+  gap: 0.563rem;
+`;
 
-   input {
-        width: 8rem;
-        height: 1.8rem;
-        border-radius: 6px;
-        border: 1px solid gray;
-        
-   }
-
-   div {
-    display: flex;
-    justify-content: end;
-   }
-
-   img {
-        height: 1rem;
-        cursor: pointer;
-   }
-`
-
-export const FrequencyBox = styled.div `  
-   display: flex;
-   flex-wrap: wrap;
-   width: 22rem;
-   justify-content: space-between;
-   gap: 0.5rem;
-
-    div { 
-        display: flex;
-        align-items: center;
-    }
-`
-
-export const Frequency = styled.div `
-    display: flex;
-    flex-direction: column;
-    gap: 1rem 0;
-    
-    h1 {
-        font-weight: 600;
-    }
-   
-`
-export const Dosage = styled.div `
-    display: flex;
-    flex-direction: column;
-    gap: 1rem 0;
-    
-    h1 {
-        font-weight: 600;
-    }
-   
-`
-export const DosageBox = styled.div `
-   display: flex;
-   flex-wrap: wrap;
-   max-width: 11rem;
-   justify-content: space-between;
-   
-   gap: 0.5rem;
-   
-    div { 
-        display: flex;
-        align-items: center;
-    }
-   
-`
-
-
-export const MdButton = styled.button `
-    height: 3rem;
-    width: 15rem;
-    background-color:  #4C7ABB;
-    color: black;
-    border: none;
-    border-radius: 6px;
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: white;
-
-`
-
-export const BoxButton = styled.div `
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem;
-`
-
-
+export const BoxButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+`;
