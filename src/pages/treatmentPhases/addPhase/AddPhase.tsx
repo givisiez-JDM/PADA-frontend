@@ -10,9 +10,13 @@ import {
   ModalBox,
   ModalContent,
   TreatmentDuration
-} from "./ModalTreatmentPhase.styles";
+} from "./AddPhase.styles";
 
-const ModalTreatmentPhase = ({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+interface Props {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ModalTreatmentPhase = ({ setModal }: Props) => {
 
   return (
     <Modal>

@@ -8,7 +8,7 @@ import IconArrowUp from '../../assets/arrow-up.svg';
 import IconArrowDown from '../../assets/arrow-down.svg';
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import Button from "../../components/button/Button";
-import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
+import AddPhase from "./addPhase/AddPhase";
 import Phase from "./phase/Phase";
 import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from "./TreatmentPhases.styles";
 
@@ -140,7 +140,7 @@ const TreatmentPhases = () => {
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
-        {modal && <ModalTreatmentPhase setModal={setModal} />}
+        {modal && <AddPhase setModal={setModal} />}
       </DefaultPatientPage>
     </Main>
   );
