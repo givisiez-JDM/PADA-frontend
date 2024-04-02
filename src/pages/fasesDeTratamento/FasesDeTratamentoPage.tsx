@@ -41,7 +41,6 @@ const FasesDeTratamento = () => {
   const [checked, setChecked] = useState(false);
   const {
     register,
-    handleSubmit,
     formState: { errors },
   } = useForm<RegisterFaseOne>({
     resolver: zodResolver(faseOne),
