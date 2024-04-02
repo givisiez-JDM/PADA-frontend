@@ -32,7 +32,7 @@ const faseOne = zod.object({
 
 type RegisterFaseOne = zod.infer<typeof faseOne>;
 
-const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
+const frequencies: Array<string> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
 const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
