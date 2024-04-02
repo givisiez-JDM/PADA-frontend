@@ -17,6 +17,7 @@ interface Props extends HTMLProps<HTMLInputElement> {
 const Checkbox = ({ id, value, label, type, ...props }: Props) => {
   const inputId = id ?? String(value)
   const inputType = type ?? "checkbox"
+
   return (
     <ContainerCheckbox >
       <input
