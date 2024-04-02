@@ -88,7 +88,12 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {frequencies.map(frequency => (
-              <Checkbox name="frequency" type="radio" label={"A cada " + frequency} value={frequency} key={frequency} />
+              <Checkbox
+                name="frequency"
+                type="radio"
+                label={"A cada " + frequency}
+                value={frequency} key={frequency}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
@@ -98,7 +103,13 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {dosages.map(dosage => (
-              <Checkbox name="dosage" type="radio" label={dosage + "g"} value={dosage} key={dosage} />
+              <Checkbox
+                name="dosage"
+                type="radio"
+                label={dosage + "g"}
+                value={dosage}
+                key={dosage}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>

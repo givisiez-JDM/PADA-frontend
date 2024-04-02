@@ -15,8 +15,8 @@ interface Props extends HTMLProps<HTMLInputElement> {
  * <Checkbox name="frequency" type="radio" value={"7 dias"} label={"A cada 7 dias"} />
  */
 const Checkbox = ({ id, value, label, type, ...props }: Props) => {
-  const inputId = id ?? String(value)
-  const inputType = type ?? "checkbox"
+  const inputId = id ?? String(value);
+  const inputType = type ?? "checkbox";
 
   return (
     <ContainerCheckbox >
@@ -30,6 +30,6 @@ const Checkbox = ({ id, value, label, type, ...props }: Props) => {
       <label htmlFor={inputId}>{label}</label>
     </ContainerCheckbox>
   );
-}
+};
 
 export default Checkbox;
