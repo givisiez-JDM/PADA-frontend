@@ -17,6 +17,7 @@ const Router = () => {
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
           <Route path="menu-medico" element={<MenuMedico />} />
+          <Route path="cadastro/paciente" element={<CadastroPacientePage />} />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
           <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
           <Route path="/paciente/vacinas/:id" element={<VacinasPaciente />} />
