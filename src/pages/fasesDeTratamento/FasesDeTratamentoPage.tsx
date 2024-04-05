@@ -6,9 +6,9 @@ import Button from "../../components/button/Button";
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import { PatientType } from "../../types/PatientTypes";
 import Switch from "../../components/switch/Switch";
+import Checkbox from "../../components/checkbox/Checkbox";
 import {
   ButtonLocal,
-  ContainerCheckbox,
   ConteinerCheckBox,
   ConteinerTreatment,
   DateInput,
@@ -32,7 +32,7 @@ const faseOne = zod.object({
 
 type RegisterFaseOne = zod.infer<typeof faseOne>;
 
-const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
+const frequencies: Array<string> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
 const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
 const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
@@ -88,16 +88,12 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {frequencies.map(frequency => (
-              <ContainerCheckbox key={frequency}>
-                <div className="custom-checkbox" >
-                  <input id={frequency} className="checkbox"
-                    type="radio"
-                    value={frequency}
-                    {...register('frequencies')}
-                  />
-                  <label htmlFor={frequency}>{frequency}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox
+                name="frequency"
+                type="radio"
+                label={"A cada " + frequency}
+                value={frequency} key={frequency}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
@@ -107,16 +103,13 @@ const FasesDeTratamento = () => {
           </Title>
           <ConteinerCheckBox>
             {dosages.map(dosage => (
-              <ContainerCheckbox key={dosage}>
-                <div className="custom-checkbox" >
-                  <input id={dosage} className="checkbox"
-                    type="radio"
-                    value={dosage}
-                    {...register('dosages')}
-                  />
-                  <label htmlFor={dosage}>{dosage}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox
+                name="dosage"
+                type="radio"
+                label={dosage + "g"}
+                value={dosage}
+                key={dosage}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
