@@ -8,6 +8,7 @@ import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
 import TreatmentPhases from "../pages/treatmentPhases/TreatmentPhases";
 import VacinasPaciente from "../pages/vacinasPaciente/VacinasPaciente";
 import FasesDeTratamento from "../pages/fasesDeTratamento/FasesDeTratamentoPage";
+import CadastroPacientePage from "../pages/cadastroPaciente/CadastroPacientePage";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
           <Route path="login" element={<Login />} />
           <Route path="cadastro" element={<Cadastro />} />
           <Route path="menu-medico" element={<MenuMedico />} />
+          <Route path="cadastro/paciente" element={<CadastroPacientePage />} />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
           <Route path="/paciente/fase/edit" element={<FasesDeTratamento />} />
           <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
