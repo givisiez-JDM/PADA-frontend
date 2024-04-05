@@ -10,5 +10,6 @@ Changelog
 - [PADA-227](https://givisiez.atlassian.net/browse/PADA-227) Padronização de rotas, header e sidebar das paginas de paciente
 - [PADA-137](https://givisiez.atlassian.net/browse/PADA-137) Layout da tela de Fases de tratamento
 - [PADA-195](https://givisiez.atlassian.net/browse/PADA-195) Logica e serviço da página de Fases
+- [PADA-249](https://givisiez.atlassian.net/browse/PADA-249) Componentizando checkbox
 
 ## Fix
