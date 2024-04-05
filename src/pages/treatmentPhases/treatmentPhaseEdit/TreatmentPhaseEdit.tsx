@@ -98,9 +98,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
             <Checkbox
               key={frequency}
               type="radio"
-              id={frequency}
               name="frequency"
-              className="checkbox"
               value={frequency}
               label={"A cada " + frequency}
               checked={frequency === phase.frequency}
@@ -120,9 +118,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
             <Checkbox
               key={dosage}
               type="radio"
-              id={dosage}
               name="dosage"
-              className="checkbox"
               value={dosage}
               label={dosage + " g"}
               checked={dosage === phase.dosage}
