@@ -57,6 +57,13 @@ export const PacientList = styled.div`
         width: 11rem;
         height: 2rem;
     }
+    h2{
+        font-size: large;
+        position: absolute;
+        background-color: white;
+        width: 11rem;
+        height: 2rem;
+    }
 
     &::-webkit-scrollbar  {
         width: 5px;
