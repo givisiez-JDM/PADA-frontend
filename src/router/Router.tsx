@@ -7,6 +7,7 @@ import MenuMedico from "../pages/menuMedico/MenuMedicoPage";
 import PerfilPaciente from "../pages/perfilPaciente/PerfilPacientePage";
 import TreatmentPhases from "../pages/treatmentPhases/TreatmentPhases";
 import VacinasPaciente from "../pages/vacinasPaciente/VacinasPaciente";
+import CadastroPacientePage from "../pages/cadastroPaciente/CadastroPacientePage";
 
 const Router = () => {
   return (
