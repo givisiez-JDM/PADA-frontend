@@ -12,7 +12,7 @@ export const Modal = styled.div`
   backdrop-filter: brightness(0.7);
 `;
 
-export const ModalBox = styled.div`
+export const ModalForm = styled.form`
   display: flex;
   flex-direction: column;
   padding: 3rem;

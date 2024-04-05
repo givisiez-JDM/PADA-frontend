@@ -140,7 +140,7 @@ const TreatmentPhases = () => {
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
-        {modal && <AddPhase setModal={setModal} />}
+        {modal && <AddPhase setModal={setModal} treatmentId={treatmentId} />}
       </DefaultPatientPage>
     </Main>
   );
