@@ -8,6 +8,7 @@ import Switch from "../../../components/switch/Switch";
 import Checkbox from "../../../components/checkbox/Checkbox";
 import { DosageType, FrequencyType, PhaseType } from "../../../types/TreatmentTypes";
 import {
+  ButtonGroup,
   CheckBoxContainer,
   DateContainer,
   DateInput,
@@ -140,9 +141,14 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
         </PhaseStatus>
       </PhaseField>
       {phaseReq.error && <Error>{phaseReq.error.error || phaseReq.error}</Error>}
-      <Button type="submit">
-        Salvar
-      </Button>
+      <ButtonGroup>
+        <Button type="submit">
+          Salvar
+        </Button>
+        <Button onClick={() => setPhase(null)}>
+          Cancelar
+        </Button>
+      </ButtonGroup>
     </PhaseForm>
   );
 };

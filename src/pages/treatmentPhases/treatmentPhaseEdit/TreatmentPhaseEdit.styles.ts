@@ -66,3 +66,9 @@ export const PhaseStatus = styled.div`
 export const Error = styled.span`
   color: ${(props) => props.theme.colors.error};
 `;
+
+export const ButtonGroup = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+`;
