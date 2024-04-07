@@ -23,7 +23,7 @@ module.exports = {
     "complexity": ["error", 10],
     "default-case": ["error", { "commentPattern": "^skip\\sdefault" }],
     "eqeqeq": ["error", "smart"],
-    "max-lines": ["error", {"max": 3, "skipBlankLines": true, "skipComments": true}],
+    "max-lines": ["error", {"max": 20, "skipBlankLines": true, "skipComments": true}],
     "max-depth":["error", 5],
     "multiline-comment-style": ["error", "starred-block"],
     "no-console": ["error", { "allow": ["warn", "error"] }],
