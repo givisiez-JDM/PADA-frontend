@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const InputError = styled.p `
+export const InputError = styled.p`
     color: red;
     font-size: x-small;
     font-weight: 500;
@@ -9,7 +9,7 @@ export const InputError = styled.p `
     max-width: 12rem;
 `
 
-export const InputLogin = styled.input `
+export const InputLogin = styled.input`
     height: 2.2rem;
     width: 13rem;
     border-radius: 1rem;
@@ -19,7 +19,7 @@ export const InputLogin = styled.input `
     padding-left: 2.5rem;
 `
 
-export const BoxInput = styled.div `
+export const BoxInput = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.2rem 0;

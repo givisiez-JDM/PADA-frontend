@@ -1,12 +1,11 @@
-import { Checkbox, Label, Switch } from "./Switch.styles";
+import { Checkbox, Label, Switch } from './Switch.styles'
 
 interface Props {
-  status: boolean;
-  setStatus: React.Dispatch<React.SetStateAction<boolean>>;
-  activeLabel?: string;
-  inactiveLabel?: string;
+  status        : boolean
+  setStatus     : React.Dispatch<React.SetStateAction<boolean>>
+  activeLabel?  : string
+  inactiveLabel?: string
 }
-
 
 const ToggleSwitch = ({ status, setStatus, activeLabel, inactiveLabel }: Props) => {
   return (
@@ -19,7 +18,7 @@ const ToggleSwitch = ({ status, setStatus, activeLabel, inactiveLabel }: Props) 
       />
       <Switch />
     </Label>
-  );
-};
+  )
+}
 
-export default ToggleSwitch;
+export default ToggleSwitch

@@ -1,5 +1,4 @@
-
-import styled from "styled-components"
+import styled from 'styled-components'
 
 export const Main = styled.main`
     display: flex;
@@ -103,12 +102,12 @@ export const Alergis = styled.div`
     } 
 `
 
-export const TreatmentContainer = styled.div `
+export const TreatmentContainer = styled.div`
     display: flex;
     gap: 2rem;
 `
 
-export const TitleTreatment = styled.h1 `
+export const TitleTreatment = styled.h1`
     padding-bottom: 0.4rem;
     font-weight: 600;
 
@@ -125,7 +124,7 @@ export const TitleTreatment = styled.h1 `
     }    
 `
 
-export const Treatment = styled.div `
+export const Treatment = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -135,28 +134,28 @@ export const Treatment = styled.div `
     }
 `
 
-export const TreatmentDuration = styled.div `
+export const TreatmentDuration = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
 `
 
-export const Medication = styled.div `
+export const Medication = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
 `
 
-export const MethodTreatment = styled.div `
+export const MethodTreatment = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
 `
 
-export const Button = styled.button `
+export const Button = styled.button`
     position: absolute;
     right: 2rem;
     bottom: 1rem;

@@ -1,8 +1,8 @@
-import { FC, HTMLProps } from "react";
-import { Card, ProgressContent, Title } from "./PhaseProgress.styles";
+import { FC, HTMLProps } from 'react'
+import { Card, ProgressContent, Title } from './PhaseProgress.styles'
 
 interface Props {
-  value: number;
+  value: number
 }
 
 const PhaseProgress: FC<Props & HTMLProps<HTMLDivElement>> = ({ value, children }) => {
@@ -10,12 +10,13 @@ const PhaseProgress: FC<Props & HTMLProps<HTMLDivElement>> = ({ value, children 
     <Card>
       <Title>Progresso da fase</Title>
       <ProgressContent>
-        {value * 100}%
+        {value * 100}
+        %
         <progress value={value} />
       </ProgressContent>
       {children}
     </Card>
-  );
-};
+  )
+}
 
-export default PhaseProgress;
+export default PhaseProgress

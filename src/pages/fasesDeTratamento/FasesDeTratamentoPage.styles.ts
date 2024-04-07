@@ -1,12 +1,12 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const PhaseForm = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin: 2rem;
-  color: ${(props) => props.theme.colors.variant3};
-`;
+  color: ${props => props.theme.colors.variant3};
+`
 
 export const PhaseTitle = styled.p`
   font-size: 1.4rem;
@@ -14,31 +14,31 @@ export const PhaseTitle = styled.p`
 
   &::before {
     content: ".";
-    color: ${(props) => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.variant2};
     border-radius: 1rem;
     margin-right: 0.9rem;
-    background-color: ${(props) => props.theme.colors.variant2};
+    background-color: ${props => props.theme.colors.variant2};
   }
-`;
+`
 
 export const ConteinerTreatment = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-`;
+`
 
 export const Title = styled.h3`
   font-weight: bold;
   font-size: 1.125rem;
-  color: ${(props) => props.theme.colors.keyboard};
-`;
+  color: ${props => props.theme.colors.keyboard};
+`
 
 export const ConteinerCheckBox = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 1rem;
   gap: 0.563rem;
-`;
+`
 
 export const ContainerCheckbox = styled.div`
   .checkbox {
@@ -51,31 +51,31 @@ export const ContainerCheckbox = styled.div`
     height: 1rem;
     border-radius: 0.3rem;
     margin-right: 0.5rem;
-    border: 2px solid ${(props) => props.theme.colors.variant3};
-    background: ${(props) => props.theme.colors.buttonOff};
+    border: 2px solid ${props => props.theme.colors.variant3};
+    background: ${props => props.theme.colors.buttonOff};
   }
 
   .custom-checkbox input:checked + label:before {
     background-image: url("../../../src/assets/Vector.png");
     background-position: center;
   }
-`;
+`
 
 export const ButtonLocal = styled.div`
   margin-top: 40px;
-`;
+`
 
 export const DateInput = styled.input`
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   width: 12rem;
   border-radius: 1rem;
   padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.variant3};
-  color: ${(props) => props.theme.colors.variant3};
-`;
+  border: 1px solid ${props => props.theme.colors.variant3};
+  color: ${props => props.theme.colors.variant3};
+`
 
-export const PhaseField = styled.div``;
+export const PhaseField = styled.div``
 
 export const PhaseStatus = styled.div`
   width: 13rem;
-`;
+`

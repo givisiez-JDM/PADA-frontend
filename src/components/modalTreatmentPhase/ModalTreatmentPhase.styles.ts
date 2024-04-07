@@ -1,8 +1,6 @@
+import styled from 'styled-components'
 
-import styled from "styled-components"
-
-
-export const Modal = styled.div `
+export const Modal = styled.div`
     display: flex;
 	justify-content: center;
 	align-items: center;
@@ -16,7 +14,7 @@ export const Modal = styled.div `
     font-family: 'Poppins', sans-serif;
 `
 
-export const ModalBox = styled.div `
+export const ModalBox = styled.div`
     display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -28,15 +26,14 @@ export const ModalBox = styled.div `
 	gap: 2rem 0;
 `
 
-
-export const ModalContent = styled.div `
+export const ModalContent = styled.div`
     display: flex;
 	flex-direction: column;
 	gap: 1rem 0;
     
 `
 
-export const TreatmentDuration = styled.div `
+export const TreatmentDuration = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -65,7 +62,7 @@ export const TreatmentDuration = styled.div `
    }
 `
 
-export const FrequencyBox = styled.div `  
+export const FrequencyBox = styled.div`  
    display: flex;
    flex-wrap: wrap;
    width: 22rem;
@@ -78,7 +75,7 @@ export const FrequencyBox = styled.div `
     }
 `
 
-export const Frequency = styled.div `
+export const Frequency = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem 0;
@@ -88,7 +85,7 @@ export const Frequency = styled.div `
     }
    
 `
-export const Dosage = styled.div `
+export const Dosage = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem 0;
@@ -98,7 +95,7 @@ export const Dosage = styled.div `
     }
    
 `
-export const DosageBox = styled.div `
+export const DosageBox = styled.div`
    display: flex;
    flex-wrap: wrap;
    max-width: 11rem;
@@ -113,8 +110,7 @@ export const DosageBox = styled.div `
    
 `
 
-
-export const MdButton = styled.button `
+export const MdButton = styled.button`
     height: 3rem;
     width: 15rem;
     background-color:  #4C7ABB;
@@ -127,11 +123,9 @@ export const MdButton = styled.button `
 
 `
 
-export const BoxButton = styled.div `
+export const BoxButton = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
 `
-
-

@@ -1,18 +1,18 @@
-import { useForm } from "react-hook-form";
-import { z as zod } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useData } from "../global/UserContext";
-import { FormPropsLogin, loginType } from "../types/LoginTypes";
-import { FormPropsSignup, SignupType } from "../types/SignupTypes";
+import { useForm } from 'react-hook-form'
+import { z as zod } from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useData } from '../global/UserContext'
+import { FormPropsLogin, loginType } from '../types/LoginTypes'
+import { FormPropsSignup, SignupType } from '../types/SignupTypes'
 
 export const formLoginValidate = zod.object({
-  email: zod.string().min(1, "Digite seu email").email("Email inválido"),
+  email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
 
   password: zod
     .string()
-    .min(1, "Digite sua senha")
-    .min(8, "Sua senha deve ter 8 caracteres"),
-});
+    .min(1, 'Digite sua senha')
+    .min(8, 'Sua senha deve ter 8 caracteres'),
+})
 
 export const useLogin = () => {
   const {
@@ -22,16 +22,16 @@ export const useLogin = () => {
     getFieldState,
     formState: { errors },
   } = useForm<FormPropsLogin>({
-    mode: "onBlur",
+    mode    : 'onBlur',
     resolver: zodResolver(formLoginValidate),
-  });
+  })
 
-  const { userLogin } = useData();
+  const { userLogin } = useData()
 
   const onSubmit = handleSubmit(async (data: loginType) => {
-    const { email, password } = data;
-    userLogin(email, password);
-  });
+    const { email, password } = data
+    userLogin(email, password)
+  })
 
   return {
     handleSubmit,
@@ -42,34 +42,34 @@ export const useLogin = () => {
     useLogin,
     getValues,
     getFieldState,
-  };
-};
+  }
+}
 
 export const formValidateSignup = zod
   .object({
     name: zod
       .string()
-      .min(1, "Digite seu nome")
-      .min(3, "Deve conter no minímo 3 caracteres"),
+      .min(1, 'Digite seu nome')
+      .min(3, 'Deve conter no minímo 3 caracteres'),
 
-    email: zod.string().min(1, "Digite seu email").email("Email inválido"),
+    email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
 
     password: zod
       .string()
-      .min(1, "Digite sua senha")
-      .min(8, "Sua senha deve ter 8 caracteres")
+      .min(1, 'Digite sua senha')
+      .min(8, 'Sua senha deve ter 8 caracteres')
       // eslint-disable-next-line no-useless-escape
       .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
         message:
-          "Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)",
+          'Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)',
       }),
 
     confirmPassword: zod.string(),
   })
-  .refine((fields) => fields.password === fields.confirmPassword, {
-    path: ["confirmPassword"],
-    message: "As senha precisam ser iguais",
-  });
+  .refine(fields => fields.password === fields.confirmPassword, {
+    path   : ['confirmPassword'],
+    message: 'As senha precisam ser iguais',
+  })
 
 export const useSignup = () => {
   const {
@@ -78,16 +78,16 @@ export const useSignup = () => {
     getValues,
     formState: { errors },
   } = useForm<FormPropsSignup>({
-    mode: "onBlur",
+    mode    : 'onBlur',
     resolver: zodResolver(formValidateSignup),
-  });
+  })
 
-  const { userSignup, data } = useData();
+  const { userSignup, data } = useData()
 
   const onSubmit = handleSubmit(async (data: SignupType) => {
-    const { name, email, password, confirmPassword } = data;
-    userSignup(name, email, password, confirmPassword);
-  });
+    const { name, email, password, confirmPassword } = data
+    userSignup(name, email, password, confirmPassword)
+  })
 
   return {
     handleSubmit,
@@ -98,5 +98,5 @@ export const useSignup = () => {
     onSubmit,
     useSignup,
     getValues,
-  };
-};
+  }
+}

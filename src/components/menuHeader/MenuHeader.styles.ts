@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const HeadDiv = styled.header`
   padding: 1rem 0;
@@ -7,11 +7,11 @@ export const HeadDiv = styled.header`
   width: 100%;
   height: 130px;
   border-radius: 0 0 1rem 1rem;
-`;
+`
 
 export const HeaderContent = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 0 2rem;
-`;
+`

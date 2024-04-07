@@ -1,11 +1,11 @@
-import { Modal } from "./ModalDoctor.styles";
-import user from "../../assets/user.svg";
-import doctor from "../../assets/doctor.svg";
-import logout from "../../assets/logout.svg";
-import { useData } from "../../global/UserContext";
+import { Modal } from './ModalDoctor.styles'
+import user from '../../assets/user.svg'
+import doctor from '../../assets/doctor.svg'
+import logout from '../../assets/logout.svg'
+import { useData } from '../../global/UserContext'
 
 const ModalDoctor = () => {
-  const { userLogout } = useData();
+  const { userLogout } = useData()
 
   return (
     <Modal>
@@ -22,7 +22,7 @@ const ModalDoctor = () => {
         <p>Sair</p>
       </div>
     </Modal>
-  );
-};
+  )
+}
 
-export default ModalDoctor;
+export default ModalDoctor

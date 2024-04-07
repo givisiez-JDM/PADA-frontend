@@ -1,5 +1,4 @@
-import styled from "styled-components"
-
+import styled from 'styled-components'
 
 export const Modal = styled.div`
     display: flex;
@@ -34,4 +33,3 @@ export const Modal = styled.div`
         }
     }
 `
-

@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Header = styled.header`
   display: flex;
@@ -19,7 +19,7 @@ export const PatientData = styled.div`
   font-weight: 500;
 `
 
-export const Logo = styled.img `
+export const Logo = styled.img`
   display: flex;
   margin-left: 2rem;
   margin-right: 2rem;
@@ -31,6 +31,6 @@ export const Close = styled(Link)`
   margin: 2rem;
 `
 
-export const IconX = styled.img `
+export const IconX = styled.img`
   cursor: pointer;
 `

@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import calendarIcon from '../../assets/calendar.svg';
+import styled from 'styled-components'
+import calendarIcon from '../../assets/calendar.svg'
 
 export const VaccinesContainer = styled.section`
     display: flex;

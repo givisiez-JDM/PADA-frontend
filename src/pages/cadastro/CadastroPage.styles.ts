@@ -1,5 +1,4 @@
-import styled from "styled-components";
-
+import styled from 'styled-components'
 
 export const Main = styled.main`
     display: flex;
@@ -11,7 +10,7 @@ export const Main = styled.main`
     font-family: 'Poppins', sans-serif;
 `
 
-export const TopWave = styled.div `
+export const TopWave = styled.div`
     height: 33vh;
     width: 100%;
     position: fixed;
@@ -38,7 +37,7 @@ export const Title = styled.h1`
     color: ${props => props.theme.colors.variant2};
 `
 
-export const Box = styled.form `
+export const Box = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,15 +47,14 @@ export const Box = styled.form `
     width: 23rem;
     border: 3px solid #4C7ABB;
     border-radius: 6px;
-` 
+`
 
-
-export const InputBox = styled.div `
+export const InputBox = styled.div`
     display: flex;
     position: relative;
 `
 
-export const I = styled.img `
+export const I = styled.img`
     position: absolute;
     height: 1.2rem;
     top: 0.5rem;
@@ -70,16 +68,16 @@ export const Eyes = styled.img`
   top: 0.38rem;
   right: 0.48rem;
   box-sizing: border-box;
-`;
+`
 
-export const Checkbox = styled.p `
+export const Checkbox = styled.p`
     display: flex;
     align-items: center;
     width: 13.5rem;
     font-size: 0.8rem;
 `
 
-export const ButtonSignup = styled.button `
+export const ButtonSignup = styled.button`
     background-color: ${props => props.theme.colors.variant2};
     color: white;
     border: none;
@@ -90,7 +88,7 @@ export const ButtonSignup = styled.button `
     font-size: 0.9rem;
 `
 
-export const FooterDescription = styled.p `
+export const FooterDescription = styled.p`
     display: flex;
     position: relative;
     top: 1.2rem;
@@ -105,7 +103,7 @@ export const FooterDescription = styled.p `
     }
 `
 
-export const ErrorMessage = styled.p `
+export const ErrorMessage = styled.p`
     text-indent:-6.4rem;
     color: red;
     font-size: x-small;
@@ -113,7 +111,7 @@ export const ErrorMessage = styled.p `
     word-wrap: break-word;
     max-width: 12rem;
 `
-export const Sucess = styled.div `
+export const Sucess = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
