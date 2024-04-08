@@ -118,9 +118,15 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
             ))}
           </ContainerCheckBox>
         </PhaseField>
-        {errorMessage && <Error>{errorMessage}</Error>}
+        <Error>{errorMessage}</Error>
         <BoxButton>
-          <Button type='submit' disabled={errorMessage.length > 0}>Adicionar</Button>
+          <Button
+            type='submit'
+            className='large'
+            disabled={errorMessage.length > 0}
+          >
+            Adicionar
+          </Button>
         </BoxButton>
       </ModalForm>
     </Modal >

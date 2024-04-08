@@ -15,7 +15,7 @@ export const Modal = styled.div`
 export const ModalForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 3rem;
+  padding: 2.6rem 3.8rem;
   height: 38rem;
   width: 32rem;
   background-color: ${(props) => props.theme.colors.variant1};
@@ -32,16 +32,16 @@ export const Close = styled.img`
 export const PhaseField = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
 
   p {
-    padding-left: 0.5rem;
+    padding: 0.1rem 0.6rem;
   }
 `;
 
 export const Title = styled.h3`
   font-weight: bold;
   font-size: 1.13rem;
+  margin: 1rem 0;
   color: ${(props) => props.theme.colors.keyboard};
 `;
 
@@ -56,19 +56,23 @@ export const DateInput = styled.input`
 `;
 
 export const ContainerCheckBox = styled.div`
+  width: fit-content;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-top: 1rem;
-  gap: 0.563rem;
+  margin-left: 0.6rem;
+  gap: 0.5rem 1rem;
 `;
 
 export const BoxButton = styled.div`
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;
 `;
 
-export const Error = styled.span`
+export const Error = styled.div`
+  width: 100%;
+  text-align: center;
   color: ${(props) => props.theme.colors.error};
 `;
