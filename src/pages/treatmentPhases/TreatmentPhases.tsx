@@ -36,6 +36,7 @@ const TreatmentPhases = () => {
   const [modal, setModal] = useState(false);
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
   const [phaseProgress, setPhaseProgress] = useState<number>(0);
+  const [maxPhaseNumber, setMaxPhaseNumber] = useState<number>(0);
 
   const selectPhase = (phase: PhaseType) => {
     const newPhase = phase === phaseSelected ? null : phase;
@@ -76,6 +77,16 @@ const TreatmentPhases = () => {
   useEffect(() => {
     getPhaseList();
   }, [treatmentId, phaseReq.data]);
+
+  useEffect(() => {
+    let maxNumber = 0;
+    phaseList.forEach(item => {
+      if (item.phaseNumber > maxNumber) {
+        maxNumber = item.phaseNumber;
+      }
+      setMaxPhaseNumber(maxNumber);
+    });
+  }, [phaseList]);
 
   useEffect(() => {
     getVaccineList();
@@ -140,7 +151,14 @@ const TreatmentPhases = () => {
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
-        {modal && <AddPhase setModal={setModal} treatmentId={treatmentId} />}
+        {
+          modal &&
+          <AddPhase
+            setModal={setModal}
+            treatmentId={treatmentId}
+            phaseNumber={maxPhaseNumber + 1}
+          />
+        }
       </DefaultPatientPage>
     </Main>
   );

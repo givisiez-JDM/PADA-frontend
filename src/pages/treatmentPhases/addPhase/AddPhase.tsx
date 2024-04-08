@@ -20,16 +20,17 @@ const dosages: Array<DosageType> = ['1:10', '1:100', '1:1.000', '1:10.000'];
 interface Props {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
   treatmentId: string;
+  phaseNumber: number;
 }
 
-const ModalTreatmentPhase = ({ setModal }: Props) => {
+const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
   const today = new Date();
   const phaseDefault: PhaseNewType = {
     active: true,
     dosage: '1:10',
     endTreatment: today.toISOString().substring(0, 10),
     frequency: '7 dias',
-    phaseNumber: 0,
+    phaseNumber: phaseNumber,
     startTreatment: today.toISOString().substring(0, 10),
   };
 
@@ -107,6 +108,7 @@ const ModalTreatmentPhase = ({ setModal }: Props) => {
             ))}
           </ContainerCheckBox>
         </PhaseField>
+
         <BoxButton>
           <Button type='submit'>Adicionar</Button>
         </BoxButton>
