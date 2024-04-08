@@ -68,3 +68,7 @@ export const BoxButton = styled.div`
   justify-content: center;
   margin-top: 2rem;
 `;
+
+export const Error = styled.span`
+  color: ${(props) => props.theme.colors.error};
+`;

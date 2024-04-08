@@ -8,6 +8,7 @@ import {
   Close,
   ContainerCheckBox,
   DateInput,
+  Error,
   Modal,
   ModalForm,
   PhaseField,
@@ -35,6 +36,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
   };
 
   const [newPhase, setNewPhase] = useState<PhaseNewType>(phaseDefault);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (name: string, value: string) => {
     setNewPhase({
@@ -108,7 +110,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
             ))}
           </ContainerCheckBox>
         </PhaseField>
-
+        {errorMessage && <Error>{errorMessage}</Error>}
         <BoxButton>
           <Button type='submit'>Adicionar</Button>
         </BoxButton>
