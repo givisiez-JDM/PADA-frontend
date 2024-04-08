@@ -61,6 +61,10 @@ export const ContainerCheckBox = styled.div`
   grid-template-columns: 1fr 1fr;
   margin-left: 0.6rem;
   gap: 0.5rem 1rem;
+
+  .checkbox + label:before {
+    background: ${(props) => props.theme.colors.background};
+  }
 `;
 
 export const BoxButton = styled.div`
@@ -73,6 +77,7 @@ export const BoxButton = styled.div`
 
 export const Error = styled.div`
   width: 100%;
+  font-size: 0.8rem;
   text-align: center;
   color: ${(props) => props.theme.colors.error};
 `;
