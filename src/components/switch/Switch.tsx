@@ -1,9 +1,9 @@
 import { Checkbox, Label, Switch } from './Switch.styles'
 
 interface Props {
-  status        : boolean
-  setStatus     : React.Dispatch<React.SetStateAction<boolean>>
-  activeLabel?  : string
+  status: boolean
+  setStatus: React.Dispatch<React.SetStateAction<boolean>>
+  activeLabel?: string
   inactiveLabel?: string
 }
 

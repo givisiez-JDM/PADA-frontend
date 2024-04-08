@@ -1,8 +1,8 @@
 export const BASE_URL = 'https://app-vacina-production.up.railway.app'
 
 type SignupRequestBody = {
-  name    : string
-  email   : string
+  name: string
+  email: string
   password: string
 }
 
@@ -15,7 +15,7 @@ export class UserRequest {
 
   USER_SIGNUP = (body: SignupRequestBody) => {
     return {
-      url    : `${BASE_URL}/doctors`,
+      url: `${BASE_URL}/doctors`,
       options: {
         body,
       },
@@ -24,7 +24,7 @@ export class UserRequest {
 
   GET_DOCTOR_BY_ID = (id: any, token: string | null) => {
     return {
-      url    : `${BASE_URL}/doctors/${id}`,
+      url: `${BASE_URL}/doctors/${id}`,
       headers: {
         Authorization: token,
       },
@@ -33,7 +33,7 @@ export class UserRequest {
 
   GET_PATIENTS = (token: string | null) => {
     return {
-      url    : `${BASE_URL}/doctors/patients`,
+      url: `${BASE_URL}/doctors/patients`,
       headers: {
         Authorization: token,
       },
@@ -42,7 +42,7 @@ export class UserRequest {
 
   GET_PATIENTS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
-      url    : `${BASE_URL}/patients/${id}`,
+      url: `${BASE_URL}/patients/${id}`,
       headers: {
         Authorization: token,
       },
@@ -51,7 +51,7 @@ export class UserRequest {
 
   GET_TREATMENTS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
-      url    : `${BASE_URL}/treatments/patients/${id}`,
+      url: `${BASE_URL}/treatments/patients/${id}`,
       headers: {
         Authorization: token,
       },
@@ -63,7 +63,7 @@ export class UserRequest {
     token: string | null,
   ) => {
     return {
-      url    : `${BASE_URL}/phases/treatments/${id}`,
+      url: `${BASE_URL}/phases/treatments/${id}`,
       headers: {
         Authorization: token,
       },
@@ -72,7 +72,7 @@ export class UserRequest {
 
   GET_PHASES_BY_ID = (id: string | undefined, token: string | null) => {
     return {
-      url    : `${BASE_URL}/phases/${id}`,
+      url: `${BASE_URL}/phases/${id}`,
       headers: {
         Authorization: token,
       },
@@ -81,7 +81,7 @@ export class UserRequest {
 
   PUT_PHASE_STATUS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
-      url    : `${BASE_URL}/phases/status/${id}`,
+      url: `${BASE_URL}/phases/status/${id}`,
       headers: {
         Authorization: token,
       },
@@ -93,7 +93,7 @@ export class UserRequest {
     token: string | null,
   ) => {
     return {
-      url    : `${BASE_URL}/vaccines/phases/${id}`,
+      url: `${BASE_URL}/vaccines/phases/${id}`,
       headers: {
         Authorization: token,
       },
@@ -105,10 +105,8 @@ export class UserRequest {
     token: string | null,
   ) => {
     return {
-      url    : `${BASE_URL}/phases/treatments/${id}`,
-      headers: {
-        Authorization: token,
-      },
+      url: `${BASE_URL}/phases/treatments/${id}`,
+      headers: { Authorization: token },
     }
   }
 }

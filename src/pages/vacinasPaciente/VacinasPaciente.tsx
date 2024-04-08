@@ -12,7 +12,16 @@ import iconSearch from '../../assets/search.svg'
 import { PhaseType, TreatmentType, VaccineType } from '../../types/TreatmentTypes'
 import { PatientType } from '../../types/PatientTypes'
 
-import { VaccineColor, VaccineColorContainer, VaccinesContainer, VaccinesDate, VaccinesHeader, VaccinesLegend, VaccinesList, VaccinesTitle } from './VacinasPaciente.styles'
+import {
+  VaccineColor,
+  VaccineColorContainer,
+  VaccinesContainer,
+  VaccinesDate,
+  VaccinesHeader,
+  VaccinesLegend,
+  VaccinesList,
+  VaccinesTitle,
+} from './VacinasPaciente.styles'
 
 const VacinasPaciente = () => {
   const userRequest = new UserRequest()
@@ -41,7 +50,8 @@ const VacinasPaciente = () => {
 
   useEffect(() => {
     try {
-      const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data?.id), token)
+      const { url, headers } = userRequest
+        .GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data?.id), token)
       phase.get(url, { headers })
     }
     catch (error) {
@@ -51,7 +61,9 @@ const VacinasPaciente = () => {
 
   useEffect(() => {
     try {
-      const lastItem = phase.data?.slice(-1)[0]
+      const SLICE_SIZE = -1
+
+      const lastItem = phase.data?.slice(SLICE_SIZE)[0]
       const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(lastItem?.id), token)
       vaccine.get(url, { headers })
     }
@@ -61,16 +73,19 @@ const VacinasPaciente = () => {
   }, [token, phase.data])
 
   useEffect(() => {
+    const SUBSTRING_MIN_VALUE = 0
+    const SUBSTRING_MAX_VALUE = 10
+
     if (vaccine.data) {
       const newList = initDate || endDate
         ? vaccine.data.filter((item) => {
           const isInit = initDate
-            ? item.scheduledDate.substring(0, 10) >= initDate
-            || item.applicationDate?.substring(0, 10) >= initDate
+            ? item.scheduledDate.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) >= initDate
+            || item.applicationDate?.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) >= initDate
             : true
           const isEnd = endDate
-            ? item.scheduledDate.substring(0, 10) <= endDate
-            || item.applicationDate?.substring(0, 10) <= endDate
+            ? item.scheduledDate.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) <= endDate
+            || item.applicationDate?.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) <= endDate
             : true
           return isInit && isEnd
         })
@@ -107,8 +122,16 @@ const VacinasPaciente = () => {
             <p>Busque no histórico:</p>
             <div>
               <img src={iconSearch} alt="icone de busca" />
-              <input type="date" value={initDate} onChange={event => setInitDate(event.target.value)} />
-              <input type="date" value={endDate} onChange={event => setEndDate(event.target.value)} />
+              <input
+                type="date"
+                value={initDate}
+                onChange={event => setInitDate(event.target.value)}
+              />
+              <input
+                type="date"
+                value={endDate}
+                onChange={event => setEndDate(event.target.value)}
+              />
             </div>
           </VaccinesDate>
         </VaccinesHeader>

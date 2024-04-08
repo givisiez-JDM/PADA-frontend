@@ -3,14 +3,14 @@ import { useState, useCallback } from 'react'
 import axios, { AxiosRequestConfig } from 'axios'
 
 interface UseAxiosResponse<T> {
-  data         : T | null
-  error        : any | null
-  loading      : boolean
-  get          : (url: string, config?: AxiosRequestConfig) => Promise<void>
-  post         : (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
-  postWithRes  : (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
-  deleteAxios  : (url: string, config?: AxiosRequestConfig) => Promise<void>
-  put          : (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
+  data: T | null
+  error: any | null
+  loading: boolean
+  get: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
+  postWithRes: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
+  deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
   putWithoutRes: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
 }
 

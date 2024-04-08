@@ -5,13 +5,16 @@ import { useData } from '../global/UserContext'
 import { FormPropsLogin, loginType } from '../types/LoginTypes'
 import { FormPropsSignup, SignupType } from '../types/SignupTypes'
 
+const MIN_PASSWORD_LENGTH = 8
+const MAX_CHARACTERS = 3
+
 export const formLoginValidate = zod.object({
   email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
 
   password: zod
     .string()
     .min(1, 'Digite sua senha')
-    .min(8, 'Sua senha deve ter 8 caracteres'),
+    .min(MIN_PASSWORD_LENGTH, 'Sua senha deve ter 8 caracteres'),
 })
 
 export const useLogin = () => {
@@ -22,13 +25,13 @@ export const useLogin = () => {
     getFieldState,
     formState: { errors },
   } = useForm<FormPropsLogin>({
-    mode    : 'onBlur',
+    mode: 'onBlur',
     resolver: zodResolver(formLoginValidate),
   })
 
   const { userLogin } = useData()
 
-  const onSubmit = handleSubmit(async (data: loginType) => {
+  const onSubmit = handleSubmit((data: loginType) => {
     const { email, password } = data
     userLogin(email, password)
   })
@@ -50,14 +53,14 @@ export const formValidateSignup = zod
     name: zod
       .string()
       .min(1, 'Digite seu nome')
-      .min(3, 'Deve conter no minímo 3 caracteres'),
+      .min(MAX_CHARACTERS, 'Deve conter no minímo 3 caracteres'),
 
     email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
 
     password: zod
       .string()
       .min(1, 'Digite sua senha')
-      .min(8, 'Sua senha deve ter 8 caracteres')
+      .min(MIN_PASSWORD_LENGTH, 'Sua senha deve ter 8 caracteres')
       // eslint-disable-next-line no-useless-escape
       .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
         message:
@@ -67,7 +70,7 @@ export const formValidateSignup = zod
     confirmPassword: zod.string(),
   })
   .refine(fields => fields.password === fields.confirmPassword, {
-    path   : ['confirmPassword'],
+    path: ['confirmPassword'],
     message: 'As senha precisam ser iguais',
   })
 
@@ -78,13 +81,13 @@ export const useSignup = () => {
     getValues,
     formState: { errors },
   } = useForm<FormPropsSignup>({
-    mode    : 'onBlur',
+    mode: 'onBlur',
     resolver: zodResolver(formValidateSignup),
   })
 
   const { userSignup, data } = useData()
 
-  const onSubmit = handleSubmit(async (data: SignupType) => {
+  const onSubmit = handleSubmit((data: SignupType) => {
     const { name, email, password, confirmPassword } = data
     userSignup(name, email, password, confirmPassword)
   })

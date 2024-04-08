@@ -9,7 +9,19 @@ import check from '../../assets/check.svg'
 import eyesOpen from '../../assets/eyes-open.svg'
 import eyesClosed from '../../assets/eyes-closed.svg'
 import { useNavigate } from 'react-router-dom'
-import { BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, Eyes, InputBox, Main, Sucess, Title, TopWave } from './CadastroPage.styles'
+import { BottomWave,
+  Box,
+  ButtonSignup,
+  Checkbox,
+  ErrorMessage,
+  FooterDescription,
+  I,
+  Eyes,
+  InputBox,
+  Main,
+  Sucess,
+  Title,
+  TopWave } from './CadastroPage.styles'
 import { useData } from '../../global/UserContext'
 
 const Signup = () => {
@@ -22,6 +34,8 @@ const Signup = () => {
   const navigate = useNavigate()
   const { error } = useData()
   const values = getValues('password')
+
+  const DATA_VALUE = 201
 
   const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked === true) {
@@ -40,7 +54,7 @@ const Signup = () => {
   }
 
   React.useEffect(() => {
-    if (data === 201) setModal(true)
+    if (data === DATA_VALUE) setModal(true)
   }, [modal, data])
 
   return (
@@ -93,7 +107,11 @@ const Signup = () => {
                   {...register('password')}
                   error={errors.password?.message}
                 />
-                <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'} onClick={() => setVisiblePassword(!visiblePassword)} />
+                <Eyes
+                  src={visiblePassword ? eyesOpen : eyesClosed}
+                  alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  onClick={() => setVisiblePassword(!visiblePassword)}
+                />
               </InputBox>
 
               <InputBox>
@@ -104,7 +122,11 @@ const Signup = () => {
                   {...register('confirmPassword')}
                   error={errors.confirmPassword?.message}
                 />
-                <Eyes src={visibleConfirmPassword ? eyesOpen : eyesClosed} alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'} onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)} />
+                <Eyes
+                  src={visibleConfirmPassword ? eyesOpen : eyesClosed}
+                  alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)}
+                />
               </InputBox>
 
               {error && <ErrorMessage>{error}</ErrorMessage>}
@@ -121,7 +143,6 @@ const Signup = () => {
 
             <FooterDescription>
               Já tem conta?
-              {' '}
               <span onClick={() => navigate('/login')}>Entrar</span>
             </FooterDescription>
           </>

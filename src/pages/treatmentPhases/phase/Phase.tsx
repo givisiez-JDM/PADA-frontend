@@ -6,7 +6,7 @@ import { formatDate } from '../../../utils/DateFns'
 import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles'
 
 interface Props {
-  phase   : PhaseType
+  phase: PhaseType
   progress: number
 }
 

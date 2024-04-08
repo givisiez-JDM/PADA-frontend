@@ -19,23 +19,32 @@ import {
   Title,
 } from './FasesDeTratamentoPage.styles'
 
+const MIN_NUMBER = 10
+
 const faseOne = zod.object({
-  id            : zod.string(),
-  phaseNumber   : zod.number(),
-  active        : zod.boolean(),
-  startTreatment: zod.string().min(10, 'Data inválida'),
-  endTreatment  : zod.string().min(10, 'Data inválida'),
-  frequencies   : zod.array(zod.object({ frequency: zod.string() })),
-  dosages       : zod.array(zod.object(
+  id: zod.string(),
+  phaseNumber: zod.number(),
+  active: zod.boolean(),
+  startTreatment: zod.string().min(MIN_NUMBER, 'Data inválida'),
+  endTreatment: zod.string().min(MIN_NUMBER, 'Data inválida'),
+  frequencies: zod.array(zod.object({ frequency: zod.string() })),
+  dosages: zod.array(zod.object(
     { dosage: zod.string() })),
 })
 
 type RegisterFaseOne = zod.infer<typeof faseOne>
 
-const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas']
+const frequencies: Array<string>
+= ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas']
 const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10']
 
-const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' }
+const patient: PatientType = {
+  birthDate: '',
+  email: '',
+  id: '',
+  name: 'Teste',
+  photo: '',
+  telephone: '' }
 
 const FasesDeTratamento = () => {
   const [checked, setChecked] = useState(false)
@@ -43,7 +52,7 @@ const FasesDeTratamento = () => {
     register,
     formState: { errors },
   } = useForm<RegisterFaseOne>({
-    resolver     : zodResolver(faseOne),
+    resolver: zodResolver(faseOne),
     defaultValues: {
       frequencies: [
         { frequency: ' cada 7 dias' },
@@ -91,9 +100,7 @@ const FasesDeTratamento = () => {
           {errors.endTreatment && <span>{errors.endTreatment.message}</span>}
         </ConteinerTreatment>
         <PhaseField>
-          <Title>
-            Periodicidade do Tratamento
-          </Title>
+          <Title>Periodicidade do Tratamento</Title>
           <ConteinerCheckBox>
             {frequencies.map(frequency => (
               <ContainerCheckbox key={frequency}>
@@ -112,9 +119,7 @@ const FasesDeTratamento = () => {
           </ConteinerCheckBox>
         </PhaseField>
         <PhaseField>
-          <Title>
-            Dosagem do Medicamento
-          </Title>
+          <Title>Dosagem do Medicamento</Title>
           <ConteinerCheckBox>
             {dosages.map(dosage => (
               <ContainerCheckbox key={dosage}>
@@ -143,9 +148,7 @@ const FasesDeTratamento = () => {
           </PhaseStatus>
         </PhaseField>
         <ButtonLocal>
-          <Button type="submit">
-            Enviar
-          </Button>
+          <Button type="submit">Enviar</Button>
         </ButtonLocal>
       </PhaseForm>
     </DefaultPatientPage>

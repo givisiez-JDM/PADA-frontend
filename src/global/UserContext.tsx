@@ -6,33 +6,33 @@ import { PatientType } from '../types/PatientTypes'
 import { PhaseType, TreatmentType, VaccineType } from '../types/TreatmentTypes'
 
 type GlobalContextProps = {
-  getToken      : () => string
-  userLogin     : (email: string, password: string) => void
-  userSignup    : (name: string, email: string, password: string, confirmPassword: string) => void
-  data          : any | null
-  error         : any | null
-  login         : boolean | null
-  loading       : boolean | null
-  userId        : any
-  setUserId     : any
-  getProfile    : any
-  userLogout    : any
-  patientList   : PatientType[]
+  getToken: () => string
+  userLogin: (email: string, password: string) => void
+  userSignup: (name: string, email: string, password: string, confirmPassword: string) => void
+  data: any | null
+  error: any | null
+  login: boolean | null
+  loading: boolean | null
+  userId: any
+  setUserId: any
+  getProfile: any
+  userLogout: any
+  patientList: PatientType[]
   getPatientList: () => void
-  patientId     : string
-  setPatientId  : Dispatch<React.SetStateAction<string>>
-  patient       : PatientType | null
-  getPatient    : () => void
-  treatmentId   : string
+  patientId: string
+  setPatientId: Dispatch<React.SetStateAction<string>>
+  patient: PatientType | null
+  getPatient: () => void
+  treatmentId: string
   setTreatmentId: Dispatch<React.SetStateAction<string>>
-  treatment     : TreatmentType | null
-  getTreatment  : () => void
-  phaseList     : PhaseType[]
-  getPhaseList  : () => void
-  phaseId       : string
-  setPhaseId    : Dispatch<React.SetStateAction<string>>
+  treatment: TreatmentType | null
+  getTreatment: () => void
+  phaseList: PhaseType[]
+  getPhaseList: () => void
+  phaseId: string
+  setPhaseId: Dispatch<React.SetStateAction<string>>
   getVaccineList: () => void
-  vaccineList   : VaccineType[]
+  vaccineList: VaccineType[]
 }
 
 type GlobalStorageProps = {
@@ -91,7 +91,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setLoading(true)
 
       const body = {
-        email   : email,
+        email: email,
         password: password,
       }
 

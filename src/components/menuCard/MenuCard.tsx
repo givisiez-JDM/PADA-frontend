@@ -7,7 +7,7 @@ import {
 
 interface MenuCardProps {
   title: string
-  text  : string
+  text: string
   imgSrc: string
 }
 

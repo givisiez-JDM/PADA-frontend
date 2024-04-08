@@ -54,7 +54,7 @@ const TreatmentPhases = () => {
 
       const body = {
         phaseNumber: phaseSelected,
-        active     : false,
+        active: false,
       }
 
       phaseReq.put(url, body, { headers })

@@ -5,7 +5,14 @@ import iconArrowDown from '../../../assets/arrow-down.svg'
 
 import { VaccineType } from '../../../types/TreatmentTypes'
 
-import { VaccineButton, VaccineContainer, VaccineDate, VaccineDescription, VaccineText, VaccineTitle } from './Vaccine.style'
+import {
+  VaccineButton,
+  VaccineContainer,
+  VaccineDate,
+  VaccineDescription,
+  VaccineText,
+  VaccineTitle,
+} from './Vaccine.style'
 
 function Vaccine({ title, observation, scheduledDate, status, applicationDate }: VaccineType) {
   const [showDescription, setShowDescription] = useState(false)
@@ -16,16 +23,18 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
 
   function getVaccineStatus() {
     return {
-      'aplicado'           : 'applied',
-      'não aplicado'       : 'not-applied',
+      'aplicado': 'applied',
+      'não aplicado': 'not-applied',
       'aplicado com atraso': 'late',
-      'agendado'           : 'schedule',
+      'agendado': 'schedule',
     }[status] || ''
   }
 
   function getDate() {
     const date = new Date(applicationDate || scheduledDate)
-    return date.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo', dateStyle: 'long', timeStyle: 'medium' })
+    return date.toLocaleString('pt-BR', {
+      timeZone: 'America/Sao_Paulo', dateStyle: 'long', timeStyle: 'medium',
+    })
   }
 
   return (

@@ -7,7 +7,8 @@ import ImageLogo from '../../assets/logo.png'
 import IconArrow from '../../assets/white-arrow.svg'
 import ModalDoctor from '../../components/modalDoctor/ModalDoctor'
 import MenuHeader from '../../components/menuHeader/MenuHeader'
-import { BoxAddPacient, Button, Logo, Main, Middle, PacientList, SectionDoctor, TitlePacient } from './MenuMedico.styles'
+import { BoxAddPacient, Button, Logo,
+  Main, Middle, PacientList, SectionDoctor, TitlePacient } from './MenuMedico.styles'
 
 const MenuMedico = () => {
   const userRequest = new UserRequest()

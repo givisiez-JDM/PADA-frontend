@@ -1,7 +1,18 @@
-import { BoxButton, Dosage, DosageBox, Frequency, FrequencyBox, MdButton, Modal, ModalBox, ModalContent, TreatmentDuration } from './ModalTreatmentPhase.styles'
+import { BoxButton,
+  Dosage,
+  DosageBox,
+  Frequency,
+  FrequencyBox,
+  MdButton,
+  Modal,
+  ModalBox,
+  ModalContent,
+  TreatmentDuration,
+} from './ModalTreatmentPhase.styles'
 import X from '../../assets/X.svg'
 
-const ModalTreatmentPhase = ({ setModal }: { setModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const ModalTreatmentPhase = ({ setModal }: {
+  setModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
   return (
     <Modal>
       <ModalBox>
