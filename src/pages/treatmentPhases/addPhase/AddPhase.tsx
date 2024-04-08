@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import X from '../../../assets/X.svg'
 import Button from '../../../components/button/Button';
 import Checkbox from '../../../components/checkbox/Checkbox';
@@ -25,14 +25,14 @@ interface Props {
 }
 
 const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
-  const today = new Date();
+  const today = new Date().toISOString().substring(0, 10);
   const phaseDefault: PhaseNewType = {
+    phaseNumber: phaseNumber,
     active: true,
     dosage: '1:10',
-    endTreatment: today.toISOString().substring(0, 10),
     frequency: '7 dias',
-    phaseNumber: phaseNumber,
-    startTreatment: today.toISOString().substring(0, 10),
+    endTreatment: today,
+    startTreatment: today,
   };
 
   const [newPhase, setNewPhase] = useState<PhaseNewType>(phaseDefault);
@@ -49,6 +49,16 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
     event.preventDefault()
     console.log(newPhase)
   };
+
+  useEffect(() => {
+    if (newPhase.startTreatment < today) {
+      setErrorMessage("A data inicial não pode ser inferior à data presente.")
+    } else if (newPhase.startTreatment >= newPhase.endTreatment) {
+      setErrorMessage("A data de final deve ser maior que a data inicial.")
+    } else {
+      setErrorMessage("")
+    }
+  }, [newPhase]);
 
   return (
     <Modal>
@@ -112,7 +122,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
         </PhaseField>
         {errorMessage && <Error>{errorMessage}</Error>}
         <BoxButton>
-          <Button type='submit'>Adicionar</Button>
+          <Button type='submit' disabled={errorMessage.length > 0}>Adicionar</Button>
         </BoxButton>
       </ModalForm>
     </Modal >
