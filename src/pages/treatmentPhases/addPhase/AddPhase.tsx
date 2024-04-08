@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import X from '../../../assets/X.svg'
+import IconClose from '../../../assets/X.svg'
 import Button from '../../../components/button/Button';
 import Checkbox from '../../../components/checkbox/Checkbox';
 import { DosageType, FrequencyType, PhaseNewType } from '../../../types/TreatmentTypes';
@@ -41,32 +41,30 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
   const handleChange = (name: string, value: string) => {
     setNewPhase({
       ...newPhase,
-      [name]: value
+      [name]: value,
     });
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    console.log(newPhase)
+    event.preventDefault();
+    // TODO implement add phase service
   };
 
   useEffect(() => {
     if (newPhase.startTreatment < today) {
-      setErrorMessage("A data inicial não pode ser inferior à data presente.")
+      setErrorMessage("A data inicial não pode ser inferior à data presente.");
     } else if (newPhase.startTreatment >= newPhase.endTreatment) {
-      setErrorMessage("A data de final deve ser maior que a data inicial.")
+      setErrorMessage("A data de final deve ser maior que a data inicial.");
     } else {
-      setErrorMessage("")
+      setErrorMessage("");
     }
   }, [newPhase]);
 
   return (
     <Modal>
-      <ModalForm
-        onSubmit={event => handleSubmit(event)}
-      >
+      <ModalForm onSubmit={event => handleSubmit(event)}>
         <PhaseField>
-          <Close src={X} alt='Fechar' onClick={() => setModal(false)} />
+          <Close src={IconClose} alt='Fechar' onClick={() => setModal(false)} />
           <Title>Duração da fase</Title>
           <p>Inicio</p>
           <DateInput
