@@ -27,6 +27,7 @@ export const ModalForm = styled.form`
 export const Close = styled.img`
   width: 1.2rem;
   margin-left: auto;
+  cursor: pointer;
 `;
 
 export const PhaseField = styled.div`
