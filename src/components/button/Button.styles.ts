@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ButtonBase = styled.button`
-  background-color: ${(props) => props.theme.colors.variant2};
   color: ${(props) => props.theme.colors.white};
   border: none;
   border-radius: 6.5rem;
@@ -31,6 +30,10 @@ export const ButtonBase = styled.button`
   &.large {
     padding: 0.8rem 3rem;
     font-size: 1.5rem;
+  }
+
+  &.primary {
+    background-color: ${(props) => props.theme.colors.variant2};
   }
 
   &.secondary {

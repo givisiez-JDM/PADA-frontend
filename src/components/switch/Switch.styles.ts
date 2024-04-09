@@ -11,7 +11,7 @@ export const Label = styled.label`
 
 export const Switch = styled.div`
   position: relative;
-  width: 2rem;
+  width: 2.1rem;
   height: 1rem;
   background: ${(props) => props.theme.colors.background};
   border-radius: 1rem;

@@ -142,7 +142,7 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
       </PhaseField>
       {phaseReq.error && <Error>{phaseReq.error.error || phaseReq.error}</Error>}
       <ButtonGroup>
-        <Button className="secondary" onClick={() => setPhase(null)}>
+        <Button color="secondary" onClick={() => setPhase(null)}>
           Cancelar
         </Button>
         <Button type="submit">
