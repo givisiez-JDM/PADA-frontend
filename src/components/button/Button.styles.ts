@@ -16,7 +16,7 @@ export const ButtonBase = styled.button`
   }
 
   &:disabled {
-    background: ${(props) => props.theme.colors.buttonOff};
+    background-color: ${(props) => props.theme.colors.buttonOff};
     :hover {
       transition: none;
       scale: none;
@@ -31,5 +31,9 @@ export const ButtonBase = styled.button`
   &.large {
     padding: 0.8rem 3rem;
     font-size: 1.5rem;
+  }
+
+  &.secondary {
+    background-color: ${(props) => props.theme.colors.buttonOff};
   }
 `;
