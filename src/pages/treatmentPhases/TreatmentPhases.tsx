@@ -8,7 +8,7 @@ import IconArrowUp from '../../assets/arrow-up.svg';
 import IconArrowDown from '../../assets/arrow-down.svg';
 import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
 import Button from "../../components/button/Button";
-import ModalTreatmentPhase from "../../components/modalTreatmentPhase/ModalTreatmentPhase";
+import AddPhase from "./addPhase/AddPhase";
 import Phase from "./phase/Phase";
 import TreatmentPhaseEdit from "./treatmentPhaseEdit/TreatmentPhaseEdit";
 import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from "./TreatmentPhases.styles";
@@ -38,6 +38,7 @@ const TreatmentPhases = () => {
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
   const [phaseProgress, setPhaseProgress] = useState<number>(0);
   const [phaseEdit, setPhaseEdit] = useState<PhaseType | null>(null);
+  const [maxPhaseNumber, setMaxPhaseNumber] = useState<number>(0);
 
   const selectPhase = (phase: PhaseType) => {
     const newPhase = phase === phaseSelected ? null : phase;
@@ -78,6 +79,16 @@ const TreatmentPhases = () => {
   useEffect(() => {
     getPhaseList();
   }, [treatmentId, phaseReq.data]);
+
+  useEffect(() => {
+    let maxNumber = 0;
+    phaseList.forEach(item => {
+      if (item.phaseNumber > maxNumber) {
+        maxNumber = item.phaseNumber;
+      }
+      setMaxPhaseNumber(maxNumber);
+    });
+  }, [phaseList]);
 
   useEffect(() => {
     getVaccineList();
