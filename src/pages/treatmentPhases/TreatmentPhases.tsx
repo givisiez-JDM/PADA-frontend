@@ -156,7 +156,7 @@ const TreatmentPhases = () => {
             </BoxButton>
           </Section>}
       </DefaultPatientPage>
-      {modal && <ModalTreatmentPhase setModal={setModal} />}
+      {modal && <AddPhase setModal={setModal} treatmentId={treatmentId} phaseNumber={maxPhaseNumber + 1} />}
     </Main>
   );
 };
