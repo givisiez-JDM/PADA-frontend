@@ -27,5 +27,9 @@ export const ButtonBase = styled.button`
     padding: 0.12rem 1.12rem;
     font-size: 0.8rem;
   }
-`;
 
+  &.large {
+    padding: 0.8rem 3rem;
+    font-size: 1.5rem;
+  }
+`;

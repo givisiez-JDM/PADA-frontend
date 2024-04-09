@@ -32,6 +32,15 @@ export type PhaseType = {
   active: boolean;
 };
 
+export type PhaseNewType = {
+  phaseNumber: number;
+  dosage: DosageType;
+  frequency: FrequencyType;
+  startTreatment: string;
+  endTreatment: string;
+  active: boolean;
+};
+
 export type VaccineType = {
   id: string;
   title: string;
