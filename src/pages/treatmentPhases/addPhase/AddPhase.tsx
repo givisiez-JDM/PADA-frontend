@@ -43,7 +43,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
       ...newPhase,
       [name]: value,
     });
-  }
+  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -129,7 +129,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
           </Button>
         </BoxButton>
       </ModalForm>
-    </Modal >
+    </Modal>
   );
 };
 
