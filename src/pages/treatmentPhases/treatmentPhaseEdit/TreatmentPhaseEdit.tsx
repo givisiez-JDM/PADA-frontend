@@ -33,7 +33,9 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
   const { getToken } = useData();
   const phaseReq = useAxios<PhaseType>();
 
+  const today = new Date().toISOString().substring(0, 10);
   const [phaseActive, setPhaseActive] = useState(phase.active);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -67,6 +69,16 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
       active: phaseActive,
     })
   }, [phaseActive]);
+
+  useEffect(() => {
+    if (phase.startTreatment < today) {
+      setErrorMessage("A data inicial não pode ser inferior à data presente.");
+    } else if (phase.startTreatment >= phase.endTreatment) {
+      setErrorMessage("A data de final deve ser maior que a data inicial.");
+    } else {
+      setErrorMessage("");
+    }
+  }, [phase]);
 
   return (
     <PhaseForm onSubmit={event => handleFormSubmit(event)}>
@@ -140,12 +152,12 @@ const TreatmentPhaseEdit = ({ phase, setPhase }: Props) => {
           />
         </PhaseStatus>
       </PhaseField>
-      {phaseReq.error && <Error>{phaseReq.error.error || phaseReq.error}</Error>}
+      <Error>{errorMessage}</Error>
       <ButtonGroup>
         <Button color="secondary" onClick={() => setPhase(null)}>
           Cancelar
         </Button>
-        <Button type="submit">
+        <Button type="submit" disabled={errorMessage.length > 0}>
           Salvar
         </Button>
       </ButtonGroup>
