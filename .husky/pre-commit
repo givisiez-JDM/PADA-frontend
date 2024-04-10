@@ -1,1 +1,20 @@
-npm run lint
+  echo ' ' &&
+  echo 'Husky pre-commit hook'
+  echo ' ' &&
+echo 'Realizando verificações de linter antes de efeturar o commit...'
+npm run lint || 
+(
+  echo '------------------------------------------------------------------------------------------------' &&
+  echo ' ' &&
+  echo 'Erro de lint, commit não realizado' &&
+  echo ' ' && 
+  exit 1
+  )
+
+(
+    echo '------------------------------------------------------------------------------------------------' &&
+  echo ' ' &&
+  echo 'Lint realizado com sucesso, commit efetuado!' && 
+  echo ' ' &&
+  exit 0
+)
