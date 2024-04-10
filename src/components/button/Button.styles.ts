@@ -8,20 +8,6 @@ export const ButtonBase = styled.button`
   font-size: 1rem;
   font-weight: 500;
 
-  &:hover {
-    transition: 0.3s ease-in-out;
-    color: ${(props) => props.theme.colors.variant4};
-    scale: 1.05;
-  }
-
-  &:disabled {
-    background-color: ${(props) => props.theme.colors.buttonOff};
-    :hover {
-      transition: none;
-      scale: none;
-    }
-  }
-
   &.small {
     padding: 0.12rem 1.12rem;
     font-size: 0.8rem;
@@ -38,5 +24,19 @@ export const ButtonBase = styled.button`
 
   &.secondary {
     background-color: ${(props) => props.theme.colors.buttonOff};
+  }
+
+  &:hover {
+    transition: 0.3s ease-in-out;
+    color: ${(props) => props.theme.colors.variant4};
+    scale: 1.05;
+  }
+
+  &:disabled {
+    background-color: ${(props) => props.theme.colors.buttonOff};
+    :hover {
+      transition: none;
+      scale: none;
+    }
   }
 `;
