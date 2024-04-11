@@ -43,7 +43,6 @@ export const GlobalContext = createContext<GlobalContextProps | undefined>(undef
 
 const userRequest = new UserRequest()
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const useData = () => {
   const context = React.useContext(GlobalContext)
   if (!context) throw new Error('useData precisa estar em DataContextProvider')

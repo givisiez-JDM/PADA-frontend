@@ -2,6 +2,7 @@ import 'styled-components'
 
 export const Theme = {
   colors: {
+    error: '#FF0000',
     variant1: '#76A7ED',
     variant2: '#4C7ABB',
     variant3: '#334C76',
