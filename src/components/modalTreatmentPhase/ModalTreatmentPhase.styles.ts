@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Modal = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const Modal = styled.div`
   backdrop-filter: brightness(0.7);
   z-index: 2;
     font-family: 'Poppins', sans-serif;
-`
+`;
 
 export const ModalBox = styled.div`
   display: flex;
@@ -24,14 +24,14 @@ export const ModalBox = styled.div`
   background-color: #76A7ED;
   border-radius: 10px;
   gap: 2rem 0;
-`
+`;
 
 export const ModalContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem 0;
     
-`
+`;
 
 export const TreatmentDuration = styled.div`
     display: flex;
@@ -60,7 +60,7 @@ export const TreatmentDuration = styled.div`
     height: 1rem;
     cursor: pointer;
   }
-`
+`;
 
 export const FrequencyBox = styled.div`  
   display: flex;
@@ -73,7 +73,7 @@ export const FrequencyBox = styled.div`
         display: flex;
         align-items: center;
     }
-`
+`;
 
 export const Frequency = styled.div`
     display: flex;
@@ -83,7 +83,7 @@ export const Frequency = styled.div`
     h1 {
         font-weight: 600;
     }
-`
+`;
 export const Dosage = styled.div`
     display: flex;
     flex-direction: column;
@@ -92,7 +92,7 @@ export const Dosage = styled.div`
     h1 {
         font-weight: 600;
     }
-`
+`;
 export const DosageBox = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -105,7 +105,7 @@ export const DosageBox = styled.div`
       display: flex;
       align-items: center;
     }
-`
+`;
 
 export const MdButton = styled.button`
     height: 3rem;
@@ -117,11 +117,11 @@ export const MdButton = styled.button`
     font-weight: 600;
     font-size: 0.9rem;
     color: white;
-`
+`;
 
 export const BoxButton = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 1rem;
-`
+`;

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const VaccineContainer = styled.div`
   display: flex;
@@ -6,7 +6,7 @@ export const VaccineContainer = styled.div`
   width: 100%;
   border-bottom: 2px solid ${props => props.theme.colors.variant2};
   padding: 1rem 0;
-`
+`;
 
 export const VaccineDate = styled.div`
   width: 20%;
@@ -26,21 +26,21 @@ export const VaccineDate = styled.div`
   &.schedule {
     border-color: ${props => props.theme.colors.vaccine.schedule};
   }
-`
+`;
 
 export const VaccineDescription = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-`
+`;
 
 export const VaccineTitle = styled.h2`
   padding: 0.5rem;
   color: ${props => props.theme.colors.keyboard};
   border-radius: 10px;
   background: ${props => props.theme.colors.background};
-`
+`;
 
 export const VaccineText = styled.p`
   display: none;
@@ -53,10 +53,10 @@ export const VaccineText = styled.p`
   &.active {
     display: block;
   }
-`
+`;
 
 export const VaccineButton = styled.button`
   margin: 1rem;
   border: none;
   background: none;
-`
+`;

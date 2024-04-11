@@ -1,49 +1,49 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import { UserRequest } from '../../requests/UserRequest'
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { UserRequest } from '../../requests/UserRequest';
 import { Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment,
   Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer,
-  TreatmentDuration } from './PerfilPacientePage.styles'
-import useAxios from '../../hooks/useAxios'
-import arrow from '../../assets/arrow.png'
-import Header from '../../components/patientHeader/PatientHeader'
-import { formatDate } from '../../utils/DateFns'
-import SidebarPatientPage from '../../components/sidebarPatientPage/SidebarPatientPage'
+  TreatmentDuration } from './PerfilPacientePage.styles';
+import useAxios from '../../hooks/useAxios';
+import arrow from '../../assets/arrow.png';
+import Header from '../../components/patientHeader/PatientHeader';
+import { formatDate } from '../../utils/DateFns';
+import SidebarPatientPage from '../../components/sidebarPatientPage/SidebarPatientPage';
 
 const PerfilPaciente = () => {
-  const userRequest = new UserRequest()
-  const useReq = useAxios()
-  const treatmentReq = useAxios()
-  const treatmentPhasesReq = useAxios()
+  const userRequest = new UserRequest();
+  const useReq = useAxios();
+  const treatmentReq = useAxios();
+  const treatmentPhasesReq = useAxios();
 
-  const { id } = useParams()
+  const { id } = useParams();
 
-  const treatmentId = treatmentReq?.data && treatmentReq?.data?.id
-
-  React.useEffect(() => {
-    const token = window.localStorage.getItem('token')
-    const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token)
-
-    useReq.get(url, { headers })
-  }, [])
+  const treatmentId = treatmentReq?.data && treatmentReq?.data?.id;
 
   React.useEffect(() => {
-    const token = window.localStorage.getItem('token')
-    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token)
+    const token = window.localStorage.getItem('token');
+    const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token);
 
-    treatmentReq.get(url, { headers })
-  }, [])
+    useReq.get(url, { headers });
+  }, []);
 
   React.useEffect(() => {
-    const token = window.localStorage.getItem('token')
-    const { url, headers } = userRequest.GET_TREATMENTS_PHASES_BY_ID(treatmentId, token)
+    const token = window.localStorage.getItem('token');
+    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token);
 
-    treatmentPhasesReq.get(url, { headers })
-  }, [treatmentId])
+    treatmentReq.get(url, { headers });
+  }, []);
+
+  React.useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    const { url, headers } = userRequest.GET_TREATMENTS_PHASES_BY_ID(treatmentId, token);
+
+    treatmentPhasesReq.get(url, { headers });
+  }, [treatmentId]);
 
   const allergiesMap = treatmentReq?.data?.allergies.map((allergie: any) => (
     <p key={allergie}>{allergie}</p>
-  ))
+  ));
 
   const treatmentPhaseMap = treatmentPhasesReq?.data
     && treatmentPhasesReq.data.map((treatment: any) => (
@@ -58,7 +58,7 @@ const PerfilPaciente = () => {
           {formatDate(treatment.endTreatment)}
         </p>
       </TreatmentDuration>
-    ))
+    ));
 
   return (
     <Main>
@@ -126,7 +126,7 @@ const PerfilPaciente = () => {
         </Section>
       </Middle>
     </Main>
-  )
-}
+  );
+};
 
-export default PerfilPaciente
+export default PerfilPaciente;

@@ -1,6 +1,6 @@
-import IconArrowRight from '../../assets/arrow-right.svg'
-import { PatientType } from '../../types/PatientTypes'
-import { Menu, MenuItem, SideBar } from './SidebarPatientPage.styles'
+import IconArrowRight from '../../assets/arrow-right.svg';
+import { PatientType } from '../../types/PatientTypes';
+import { Menu, MenuItem, SideBar } from './SidebarPatientPage.styles';
 
 interface Props {
   patient: PatientType | null
@@ -27,7 +27,7 @@ const SidebarPatientPage = ({ patient }: Props) => {
         </MenuItem>
       </Menu>
     </SideBar>
-  )
-}
+  );
+};
 
-export default SidebarPatientPage
+export default SidebarPatientPage;

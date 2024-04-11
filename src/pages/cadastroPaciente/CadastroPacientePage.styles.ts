@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.div`
   display: flex;
@@ -106,7 +106,7 @@ export const LeftBox = styled.div`
   }
 `;
 
-export const RigthBox = styled.div `
+export const RigthBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -117,10 +117,10 @@ export const RigthBox = styled.div `
 
 export const BoxButton = styled.div`
   button {
-    background-color: ${(props) => props.theme.colors.variant2};
+    background-color: ${props => props.theme.colors.variant2};
     outline: none;
     border: none;
-    color: ${(props) => props.theme.colors.white};
+    color: ${props => props.theme.colors.white};
     padding: 0.5rem 3rem;
     border-radius: 30px;
     font-size: 1rem;
@@ -128,7 +128,7 @@ export const BoxButton = styled.div`
     margin-right: 5rem;
 
     &:hover {
-      background-color: ${(props) => props.theme.colors.variant3};
+      background-color: ${props => props.theme.colors.variant3};
       transition: 0.3s;
     }
   }

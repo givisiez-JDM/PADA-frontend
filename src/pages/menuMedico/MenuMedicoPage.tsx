@@ -1,32 +1,32 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import useAxios from '../../hooks/useAxios'
-import { UserRequest } from '../../requests/UserRequest'
-import { useData } from '../../global/UserContext'
-import ImageLogo from '../../assets/logo.png'
-import IconArrow from '../../assets/white-arrow.svg'
-import ModalDoctor from '../../components/modalDoctor/ModalDoctor'
-import MenuHeader from '../../components/menuHeader/MenuHeader'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import useAxios from '../../hooks/useAxios';
+import { UserRequest } from '../../requests/UserRequest';
+import { useData } from '../../global/UserContext';
+import ImageLogo from '../../assets/logo.png';
+import IconArrow from '../../assets/white-arrow.svg';
+import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
+import MenuHeader from '../../components/menuHeader/MenuHeader';
 import { BoxAddPacient, Button, Logo,
-  Main, Middle, PacientList, SectionDoctor, TitlePacient } from './MenuMedico.styles'
+  Main, Middle, PacientList, SectionDoctor, TitlePacient } from './MenuMedico.styles';
 
 const MenuMedico = () => {
-  const userRequest = new UserRequest()
-  const patients = useAxios()
-  const { userId, getProfile, data, setPatientId } = useData()
+  const userRequest = new UserRequest();
+  const patients = useAxios();
+  const { userId, getProfile, data, setPatientId } = useData();
 
-  const [modal, setModal] = useState(false)
-
-  useEffect(() => {
-    getProfile(userId)
-  }, [])
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
-    const token = window.localStorage.getItem('token')
-    const { url, headers } = userRequest.GET_PATIENTS(token)
+    getProfile(userId);
+  }, []);
 
-    patients.get(url, { headers })
-  }, [])
+  useEffect(() => {
+    const token = window.localStorage.getItem('token');
+    const { url, headers } = userRequest.GET_PATIENTS(token);
+
+    patients.get(url, { headers });
+  }, []);
 
   const getAllPatients = patients.data?.map((patient: any) => {
     return (
@@ -37,8 +37,8 @@ const MenuMedico = () => {
       >
         <li>{patient.name}</li>
       </Link>
-    )
-  })
+    );
+  });
 
   return (
     <>
@@ -66,7 +66,7 @@ const MenuMedico = () => {
 
       {modal && <ModalDoctor />}
     </>
-  )
-}
+  );
+};
 
-export default MenuMedico
+export default MenuMedico;

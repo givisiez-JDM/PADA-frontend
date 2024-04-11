@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import Button from '../../../components/button/Button'
-import PhaseProgress from '../../../components/phaseProgress/PhaseProgress'
-import { PhaseType } from '../../../types/TreatmentTypes'
-import { formatDate } from '../../../utils/DateFns'
-import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles'
+import { useNavigate } from 'react-router-dom';
+import Button from '../../../components/button/Button';
+import PhaseProgress from '../../../components/phaseProgress/PhaseProgress';
+import { PhaseType } from '../../../types/TreatmentTypes';
+import { formatDate } from '../../../utils/DateFns';
+import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles';
 
 interface Props {
   phase: PhaseType
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const Phase = ({ phase, progress }: Props) => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <>
@@ -48,7 +48,7 @@ const Phase = ({ phase, progress }: Props) => {
         </PhaseProgress>
       </PhaseContent>
     </>
-  )
-}
+  );
+};
 
-export default Phase
+export default Phase;

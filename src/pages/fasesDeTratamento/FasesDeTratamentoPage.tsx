@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { z as zod } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import Button from '../../components/button/Button'
-import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage'
-import { PatientType } from '../../types/PatientTypes'
-import Switch from '../../components/switch/Switch'
-import Checkbox from '../../components/checkbox/Checkbox'
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z as zod } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Button from '../../components/button/Button';
+import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
+import { PatientType } from '../../types/PatientTypes';
+import Switch from '../../components/switch/Switch';
+import Checkbox from '../../components/checkbox/Checkbox';
 import {
   ButtonLocal,
   ConteinerCheckBox,
@@ -17,9 +17,9 @@ import {
   PhaseStatus,
   PhaseTitle,
   Title,
-} from './FasesDeTratamentoPage.styles'
+} from './FasesDeTratamentoPage.styles';
 
-const MIN_NUMBER = 10
+const MIN_NUMBER = 10;
 
 const faseOne = zod.object({
   id: zod.string(),
@@ -30,12 +30,12 @@ const faseOne = zod.object({
   frequencies: zod.array(zod.object({ frequency: zod.string() })),
   dosages: zod.array(zod.object(
     { dosage: zod.string() })),
-})
+});
 
-type RegisterFaseOne = zod.infer<typeof faseOne>
+type RegisterFaseOne = zod.infer<typeof faseOne>;
 
-const frequencies: Array<string> = ['7 dias', '3 semanas', '2 semanas', '4 semanas']
-const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10']
+const frequencies: Array<string> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
+const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
 const patient: PatientType = {
   birthDate: '',
@@ -43,10 +43,10 @@ const patient: PatientType = {
   id: '',
   name: 'Teste',
   photo: '',
-  telephone: '' }
+  telephone: '' };
 
 const FasesDeTratamento = () => {
-  const [checked, setChecked] = useState(false)
+  const [checked, setChecked] = useState(false);
   const {
     register,
     formState: { errors },
@@ -66,11 +66,11 @@ const FasesDeTratamento = () => {
         { dosage: '1:10' },
       ],
     },
-  })
+  });
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   return (
     <DefaultPatientPage patient={patient}>
@@ -141,7 +141,7 @@ const FasesDeTratamento = () => {
         </ButtonLocal>
       </PhaseForm>
     </DefaultPatientPage>
-  )
-}
+  );
+};
 
-export default FasesDeTratamento
+export default FasesDeTratamento;

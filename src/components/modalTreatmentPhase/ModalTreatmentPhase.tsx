@@ -8,8 +8,8 @@ import { BoxButton,
   ModalBox,
   ModalContent,
   TreatmentDuration,
-} from './ModalTreatmentPhase.styles'
-import X from '../../assets/X.svg'
+} from './ModalTreatmentPhase.styles';
+import X from '../../assets/X.svg';
 
 const ModalTreatmentPhase = ({ setModal }: {
   setModal: React.Dispatch<React.SetStateAction<boolean>> }) => {
@@ -80,7 +80,7 @@ const ModalTreatmentPhase = ({ setModal }: {
         </ModalContent>
       </ModalBox>
     </Modal>
-  )
-}
+  );
+};
 
-export default ModalTreatmentPhase
+export default ModalTreatmentPhase;

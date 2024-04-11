@@ -1,19 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router'
-import useAxios from '../../hooks/useAxios'
-import { useData } from '../../global/UserContext'
-import { UserRequest } from '../../requests/UserRequest'
-import { PhaseType, VaccineType } from '../../types/TreatmentTypes'
-import IconArrowUp from '../../assets/arrow-up.svg'
-import IconArrowDown from '../../assets/arrow-down.svg'
-import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage'
-import Button from '../../components/button/Button'
-import AddPhase from './addPhase/AddPhase'
-import Phase from './phase/Phase'
-import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './TreatmentPhases.styles'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router';
+import useAxios from '../../hooks/useAxios';
+import { useData } from '../../global/UserContext';
+import { UserRequest } from '../../requests/UserRequest';
+import { PhaseType, VaccineType } from '../../types/TreatmentTypes';
+import IconArrowUp from '../../assets/arrow-up.svg';
+import IconArrowDown from '../../assets/arrow-down.svg';
+import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
+import Button from '../../components/button/Button';
+import AddPhase from './addPhase/AddPhase';
+import Phase from './phase/Phase';
+import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
-  const { id: idPatient } = useParams()
+  const { id: idPatient } = useParams();
   const {
     getToken,
     patient,
@@ -28,95 +28,95 @@ const TreatmentPhases = () => {
     phaseId,
     getVaccineList,
     vaccineList,
-  } = useData()
+  } = useData();
 
-  const userRequest = new UserRequest()
-  const phaseReq = useAxios<PhaseType>()
+  const userRequest = new UserRequest();
+  const phaseReq = useAxios<PhaseType>();
 
-  const [modal, setModal] = useState(false)
-  const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null)
-  const [phaseProgress, setPhaseProgress] = useState<number>(0)
-  const [maxPhaseNumber, setMaxPhaseNumber] = useState<number>(0)
+  const [modal, setModal] = useState(false);
+  const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
+  const [phaseProgress, setPhaseProgress] = useState<number>(0);
+  const [maxPhaseNumber, setMaxPhaseNumber] = useState<number>(0);
 
   const selectPhase = (phase: PhaseType) => {
-    const newPhase = phase === phaseSelected ? null : phase
-    setPhaseSelected(newPhase)
-    setPhaseId(newPhase ? newPhase.id : '')
-  }
+    const newPhase = phase === phaseSelected ? null : phase;
+    setPhaseSelected(newPhase);
+    setPhaseId(newPhase ? newPhase.id : '');
+  };
 
-  const hasPhases = () => phaseList.length > 0
+  const hasPhases = () => phaseList.length > 0;
 
   const finishPhase = () => {
-    if (!phaseSelected) return
+    if (!phaseSelected) return;
 
-    const token = getToken()
+    const token = getToken();
     if (confirm('Tem certeza que deseja finalizar essa fase?')) {
-      const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseSelected.id, token)
+      const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseSelected.id, token);
 
       const body = {
         phaseNumber: phaseSelected,
         active: false,
-      }
+      };
 
-      phaseReq.put(url, body, { headers })
+      phaseReq.put(url, body, { headers });
     }
-  }
+  };
 
   useEffect(() => {
     if (idPatient && idPatient !== patientId)
-      setPatientId(idPatient)
-  }, [idPatient])
+      setPatientId(idPatient);
+  }, [idPatient]);
 
   useEffect(() => {
     if (patientId) {
-      getPatient()
-      getTreatment()
+      getPatient();
+      getTreatment();
     }
-  }, [patientId])
+  }, [patientId]);
 
   useEffect(() => {
-    getPhaseList()
-  }, [treatmentId, phaseReq.data])
+    getPhaseList();
+  }, [treatmentId, phaseReq.data]);
 
   useEffect(() => {
-    let maxNumber = 0
+    let maxNumber = 0;
     phaseList.forEach((item) => {
       if (item.phaseNumber > maxNumber) {
-        maxNumber = item.phaseNumber
+        maxNumber = item.phaseNumber;
       }
-      setMaxPhaseNumber(maxNumber)
-    })
-  }, [phaseList])
+      setMaxPhaseNumber(maxNumber);
+    });
+  }, [phaseList]);
 
   useEffect(() => {
-    getVaccineList()
-  }, [phaseId])
+    getVaccineList();
+  }, [phaseId]);
 
   useEffect(() => {
-    const total = vaccineList.length
+    const total = vaccineList.length;
     const applied = vaccineList.reduce((total: number, vaccine: VaccineType) => {
       if (vaccine.status !== 'agendado') {
-        return total + 1
+        return total + 1;
       }
-      return total
-    }, 0)
-    setPhaseProgress(applied / total)
-  }, [vaccineList])
+      return total;
+    }, 0);
+    setPhaseProgress(applied / total);
+  }, [vaccineList]);
 
   const getArrow = (phaseNumber: number) => {
     if (phaseSelected?.phaseNumber === phaseNumber) {
-      return IconArrowUp
+      return IconArrowUp;
     }
-    return IconArrowDown
-  }
+    return IconArrowDown;
+  };
 
   const showPhase = (phase: PhaseType) => {
     if (phaseSelected?.phaseNumber === phase.phaseNumber) {
       return (
         <Phase phase={phase} progress={phaseProgress} />
-      )
+      );
     }
-  }
+  };
 
   const getPhases = () => {
     return phaseList
@@ -132,8 +132,8 @@ const TreatmentPhases = () => {
           {showPhase(phase)}
         </PhaseBlock>
       ),
-      )
-  }
+      );
+  };
 
   return (
     <Main>
@@ -168,7 +168,7 @@ const TreatmentPhases = () => {
         }
       </DefaultPatientPage>
     </Main>
-  )
-}
+  );
+};
 
-export default TreatmentPhases
+export default TreatmentPhases;

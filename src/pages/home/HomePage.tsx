@@ -1,9 +1,9 @@
-import { useNavigate } from 'react-router-dom'
-import wave from '../../assets/wave.png'
-import { BottomWave, Box, Button, Main, TopWave } from './HomePage.styles'
+import { useNavigate } from 'react-router-dom';
+import wave from '../../assets/wave.png';
+import { BottomWave, Box, Button, Main, TopWave } from './HomePage.styles';
 
 function Home() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <Main>
@@ -14,7 +14,7 @@ function Home() {
       </Box>
       <BottomWave style={{ backgroundImage: `url(${wave})` }} />
     </Main>
-  )
+  );
 }
 
-export default Home
+export default Home;

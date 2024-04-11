@@ -1,7 +1,7 @@
-import PatientHeader from '../patientHeader/PatientHeader'
-import SidebarPatientPage from '../sidebarPatientPage/SidebarPatientPage'
-import { PatientType } from '../../types/PatientTypes'
-import { Content, Main } from './DefaultPatientPage.styles'
+import PatientHeader from '../patientHeader/PatientHeader';
+import SidebarPatientPage from '../sidebarPatientPage/SidebarPatientPage';
+import { PatientType } from '../../types/PatientTypes';
+import { Content, Main } from './DefaultPatientPage.styles';
 
 interface Props
   extends React.ComponentProps<'main'> {
@@ -17,7 +17,7 @@ const DefaultPatientPage = ({ patient, ...props }: Props) => {
         {props.children}
       </Content>
     </Main>
-  )
-}
+  );
+};
 
-export default DefaultPatientPage
+export default DefaultPatientPage;

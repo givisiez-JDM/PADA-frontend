@@ -10,9 +10,9 @@ export type AllergyType =
   | 'cachorro'
   | 'barata'
   | 'fungos'
-  | 'candidíase'
-export type DosageType = '1:10' | '1:100' | '1:1.000' | '1:10.000'
-export type FrequencyType = '7 dias' | '2 semanas' | '3 semanas' | '4 semanas'
+  | 'candidíase';
+export type DosageType = '1:10' | '1:100' | '1:1.000' | '1:10.000';
+export type FrequencyType = '7 dias' | '2 semanas' | '3 semanas' | '4 semanas';
 
 export type TreatmentType = {
   id: string
@@ -20,7 +20,7 @@ export type TreatmentType = {
   method: string
   active: boolean
   patientId?: number
-}
+};
 
 export type PhaseType = {
   id: string
@@ -30,15 +30,15 @@ export type PhaseType = {
   startTreatment: string
   endTreatment: string
   active: boolean
-}
+};
 
 export type PhaseNewType = {
-  phaseNumber: number;
-  dosage: DosageType;
-  frequency: FrequencyType;
-  startTreatment: string;
-  endTreatment: string;
-  active: boolean;
+  phaseNumber: number
+  dosage: DosageType
+  frequency: FrequencyType
+  startTreatment: string
+  endTreatment: string
+  active: boolean
 };
 
 export type VaccineType = {
@@ -49,4 +49,4 @@ export type VaccineType = {
   scheduledDate: string
   applicationDate: string
   phaseId?: number
-}
+};

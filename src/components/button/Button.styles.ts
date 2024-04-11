@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const ButtonBase = styled.button`
   background-color: ${props => props.theme.colors.variant2};
@@ -32,4 +32,4 @@ export const ButtonBase = styled.button`
     padding: 0.8rem 3rem;
     font-size: 1.5rem;
   }
-`
+`;

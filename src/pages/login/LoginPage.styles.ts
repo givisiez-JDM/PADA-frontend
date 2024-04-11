@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -8,7 +8,7 @@ export const Main = styled.main`
   height: 100vh;
   width: 100vw;
   font-family: "Poppins", sans-serif;
-`
+`;
 
 export const TopWave = styled.div`
   height: 33vh;
@@ -19,7 +19,7 @@ export const TopWave = styled.div`
   transform: rotate(180deg);
   background-repeat: no-repeat;
   background-size: cover;
-`
+`;
 
 export const BottomWave = styled.div`
   height: 33vh;
@@ -28,7 +28,7 @@ export const BottomWave = styled.div`
   bottom: 0;
   background-repeat: no-repeat;
   background-size: cover;
-`
+`;
 
 export const Box = styled.form`
   display: flex;
@@ -40,12 +40,12 @@ export const Box = styled.form`
   width: 25rem;
   border: 3px solid #4c7abb;
   border-radius: 6px;
-`
+`;
 
 export const InputBox = styled.div`
   display: flex;
   position: relative;
-`
+`;
 
 export const Image = styled.img`
   position: absolute;
@@ -53,7 +53,7 @@ export const Image = styled.img`
   top: 0.5rem;
   left: 0.6rem;
   box-sizing: border-box;
-`
+`;
 
 export const Eyes = styled.img`
   position: absolute;
@@ -61,14 +61,14 @@ export const Eyes = styled.img`
   top: 0.38rem;
   right: 0.48rem;
   box-sizing: border-box;
-`
+`;
 
 export const Checkbox = styled.p`
   display: flex;
   align-items: center;
   width: 13rem;
   font-size: 0.8rem;
-`
+`;
 
 export const ButtonLogin = styled.button`
   background-color: ${props => props.theme.colors.variant2};
@@ -78,7 +78,7 @@ export const ButtonLogin = styled.button`
   width: 13rem;
   height: 2rem;
   font-weight: 500;
-`
+`;
 
 export const ForgotPassword = styled.p`
   position: relative;
@@ -90,7 +90,7 @@ export const ForgotPassword = styled.p`
     color: ${props => props.theme.colors.variant2};
     cursor: pointer;
   }
-`
+`;
 
 export const IncorrectUser = styled.p`
   text-indent: -3.3rem;
@@ -99,4 +99,4 @@ export const IncorrectUser = styled.p`
   font-weight: 500;
   word-wrap: break-word;
   max-width: 12rem;
-`
+`;

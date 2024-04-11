@@ -60,7 +60,8 @@ module.exports = {
     }],
     '@stylistic/keyword-spacing': 'error',
     '@stylistic/max-len': ['error', { code: 100 }],
+    '@stylistic/semi': ['error', 'always'],
     '@stylistic/semi-style': ['error', 'last'],
     '@stylistic/one-var-declaration-per-line': ['error', 'always'],
   },
-}
+};

@@ -1,4 +1,4 @@
-import 'styled-components'
+import 'styled-components';
 
 export const Theme = {
   colors: {
@@ -19,9 +19,9 @@ export const Theme = {
       schedule: '#B4B4B4',
     },
   },
-}
+};
 
-export type ITheme = typeof Theme
+export type ITheme = typeof Theme;
 
 declare module 'styled-components' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface

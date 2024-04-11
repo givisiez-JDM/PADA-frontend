@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { UserRequest } from '../../requests/UserRequest'
-import useAxios from '../../hooks/useAxios'
+import { UserRequest } from '../../requests/UserRequest';
+import useAxios from '../../hooks/useAxios';
 
-import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage'
-import Vaccine from './vaccine/Vaccine'
+import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
+import Vaccine from './vaccine/Vaccine';
 
-import iconSearch from '../../assets/search.svg'
+import iconSearch from '../../assets/search.svg';
 
-import { PhaseType, TreatmentType, VaccineType } from '../../types/TreatmentTypes'
-import { PatientType } from '../../types/PatientTypes'
+import { PhaseType, TreatmentType, VaccineType } from '../../types/TreatmentTypes';
+import { PatientType } from '../../types/PatientTypes';
 
 import {
   VaccineColor,
@@ -21,60 +21,60 @@ import {
   VaccinesLegend,
   VaccinesList,
   VaccinesTitle,
-} from './VacinasPaciente.styles'
+} from './VacinasPaciente.styles';
 
 const VacinasPaciente = () => {
-  const userRequest = new UserRequest()
-  const patient = useAxios<PatientType>()
-  const treatmant = useAxios<TreatmentType>()
-  const phase = useAxios<PhaseType[]>()
-  const vaccine = useAxios<VaccineType[]>()
+  const userRequest = new UserRequest();
+  const patient = useAxios<PatientType>();
+  const treatmant = useAxios<TreatmentType>();
+  const phase = useAxios<PhaseType[]>();
+  const vaccine = useAxios<VaccineType[]>();
 
-  const { id } = useParams()
-  const token = window.localStorage.getItem('token')
+  const { id } = useParams();
+  const token = window.localStorage.getItem('token');
 
-  const [pageError, setPageError] = useState('')
-  const [initDate, setInitDate] = useState('')
-  const [endDate, setEndDate] = useState('')
-  const [vaccineList, setVaccineList] = useState<VaccineType[] | null>(null)
-
-  useEffect(() => {
-    const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token)
-    patient.get(url, { headers })
-  }, [id, token])
+  const [pageError, setPageError] = useState('');
+  const [initDate, setInitDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [vaccineList, setVaccineList] = useState<VaccineType[] | null>(null);
 
   useEffect(() => {
-    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token)
-    treatmant.get(url, { headers })
-  }, [id, token])
+    const { url, headers } = userRequest.GET_PATIENTS_BY_ID(id, token);
+    patient.get(url, { headers });
+  }, [id, token]);
+
+  useEffect(() => {
+    const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(id, token);
+    treatmant.get(url, { headers });
+  }, [id, token]);
 
   useEffect(() => {
     try {
       const { url, headers } = userRequest
-        .GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data?.id), token)
-      phase.get(url, { headers })
+        .GET_PHASES_BY_TREATMENTS_ID(String(treatmant.data?.id), token);
+      phase.get(url, { headers });
     }
     catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }, [token, treatmant.data])
+  }, [token, treatmant.data]);
 
   useEffect(() => {
     try {
-      const SLICE_SIZE = -1
+      const SLICE_SIZE = -1;
 
-      const lastItem = phase.data?.slice(SLICE_SIZE)[0]
-      const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(lastItem?.id), token)
-      vaccine.get(url, { headers })
+      const lastItem = phase.data?.slice(SLICE_SIZE)[0];
+      const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(String(lastItem?.id), token);
+      vaccine.get(url, { headers });
     }
     catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }, [token, phase.data])
+  }, [token, phase.data]);
 
   useEffect(() => {
-    const SUBSTRING_MIN_VALUE = 0
-    const SUBSTRING_MAX_VALUE = 10
+    const SUBSTRING_MIN_VALUE = 0;
+    const SUBSTRING_MAX_VALUE = 10;
 
     if (vaccine.data) {
       const newList = initDate || endDate
@@ -82,34 +82,34 @@ const VacinasPaciente = () => {
           const isInit = initDate
             ? item.scheduledDate.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) >= initDate
             || item.applicationDate?.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) >= initDate
-            : true
+            : true;
           const isEnd = endDate
             ? item.scheduledDate.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) <= endDate
             || item.applicationDate?.substring(SUBSTRING_MIN_VALUE, SUBSTRING_MAX_VALUE) <= endDate
-            : true
-          return isInit && isEnd
+            : true;
+          return isInit && isEnd;
         })
-        : vaccine.data
-      setVaccineList(newList)
-      setPageError('')
+        : vaccine.data;
+      setVaccineList(newList);
+      setPageError('');
     }
     else {
-      setPageError('error')
+      setPageError('error');
     }
-  }, [token, initDate, endDate, vaccine.data])
+  }, [token, initDate, endDate, vaccine.data]);
 
   function getVaccineList() {
     if (pageError) {
       return (
         <h2>Lista de vacinas não encontrada</h2>
-      )
+      );
     }
     else {
       return vaccineList?.map((vaccine, index) => (
         <li key={index}>
           <Vaccine {...vaccine} />
         </li>
-      ))
+      ));
     }
   }
 
@@ -153,7 +153,7 @@ const VacinasPaciente = () => {
         </VaccinesLegend>
       </VaccinesContainer>
     </DefaultPatientPage>
-  )
-}
+  );
+};
 
-export default VacinasPaciente
+export default VacinasPaciente;

@@ -1,9 +1,9 @@
-import React, { Dispatch, ReactNode, createContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
-import { UserRequest } from '../requests/UserRequest'
-import { PatientType } from '../types/PatientTypes'
-import { PhaseType, TreatmentType, VaccineType } from '../types/TreatmentTypes'
+import React, { Dispatch, ReactNode, createContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { UserRequest } from '../requests/UserRequest';
+import { PatientType } from '../types/PatientTypes';
+import { PhaseType, TreatmentType, VaccineType } from '../types/TreatmentTypes';
 
 type GlobalContextProps = {
   getToken: () => string
@@ -33,244 +33,244 @@ type GlobalContextProps = {
   setPhaseId: Dispatch<React.SetStateAction<string>>
   getVaccineList: () => void
   vaccineList: VaccineType[]
-}
+};
 
 type GlobalStorageProps = {
   children: ReactNode
-}
+};
 
-export const GlobalContext = createContext<GlobalContextProps | undefined>(undefined)
+export const GlobalContext = createContext<GlobalContextProps | undefined>(undefined);
 
-const userRequest = new UserRequest()
+const userRequest = new UserRequest();
 
 export const useData = () => {
-  const context = React.useContext(GlobalContext)
-  if (!context) throw new Error('useData precisa estar em DataContextProvider')
-  return context
-}
+  const context = React.useContext(GlobalContext);
+  if (!context) throw new Error('useData precisa estar em DataContextProvider');
+  return context;
+};
 
 const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
-  const [data, setData] = useState<any | null>(null)
-  const [error, setError] = useState<any | null>(null)
-  const [login, setLogin] = useState<boolean | null>(null)
-  const [loading, setLoading] = useState<boolean | null>(null)
-  const [userId, setUserId] = useState<any | null>(null)
-  const [tokenState, setTokenState] = useState('')
-  const [patientList, setPatientList] = useState<PatientType[]>([])
-  const [patientId, setPatientId] = useState<string>('')
-  const [patient, setPatient] = useState<PatientType | null>(null)
-  const [treatmentId, setTreatmentId] = useState<string>('')
-  const [treatment, setTreatment] = useState<TreatmentType | null>(null)
-  const [phaseList, setPhaseList] = useState<PhaseType[]>([])
-  const [phaseId, setPhaseId] = useState<string>('')
-  const [vaccineList, setVaccineList] = useState<VaccineType[]>([])
+  const [data, setData] = useState<any | null>(null);
+  const [error, setError] = useState<any | null>(null);
+  const [login, setLogin] = useState<boolean | null>(null);
+  const [loading, setLoading] = useState<boolean | null>(null);
+  const [userId, setUserId] = useState<any | null>(null);
+  const [tokenState, setTokenState] = useState('');
+  const [patientList, setPatientList] = useState<PatientType[]>([]);
+  const [patientId, setPatientId] = useState<string>('');
+  const [patient, setPatient] = useState<PatientType | null>(null);
+  const [treatmentId, setTreatmentId] = useState<string>('');
+  const [treatment, setTreatment] = useState<TreatmentType | null>(null);
+  const [phaseList, setPhaseList] = useState<PhaseType[]>([]);
+  const [phaseId, setPhaseId] = useState<string>('');
+  const [vaccineList, setVaccineList] = useState<VaccineType[]>([]);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const getToken = () => {
-    if (tokenState) return tokenState
+    if (tokenState) return tokenState;
     else {
-      const storedToken = window.localStorage.getItem('token')
+      const storedToken = window.localStorage.getItem('token');
       if (storedToken) {
-        setTokenState(storedToken)
-        return storedToken
+        setTokenState(storedToken);
+        return storedToken;
       }
     }
-    return ''
-  }
+    return '';
+  };
 
   const setToken = (newToken: string) => {
-    setTokenState(newToken)
-    window.localStorage.setItem('token', newToken)
-  }
+    setTokenState(newToken);
+    window.localStorage.setItem('token', newToken);
+  };
 
   const userLogin = async (email: string, password: string) => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
       const body = {
         email: email,
         password: password,
-      }
+      };
 
-      const { url } = userRequest.USER_LOGIN()
-      const req = await axios.post(url, body)
+      const { url } = userRequest.USER_LOGIN();
+      const req = await axios.post(url, body);
 
-      setToken(req.data.token)
-      window.localStorage.setItem('id', req.data.user.id)
+      setToken(req.data.token);
+      window.localStorage.setItem('id', req.data.user.id);
 
-      setUserId(req.data.user.id)
+      setUserId(req.data.user.id);
 
-      setLogin(true)
-      navigate('/menu-medico')
+      setLogin(true);
+      navigate('/menu-medico');
     }
     catch (err: any) {
-      setData(null)
-      setError(err.response.data.error)
-      setLoading(false)
+      setData(null);
+      setError(err.response.data.error);
+      setLoading(false);
     }
     finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const userSignup = async (name: string, email: string, password: string) => {
     try {
-      setData(null)
-      setError(null)
-      setLoading(true)
+      setData(null);
+      setError(null);
+      setLoading(true);
 
       const body = {
         name,
         email,
         password,
-      }
+      };
 
-      const { url } = userRequest.USER_SIGNUP(body)
-      const signup = await axios.post(url, body)
+      const { url } = userRequest.USER_SIGNUP(body);
+      const signup = await axios.post(url, body);
 
-      setData(signup.status)
+      setData(signup.status);
     }
     catch (err: any) {
-      setData(null)
-      setError(err.response.data.error)
-      setLoading(false)
+      setData(null);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getProfile = async (userId: string) => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_DOCTOR_BY_ID(userId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setData(req.data)
+      setData(req.data);
     }
     catch (err: any) {
-      setData(null)
-      setError(err.response.data.error)
-      setLoading(false)
+      setData(null);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getPatientList = async () => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_PATIENTS(token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PATIENTS(token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setPatientList(req.data)
+      setPatientList(req.data);
     }
     catch (err: any) {
-      setPatientList([])
-      setError(err.response.data.error)
-      setLoading(false)
+      setPatientList([]);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getPatient = async () => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_PATIENTS_BY_ID(patientId, token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PATIENTS_BY_ID(patientId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setPatient(req.data)
+      setPatient(req.data);
     }
     catch (err: any) {
-      setPatient(null)
-      setError(err.response.data.error)
-      setLoading(false)
+      setPatient(null);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getTreatment = async () => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(patientId, token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_TREATMENTS_BY_ID(patientId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setTreatment(req.data)
-      setTreatmentId(req.data.id)
+      setTreatment(req.data);
+      setTreatmentId(req.data.id);
     }
     catch (err: any) {
-      setTreatment(null)
-      setTreatmentId('')
-      setError(err.response.data.error)
-      setLoading(false)
+      setTreatment(null);
+      setTreatmentId('');
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getPhaseList = async () => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(treatmentId, token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(treatmentId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setPhaseList(req.data)
+      setPhaseList(req.data);
     }
     catch (err: any) {
-      setPhaseList([])
-      setError(err.response.data.error)
-      setLoading(false)
+      setPhaseList([]);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const getVaccineList = async () => {
     try {
-      setError(null)
-      setLoading(true)
+      setError(null);
+      setLoading(true);
 
-      const token = getToken()
-      const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(phaseId, token)
+      const token = getToken();
+      const { url, headers } = userRequest.GET_VACCINES_BY_PHASES_ID(phaseId, token);
 
-      const req = await axios.get(url, { headers })
+      const req = await axios.get(url, { headers });
 
-      setVaccineList(req.data)
+      setVaccineList(req.data);
     }
     catch (err: any) {
-      setVaccineList([])
-      setError(err.response.data.error)
-      setLoading(false)
+      setVaccineList([]);
+      setError(err.response.data.error);
+      setLoading(false);
     }
-  }
+  };
 
   const userLogout = () => {
-    setData(null)
-    setPatientList([])
-    setError(null)
-    setLoading(false)
-    setTreatment(null)
-    setTreatmentId('')
-    setPhaseList([])
+    setData(null);
+    setPatientList([]);
+    setError(null);
+    setLoading(false);
+    setTreatment(null);
+    setTreatmentId('');
+    setPhaseList([]);
 
-    setToken('')
-    window.localStorage.removeItem('id')
-    window.localStorage.removeItem('password')
+    setToken('');
+    window.localStorage.removeItem('id');
+    window.localStorage.removeItem('password');
 
-    setLogin(false)
-    navigate('/')
-  }
+    setLogin(false);
+    navigate('/');
+  };
 
   return (
     <GlobalContext.Provider
@@ -306,7 +306,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
     >
       {children}
     </GlobalContext.Provider>
-  )
-}
+  );
+};
 
-export default UserContext
+export default UserContext;

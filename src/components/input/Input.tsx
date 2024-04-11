@@ -1,11 +1,11 @@
-import React, { InputHTMLAttributes, forwardRef } from 'react'
-import { BoxInput, InputError, InputLogin } from './Input.styles'
+import React, { InputHTMLAttributes, forwardRef } from 'react';
+import { BoxInput, InputError, InputLogin } from './Input.styles';
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   error?: string
   style?: React.CSSProperties
   name: string
-}
+};
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
   function Input({ name, style, error = '', ...props }, ref) {
@@ -21,10 +21,10 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
 
         {error && <InputError>{error}</InputError>}
       </BoxInput>
-    )
+    );
   },
-)
+);
 
-Input.displayName = 'Input'
+Input.displayName = 'Input';
 
-export default Input
+export default Input;

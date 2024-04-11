@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Main = styled.main`
     display: flex;
@@ -8,7 +8,7 @@ export const Main = styled.main`
     height: 100vh;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
-`
+`;
 
 export const TopWave = styled.div`
     height: 33vh;
@@ -19,7 +19,7 @@ export const TopWave = styled.div`
     transform: rotate(180deg);
     background-repeat: no-repeat;
     background-size:cover;
-`
+`;
 
 export const BottomWave = styled.div`
     height: 33vh;
@@ -28,14 +28,14 @@ export const BottomWave = styled.div`
     bottom: 0;
     background-repeat: no-repeat;
     background-size:cover;
-`
+`;
 
 export const Title = styled.h1`
     display: flex;
     position: relative;
     bottom: 1.5rem;
     color: ${props => props.theme.colors.variant2};
-`
+`;
 
 export const Box = styled.form`
     display: flex;
@@ -47,12 +47,12 @@ export const Box = styled.form`
     width: 23rem;
     border: 3px solid #4C7ABB;
     border-radius: 6px;
-`
+`;
 
 export const InputBox = styled.div`
     display: flex;
     position: relative;
-`
+`;
 
 export const I = styled.img`
     position: absolute;
@@ -60,7 +60,7 @@ export const I = styled.img`
     top: 0.5rem;
     left: 0.6rem ;
     box-sizing: border-box;
-`
+`;
 
 export const Eyes = styled.img`
   position: absolute;
@@ -68,14 +68,14 @@ export const Eyes = styled.img`
   top: 0.38rem;
   right: 0.48rem;
   box-sizing: border-box;
-`
+`;
 
 export const Checkbox = styled.p`
     display: flex;
     align-items: center;
     width: 13.5rem;
     font-size: 0.8rem;
-`
+`;
 
 export const ButtonSignup = styled.button`
     background-color: ${props => props.theme.colors.variant2};
@@ -86,7 +86,7 @@ export const ButtonSignup = styled.button`
     height: 2rem;
     font-weight: 500;
     font-size: 0.9rem;
-`
+`;
 
 export const FooterDescription = styled.p`
     display: flex;
@@ -101,7 +101,7 @@ export const FooterDescription = styled.p`
         text-indent: 2px;
         color: ${props => props.theme.colors.variant2};    
     }
-`
+`;
 
 export const ErrorMessage = styled.p`
     text-indent:-6.4rem;
@@ -110,7 +110,7 @@ export const ErrorMessage = styled.p`
     font-weight: 500;
     word-wrap: break-word;
     max-width: 12rem;
-`
+`;
 export const Sucess = styled.div`
     display: flex;
     flex-direction: column;
@@ -136,4 +136,4 @@ export const Sucess = styled.div`
         font-size: 1rem;
         height: 2rem;
     }
-`
+`;

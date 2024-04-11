@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Modal = styled.div`
   display: flex;
@@ -18,8 +18,8 @@ export const ModalForm = styled.form`
   padding: 2.6rem 3.8rem;
   height: 38rem;
   width: 32rem;
-  background-color: ${(props) => props.theme.colors.variant1};
-  color: ${(props) => props.theme.colors.variant3};
+  background-color: ${props => props.theme.colors.variant1};
+  color: ${props => props.theme.colors.variant3};
   border-radius: 3.13rem;
   gap: 1.5rem;
 `;
@@ -43,17 +43,17 @@ export const Title = styled.h3`
   font-weight: bold;
   font-size: 1.13rem;
   margin: 1rem 0;
-  color: ${(props) => props.theme.colors.keyboard};
+  color: ${props => props.theme.colors.keyboard};
 `;
 
 export const DateInput = styled.input`
-  background-color: ${(props) => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.background};
   width: 10rem;
   height: 2rem;
   border-radius: 1rem;
   padding: 0 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.variant3};
-  color: ${(props) => props.theme.colors.variant3};
+  border: 1px solid ${props => props.theme.colors.variant3};
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const ContainerCheckBox = styled.div`
@@ -64,7 +64,7 @@ export const ContainerCheckBox = styled.div`
   gap: 0.5rem 1rem;
 
   .checkbox + label:before {
-    background: ${(props) => props.theme.colors.background};
+    background: ${props => props.theme.colors.background};
   }
 `;
 
@@ -80,5 +80,5 @@ export const Error = styled.div`
   width: 100%;
   font-size: 0.8rem;
   text-align: center;
-  color: ${(props) => props.theme.colors.error};
+  color: ${props => props.theme.colors.error};
 `;

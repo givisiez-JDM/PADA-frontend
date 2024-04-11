@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import calendarIcon from '../../assets/calendar.svg'
+import styled from 'styled-components';
+import calendarIcon from '../../assets/calendar.svg';
 
 export const VaccinesContainer = styled.section`
     display: flex;
@@ -7,18 +7,18 @@ export const VaccinesContainer = styled.section`
     padding: 3rem;
     width: 100%;
     height: 100%;
-`
+`;
 
 export const VaccinesHeader = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 1rem;
-`
+`;
 
 export const VaccinesTitle = styled.h1`
     font-size: 2rem;
-`
+`;
 
 export const VaccinesDate = styled.div`
     
@@ -55,11 +55,11 @@ export const VaccinesDate = styled.div`
         width: 20px;
         height: 20px;
     }
-`
+`;
 
 export const VaccinesList = styled.ul`
     padding-top: 2rem;
-`
+`;
 
 export const VaccinesLegend = styled.div`
     justify-self: flex-end;
@@ -68,7 +68,7 @@ export const VaccinesLegend = styled.div`
     h3 {
         font-size: 0.875rem;
     }
-`
+`;
 
 export const VaccineColorContainer = styled.div`
     display: flex;
@@ -79,7 +79,7 @@ export const VaccineColorContainer = styled.div`
         margin: 0 1rem;
         font-size: 0.75rem;
     }
-`
+`;
 
 export const VaccineColor = styled.div`
     width: 1rem;
@@ -96,4 +96,4 @@ export const VaccineColor = styled.div`
     &.schedule {
         background-color: ${props => props.theme.colors.vaccine.schedule};
     }
-`
+`;

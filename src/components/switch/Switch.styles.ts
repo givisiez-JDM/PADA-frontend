@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Label = styled.label`
   display: flex;
@@ -7,7 +7,7 @@ export const Label = styled.label`
   gap: 1rem;
   justify-content: space-between;
   cursor: pointer;
-`
+`;
 
 export const Switch = styled.div`
   position: relative;
@@ -30,7 +30,7 @@ export const Switch = styled.div`
     background: ${props => props.theme.colors.white};
     transform: translate(0, -50%);
   }
-`
+`;
 
 export const Checkbox = styled.input`
   display: none;
@@ -42,4 +42,4 @@ export const Checkbox = styled.input`
       transform: translate(1rem, -50%);
     }
   }
-`
+`;

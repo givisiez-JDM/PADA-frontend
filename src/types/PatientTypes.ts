@@ -6,4 +6,4 @@ export type PatientType = {
   photo: string
   telephone: string
   birthDate: string
-}
+};

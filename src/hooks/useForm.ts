@@ -1,12 +1,12 @@
-import { useForm } from 'react-hook-form'
-import { z as zod } from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useData } from '../global/UserContext'
-import { FormPropsLogin, loginType } from '../types/LoginTypes'
-import { FormPropsSignup, SignupType } from '../types/SignupTypes'
+import { useForm } from 'react-hook-form';
+import { z as zod } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useData } from '../global/UserContext';
+import { FormPropsLogin, loginType } from '../types/LoginTypes';
+import { FormPropsSignup, SignupType } from '../types/SignupTypes';
 
-const MIN_PASSWORD_LENGTH = 8
-const MAX_CHARACTERS = 3
+const MIN_PASSWORD_LENGTH = 8;
+const MAX_CHARACTERS = 3;
 
 export const formLoginValidate = zod.object({
   email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
@@ -15,7 +15,7 @@ export const formLoginValidate = zod.object({
     .string()
     .min(1, 'Digite sua senha')
     .min(MIN_PASSWORD_LENGTH, 'Sua senha deve ter 8 caracteres'),
-})
+});
 
 export const useLogin = () => {
   const {
@@ -27,14 +27,14 @@ export const useLogin = () => {
   } = useForm<FormPropsLogin>({
     mode: 'onBlur',
     resolver: zodResolver(formLoginValidate),
-  })
+  });
 
-  const { userLogin } = useData()
+  const { userLogin } = useData();
 
   const onSubmit = handleSubmit((data: loginType) => {
-    const { email, password } = data
-    userLogin(email, password)
-  })
+    const { email, password } = data;
+    userLogin(email, password);
+  });
 
   return {
     handleSubmit,
@@ -45,8 +45,8 @@ export const useLogin = () => {
     useLogin,
     getValues,
     getFieldState,
-  }
-}
+  };
+};
 
 export const formValidateSignup = zod
   .object({
@@ -72,7 +72,7 @@ export const formValidateSignup = zod
   .refine(fields => fields.password === fields.confirmPassword, {
     path: ['confirmPassword'],
     message: 'As senha precisam ser iguais',
-  })
+  });
 
 export const useSignup = () => {
   const {
@@ -83,14 +83,14 @@ export const useSignup = () => {
   } = useForm<FormPropsSignup>({
     mode: 'onBlur',
     resolver: zodResolver(formValidateSignup),
-  })
+  });
 
-  const { userSignup, data } = useData()
+  const { userSignup, data } = useData();
 
   const onSubmit = handleSubmit((data: SignupType) => {
-    const { name, email, password, confirmPassword } = data
-    userSignup(name, email, password, confirmPassword)
-  })
+    const { name, email, password, confirmPassword } = data;
+    userSignup(name, email, password, confirmPassword);
+  });
 
   return {
     handleSubmit,
@@ -101,5 +101,5 @@ export const useSignup = () => {
     onSubmit,
     useSignup,
     getValues,
-  }
-}
+  };
+};

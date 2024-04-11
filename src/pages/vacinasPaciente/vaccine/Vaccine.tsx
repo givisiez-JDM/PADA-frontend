@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 
-import iconArrowUp from '../../../assets/arrow-up.svg'
-import iconArrowDown from '../../../assets/arrow-down.svg'
+import iconArrowUp from '../../../assets/arrow-up.svg';
+import iconArrowDown from '../../../assets/arrow-down.svg';
 
-import { VaccineType } from '../../../types/TreatmentTypes'
+import { VaccineType } from '../../../types/TreatmentTypes';
 
 import {
   VaccineButton,
@@ -12,13 +12,13 @@ import {
   VaccineDescription,
   VaccineText,
   VaccineTitle,
-} from './Vaccine.style'
+} from './Vaccine.style';
 
 function Vaccine({ title, observation, scheduledDate, status, applicationDate }: VaccineType) {
-  const [showDescription, setShowDescription] = useState(false)
+  const [showDescription, setShowDescription] = useState(false);
 
   function toggledescription() {
-    setShowDescription(!showDescription)
+    setShowDescription(!showDescription);
   }
 
   function getVaccineStatus() {
@@ -27,14 +27,14 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
       'não aplicado': 'not-applied',
       'aplicado com atraso': 'late',
       'agendado': 'schedule',
-    }[status] || ''
+    }[status] || '';
   }
 
   function getDate() {
-    const date = new Date(applicationDate || scheduledDate)
+    const date = new Date(applicationDate || scheduledDate);
     return date.toLocaleString('pt-BR', {
       timeZone: 'America/Sao_Paulo', dateStyle: 'long', timeStyle: 'medium',
-    })
+    });
   }
 
   return (
@@ -55,7 +55,7 @@ function Vaccine({ title, observation, scheduledDate, status, applicationDate }:
       </VaccineButton>
 
     </VaccineContainer>
-  )
+  );
 }
 
-export default Vaccine
+export default Vaccine;

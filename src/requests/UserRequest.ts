@@ -1,17 +1,17 @@
-export const BASE_URL = 'https://app-vacina-production.up.railway.app'
+export const BASE_URL = 'https://app-vacina-production.up.railway.app';
 
 type SignupRequestBody = {
   name: string
   email: string
   password: string
-}
+};
 
 export class UserRequest {
   USER_LOGIN = () => {
     return {
       url: `${BASE_URL}/login/doctors`,
-    }
-  }
+    };
+  };
 
   USER_SIGNUP = (body: SignupRequestBody) => {
     return {
@@ -19,8 +19,8 @@ export class UserRequest {
       options: {
         body,
       },
-    }
-  }
+    };
+  };
 
   GET_DOCTOR_BY_ID = (id: any, token: string | null) => {
     return {
@@ -28,8 +28,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_PATIENTS = (token: string | null) => {
     return {
@@ -37,8 +37,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_PATIENTS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
@@ -46,8 +46,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_TREATMENTS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
@@ -55,8 +55,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_PHASES_BY_TREATMENTS_ID = (
     id: string | undefined,
@@ -67,8 +67,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_PHASES_BY_ID = (id: string | undefined, token: string | null) => {
     return {
@@ -76,8 +76,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   PUT_PHASE_STATUS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
@@ -85,8 +85,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_VACCINES_BY_PHASES_ID = (
     id: string | undefined,
@@ -97,8 +97,8 @@ export class UserRequest {
       headers: {
         Authorization: token,
       },
-    }
-  }
+    };
+  };
 
   GET_TREATMENTS_PHASES_BY_ID = (
     id: string | undefined,
@@ -107,6 +107,6 @@ export class UserRequest {
     return {
       url: `${BASE_URL}/phases/treatments/${id}`,
       headers: { Authorization: token },
-    }
-  }
+    };
+  };
 }
