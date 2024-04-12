@@ -33,6 +33,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
     try {
       setError(null);
       setLoading(true);
+      setStatus(0);
 
       const res = await axios.get<T>(url, config);
 
@@ -52,6 +53,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       try {
         setError(null);
         setLoading(true);
+        setStatus(0);
 
         const res = await axios.post(url, body, config);
 
@@ -72,6 +74,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       try {
         setError(null);
         setLoading(true);
+        setStatus(0);
 
         const res = await axios.post<T>(url, body, config);
 
@@ -93,6 +96,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       try {
         setError(null);
         setLoading(true);
+        setStatus(0);
 
         const res = await axios.delete(url, config);
 
@@ -113,6 +117,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       try {
         setError(null);
         setLoading(true);
+        setStatus(0);
 
         const res = await axios.put<T>(url, data, config);
 
@@ -134,6 +139,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       try {
         setError(null);
         setLoading(true);
+        setStatus(0);
 
         const res = await axios.put(url, data, config);
 

@@ -47,7 +47,6 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
     const token = getToken();
     const { url, headers } = userRequest.PUT_PHASES_BY_ID(phase.id, token);
     const body = {
@@ -68,6 +67,10 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
 
   useEffect(() => {
     switch (phaseReq.status) {
+      case 0: {
+        setErrorMessage("");
+        break;
+      }
       case 200: {
         closeModal();
         break;
