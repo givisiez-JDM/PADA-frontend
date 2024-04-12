@@ -115,7 +115,7 @@ const TreatmentPhases = () => {
   const showPhase = (phase: PhaseType) => {
     if (phaseSelected?.phaseNumber === phase.phaseNumber) {
       return (
-        <Phase phase={phase} progress={phaseProgress} setPhase={setPhaseEdit} />
+        <Phase phase={phase} progress={phaseProgress} setPhase={() => setPhaseEdit(phaseSelected)} />
       );
     }
   };
@@ -137,26 +137,25 @@ const TreatmentPhases = () => {
   return (
     <Main>
       <DefaultPatientPage patient={patient} >
-        {phaseEdit ?
-          <TreatmentPhaseEdit phase={phaseEdit} setPhase={setPhaseEdit} /> :
-          <Section>
-            <Title>Fases</Title>
-            {getPhases()}
-            <BoxButton className={hasPhases() ? '' : 'centered'}>
-              {
-                hasPhases() &&
-                <Button
-                  disabled={!phaseSelected?.active}
-                  onClick={finishPhase}
-                >
-                  Finalizar Fase
-                </Button>
-              }
-              <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
-            </BoxButton>
-          </Section>}
+        <Section>
+          <Title>Fases</Title>
+          {getPhases()}
+          <BoxButton className={hasPhases() ? '' : 'centered'}>
+            {
+              hasPhases() &&
+              <Button
+                disabled={!phaseSelected?.active}
+                onClick={finishPhase}
+              >
+                Finalizar Fase
+              </Button>
+            }
+            <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
+          </BoxButton>
+        </Section>
       </DefaultPatientPage>
       {modal && <AddPhase setModal={setModal} treatmentId={treatmentId} phaseNumber={maxPhaseNumber + 1} />}
+      {phaseEdit && <TreatmentPhaseEdit closeModal={() => setPhaseEdit(null)} phaseEdit={phaseEdit} />}
     </Main>
   );
 };

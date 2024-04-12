@@ -1,11 +1,43 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+export const ModalContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: ${(props) => props.theme.colors.white};
+`;
+
+export const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: ${(props) => props.theme.colors.variant2};
+  width: 100%;
+  padding: 1rem 3.5rem;
+  border-radius: 0 0 1rem 1rem;
+`;
+
+export const HeaderTitle = styled.h1`
+  font-weight: 900;
+  font-size: 2rem;
+  color: ${(props) => props.theme.colors.white};
+`;
+
+export const Close = styled.img`
+  width: 1, 12rem;
+  margin: 2rem;
+  cursor: pointer;
+`;
 
 export const PhaseForm = styled.form`
   display: flex;
+  gap: 2.5rem;
   flex-direction: column;
   align-items: start;
-  gap: 2rem;
-  margin: 2rem;
+  padding: 2rem;
   color: ${(props) => props.theme.colors.variant3};
 `;
 
@@ -28,7 +60,7 @@ export const PhaseField = styled.div`
 `;
 
 export const Title = styled.h3`
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.12rem;
   color: ${(props) => props.theme.colors.keyboard};
 `;
@@ -50,6 +82,7 @@ export const DateInput = styled.input`
 `;
 
 export const CheckBoxContainer = styled.div`
+  width: 50%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-top: 1rem;
@@ -69,6 +102,7 @@ export const Error = styled.span`
 
 export const ButtonGroup = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 20rem;
+  justify-content: end;
+  padding: 0 3rem;
+  width: 100%;
 `;
