@@ -1,22 +1,31 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useCallback } from 'react';
-import axios, { AxiosRequestConfig } from 'axios';
+import { useState, useCallback } from "react";
+import axios, { AxiosRequestConfig } from "axios";
 
 interface UseAxiosResponse<T> {
   data: T | null;
+  status: number;
   error: any | null;
   loading: boolean;
   get: (url: string, config?: AxiosRequestConfig) => Promise<void>;
   post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>;
-  postWithRes: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>;
+  postWithRes: (
+    url: string,
+    body: any,
+    config?: AxiosRequestConfig
+  ) => Promise<void>;
   deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>;
   put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>;
-  putWithoutRes: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>;
+  putWithoutRes: (
+    url: string,
+    data: any,
+    config?: AxiosRequestConfig
+  ) => Promise<void>;
 }
 
 const useAxios = <T = any>(): UseAxiosResponse<T> => {
-
   const [data, setData] = useState<T | null>(null);
+  const [status, setStatus] = useState<number>(0);
   const [error, setError] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -27,8 +36,10 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
 
       const res = await axios.get<T>(url, config);
 
+      setStatus(res.status);
       setData(res.data);
-    } catch (error:any) {
+    } catch (error: any) {
+      setStatus(error.response.status);
       setData(null);
       setError(error.response?.data || error.message);
     } finally {
@@ -36,82 +47,111 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
     }
   }, []);
 
-  const post = useCallback(async (url: string, body: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const post = useCallback(
+    async (url: string, body: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      await axios.post(url, body, config);
-    } catch (error:any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+        const res = await axios.post(url, body, config);
 
-  const postWithRes = useCallback(async (url: string, body: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+        setStatus(res.status);
+      } catch (error: any) {
+        setStatus(error.response.status);
+        setData(null);
+        setError(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
-      const res = await axios.post<T>(url, body, config);
+  const postWithRes = useCallback(
+    async (url: string, body: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      setData(res.data);
-    } catch (error:any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+        const res = await axios.post<T>(url, body, config);
 
-  const deleteAxios = useCallback(async (url: string, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+        setStatus(res.status);
+        setData(res.data);
+      } catch (error: any) {
+        setStatus(error.response.status);
+        setData(null);
+        setError(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
-      await axios.delete(url, config);
-    } catch (error:any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const deleteAxios = useCallback(
+    async (url: string, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-  const put = useCallback(async (url: string, data: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+        const res = await axios.delete(url, config);
 
-      const res = await axios.put<T>(url, data, config);
+        setStatus(res.status);
+      } catch (error: any) {
+        setStatus(error.response.status);
+        setData(null);
+        setError(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
-      setData(res.data);
-    } catch (error:any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+  const put = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-  const putWithoutRes = useCallback(async (url: string, data: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+        const res = await axios.put<T>(url, data, config);
 
-      await axios.put(url, data, config);
-    } catch (error:any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
+        setStatus(res.status);
+        setData(res.data);
+      } catch (error: any) {
+        setStatus(error.response.status);
+        setData(null);
+        setError(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
+
+  const putWithoutRes = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
+
+        const res = await axios.put(url, data, config);
+
+        setStatus(res.status);
+      } catch (error: any) {
+        setStatus(error.response.status);
+        setData(null);
+        setError(error.response?.data || error.message);
+      } finally {
+        setLoading(false);
+      }
+    },
+    []
+  );
 
   return {
     data,
+    status,
     error,
     loading,
     get,
