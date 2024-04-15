@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Main = styled.main`
   display: flex;
@@ -7,7 +7,6 @@ export const Main = styled.main`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  font-family: 'Poppins', sans-serif;
 `;
 
 export const TopWave = styled.div`
