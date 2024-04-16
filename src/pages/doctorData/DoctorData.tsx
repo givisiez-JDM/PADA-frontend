@@ -8,16 +8,18 @@ import IconArrow from "../../assets/white-arrow.svg";
 import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
 import MenuHeader from "../../components/menuHeader/MenuHeader";
 import {
-  
-  Button,
+  Title,
+  Container,
   Logo,
   Main,
- 
   SectionDoctor,
- 
-  InputField, 
-  Label,
+  InputField,
+  InputArea,
+  PasswordBox,
+  ButtonBox,
+  InputPass,
 } from "./DoctorData.styles";
+import Button from "../../components/button/Button";
 
 const DoctorData = () => {
   const userRequest = new UserRequest();
@@ -48,8 +50,7 @@ const DoctorData = () => {
   };
 
   const handleSaveProfile = () => {
-    
-    setEditProfile(false); 
+    setEditProfile(false);
   };
 
   const getAllPatients = patients.data?.map((patient: any) => {
@@ -74,45 +75,49 @@ const DoctorData = () => {
             <img src={IconArrow} alt="" />
           </SectionDoctor>
         </MenuHeader>
-        
-         <div>
-              <Label>Nome:</Label>
-              <InputField
-                type="text"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <Label>E-mail:</Label>
-              <InputField
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Label>Especialidade:</Label>
-              <InputField
-                type="text"
-                value={specialty}
-                onChange={(e) => setSpecialty(e.target.value)}
-              />
-              <Label>Sobre:</Label>
-              <InputField
-                type="text"
-                value={about}
-                onChange={(e) => setAbout(e.target.value)}
-              />
-              <Label>Senha:</Label>
-              <InputField
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <Button onClick={handleSaveProfile}>Alterar Senha</Button>
-            </div>
-          : (
-            <Button onClick={handleEditProfile}>Atualizar Perfil</Button>
-          )
-        
+
+        <Container>
+          <Title>Nome:</Title>
+          <InputField
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <Title>E-mail:</Title>
+          <InputField
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <Title>Especialidade:</Title>
+          <InputArea
+            value={specialty}
+            onChange={(e) => setSpecialty(e.target.value)}
+          />
+          <Title>Sobre:</Title>
+          <InputArea
+            rows={4}
+            cols={50}
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+          />
+          <PasswordBox>
+            <Title>Senha:</Title>
+            <InputPass
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button size="small" onClick={handleEditProfile}>
+              Alterar{" "}
+            </Button>
+          </PasswordBox>
+          <ButtonBox>
+            <Button onClick={handleSaveProfile}>Atualizar Perfil</Button>
+          </ButtonBox>
+        </Container>
       </Main>
+
       {modal && <ModalDoctor />}
     </>
   );
