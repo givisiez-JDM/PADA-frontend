@@ -7,7 +7,6 @@ export const Main = styled.main`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  font-family: "Poppins", sans-serif;
 `;
 
 export const TopWave = styled.div`
@@ -45,6 +44,12 @@ export const Box = styled.form`
 export const InputBox = styled.div`
   display: flex;
   position: relative;
+`;
+
+export const PasswordInputBox = styled(InputBox)`
+  input {
+    padding-right: 2.5rem;
+  }
 `;
 
 export const Image = styled.img`

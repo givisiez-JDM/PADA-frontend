@@ -8,17 +8,7 @@ import eyesOpen from '../../assets/eyes-open.svg';
 import eyesClosed from '../../assets/eyes-closed.svg';
 import { useLogin } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
-import { BottomWave,
-  Box,
-  Checkbox,
-  ForgotPassword,
-  Image,
-  Eyes,
-  IncorrectUser,
-  InputBox,
-  Main,
-  TopWave,
-} from './LoginPage.styles';
+import { BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes, IncorrectUser, InputBox, Main, PasswordInputBox, TopWave } from './LoginPage.styles';
 import { useData } from '../../global/UserContext';
 
 const Login = () => {
@@ -59,7 +49,7 @@ const Login = () => {
           />
         </InputBox>
 
-        <InputBox>
+        <PasswordInputBox>
           <Image src={key} alt="icon person" />
           <Input
             type={visiblePassword ? 'text' : 'password'}
@@ -67,12 +57,8 @@ const Login = () => {
             {...register('password')}
             error={errors.password?.message}
           />
-          <Eyes
-            src={visiblePassword ? eyesOpen : eyesClosed}
-            alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
-            onClick={() => setVisiblePassword(!visiblePassword)}
-          />
-        </InputBox>
+          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'} onClick={() => setVisiblePassword(!visiblePassword)} />
+        </PasswordInputBox>
 
         {error && <IncorrectUser>{error}</IncorrectUser>}
 
