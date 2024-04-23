@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -7,7 +7,6 @@ export const Main = styled.main`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  font-family: "Poppins", sans-serif;
 `;
 
 export const TopWave = styled.div`
@@ -47,6 +46,12 @@ export const InputBox = styled.div`
   position: relative;
 `;
 
+export const PasswordInputBox = styled(InputBox)`
+  input {
+    padding-right: 2.5rem;
+  }
+`;
+
 export const Image = styled.img`
   position: absolute;
   height: 1.2rem;
@@ -71,8 +76,8 @@ export const Checkbox = styled.p`
 `;
 
 export const ButtonLogin = styled.button`
-  background-color: ${(props) => props.theme.colors.variant2};
-  color: ${(props) => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.variant2};
+  color: ${props => props.theme.colors.white};
   border: none;
   border-radius: 15px;
   width: 13rem;
@@ -87,7 +92,7 @@ export const ForgotPassword = styled.p`
   font-weight: 500;
 
   span {
-    color: ${(props) => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.variant2};
     cursor: pointer;
   }
 `;

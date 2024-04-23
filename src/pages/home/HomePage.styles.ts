@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
     display: flex;
@@ -8,7 +8,7 @@ export const Main = styled.main`
     height: 100vh;
     width: 100vw;
     font-family: 'Poppins', sans-serif;
-`
+`;
 
 export const TopWave = styled.div`
     height: 33vh;
@@ -20,7 +20,7 @@ export const TopWave = styled.div`
     background-repeat: no-repeat;
     background-size:cover;
 
-`
+`;
 export const Box = styled.div`
     display: flex;
     justify-content: center;
@@ -33,7 +33,7 @@ export const Box = styled.div`
     border-radius: 6px;
     background-color: #4C7ABB;
 
-`
+`;
 export const Button = styled.button`
     background-color: white;
     color: white;
@@ -50,7 +50,7 @@ export const Button = styled.button`
         transition: 0.3s ease-in-out;
     }
 
-`
+`;
 
 export const BottomWave = styled.div`
     height: 33vh;
@@ -60,4 +60,4 @@ export const BottomWave = styled.div`
     background-repeat: no-repeat;
     background-size:cover;
     
-`
+`;

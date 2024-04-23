@@ -24,12 +24,21 @@ const Phase = ({ phase, progress, setPhase }: Props) => {
     <>
       <PhaseField>
         <PhaseSubtitle>Duração da fase</PhaseSubtitle>
-        <PhaseContent>Início: {formatDate(phase.startTreatment)}</PhaseContent>
-        <PhaseContent>Fim: {formatDate(phase.endTreatment)}</PhaseContent>
+        <PhaseContent>
+          Início:
+          {formatDate(phase.startTreatment)}
+        </PhaseContent>
+        <PhaseContent>
+          Fim:
+          {formatDate(phase.endTreatment)}
+        </PhaseContent>
       </PhaseField>
       <PhaseField>
         <PhaseSubtitle>Periodicidade</PhaseSubtitle>
-        <PhaseContent>A cada {phase.frequency}</PhaseContent>
+        <PhaseContent>
+          A cada
+          {phase.frequency}
+        </PhaseContent>
       </PhaseField>
       <PhaseField>
         <PhaseSubtitle>Dosagem do medicamento</PhaseSubtitle>

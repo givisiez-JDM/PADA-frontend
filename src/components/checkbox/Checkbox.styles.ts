@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import check from "../../assets/checkbox.svg";
+import styled from 'styled-components';
+import check from '../../assets/checkbox.svg';
 
 export const ContainerCheckbox = styled.div`
   .checkbox {
@@ -12,7 +12,7 @@ export const ContainerCheckbox = styled.div`
     width: 1rem;
     height: 1rem;
     margin-right: 0.5rem;
-    background: ${(props) => props.theme.colors.buttonOff};
+    background: ${props => props.theme.colors.buttonOff};
   }
 
   .checkbox:checked + label:before {

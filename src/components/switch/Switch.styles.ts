@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Label = styled.label`
   display: flex;
@@ -13,7 +13,7 @@ export const Switch = styled.div`
   position: relative;
   width: 2.1rem;
   height: 1rem;
-  background: ${(props) => props.theme.colors.background};
+  background: ${props => props.theme.colors.background};
   border-radius: 1rem;
   padding: 0.1rem;
   transition: 300ms all;
@@ -28,7 +28,7 @@ export const Switch = styled.div`
     border-radius: 1rem;
     top: 50%;
     left: 0.1rem;
-    background: ${(props) => props.theme.colors.white};
+    background: ${props => props.theme.colors.white};
     transform: translate(0, -50%);
   }
 `;
@@ -37,7 +37,7 @@ export const Checkbox = styled.input`
   display: none;
 
   &:checked + ${Switch} {
-    background: ${(props) => props.theme.colors.variant1};
+    background: ${props => props.theme.colors.variant1};
 
     &:before {
       transform: translate(1rem, -50%);

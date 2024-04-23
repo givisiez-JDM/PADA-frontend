@@ -1,5 +1,4 @@
 import "styled-components";
-import "styled-components";
 
 export const Theme = {
   colors: {

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const PhaseField = styled.div`
   padding: 0.5rem 0;

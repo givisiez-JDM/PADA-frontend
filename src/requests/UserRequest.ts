@@ -1,9 +1,9 @@
-export const BASE_URL = "https://app-vacina-production.up.railway.app";
+export const BASE_URL = 'https://app-vacina-production.up.railway.app';
 
 type SignupRequestBody = {
-  name: string;
-  email: string;
-  password: string;
+  name: string
+  email: string
+  password: string
 };
 
 export class UserRequest {
@@ -60,7 +60,7 @@ export class UserRequest {
 
   GET_PHASES_BY_TREATMENTS_ID = (
     id: string | undefined,
-    token: string | null
+    token: string | null,
   ) => {
     return {
       url: `${BASE_URL}/phases/treatments/${id}`,
@@ -90,7 +90,7 @@ export class UserRequest {
 
   GET_VACCINES_BY_PHASES_ID = (
     id: string | undefined,
-    token: string | null
+    token: string | null,
   ) => {
     return {
       url: `${BASE_URL}/vaccines/phases/${id}`,
@@ -102,13 +102,11 @@ export class UserRequest {
 
   GET_TREATMENTS_PHASES_BY_ID = (
     id: string | undefined,
-    token: string | null
+    token: string | null,
   ) => {
     return {
       url: `${BASE_URL}/phases/treatments/${id}`,
-      headers: {
-        Authorization: token,
-      },
+      headers: { Authorization: token },
     };
   };
 
