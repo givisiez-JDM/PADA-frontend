@@ -1,8 +1,8 @@
-import Input from "../../components/input/Input";
-import MenuHeader from "../../components/menuHeader/MenuHeader";
-import profileUser from "../../assets/profileUser.svg";
-import doctorPhoto from "../../assets/doctorPhoto.svg";
-import iconArrow from "../../assets/white-arrow.svg";
+import Input from '../../components/input/Input';
+import MenuHeader from '../../components/menuHeader/MenuHeader';
+import profileUser from '../../assets/profileUser.svg';
+import doctorPhoto from '../../assets/doctorPhoto.svg';
+import iconArrow from '../../assets/white-arrow.svg';
 import {
   Allergies,
   BoxButton,
@@ -19,9 +19,9 @@ import {
   AllergiesBox,
   LeftBox,
   RigthBox,
-} from "./CadastroPacientePage.styles";
-import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
-import { useState } from "react";
+} from './CadastroPacientePage.styles';
+import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
+import { useState } from 'react';
 
 const CadastroPacientePage = () => {
   const [modal, setModal] = useState(false);

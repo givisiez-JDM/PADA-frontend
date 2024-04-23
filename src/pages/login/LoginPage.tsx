@@ -1,42 +1,39 @@
-import React from "react";
-import Wave from "../../assets/Frame.svg";
-import Input from "../../components/input/Input";
-import Button from "../../components/button/Button";
-import iconPerson from "../../assets/icon-person.svg";
-import key from "../../assets/key.svg";
-import eyesOpen from "../../assets/eyes-open.svg";
-import eyesClosed from "../../assets/eyes-closed.svg";
-import { useLogin } from "../../hooks/useForm";
-import { useNavigate } from "react-router-dom";
-import { BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes, IncorrectUser, InputBox, Main, PasswordInputBox, TopWave, } from "./LoginPage.styles";
-import { useData } from "../../global/UserContext";
-
+import React from 'react';
+import Wave from '../../assets/Frame.svg';
+import Input from '../../components/input/Input';
+import Button from '../../components/button/Button';
+import iconPerson from '../../assets/icon-person.svg';
+import key from '../../assets/key.svg';
+import eyesOpen from '../../assets/eyes-open.svg';
+import eyesClosed from '../../assets/eyes-closed.svg';
+import { useLogin } from '../../hooks/useForm';
+import { useNavigate } from 'react-router-dom';
+import { BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes, IncorrectUser, InputBox, Main, PasswordInputBox, TopWave } from './LoginPage.styles';
+import { useData } from '../../global/UserContext';
 
 const Login = () => {
   const { onSubmit, errors, register, getValues } = useLogin();
-  const [saveUser, setSaveUser] = React.useState(false)
-  const [visiblePassword, setVisiblePassword] = React.useState(false)
+  const [saveUser, setSaveUser] = React.useState(false);
+  const [visiblePassword, setVisiblePassword] = React.useState(false);
   const navigate = useNavigate();
 
-  const { error } = useData()
-  const values = getValues('password')
+  const { error } = useData();
+  const values = getValues('password');
 
   const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked === true) {
-      setSaveUser(true)
-
-    } else {
-      setSaveUser(false)
-
+      setSaveUser(true);
     }
-  }
+    else {
+      setSaveUser(false);
+    }
+  };
 
   const sendreq = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    onSubmit()
-    saveUser && window.localStorage.setItem('password', values)
-  }
-
+    event.preventDefault();
+    onSubmit();
+    saveUser && window.localStorage.setItem('password', values);
+  };
 
   return (
     <Main>
@@ -47,7 +44,7 @@ const Login = () => {
           <Input
             type="email"
             placeholder="Email"
-            {...register("email")}
+            {...register('email')}
             error={errors.email?.message}
           />
         </InputBox>
@@ -55,14 +52,13 @@ const Login = () => {
         <PasswordInputBox>
           <Image src={key} alt="icon person" />
           <Input
-            type={visiblePassword ? "text" : "password"}
+            type={visiblePassword ? 'text' : 'password'}
             placeholder="Senha"
-            {...register("password")}
+            {...register('password')}
             error={errors.password?.message}
           />
-          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? "Ocultar senha" : "Mostrar senha"} onClick={() => setVisiblePassword(!visiblePassword)} />
+          <Eyes src={visiblePassword ? eyesOpen : eyesClosed} alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'} onClick={() => setVisiblePassword(!visiblePassword)} />
         </PasswordInputBox>
-
 
         {error && <IncorrectUser>{error}</IncorrectUser>}
 
@@ -80,8 +76,9 @@ const Login = () => {
       </Box>
 
       <ForgotPassword>
-        Ainda não tem conta?{" "}
-        <span onClick={() => navigate("/cadastro")}>Criar conta</span>
+        Ainda não tem conta?
+        {' '}
+        <span onClick={() => navigate('/cadastro')}>Criar conta</span>
       </ForgotPassword>
 
       <BottomWave style={{ backgroundImage: `url(${Wave})` }} />

@@ -1,11 +1,10 @@
-import styled from "styled-components"
-
+import styled from 'styled-components';
 
 export const Main = styled.main`
     display: flex;
     height: 100vh;
     flex-direction: column;
-`
+`;
 
 export const Logo = styled.img`
     display: flex;
@@ -13,7 +12,7 @@ export const Logo = styled.img`
     height: 6rem;
     padding-top: 1rem ;
     padding-bottom: 1rem;
-`
+`;
 
 export const SectionDoctor = styled.div`
     display: flex;
@@ -27,11 +26,11 @@ export const SectionDoctor = styled.div`
        width: 0.6rem;
        cursor: pointer;
     }
-`
+`;
 
 export const BoxAddPacient = styled.section`
     place-self: flex-end;
-`
+`;
 
 export const Button = styled.button`
     background-color: #76A7ED;
@@ -41,7 +40,7 @@ export const Button = styled.button`
     width: 10rem;
     height: 2rem;
     font-weight: 500;  
-`
+`;
 
 export const PacientList = styled.div`
     height: 30rem;
@@ -71,7 +70,7 @@ export const PacientList = styled.div`
             background-color: #b1b1b1;
         }
     }
-`
+`;
 
 export const TitlePacient = styled.ul`
     padding-top: 3rem;
@@ -90,11 +89,11 @@ export const TitlePacient = styled.ul`
             
         }
     }  
-`
+`;
 
 export const Middle = styled.section`
    display: flex;
    flex-direction: column;
    gap: 5rem;
    padding: 1.5rem 5rem;
-`
+`;

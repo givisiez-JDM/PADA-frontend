@@ -1,11 +1,10 @@
-
-import styled from "styled-components"
+import styled from 'styled-components';
 
 export const Main = styled.main`
     display: flex;
     flex-direction: column;
     font-family: 'Poppins', sans-serif; 
-`
+`;
 
 export const Section = styled.section`
     display: flex;
@@ -13,26 +12,26 @@ export const Section = styled.section`
     padding: 3rem 4rem ;
     flex-direction: column;
     gap: 2rem; 
-`
+`;
 
 export const Middle = styled.div`
     display: flex;
     height: 100%;
-`
+`;
 
 export const Title = styled.p`
     font-size: 1.5rem;
     font-weight: 600;
     padding-bottom: 2rem;
     border-bottom: 3px solid #F5F5F5;  
-`
+`;
 
 export const ArticleName = styled.div`
     h1{
         padding-bottom: 0.6rem;
         font-weight: 600;
     }  
-`
+`;
 
 export const ArticleContact = styled.div`
    display: flex;
@@ -47,7 +46,7 @@ export const ArticleContact = styled.div`
         padding-bottom: 1rem;
         font-weight: 600;
     }
-`
+`;
 
 export const ArticleEmail = styled.article`
     p {
@@ -57,7 +56,7 @@ export const ArticleEmail = styled.article`
     h1 {
         font-weight: 600;
     }
-`
+`;
 
 export const Tel = styled.div`
     display: flex;
@@ -70,14 +69,14 @@ export const Tel = styled.div`
     p {
         font-weight: 400;
     }
-`
+`;
 
 export const Born = styled.div`
     h1{
         font-weight: 600;
         padding-bottom: 1rem;
     } 
-`
+`;
 
 export const Alergis = styled.div`
     h1 {
@@ -101,14 +100,14 @@ export const Alergis = styled.div`
         display: flex;
         margin-bottom: 0.5rem;
     } 
-`
+`;
 
-export const TreatmentContainer = styled.div `
+export const TreatmentContainer = styled.div`
     display: flex;
     gap: 2rem;
-`
+`;
 
-export const TitleTreatment = styled.h1 `
+export const TitleTreatment = styled.h1`
     padding-bottom: 0.4rem;
     font-weight: 600;
 
@@ -123,9 +122,9 @@ export const TitleTreatment = styled.h1 `
     img {
         transform: rotate(180deg);
     }    
-`
+`;
 
-export const Treatment = styled.div `
+export const Treatment = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -133,30 +132,30 @@ export const Treatment = styled.div `
     p{
         padding-bottom: 0.5rem;  
     }
-`
+`;
 
-export const TreatmentDuration = styled.div `
+export const TreatmentDuration = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
-`
+`;
 
-export const Medication = styled.div `
+export const Medication = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
-`
+`;
 
-export const MethodTreatment = styled.div `
+export const MethodTreatment = styled.div`
     h1{
         padding-bottom: 1rem;
         font-weight: 600;
     }
-`
+`;
 
-export const Button = styled.button `
+export const Button = styled.button`
     position: absolute;
     right: 2rem;
     bottom: 1rem;
@@ -172,4 +171,4 @@ export const Button = styled.button `
         transition: 0.3s ease-in-out;
     }
    
-`
+`;

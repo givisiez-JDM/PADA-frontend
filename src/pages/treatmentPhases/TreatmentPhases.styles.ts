@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -17,7 +17,7 @@ export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 600;
   padding-bottom: 2rem;
-  border-bottom: 3px solid ${(props) => props.theme.colors.separation};
+  border-bottom: 3px solid ${props => props.theme.colors.separation};
 `;
 
 export const PhaseBlock = styled.section`
@@ -33,10 +33,10 @@ export const PhaseTitle = styled.h2`
 
   &::before {
     content: ".";
-    color: ${(props) => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.variant2};
     border-radius: 1rem;
     margin-right: 0.9rem;
-    background-color: ${(props) => props.theme.colors.variant2};
+    background-color: ${props => props.theme.colors.variant2};
   }
 
   img {

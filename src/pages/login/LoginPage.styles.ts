@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -76,8 +76,8 @@ export const Checkbox = styled.p`
 `;
 
 export const ButtonLogin = styled.button`
-  background-color: ${(props) => props.theme.colors.variant2};
-  color: ${(props) => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.variant2};
+  color: ${props => props.theme.colors.white};
   border: none;
   border-radius: 15px;
   width: 13rem;
@@ -92,7 +92,7 @@ export const ForgotPassword = styled.p`
   font-weight: 500;
 
   span {
-    color: ${(props) => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.variant2};
     cursor: pointer;
   }
 `;

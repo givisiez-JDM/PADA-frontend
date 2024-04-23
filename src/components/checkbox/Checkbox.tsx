@@ -1,12 +1,12 @@
-import { HTMLProps } from "react";
-import { ContainerCheckbox } from "./Checkbox.styles";
+import { HTMLProps } from 'react';
+import { ContainerCheckbox } from './Checkbox.styles';
 
 interface Props extends HTMLProps<HTMLInputElement> {
-  label: string;
+  label: string
 }
 
 /**
- * Stylized Checkbox 
+ * Stylized Checkbox
  * @param {string} label Value to show in label
  * @param {string} name Required to radio checkbox
  * @param {string} type Defaut checkbox
@@ -16,10 +16,10 @@ interface Props extends HTMLProps<HTMLInputElement> {
  */
 const Checkbox = ({ id, value, label, type, ...props }: Props) => {
   const inputId = id ?? String(value);
-  const inputType = type ?? "checkbox";
+  const inputType = type ?? 'checkbox';
 
   return (
-    <ContainerCheckbox >
+    <ContainerCheckbox>
       <input
         className="checkbox"
         id={inputId}

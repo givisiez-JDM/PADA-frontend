@@ -3,12 +3,12 @@ import {
   MenuItemImg,
   MenuItemTitle,
   MenuItemText,
-} from "./MenuCard.styles";
+} from './MenuCard.styles';
 
 interface MenuCardProps {
-  title: string;
-  text: string;
-  imgSrc: string;
+  title: string
+  text: string
+  imgSrc: string
 }
 
 const MenuCard: React.FC<MenuCardProps> = ({ imgSrc, title, text }) => {
