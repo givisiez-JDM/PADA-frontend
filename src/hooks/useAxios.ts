@@ -1,26 +1,26 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useState, useCallback } from "react";
-import axios, { AxiosRequestConfig } from "axios";
+import { useState, useCallback } from 'react';
+import axios, { AxiosRequestConfig } from 'axios';
 
 interface UseAxiosResponse<T> {
-  data: T | null;
-  status: number;
-  error: any | null;
-  loading: boolean;
-  get: (url: string, config?: AxiosRequestConfig) => Promise<void>;
-  post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>;
+  data: T | null
+  status: number
+  error: any | null
+  loading: boolean
+  get: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
   postWithRes: (
     url: string,
     body: any,
     config?: AxiosRequestConfig
-  ) => Promise<void>;
-  deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>;
-  put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>;
+  ) => Promise<void>
+  deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
   putWithoutRes: (
     url: string,
     data: any,
     config?: AxiosRequestConfig
-  ) => Promise<void>;
+  ) => Promise<void>
 }
 
 const useAxios = <T = any>(): UseAxiosResponse<T> => {
@@ -39,11 +39,13 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
 
       setStatus(res.status);
       setData(res.data);
-    } catch (error: any) {
+    }
+    catch (error: any) {
       setStatus(error.response.status);
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -58,15 +60,17 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
         const res = await axios.post(url, body, config);
 
         setStatus(res.status);
-      } catch (error: any) {
+      }
+      catch (error: any) {
         setStatus(error.response.status);
         setData(null);
         setError(error.response?.data || error.message);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   const postWithRes = useCallback(
@@ -80,15 +84,17 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
 
         setStatus(res.status);
         setData(res.data);
-      } catch (error: any) {
+      }
+      catch (error: any) {
         setStatus(error.response.status);
         setData(null);
         setError(error.response?.data || error.message);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   const deleteAxios = useCallback(
@@ -101,15 +107,17 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
         const res = await axios.delete(url, config);
 
         setStatus(res.status);
-      } catch (error: any) {
+      }
+      catch (error: any) {
         setStatus(error.response.status);
         setData(null);
         setError(error.response?.data || error.message);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   const put = useCallback(
@@ -123,15 +131,17 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
 
         setStatus(res.status);
         setData(res.data);
-      } catch (error: any) {
+      }
+      catch (error: any) {
         setStatus(error.response.status);
         setData(null);
         setError(error.response?.data || error.message);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   const putWithoutRes = useCallback(
@@ -144,15 +154,17 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
         const res = await axios.put(url, data, config);
 
         setStatus(res.status);
-      } catch (error: any) {
+      }
+      catch (error: any) {
         setStatus(error.response.status);
         setData(null);
         setError(error.response?.data || error.message);
-      } finally {
+      }
+      finally {
         setLoading(false);
       }
     },
-    []
+    [],
   );
 
   return {

@@ -3,12 +3,12 @@ import { ButtonBase } from './Button.styles';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: 'small' | 'normal' | 'large'
-  color?: 'primary' | 'secondary';
+  color?: 'primary' | 'secondary'
 }
 
 /**
- * Stylized Button 
- * @param {string} color primary | secondary (default: primary) 
+ * Stylized Button
+ * @param {string} color primary | secondary (default: primary)
  * @param {string} size small | normal | large (default: normal)
  * @example
  * <Button color="secondary">Label</Button>

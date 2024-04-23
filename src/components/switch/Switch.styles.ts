@@ -17,7 +17,7 @@ export const Switch = styled.div`
   border-radius: 1rem;
   padding: 0.1rem;
   transition: 300ms all;
-  border: 1px solid ${(props) => props.theme.colors.variant1};
+  border: 1px solid ${props => props.theme.colors.variant1};
 
   &:before {
     transition: 300ms all;

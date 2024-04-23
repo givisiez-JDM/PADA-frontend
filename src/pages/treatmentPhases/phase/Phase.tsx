@@ -1,25 +1,24 @@
-import Button from "../../../components/button/Button";
-import PhaseProgress from "../../../components/phaseProgress/PhaseProgress";
-import { PhaseType } from "../../../types/TreatmentTypes";
-import { formatDate } from "../../../utils/DateFns";
-import { PhaseContent, PhaseField, PhaseSubtitle } from "./Phase.styles";
+import Button from '../../../components/button/Button';
+import PhaseProgress from '../../../components/phaseProgress/PhaseProgress';
+import { PhaseType } from '../../../types/TreatmentTypes';
+import { formatDate } from '../../../utils/DateFns';
+import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles';
 
 interface Props {
-  phase: PhaseType;
-  progress: number;
-  setPhase: () => void;
+  phase: PhaseType
+  progress: number
+  setPhase: () => void
 }
 
 /**
  * Statically shows the data of a phase
  * @param { PhaseType } phase A data values to show
- * @param { number } progress The pregress value of treatment [0.0-1.0] 
+ * @param { number } progress The pregress value of treatment [0.0-1.0]
  * @param  setPhase function to set data for edition
  * @example
  * <Phase phase={{id:"",...}} progress={0.6} setPhase={setPhaseEdit} />
  */
 const Phase = ({ phase, progress, setPhase }: Props) => {
-
   return (
     <>
       <PhaseField>

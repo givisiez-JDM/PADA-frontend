@@ -10,7 +10,7 @@ import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatie
 import Button from '../../components/button/Button';
 import AddPhase from './addPhase/AddPhase';
 import Phase from './phase/Phase';
-import TreatmentPhaseEdit from "./treatmentPhaseEdit/TreatmentPhaseEdit";
+import TreatmentPhaseEdit from './treatmentPhaseEdit/TreatmentPhaseEdit';
 import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
@@ -55,10 +55,7 @@ const TreatmentPhases = () => {
     if (confirm('Deseja finalizar essa fase?')) {
       const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseSelected.id, token);
 
-      const body = {
-        phaseNumber: phaseSelected,
-        active: false,
-      };
+      const body = { phaseNumber: phaseSelected, active: false };
 
       phaseReq.put(url, body, { headers });
     }
@@ -115,26 +112,26 @@ const TreatmentPhases = () => {
   const showPhase = (phase: PhaseType) => {
     if (phaseSelected?.phaseNumber === phase.phaseNumber) {
       return (
-        <Phase phase={phase} progress={phaseProgress} setPhase={() => setPhaseEdit(phaseSelected)} />
+        <Phase
+          phase={phase}
+          progress={phaseProgress}
+          setPhase={() => setPhaseEdit(phaseSelected)}
+        />
       );
     }
   };
 
   const getPhases = () => {
     return phaseList
-      .sort(((a, b) => a.phaseNumber - b.phaseNumber))
-      .map((phase: PhaseType) => (
+      .sort(((a, b) => a.phaseNumber - b.phaseNumber)).map((phase: PhaseType) => (
         <PhaseBlock key={phase.phaseNumber}>
           <PhaseTitle onClick={() => selectPhase(phase)}>
-            Fase
-            {' '}
-            {phase.phaseNumber}
+            {`Fase ${phase.phaseNumber}`}
             <img src={getArrow(phase.phaseNumber)} alt="Mostrar conteúdo" />
           </PhaseTitle>
           {showPhase(phase)}
         </PhaseBlock>
-      ),
-      );
+      ));
   };
 
   return (
@@ -147,10 +144,7 @@ const TreatmentPhases = () => {
             {
               hasPhases()
               && (
-                <Button
-                  disabled={!phaseSelected?.active}
-                  onClick={finishPhase}
-                >
+                <Button disabled={!phaseSelected?.active} onClick={finishPhase}>
                   Finalizar Fase
                 </Button>
               )
@@ -159,8 +153,20 @@ const TreatmentPhases = () => {
           </BoxButton>
         </Section>
       </DefaultPatientPage>
-      {modal && <AddPhase setModal={setModal} treatmentId={treatmentId} phaseNumber={maxPhaseNumber + 1} />}
-      {phaseEdit && <TreatmentPhaseEdit closeModal={() => setPhaseEdit(null)} phaseEdit={phaseEdit} />}
+      {
+        modal
+        && (
+          <AddPhase
+            setModal={setModal}
+            treatmentId={treatmentId}
+            phaseNumber={maxPhaseNumber + 1}
+          />
+        )
+      }
+      {
+        phaseEdit
+        && <TreatmentPhaseEdit closeModal={() => setPhaseEdit(null)} phaseEdit={phaseEdit} />
+      }
     </Main>
   );
 };
