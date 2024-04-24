@@ -4,9 +4,10 @@ import ImageLogo from '../../assets/logo.png';
 import IconArrow from '../../assets/white-arrow.svg';
 import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
 import MenuHeader from '../../components/menuHeader/MenuHeader';
-import { AlterarSenha, ArticleCRM, ArticleEmail, ArticleEspecialidade,
-  ArticleName, ArticlePassword, ArticleSobre, BoxEditProfile, EditarPerfil,
-  Logo, Main, Section, SectionDoctor } from './PerfilMedicoPage.styles';
+import { ArticleAbout, ArticleCRM,
+  ArticlePassword, ArticleSpecialty, ArticleText, BoxEditProfile, ChangePassword,
+  EditProfile, Logo, Main, Section,
+  SectionDoctor } from './PerfilMedicoPage.styles';
 
 const PerfilMedico = () => {
   const { data } = useData();
@@ -24,35 +25,35 @@ const PerfilMedico = () => {
         </MenuHeader>
         {/* <img src={doctor?.data?.photo?.data} alt="" /> */}
         <Section>
-          <ArticleName>
+          <ArticleText>
             <h1>Nome</h1>
             <p>{data?.name}</p>
-          </ArticleName>
-          <ArticleEmail>
+          </ArticleText>
+          <ArticleText>
             <h1>Email</h1>
             <p>{data?.email}</p>
-          </ArticleEmail>
+          </ArticleText>
           <ArticleCRM>
             <h1>CRM</h1>
             <p>{data?.CRM}</p>
           </ArticleCRM>
-          <ArticleEspecialidade>
+          <ArticleSpecialty>
             <h1>Especialidade</h1>
             <p>{data?.specialty}</p>
-          </ArticleEspecialidade>
-          <ArticleSobre>
+          </ArticleSpecialty>
+          <ArticleAbout>
             <h1>Sobre</h1>
             <p>
               {data?.about}
             </p>
-          </ArticleSobre>
+          </ArticleAbout>
           <ArticlePassword>
             <h1>Senha:</h1>
             <p>********</p>
-            <AlterarSenha disabled={true}>Alterar</AlterarSenha>
+            <ChangePassword disabled={true}>Alterar</ChangePassword>
           </ArticlePassword>
           <BoxEditProfile>
-            <EditarPerfil>Editar perfil</EditarPerfil>
+            <EditProfile>Editar perfil</EditProfile>
           </BoxEditProfile>
         </Section>
       </Main>

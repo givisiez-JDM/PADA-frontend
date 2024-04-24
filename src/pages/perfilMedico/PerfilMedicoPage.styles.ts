@@ -38,15 +38,7 @@ export const SectionDoctor = styled.div`
   }
 `;
 
-export const ArticleName = styled.div`
-  h1 {
-    height: 1.25rem;
-    margin-bottom: 0.65rem;
-    font-weight: 600;
-  }
-`;
-
-export const ArticleEmail = styled.div`
+export const ArticleText = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
@@ -62,7 +54,7 @@ export const ArticleCRM = styled.div`
   }
 `;
 
-export const ArticleEspecialidade = styled.div`
+export const ArticleSpecialty = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
@@ -70,7 +62,7 @@ export const ArticleEspecialidade = styled.div`
   }
 `;
 
-export const ArticleSobre = styled.div`
+export const ArticleAbout = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
@@ -93,12 +85,12 @@ export const BoxEditProfile = styled.section`
   place-self: flex-end;
 `;
 
-export const AlterarSenha = styled(Button)`
+export const ChangePassword = styled(Button)`
   width: 6.5rem;
   height: 2.5rem;
 `;
 
-export const EditarPerfil = styled(Button)`
+export const EditProfile = styled(Button)`
   width: 11.875rem;
   height: 3.125rem;
 `;
