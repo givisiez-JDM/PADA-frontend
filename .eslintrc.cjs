@@ -30,7 +30,7 @@ module.exports = {
     'default-case': ['error', { commentPattern: '^skip\\sdefault' }],
     'eqeqeq': ['error', 'smart'],
     // max-lines modificado para "warn", por conta de arquivos de estilo.
-    'max-lines': ['warn', { max: 200, skipBlankLines: true, skipComments: true }],
+    'max-lines': ['warn', { max: 150, skipBlankLines: true, skipComments: true }],
     // eslint-disable-next-line no-magic-numbers
     'max-depth': ['error', 5],
     'multiline-comment-style': ['error', 'starred-block'],

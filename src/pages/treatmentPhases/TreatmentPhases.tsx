@@ -16,19 +16,8 @@ import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './Treat
 const TreatmentPhases = () => {
   const { id: idPatient } = useParams();
   const {
-    getToken,
-    patient,
-    patientId,
-    setPatientId,
-    getPatient,
-    getTreatment,
-    treatmentId,
-    phaseList,
-    getPhaseList,
-    setPhaseId,
-    phaseId,
-    getVaccineList,
-    vaccineList,
+    getToken, patient, patientId, setPatientId, getPatient, getTreatment, treatmentId,
+    phaseList, getPhaseList, setPhaseId, phaseId, getVaccineList, vaccineList,
   } = useData();
 
   const userRequest = new UserRequest();
