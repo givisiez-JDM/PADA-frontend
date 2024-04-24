@@ -10,20 +10,8 @@ import eyesOpen from '../../assets/eyes-open.svg';
 import eyesClosed from '../../assets/eyes-closed.svg';
 import { useNavigate } from 'react-router-dom';
 import {
-  BottomWave,
-  Box,
-  ButtonSignup,
-  Checkbox,
-  ErrorMessage,
-  FooterDescription,
-  I,
-  Eyes,
-  InputBox,
-  Main,
-  PasswordInputBox,
-  Sucess,
-  Title,
-  TopWave,
+  BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription,
+  I, Eyes, InputBox, Main, PasswordInputBox, Sucess, Title, TopWave,
 } from './CadastroPage.styles';
 import { useData } from '../../global/UserContext';
 
