@@ -9,20 +9,8 @@ import Switch from '../../../components/switch/Switch';
 import Checkbox from '../../../components/checkbox/Checkbox';
 import { DosageType, FrequencyType, PhaseType } from '../../../types/TreatmentTypes';
 import {
-  ButtonGroup,
-  CheckBoxContainer,
-  Close,
-  DateContainer,
-  DateInput,
-  Error,
-  Header,
-  HeaderTitle,
-  ModalContainer,
-  PhaseField,
-  PhaseForm,
-  PhaseStatus,
-  PhaseTitle,
-  Title,
+  ButtonGroup, CheckBoxContainer, Close, DateContainer, DateInput, Error, Header, HeaderTitle,
+  ModalContainer, PhaseField, PhaseForm, PhaseStatus, PhaseTitle, Title,
 } from './TreatmentPhaseEdit.styles';
 
 const frequencies: Array<FrequencyType> = ['7 dias', '2 semanas', '3 semanas', '4 semanas'];
@@ -46,27 +34,22 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
     const token = getToken();
+    const dateStart = formatDate(phase.startTreatment);
+    const dateEnd = formatDate(phase.endTreatment);
+
     const { url, headers } = userRequest.PUT_PHASES_BY_ID(phase.id, token);
-    const body = {
-      ...phase,
-      startTreatment: formatDate(phase.startTreatment),
-      endTreatment: formatDate(phase.endTreatment),
-    };
+    const body = { ...phase, startTreatment: dateStart, endTreatment: dateEnd };
+
     phaseReq.put(url, body, { headers });
   };
 
   const handleChange = (name: string, value: string | number) => {
-    if (phase)
-      setPhase({
-        ...phase,
-        [name]: value,
-      });
+    if (phase) setPhase({ ...phase, [name]: value });
   };
 
-  const HTTPStatus: {
-    [key: number]: () => void
-  } = {
+  const HTTPStatus: { [key: number]: () => void } = {
     0: () => setErrorMessage(''),
     200: () => closeModal(),
     400: () => setErrorMessage('Preenchimento de campos incorretos'),
@@ -74,9 +57,8 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
   };
 
   useEffect(() => {
-    const status: number = phaseReq.status;
-    if (status in HTTPStatus) {
-      HTTPStatus[status]();
+    if (phaseReq.status in HTTPStatus) {
+      HTTPStatus[phaseReq.status]();
     }
     else {
       setErrorMessage('Erro interno do servidor.');
@@ -84,11 +66,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
   }, [phaseReq.status]);
 
   useEffect(() => {
-    if (phase)
-      setPhase({
-        ...phase,
-        active: phaseActive,
-      });
+    if (phase) setPhase({ ...phase, active: phaseActive });
   }, [phaseActive]);
 
   useEffect(() => {
@@ -111,10 +89,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
         <Close onClick={closeModal} src={IconClose} alt="Fechar" />
       </Header>
       <PhaseForm onSubmit={event => handleFormSubmit(event)}>
-        <PhaseTitle>
-          Fase
-          {phase.phaseNumber}
-        </PhaseTitle>
+        <PhaseTitle>{`Fase ${phase.phaseNumber}`}</PhaseTitle>
         <PhaseField>
           <Title>Duração do Tratamento</Title>
           <DateContainer>
@@ -135,9 +110,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
           </DateContainer>
         </PhaseField>
         <PhaseField>
-          <Title>
-            Periodicidade do Tratamento
-          </Title>
+          <Title>Periodicidade do Tratamento</Title>
           <CheckBoxContainer>
             {frequencies.map(frequency => (
               <Checkbox
@@ -154,9 +127,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
           </CheckBoxContainer>
         </PhaseField>
         <PhaseField>
-          <Title>
-            Dosagem do Medicamento
-          </Title>
+          <Title>Dosagem do Medicamento</Title>
           <CheckBoxContainer>
             {dosages.map(dosage => (
               <Checkbox
@@ -184,9 +155,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
         </PhaseField>
         <Error>{errorMessage}</Error>
         <ButtonGroup>
-          <Button type="submit" disabled={errorMessage.length > 0}>
-            Salvar
-          </Button>
+          <Button type="submit" disabled={errorMessage.length > 0}>Salvar</Button>
         </ButtonGroup>
       </PhaseForm>
     </ModalContainer>
