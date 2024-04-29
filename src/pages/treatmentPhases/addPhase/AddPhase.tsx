@@ -1,18 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useData } from '../../../global/UserContext';
+import { UserRequest } from '../../../requests/UserRequest';
+import { formatDate } from '../../../utils/DateFns';
+import useAxios from '../../../hooks/useAxios';
 import IconClose from '../../../assets/X.svg';
 import Button from '../../../components/button/Button';
 import Checkbox from '../../../components/checkbox/Checkbox';
-import { DosageType, FrequencyType, PhaseNewType } from '../../../types/TreatmentTypes';
+import { DosageType, FrequencyType, PhaseNewType, PhaseType } from '../../../types/TreatmentTypes';
 import {
-  BoxButton,
-  Close,
-  ContainerCheckBox,
-  DateInput,
-  Error,
-  Modal,
-  ModalForm,
-  PhaseField,
-  Title,
+  BoxButton, Close, ContainerCheckBox, DateInput, Error, Modal, ModalForm, PhaseField, Title,
 } from './AddPhase.styles';
 
 const frequencies: Array<FrequencyType> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
@@ -24,7 +21,12 @@ interface Props {
   phaseNumber: number
 }
 
-const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
+const ModalTreatmentPhase = ({ phaseNumber, setModal, treatmentId }: Props) => {
+  const { getToken } = useData();
+  const userRequest = new UserRequest();
+  const phaseReq = useAxios<PhaseType>();
+  const navigate = useNavigate();
+
   const SUBSTRING_MAX_VALUE = 10;
   const today = new Date().toISOString().substring(0, SUBSTRING_MAX_VALUE);
   const phaseDefault: PhaseNewType = {
@@ -40,15 +42,19 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleChange = (name: string, value: string) => {
-    setNewPhase({
-      ...newPhase,
-      [name]: value,
-    });
+    setNewPhase({ ...newPhase, [name]: value });
   };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // TODO implement add phase service
+    const token = getToken();
+    const dateStart = formatDate(newPhase.startTreatment);
+    const dateEnd = formatDate(newPhase.endTreatment);
+
+    const { url, headers } = userRequest.GET_PHASES_BY_TREATMENTS_ID(treatmentId, token);
+    const body = { ...newPhase, startTreatment: dateStart, endTreatment: dateEnd };
+
+    phaseReq.postWithRes(url, body, { headers });
   };
 
   useEffect(() => {
@@ -62,6 +68,10 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
       setErrorMessage('');
     }
   }, [newPhase]);
+
+  useEffect(() => {
+    if (phaseReq.data) navigate(0);
+  }, [phaseReq.data]);
 
   return (
     <Modal>
