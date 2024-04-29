@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Main = styled.main`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
 `;
 
 export const Section = styled.section`
@@ -34,7 +34,7 @@ export const PhaseTitle = styled.h2`
   color: ${props => props.theme.colors.keyboard};
 
   &::before {
-    content: ".";
+    content: '.';
     color: ${props => props.theme.colors.variant2};
     border-radius: 1rem;
     margin-right: 0.9rem;
