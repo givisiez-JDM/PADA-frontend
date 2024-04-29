@@ -9,8 +9,8 @@ import eyesClosed from '../../assets/eyes-closed.svg';
 import { useLogin } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 import {
-  BottomWave, Box, Checkbox, ForgotPassword, Image,
-  Eyes, IncorrectUser, InputBox, Main, PasswordInputBox, TopWave,
+  BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes,
+  IncorrectUser, InputBox, Main, PasswordInputBox, TopWave,
 } from './LoginPage.styles';
 import { useData } from '../../global/UserContext';
 
