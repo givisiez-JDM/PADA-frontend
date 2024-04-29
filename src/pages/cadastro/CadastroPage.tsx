@@ -11,20 +11,8 @@ import eyesClosed from '../../assets/eyes-closed.svg';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../global/UserContext';
 import {
-  BottomWave,
-  Box,
-  ButtonSignup,
-  Checkbox,
-  ErrorMessage,
-  FooterDescription,
-  I,
-  Eyes,
-  InputBox,
-  Main,
-  PasswordInputBox,
-  Sucess,
-  Title,
-  TopWave,
+  BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, Eyes,
+  InputBox, Main, PasswordInputBox, Sucess, Title, TopWave,
 } from './CadastroPage.styles';
 
 const Signup = () => {
@@ -112,13 +100,9 @@ const Signup = () => {
                     error={errors.password?.message}
                   />
                   <Eyes
-
                     src={visiblePassword ? eyesOpen : eyesClosed}
-
                     alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
-
                     onClick={() => setVisiblePassword(!visiblePassword)}
-
                   />
                 </PasswordInputBox>
 
@@ -131,13 +115,9 @@ const Signup = () => {
                     error={errors.confirmPassword?.message}
                   />
                   <Eyes
-
                     src={visibleConfirmPassword ? eyesOpen : eyesClosed}
-
                     alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
-
                     onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)}
-
                   />
                 </PasswordInputBox>
 

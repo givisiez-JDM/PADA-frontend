@@ -10,17 +10,8 @@ import { useLogin } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../global/UserContext';
 import {
-  BottomWave,
-  Box,
-  Checkbox,
-  ForgotPassword,
-  Image,
-  Eyes,
-  IncorrectUser,
-  InputBox,
-  Main,
-  PasswordInputBox,
-  TopWave,
+  BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes,
+  IncorrectUser, InputBox, Main, PasswordInputBox, TopWave,
 } from './LoginPage.styles';
 
 const Login = () => {
@@ -70,13 +61,9 @@ const Login = () => {
             error={errors.password?.message}
           />
           <Eyes
-
             src={visiblePassword ? eyesOpen : eyesClosed}
-
             alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
-
             onClick={() => setVisiblePassword(!visiblePassword)}
-
           />
         </PasswordInputBox>
 
