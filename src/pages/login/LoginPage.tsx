@@ -70,9 +70,13 @@ const Login = () => {
             error={errors.password?.message}
           />
           <Eyes
+
             src={visiblePassword ? eyesOpen : eyesClosed}
+
             alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
+
             onClick={() => setVisiblePassword(!visiblePassword)}
+
           />
         </PasswordInputBox>
 

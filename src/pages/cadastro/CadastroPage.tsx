@@ -112,9 +112,13 @@ const Signup = () => {
                     error={errors.password?.message}
                   />
                   <Eyes
+
                     src={visiblePassword ? eyesOpen : eyesClosed}
+
                     alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
+
                     onClick={() => setVisiblePassword(!visiblePassword)}
+
                   />
                 </PasswordInputBox>
 
@@ -127,9 +131,13 @@ const Signup = () => {
                     error={errors.confirmPassword?.message}
                   />
                   <Eyes
+
                     src={visibleConfirmPassword ? eyesOpen : eyesClosed}
+
                     alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+
                     onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)}
+
                   />
                 </PasswordInputBox>
 
