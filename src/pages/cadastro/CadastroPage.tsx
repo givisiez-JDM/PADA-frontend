@@ -9,10 +9,8 @@ import check from '../../assets/check.svg';
 import eyesOpen from '../../assets/eyes-open.svg';
 import eyesClosed from '../../assets/eyes-closed.svg';
 import { useNavigate } from 'react-router-dom';
-import {
-  BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, Eyes,
-  InputBox, Main, PasswordInputBox, Sucess, Title, TopWave,
-} from './CadastroPage.styles';
+import { BottomWave, Box, ButtonSignup, Checkbox, ErrorMessage, FooterDescription, I, Eyes,
+  InputBox, Main, PasswordInputBox, Sucess, Title, TopWave } from './CadastroPage.styles';
 import { useData } from '../../global/UserContext';
 
 const Signup = () => {
@@ -48,100 +46,97 @@ const Signup = () => {
     if (data === DATA_VALUE) setModal(true);
   }, [modal, data]);
 
-  const boxForm = () => {
-    return (
-      <>
-        <Title>Crie sua conta</Title>
-        <Box onSubmit={event => sendReq(event)}>
-          <InputBox>
-            <I src={iconPerson} alt="key" />
-            <Input
-              type="text"
-              placeholder="Nome do usuário"
-              {...register('name')}
-              error={errors.name?.message}
-            />
-          </InputBox>
-
-          <InputBox>
-            <I src={iconEmail} alt="key" />
-            <Input
-              type="email"
-              placeholder="Email"
-              {...register('email')}
-              error={errors.email?.message}
-            />
-          </InputBox>
-
-          <PasswordInputBox>
-            <I src={iconKey} alt="key" />
-            <Input
-              type={visiblePassword ? 'text' : 'password'}
-              placeholder="Senha"
-              {...register('password')}
-              error={errors.password?.message}
-            />
-            <Eyes
-              src={visiblePassword ? eyesOpen : eyesClosed}
-              alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
-              onClick={() => setVisiblePassword(!visiblePassword)}
-            />
-          </PasswordInputBox>
-
-          <PasswordInputBox>
-            <I src={iconKey} alt="key" />
-            <Input
-              type={visibleConfirmPassword ? 'text' : 'password'}
-              placeholder="confirmar senha"
-              {...register('confirmPassword')}
-              error={errors.confirmPassword?.message}
-            />
-            <Eyes
-              src={visibleConfirmPassword ? eyesOpen : eyesClosed}
-              alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
-              onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)}
-            />
-          </PasswordInputBox>
-
-          {error && <ErrorMessage>{error}</ErrorMessage>}
-
-          <Checkbox>
-            <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
-            Lembre da senha
-          </Checkbox>
-
-          <ButtonSignup type="submit" onClick={onSubmit}>
-            Cadastrar
-          </ButtonSignup>
-        </Box>
-
-        <FooterDescription>
-          Já tem conta?
-          <span onClick={() => navigate('/login')}>Entrar</span>
-        </FooterDescription>
-      </>
-    );
-  };
-
-  const boxSucess = () => {
-    return (
-      <Box>
-        <Sucess>
-          <img src={check} alt="check" />
-
-          <h1>Cadastro realizado</h1>
-          <h1>com sucesso!</h1>
-
-          <button onClick={() => navigate('/login')}>Entrar</button>
-        </Sucess>
-      </Box>
-    );
-  };
-
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${wave})` }} />
-      {modal ? boxSucess() : boxForm()}
+      {modal
+        ? (
+          <>
+            <Box>
+              <Sucess>
+                <img src={check} alt="check" />
+
+                <h1>Cadastro realizado</h1>
+                <h1>com sucesso!</h1>
+
+                <button onClick={() => navigate('/login')}>Entrar</button>
+              </Sucess>
+            </Box>
+          </>
+          )
+        : (
+          <>
+            <Title>Crie sua conta</Title>
+            <Box onSubmit={event => sendReq(event)}>
+              <InputBox>
+                <I src={iconPerson} alt="key" />
+                <Input
+                  type="text"
+                  placeholder="Nome do usuário"
+                  {...register('name')}
+                  error={errors.name?.message}
+                />
+              </InputBox>
+
+              <InputBox>
+                <I src={iconEmail} alt="key" />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  {...register('email')}
+                  error={errors.email?.message}
+                />
+              </InputBox>
+
+              <PasswordInputBox>
+                <I src={iconKey} alt="key" />
+                <Input
+                  type={visiblePassword ? 'text' : 'password'}
+                  placeholder="Senha"
+                  {...register('password')}
+                  error={errors.password?.message}
+                />
+                <Eyes
+                  src={visiblePassword ? eyesOpen : eyesClosed}
+                  alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  onClick={() => setVisiblePassword(!visiblePassword)}
+                />
+              </PasswordInputBox>
+
+              <PasswordInputBox>
+                <I src={iconKey} alt="key" />
+                <Input
+                  type={visibleConfirmPassword ? 'text' : 'password'}
+                  placeholder="confirmar senha"
+                  {...register('confirmPassword')}
+                  error={errors.confirmPassword?.message}
+                />
+                <Eyes
+                  src={visibleConfirmPassword ? eyesOpen : eyesClosed}
+                  alt={visibleConfirmPassword ? 'Ocultar senha' : 'Mostrar senha'}
+                  onClick={() => setVisibleConfirmPassword(!visibleConfirmPassword)}
+                />
+              </PasswordInputBox>
+
+              {error && <ErrorMessage>{error}</ErrorMessage>}
+
+              <Checkbox>
+                <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
+                Lembre da senha
+              </Checkbox>
+
+              <ButtonSignup type="submit" onClick={onSubmit}>
+                Cadastrar
+              </ButtonSignup>
+            </Box>
+
+            <FooterDescription>
+              Já tem conta?
+              <span onClick={() => navigate('/login')}>Entrar</span>
+            </FooterDescription>
+          </>
+          )}
+
       <BottomWave style={{ backgroundImage: `url(${wave})` }} />
     </Main>
   );
