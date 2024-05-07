@@ -37,8 +37,8 @@ export const Box = styled.form`
   gap: 0.5rem 0;
   min-height: 14rem;
   width: 25rem;
-  border: 3px solid #4c7abb;
-  border-radius: 6px;
+  border: 3px solid ${props => props.theme.colors.variant2};
+  border-radius: 0.5rem;
 `;
 
 export const InputBox = styled.div`
@@ -46,15 +46,9 @@ export const InputBox = styled.div`
   position: relative;
 `;
 
-export const PasswordInputBox = styled(InputBox)`
-  input {
-    padding-right: 2.5rem;
-  }
-`;
-
 export const Image = styled.img`
   position: absolute;
-  height: 1.2rem;
+  height: 1.5rem;
   top: 0.5rem;
   left: 0.6rem;
   box-sizing: border-box;
@@ -73,6 +67,7 @@ export const Checkbox = styled.p`
   align-items: center;
   width: 13rem;
   font-size: 0.8rem;
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const ButtonLogin = styled.button`
@@ -90,6 +85,7 @@ export const ForgotPassword = styled.p`
   top: 1rem;
   font-size: small;
   font-weight: 500;
+  color: ${props => props.theme.colors.variant3};
 
   span {
     color: ${props => props.theme.colors.variant2};

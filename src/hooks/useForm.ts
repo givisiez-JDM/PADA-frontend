@@ -22,6 +22,7 @@ export const useLogin = () => {
     register,
     handleSubmit,
     getValues,
+    setValue,
     getFieldState,
     formState: { errors },
   } = useForm<FormPropsLogin>({
@@ -45,6 +46,7 @@ export const useLogin = () => {
     useLogin,
     getValues,
     getFieldState,
+    setValue,
   };
 };
 

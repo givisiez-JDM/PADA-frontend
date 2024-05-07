@@ -32,8 +32,9 @@ export const BottomWave = styled.div`
 export const Title = styled.h1`
   display: flex;
   position: relative;
-  bottom: 1.5rem;
+  bottom: 1rem;
   color: ${props => props.theme.colors.variant2};
+  font-size: 1.5rem;
 `;
 
 export const Box = styled.form`
@@ -53,15 +54,9 @@ export const InputBox = styled.div`
   position: relative;
 `;
 
-export const PasswordInputBox = styled(InputBox)`
-  input {
-    padding-right: 2.5rem;
-  }
-`;
-
-export const I = styled.img`
+export const Image = styled.img`
   position: absolute;
-  height: 1.2rem;
+  height: 1.5rem;
   top: 0.5rem;
   left: 0.6rem;
   box-sizing: border-box;
@@ -78,19 +73,9 @@ export const Eyes = styled.img`
 export const Checkbox = styled.p`
   display: flex;
   align-items: center;
-  width: 13.5rem;
+  width: 17rem;
   font-size: 0.8rem;
-`;
-
-export const ButtonSignup = styled.button`
-  background-color: ${props => props.theme.colors.variant2};
-  color: white;
-  border: none;
-  border-radius: 15px;
-  width: 13rem;
-  height: 2rem;
-  font-weight: 500;
-  font-size: 0.9rem;
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const FooterDescription = styled.p`
@@ -100,6 +85,7 @@ export const FooterDescription = styled.p`
   font-size: small;
   font-weight: 500;
   z-index: 1000;
+  color: ${props => props.theme.colors.variant3};
   cursor: pointer;
 
   span {
@@ -126,19 +112,9 @@ export const Sucess = styled.div`
     height: 8rem;
   }
 
-  h1 {
+  p {
     font-size: 1.2rem;
+    font-weight: 700;
     color: ${props => props.theme.colors.variant2};
-  }
-
-  button {
-    background-color: ${props => props.theme.colors.variant2};
-    color: white;
-    border: none;
-    border-radius: 15px;
-    width: 8rem;
-    font-weight: 500;
-    font-size: 1rem;
-    height: 2rem;
   }
 `;

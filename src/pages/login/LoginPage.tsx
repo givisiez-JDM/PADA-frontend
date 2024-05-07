@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import Wave from '../../assets/Frame.svg';
 import Input from '../../components/input/Input';
 import Button from '../../components/button/Button';
@@ -8,20 +8,23 @@ import eyesOpen from '../../assets/eyes-open.svg';
 import eyesClosed from '../../assets/eyes-closed.svg';
 import { useLogin } from '../../hooks/useForm';
 import { useNavigate } from 'react-router-dom';
-import { BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes,
-  IncorrectUser, InputBox, Main, PasswordInputBox, TopWave } from './LoginPage.styles';
+import {
+  BottomWave, Box, Checkbox, ForgotPassword, Image, Eyes,
+  IncorrectUser, InputBox, Main, TopWave,
+} from './LoginPage.styles';
 import { useData } from '../../global/UserContext';
 
 const Login = () => {
-  const { onSubmit, errors, register, getValues } = useLogin();
-  const [saveUser, setSaveUser] = React.useState(false);
-  const [visiblePassword, setVisiblePassword] = React.useState(false);
   const navigate = useNavigate();
 
-  const { error } = useData();
-  const values = getValues('password');
+  const { onSubmit, errors, register, getValues, setValue } = useLogin();
+  const [saveUser, setSaveUser] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const { data, error } = useData();
+
+  const savePasswordLocally = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked === true) {
       setSaveUser(true);
     }
@@ -30,27 +33,63 @@ const Login = () => {
     }
   };
 
-  const sendreq = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendreq = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (saveUser) {
+      window.localStorage.setItem('email', getValues('email'));
+      window.localStorage.setItem('pass', getValues('password'));
+    }
+    else {
+      window.localStorage.removeItem('email');
+      window.localStorage.removeItem('pass');
+    }
     onSubmit();
-    saveUser && window.localStorage.setItem('password', values);
   };
+
+  useEffect(() => {
+    const email = window.localStorage.getItem('email') || '';
+    const password = window.localStorage.getItem('pass') || '';
+    if (email && password) {
+      setValue('email', email);
+      setValue('password', password);
+      setSaveUser(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    const BadRequestCode = 400;
+    const NotFoundCode = 404;
+    if (error) {
+      if (data === BadRequestCode) {
+        setErrorMsg('E-mail ou senha incorretos');
+      }
+      else if (data === NotFoundCode) {
+        setErrorMsg('Cadastro não encontrado');
+      }
+      else {
+        setErrorMsg('Erro inesperado no servidor');
+      }
+    }
+    else {
+      setErrorMsg('');
+    }
+  }, [error]);
 
   return (
     <Main>
       <TopWave style={{ backgroundImage: `url(${Wave})` }} />
-      <Box onSubmit={event => sendreq(event)}>
+      <Box onSubmit={event => sendreq(event)} noValidate>
         <InputBox>
           <Image src={iconPerson} alt="icon person" />
           <Input
             type="email"
-            placeholder="Email"
+            placeholder="Usuário"
             {...register('email')}
             error={errors.email?.message}
           />
         </InputBox>
 
-        <PasswordInputBox>
+        <InputBox>
           <Image src={key} alt="icon person" />
           <Input
             type={visiblePassword ? 'text' : 'password'}
@@ -63,9 +102,9 @@ const Login = () => {
             alt={visiblePassword ? 'Ocultar senha' : 'Mostrar senha'}
             onClick={() => setVisiblePassword(!visiblePassword)}
           />
-        </PasswordInputBox>
+        </InputBox>
 
-        {error && <IncorrectUser>{error}</IncorrectUser>}
+        <IncorrectUser>{errorMsg}</IncorrectUser>
 
         <Checkbox>
           <input
@@ -77,7 +116,7 @@ const Login = () => {
           Lembre da senha
         </Checkbox>
 
-        <Button type="submit" onClick={onSubmit}>Entrar</Button>
+        <Button type="submit">Entrar</Button>
       </Box>
 
       <ForgotPassword>
