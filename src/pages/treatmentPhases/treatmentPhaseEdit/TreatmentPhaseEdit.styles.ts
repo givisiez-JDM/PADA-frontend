@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
-  width: 100%;
-  height: 100%;
   position: absolute;
+  width: 100%;
+  height: 100vmax;
   top: 0;
   left: 0;
   background-color: ${props => props.theme.colors.white};
@@ -46,7 +46,7 @@ export const PhaseTitle = styled.p`
   color: ${props => props.theme.colors.keyboard};
 
   &::before {
-    content: ".";
+    content: '.';
     color: ${props => props.theme.colors.variant2};
     border-radius: 1rem;
     margin-right: 0.9rem;

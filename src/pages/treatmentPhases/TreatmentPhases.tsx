@@ -64,7 +64,7 @@ const TreatmentPhases = () => {
 
   useEffect(() => {
     getPhaseList();
-  }, [treatmentId, phaseReq.data]);
+  }, [treatmentId, phaseReq.data, phaseEdit]);
 
   useEffect(() => {
     let maxNumber = 0;
