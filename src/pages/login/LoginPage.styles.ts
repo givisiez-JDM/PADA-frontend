@@ -98,5 +98,5 @@ export const IncorrectUser = styled.p`
   font-size: x-small;
   font-weight: 500;
   word-wrap: break-word;
-  max-width: 12rem;
+  max-width: 17rem;
 `;

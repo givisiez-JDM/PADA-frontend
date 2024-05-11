@@ -133,7 +133,7 @@ const UserContext: React.FC<GlobalStorageProps> = ({ children }) => {
       setData(signup.status);
     }
     catch (err: any) {
-      setData(null);
+      setData(err.response.status);
       setError(err.response.data.error);
       setLoading(false);
     }
