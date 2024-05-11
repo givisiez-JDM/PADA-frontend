@@ -65,7 +65,7 @@ export const Eyes = styled.img`
 export const Checkbox = styled.p`
   display: flex;
   align-items: center;
-  width: 13rem;
+  width: 17rem;
   font-size: 0.8rem;
   color: ${props => props.theme.colors.variant3};
 `;
@@ -94,7 +94,6 @@ export const ForgotPassword = styled.p`
 `;
 
 export const IncorrectUser = styled.p`
-  text-indent: -3.3rem;
   color: red;
   font-size: x-small;
   font-weight: 500;

@@ -47,6 +47,7 @@ export const Box = styled.form`
   width: 23rem;
   border: 3px solid #4c7abb;
   border-radius: 6px;
+  padding: 1rem 0;
 `;
 
 export const InputBox = styled.div`
@@ -95,7 +96,6 @@ export const FooterDescription = styled.p`
 `;
 
 export const ErrorMessage = styled.p`
-  text-indent: -6.4rem;
   color: red;
   font-size: x-small;
   font-weight: 500;
