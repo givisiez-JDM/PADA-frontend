@@ -1,4 +1,4 @@
-import React from 'react';
+import { ChangeEvent, FormEvent, useEffect, useState } from 'react';
 import wave from '../../assets/wave.png';
 import iconPerson from '../../assets/icon-person.svg';
 import iconEmail from '../../assets/email.svg';
@@ -18,10 +18,11 @@ import Button from '../../components/button/Button';
 
 const Signup = () => {
   const { onSubmit, errors, data, register, getValues } = useSignup();
-  const [saveUser, setSaveUser] = React.useState(false);
-  const [modal, setModal] = React.useState(false);
-  const [visiblePassword, setVisiblePassword] = React.useState(false);
-  const [visibleConfirmPassword, setVisibleConfirmPassword] = React.useState(false);
+  const [saveUser, setSaveUser] = useState(false);
+  const [modal, setModal] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visibleConfirmPassword, setVisibleConfirmPassword] = useState(false);
+  const [errorMsg, setErrorMsg] = useState('');
 
   const navigate = useNavigate();
   const { error } = useData();
@@ -29,7 +30,7 @@ const Signup = () => {
 
   const DATA_VALUE = 201;
 
-  const savePasswordLocally = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const savePasswordLocally = (event: ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked === true) {
       setSaveUser(true);
     }
@@ -38,16 +39,39 @@ const Signup = () => {
     }
   };
 
-  const sendReq = (event: React.FormEvent<HTMLFormElement>) => {
+  const sendReq = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     onSubmit();
 
     saveUser && window.localStorage.setItem('password', values);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (data === DATA_VALUE) setModal(true);
   }, [modal, data]);
+
+  useEffect(() => {
+    const BadRequestCode = 400;
+    const UnathorizedCode = 401;
+    const NotFoundCode = 404;
+    if (error) {
+      if (data === BadRequestCode) {
+        setErrorMsg('E-mail ou senha incorretos');
+      }
+      else if (data === UnathorizedCode) {
+        setErrorMsg('Senha inválida');
+      }
+      else if (data === NotFoundCode) {
+        setErrorMsg('Cadastro não encontrado');
+      }
+      else {
+        setErrorMsg('Erro inesperado no servidor');
+      }
+    }
+    else {
+      setErrorMsg('');
+    }
+  }, [error]);
 
   const sucessBox = () => (
     <Box>
@@ -116,7 +140,7 @@ const Signup = () => {
           />
         </InputBox>
 
-        {error && <ErrorMessage>{error}</ErrorMessage>}
+        <ErrorMessage>{errorMsg}</ErrorMessage>
 
         <Checkbox>
           <input type="checkbox" checked={saveUser} onChange={savePasswordLocally} />
