@@ -58,10 +58,14 @@ const Login = () => {
 
   useEffect(() => {
     const BadRequestCode = 400;
+    const UnathorizedCode = 401;
     const NotFoundCode = 404;
     if (error) {
       if (data === BadRequestCode) {
         setErrorMsg('E-mail ou senha incorretos');
+      }
+      else if (data === UnathorizedCode) {
+        setErrorMsg('Senha inválida');
       }
       else if (data === NotFoundCode) {
         setErrorMsg('Cadastro não encontrado');
