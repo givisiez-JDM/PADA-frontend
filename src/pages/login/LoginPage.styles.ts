@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -7,7 +7,6 @@ export const Main = styled.main`
   flex-direction: column;
   height: 100vh;
   width: 100vw;
-  font-family: "Poppins", sans-serif;
 `;
 
 export const TopWave = styled.div`
@@ -38,8 +37,8 @@ export const Box = styled.form`
   gap: 0.5rem 0;
   min-height: 14rem;
   width: 25rem;
-  border: 3px solid #4c7abb;
-  border-radius: 6px;
+  border: 3px solid ${props => props.theme.colors.variant2};
+  border-radius: 0.5rem;
 `;
 
 export const InputBox = styled.div`
@@ -49,22 +48,31 @@ export const InputBox = styled.div`
 
 export const Image = styled.img`
   position: absolute;
-  height: 1.2rem;
+  height: 1.5rem;
   top: 0.5rem;
   left: 0.6rem;
+  box-sizing: border-box;
+`;
+
+export const Eyes = styled.img`
+  position: absolute;
+  height: 1.5rem;
+  top: 0.5rem;
+  right: 0.5rem;
   box-sizing: border-box;
 `;
 
 export const Checkbox = styled.p`
   display: flex;
   align-items: center;
-  width: 13rem;
+  width: 17rem;
   font-size: 0.8rem;
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const ButtonLogin = styled.button`
-  background-color: ${(props) => props.theme.colors.variant2};
-  color: ${(props) => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.variant2};
+  color: ${props => props.theme.colors.white};
   border: none;
   border-radius: 15px;
   width: 13rem;
@@ -77,18 +85,18 @@ export const ForgotPassword = styled.p`
   top: 1rem;
   font-size: small;
   font-weight: 500;
+  color: ${props => props.theme.colors.variant3};
 
   span {
-    color: ${(props) => props.theme.colors.variant2};
+    color: ${props => props.theme.colors.variant2};
     cursor: pointer;
   }
 `;
 
 export const IncorrectUser = styled.p`
-  text-indent: -3.3rem;
   color: red;
   font-size: x-small;
   font-weight: 500;
   word-wrap: break-word;
-  max-width: 12rem;
+  max-width: 17rem;
 `;

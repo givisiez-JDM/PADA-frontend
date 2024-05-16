@@ -1,14 +1,14 @@
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { z as zod } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import Button from "../../components/button/Button";
-import DefaultPatientPage from "../../components/defaultPatientPage/DefaultPatientPage";
-import { PatientType } from "../../types/PatientTypes";
-import Switch from "../../components/switch/Switch";
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z as zod } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import Button from '../../components/button/Button';
+import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
+import { PatientType } from '../../types/PatientTypes';
+import Switch from '../../components/switch/Switch';
+import Checkbox from '../../components/checkbox/Checkbox';
 import {
   ButtonLocal,
-  ContainerCheckbox,
   ConteinerCheckBox,
   ConteinerTreatment,
   DateInput,
@@ -17,14 +17,16 @@ import {
   PhaseStatus,
   PhaseTitle,
   Title,
-} from "./FasesDeTratamentoPage.styles";
+} from './FasesDeTratamentoPage.styles';
+
+const MIN_NUMBER = 10;
 
 const faseOne = zod.object({
   id: zod.string(),
   phaseNumber: zod.number(),
   active: zod.boolean(),
-  startTreatment: zod.string().min(10, 'Data inválida'),
-  endTreatment: zod.string().min(10, 'Data inválida'),
+  startTreatment: zod.string().min(MIN_NUMBER, 'Data inválida'),
+  endTreatment: zod.string().min(MIN_NUMBER, 'Data inválida'),
   frequencies: zod.array(zod.object({ frequency: zod.string() })),
   dosages: zod.array(zod.object(
     { dosage: zod.string() })),
@@ -32,10 +34,16 @@ const faseOne = zod.object({
 
 type RegisterFaseOne = zod.infer<typeof faseOne>;
 
-const frequencies: Array<string> = ['cada 7 dias', 'cada 3 semanas', 'cada 2 semanas', 'cada 4 semanas'];
+const frequencies: Array<string> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
 const dosages: Array<string> = ['1:10.000', '1:100', ' 1:1.000', '1:10'];
 
-const patient: PatientType = { birthDate: '', email: '', id: '', name: 'Teste', photo: '', telephone: '' };
+const patient: PatientType = {
+  birthDate: '',
+  email: '',
+  id: '',
+  name: 'Teste',
+  photo: '',
+  telephone: '' };
 
 const FasesDeTratamento = () => {
   const [checked, setChecked] = useState(false);
@@ -56,10 +64,9 @@ const FasesDeTratamento = () => {
         { dosage: '1:100' },
         { dosage: '1:1.000' },
         { dosage: '1:10' },
-      ]
-    }
+      ],
+    },
   });
-
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -68,55 +75,54 @@ const FasesDeTratamento = () => {
   return (
     <DefaultPatientPage patient={patient}>
       <PhaseForm onSubmit={event => handleFormSubmit(event)}>
-        <PhaseTitle>Fase {2}</PhaseTitle>
+        <PhaseTitle>
+          Fase
+          {2}
+        </PhaseTitle>
         <ConteinerTreatment>
           <Title>
             Duração do Tratamento
           </Title>
           <p>Início</p>
-          <DateInput type="date" style={{ width: "12em" }}
-            {...register('startTreatment')} />
+          <DateInput
+            type="date"
+            style={{ width: '12em' }}
+            {...register('startTreatment')}
+          />
           {errors.startTreatment && <span>{errors.startTreatment.message}</span>}
           <p>Fim</p>
-          <DateInput type="date" style={{ width: "12em" }}
-            {...register('endTreatment')} />
+          <DateInput
+            type="date"
+            style={{ width: '12em' }}
+            {...register('endTreatment')}
+          />
           {errors.endTreatment && <span>{errors.endTreatment.message}</span>}
         </ConteinerTreatment>
         <PhaseField>
-          <Title>
-            Periodicidade do Tratamento
-          </Title>
+          <Title>Periodicidade do Tratamento</Title>
           <ConteinerCheckBox>
             {frequencies.map(frequency => (
-              <ContainerCheckbox key={frequency}>
-                <div className="custom-checkbox" >
-                  <input id={frequency} className="checkbox"
-                    type="radio"
-                    value={frequency}
-                    {...register('frequencies')}
-                  />
-                  <label htmlFor={frequency}>{frequency}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox
+                name="frequency"
+                type="radio"
+                label={`A cada ${frequency}`}
+                value={frequency}
+                key={frequency}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
         <PhaseField>
-          <Title>
-            Dosagem do Medicamento
-          </Title>
+          <Title>Dosagem do Medicamento</Title>
           <ConteinerCheckBox>
             {dosages.map(dosage => (
-              <ContainerCheckbox key={dosage}>
-                <div className="custom-checkbox" >
-                  <input id={dosage} className="checkbox"
-                    type="radio"
-                    value={dosage}
-                    {...register('dosages')}
-                  />
-                  <label htmlFor={dosage}>{dosage}</label>
-                </div>
-              </ ContainerCheckbox>
+              <Checkbox
+                name="dosage"
+                type="radio"
+                label={`${dosage}g`}
+                value={dosage}
+                key={dosage}
+              />
             ))}
           </ConteinerCheckBox>
         </PhaseField>
@@ -131,9 +137,7 @@ const FasesDeTratamento = () => {
           </PhaseStatus>
         </PhaseField>
         <ButtonLocal>
-          <Button type="submit">
-            Enviar
-          </Button>
+          <Button type="submit">Enviar</Button>
         </ButtonLocal>
       </PhaseForm>
     </DefaultPatientPage>

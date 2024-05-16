@@ -1,7 +1,7 @@
-import { HeadDiv, HeaderContent } from "./MenuHeader.styles";
+import { HeadDiv, HeaderContent } from './MenuHeader.styles';
 
 export type MenuHeaderProps = {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 };
 
 const MenuHeader = ({ children }: MenuHeaderProps) => {

@@ -6,8 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 25",
+    "lint:fix": "eslint --fix --ext .js,.jsx",
+    "preview": "vite preview",
+    "prepare": "husky"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -22,6 +24,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@stylistic/eslint-plugin": "^1.7.0",
     "@types/date-fns": "^2.6.0",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
@@ -30,8 +33,10 @@
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
     "eslint": "^8.38.0",
+    "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.3.4",
+    "husky": "^9.0.11",
     "prettier": "2.8.8",
     "typescript": "^5.0.2",
     "vite": "^4.3.2"

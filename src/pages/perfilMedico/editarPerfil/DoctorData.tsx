@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import useAxios from "../../hooks/useAxios";
-import { UserRequest } from "../../requests/UserRequest";
-import { useData } from "../../global/UserContext";
-import ImageLogo from "../../assets/logo.png";
-import IconArrow from "../../assets/white-arrow.svg";
-import ModalDoctor from "../../components/modalDoctor/ModalDoctor";
-import MenuHeader from "../../components/menuHeader/MenuHeader";
+import { useEffect, useState } from "react";
+import useAxios from "../../../hooks/useAxios";
+import { UserRequest } from "../../../requests/UserRequest";
+import { useData } from "../../../global/UserContext";
+import ImageLogo from "../../../assets/logo.png";
+import IconArrow from "../../../assets/white-arrow.svg";
+import ModalDoctor from "../../../components/modalDoctor/ModalDoctor";
+import MenuHeader from "../../../components/menuHeader/MenuHeader";
 import {
   Title,
   Container,
@@ -19,12 +18,12 @@ import {
   ButtonBox,
   InputPass,
 } from "./DoctorData.styles";
-import Button from "../../components/button/Button";
+import Button from "../../../components/button/Button";
 
 const DoctorData = () => {
   const userRequest = new UserRequest();
   const patients = useAxios();
-  const { userId, getProfile, data, setPatientId } = useData();
+  const { userId, getProfile, data } = useData();
 
   const [modal, setModal] = useState(false);
   const [name, setName] = useState("");
@@ -52,18 +51,6 @@ const DoctorData = () => {
   const handleSaveProfile = () => {
     setEditProfile(false);
   };
-
-  const getAllPatients = patients.data?.map((patient: any) => {
-    return (
-      <Link
-        key={patient.id}
-        to={`/paciente/perfil/${patient.id}`}
-        onClick={() => setPatientId(patient.id)}
-      >
-        <li>{patient.name}</li>
-      </Link>
-    );
-  });
 
   return (
     <>

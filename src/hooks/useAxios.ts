@@ -3,19 +3,18 @@ import { useState, useCallback } from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
 
 interface UseAxiosResponse<T> {
-  data: T | null;
-  error: any | null;
-  loading: boolean;
-  get: (url: string, config?: AxiosRequestConfig) => Promise<void>;
-  post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>;
-  postWithRes: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>;
-  deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>;
-  put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>;
-  putWithoutRes: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>;
+  data: T | null
+  error: any | null
+  loading: boolean
+  get: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
+  postWithRes: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
+  deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
+  putWithoutRes: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
 }
 
 const useAxios = <T = any>(): UseAxiosResponse<T> => {
-
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<any | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -28,10 +27,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       const res = await axios.get<T>(url, config);
 
       setData(res.data);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -42,10 +43,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       setLoading(true);
 
       await axios.post(url, body, config);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -58,10 +61,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       const res = await axios.post<T>(url, body, config);
 
       setData(res.data);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -72,10 +77,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       setLoading(true);
 
       await axios.delete(url, config);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -88,10 +95,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       const res = await axios.put<T>(url, data, config);
 
       setData(res.data);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);
@@ -102,10 +111,12 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
       setLoading(true);
 
       await axios.put(url, data, config);
-    } catch (error:any) {
+    }
+    catch (error: any) {
       setData(null);
       setError(error.response?.data || error.message);
-    } finally {
+    }
+    finally {
       setLoading(false);
     }
   }, []);

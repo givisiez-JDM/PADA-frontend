@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const VaccineContainer = styled.div`
   display: flex;
   align-items: start;
   width: 100%;
-  border-bottom: 2px solid ${(props) => props.theme.colors.variant2};
+  border-bottom: 2px solid ${props => props.theme.colors.variant2};
   padding: 1rem 0;
 `;
 
@@ -15,16 +15,16 @@ export const VaccineDate = styled.div`
   line-height: 1.5rem;
 
   &.applied {
-    border-color: ${(props) => props.theme.colors.vaccine.applied};
+    border-color: ${props => props.theme.colors.vaccine.applied};
   }
   &.late {
-    border-color: ${(props) => props.theme.colors.vaccine.late};
+    border-color: ${props => props.theme.colors.vaccine.late};
   }
   &.not-applied {
-    border-color: ${(props) => props.theme.colors.vaccine.notApplied};
+    border-color: ${props => props.theme.colors.vaccine.notApplied};
   }
   &.schedule {
-    border-color: ${(props) => props.theme.colors.vaccine.schedule};
+    border-color: ${props => props.theme.colors.vaccine.schedule};
   }
 `;
 
@@ -37,18 +37,18 @@ export const VaccineDescription = styled.div`
 
 export const VaccineTitle = styled.h2`
   padding: 0.5rem;
-  color: ${(props) => props.theme.colors.keyboard};
+  color: ${props => props.theme.colors.keyboard};
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.background};
+  background: ${props => props.theme.colors.background};
 `;
 
 export const VaccineText = styled.p`
   display: none;
   padding: 0.5rem;
   min-height: 2rem;
-  color: ${(props) => props.theme.colors.keyboard};
+  color: ${props => props.theme.colors.keyboard};
   border-radius: 10px;
-  background: ${(props) => props.theme.colors.background};
+  background: ${props => props.theme.colors.background};
 
   &.active {
     display: block;
