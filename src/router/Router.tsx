@@ -10,7 +10,7 @@ import TreatmentPhases from '../pages/treatmentPhases/TreatmentPhases';
 import VacinasPaciente from '../pages/vacinasPaciente/VacinasPaciente';
 import FasesDeTratamento from '../pages/fasesDeTratamento/FasesDeTratamentoPage';
 import CadastroPacientePage from '../pages/cadastroPaciente/CadastroPacientePage';
-import DoctorData from '../pages/perfilMedico/editarPerfil/DoctorData'
+import DoctorData from '../pages/perfilMedico/editarPerfil/DoctorData';
 
 const Router = () => {
   return (

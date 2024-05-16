@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
@@ -33,15 +33,15 @@ export const InputField = styled.input`
   width: 12rem;
   border-radius: 1rem;
   padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.variant3};
-  color: ${(props) => props.theme.colors.variant3};
+  border: 1px solid ${props => props.theme.colors.variant3};
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const InputPass = styled.input`
   border: none;
   width: 12rem;
   padding: 0.5rem;
-  color: ${(props) => props.theme.colors.variant3};
+  color: ${props => props.theme.colors.variant3};
 `;
 
 export const InputArea = styled.textarea`
@@ -49,8 +49,8 @@ export const InputArea = styled.textarea`
   border: 1px solid #ccc;
   border-radius: 1rem;
   padding: 0.5rem;
-  border: 1px solid ${(props) => props.theme.colors.variant3};
-  color: ${(props) => props.theme.colors.variant3};
+  border: 1px solid ${props => props.theme.colors.variant3};
+  color: ${props => props.theme.colors.variant3};
   width: 50%;
 `;
 
@@ -66,7 +66,7 @@ export const Container = styled.div`
 export const Title = styled.h3`
   font-weight: bold;
   font-size: 1.125rem;
-  color: ${(props) => props.theme.colors.keyboard};
+  color: ${props => props.theme.colors.keyboard};
 `;
 
 export const ButtonBox = styled.div`

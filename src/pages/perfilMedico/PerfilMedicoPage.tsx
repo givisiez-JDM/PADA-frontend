@@ -55,7 +55,9 @@ const PerfilMedico = () => {
             <ChangePassword disabled={true}>Alterar</ChangePassword>
           </ArticlePassword>
           <BoxEditProfile>
-            <EditProfile onClick={() => navigate('/menu-medico/perfil/edit')}>Editar perfil</EditProfile>
+            <EditProfile onClick={() => navigate('/menu-medico/perfil/edit')}>
+              Editar perfil
+            </EditProfile>
           </BoxEditProfile>
         </Section>
       </Main>

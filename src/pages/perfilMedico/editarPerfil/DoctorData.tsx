@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import useAxios from "../../../hooks/useAxios";
-import { UserRequest } from "../../../requests/UserRequest";
-import { useData } from "../../../global/UserContext";
-import ImageLogo from "../../../assets/logo.png";
-import IconArrow from "../../../assets/white-arrow.svg";
-import ModalDoctor from "../../../components/modalDoctor/ModalDoctor";
-import MenuHeader from "../../../components/menuHeader/MenuHeader";
+import { useEffect, useState } from 'react';
+import useAxios from '../../../hooks/useAxios';
+import { UserRequest } from '../../../requests/UserRequest';
+import { useData } from '../../../global/UserContext';
+import ImageLogo from '../../../assets/logo.png';
+import IconArrow from '../../../assets/white-arrow.svg';
+import ModalDoctor from '../../../components/modalDoctor/ModalDoctor';
+import MenuHeader from '../../../components/menuHeader/MenuHeader';
 import {
   Title,
   Container,
@@ -17,8 +17,8 @@ import {
   PasswordBox,
   ButtonBox,
   InputPass,
-} from "./DoctorData.styles";
-import Button from "../../../components/button/Button";
+} from './DoctorData.styles';
+import Button from '../../../components/button/Button';
 
 const DoctorData = () => {
   const userRequest = new UserRequest();
@@ -26,11 +26,11 @@ const DoctorData = () => {
   const { userId, getProfile, data } = useData();
 
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [specialty, setSpecialty] = useState("");
-  const [about, setAbout] = useState("");
-  const [password, setPassword] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [specialty, setSpecialty] = useState('');
+  const [about, setAbout] = useState('');
+  const [password, setPassword] = useState('');
   const [editProfile, setEditProfile] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const DoctorData = () => {
   }, []);
 
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
+    const token = window.localStorage.getItem('token');
     const { url, headers } = userRequest.GET_PATIENTS(token);
 
     patients.get(url, { headers });
@@ -68,35 +68,35 @@ const DoctorData = () => {
           <InputField
             type="text"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={e => setName(e.target.value)}
           />
           <Title>E-mail:</Title>
           <InputField
             type="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={e => setEmail(e.target.value)}
           />
           <Title>Especialidade:</Title>
           <InputArea
             value={specialty}
-            onChange={(e) => setSpecialty(e.target.value)}
+            onChange={e => setSpecialty(e.target.value)}
           />
           <Title>Sobre:</Title>
           <InputArea
             rows={4}
             cols={50}
             value={about}
-            onChange={(e) => setAbout(e.target.value)}
+            onChange={e => setAbout(e.target.value)}
           />
           <PasswordBox>
             <Title>Senha:</Title>
             <InputPass
               type="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
             <Button size="small" onClick={handleEditProfile}>
-              Alterar{" "}
+              Alterar
             </Button>
           </PasswordBox>
           <ButtonBox>
