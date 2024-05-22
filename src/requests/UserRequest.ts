@@ -109,4 +109,13 @@ export class UserRequest {
       headers: { Authorization: token },
     };
   };
+
+  PUT_PHASES_BY_ID = (id: string | undefined, token: string | null) => {
+    return {
+      url: `${BASE_URL}/phases/${id}`,
+      headers: {
+        Authorization: token,
+      },
+    };
+  };
 }
