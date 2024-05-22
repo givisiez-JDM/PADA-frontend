@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import PhaseProgress from '../../../components/phaseProgress/PhaseProgress';
 import { PhaseType } from '../../../types/TreatmentTypes';
@@ -8,39 +7,47 @@ import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles';
 interface Props {
   phase: PhaseType
   progress: number
+  setPhase: () => void
 }
 
-const Phase = ({ phase, progress }: Props) => {
-  const navigate = useNavigate();
-
+/**
+ * Statically shows the data of a phase
+ * @param { PhaseType } phase A data values to show
+ * @param { number } progress The pregress value of treatment [0.0-1.0]
+ * @param  setPhase function to set data for edition
+ * @example
+ * <Phase phase={{id:"",...}} progress={0.6} setPhase={setPhaseEdit} />
+ */
+const Phase = ({ phase, progress, setPhase }: Props) => {
   return (
     <>
       <PhaseField>
         <PhaseSubtitle>Duração da fase</PhaseSubtitle>
         <PhaseContent>
-          Início:
+          <p>Início:</p>
           {formatDate(phase.startTreatment)}
         </PhaseContent>
         <PhaseContent>
-          Fim:
+          <p>Fim:</p>
           {formatDate(phase.endTreatment)}
         </PhaseContent>
       </PhaseField>
       <PhaseField>
         <PhaseSubtitle>Periodicidade</PhaseSubtitle>
         <PhaseContent>
-          A cada
-          {phase.frequency}
+          {`A cada ${phase.frequency}`}
         </PhaseContent>
       </PhaseField>
       <PhaseField>
         <PhaseSubtitle>Dosagem do medicamento</PhaseSubtitle>
-        <PhaseContent>{phase.dosage}</PhaseContent>
+        <PhaseContent>
+          {`${phase.dosage}g`}
+        </PhaseContent>
       </PhaseField>
       <PhaseContent>
         <PhaseProgress value={progress}>
           <Button
-            onClick={() => navigate('/paciente/fase/edit')}
+            onClick={setPhase}
             size="small"
           >
             Alterar

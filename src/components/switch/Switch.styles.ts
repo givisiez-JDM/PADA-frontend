@@ -11,12 +11,13 @@ export const Label = styled.label`
 
 export const Switch = styled.div`
   position: relative;
-  width: 2rem;
+  width: 2.1rem;
   height: 1rem;
   background: ${props => props.theme.colors.background};
   border-radius: 1rem;
   padding: 0.1rem;
   transition: 300ms all;
+  border: 1px solid ${props => props.theme.colors.variant1};
 
   &:before {
     transition: 300ms all;

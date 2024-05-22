@@ -126,7 +126,7 @@ const ModalTreatmentPhase = ({ phaseNumber, setModal }: Props) => {
         <BoxButton>
           <Button
             type="submit"
-            className="large"
+            size="large"
             disabled={errorMessage.length > 0}
           >
             Adicionar

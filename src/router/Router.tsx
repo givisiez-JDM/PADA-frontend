@@ -8,7 +8,6 @@ import PerfilMedico from '../pages/perfilMedico/PerfilMedicoPage';
 import PerfilPaciente from '../pages/perfilPaciente/PerfilPacientePage';
 import TreatmentPhases from '../pages/treatmentPhases/TreatmentPhases';
 import VacinasPaciente from '../pages/vacinasPaciente/VacinasPaciente';
-import FasesDeTratamento from '../pages/fasesDeTratamento/FasesDeTratamentoPage';
 import CadastroPacientePage from '../pages/cadastroPaciente/CadastroPacientePage';
 
 const Router = () => {
@@ -23,7 +22,6 @@ const Router = () => {
           <Route path="menu-medico" element={<MenuMedico />} />
           <Route path="menu-medico/perfil" element={<PerfilMedico />} />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
-          <Route path="/paciente/fase/edit" element={<FasesDeTratamento />} />
           <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
           <Route path="/paciente/vacinas/:id" element={<VacinasPaciente />} />
         </Routes>
