@@ -46,7 +46,7 @@ const PerfilMedico = () => {
         <Section>
           <Container>
             <div>
-              <Title>Nome:</Title>
+              <Title>Nome</Title>
               <InputField
                 type="text"
                 value={name}
@@ -54,7 +54,7 @@ const PerfilMedico = () => {
               />
             </div>
             <div>
-              <Title>E-mail:</Title>
+              <Title>Email</Title>
               <InputField
                 type="email"
                 value={email}
@@ -62,7 +62,7 @@ const PerfilMedico = () => {
               />
             </div>
             <div>
-              <Title>CRM:</Title>
+              <Title>CRM</Title>
               <InputField
                 type="text"
                 value={crm}
@@ -70,7 +70,7 @@ const PerfilMedico = () => {
               />
             </div>
             <div>
-              <Title>Especialidade:</Title>
+              <Title>Especialidade</Title>
               <InputArea
                 className="specialty"
                 value={specialty}
@@ -78,7 +78,7 @@ const PerfilMedico = () => {
               />
             </div>
             <div>
-              <Title>Sobre:</Title>
+              <Title>Sobre</Title>
               <InputArea
                 className="about"
                 value={about}

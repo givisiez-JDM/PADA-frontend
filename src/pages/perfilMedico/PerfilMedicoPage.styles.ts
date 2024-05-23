@@ -51,6 +51,7 @@ export const ArticleText = styled.div`
     margin-bottom: 0.35rem;
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -67,6 +68,7 @@ export const ArticleCRM = styled.div`
     margin-bottom: 0.35rem;
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
+    padding: 0.5rem;
   }
 `;
 
@@ -83,6 +85,8 @@ export const ArticleSpecialty = styled.div`
     height: 2.8rem;
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
+    padding: 0.5rem;
+    line-height: normal;
   }
 `;
 
@@ -98,6 +102,8 @@ export const ArticleAbout = styled.div`
     height: 7.5rem;
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
+    padding: 0.5rem;
+    line-height: normal;
   }
 `;
 
@@ -111,6 +117,7 @@ export const ArticlePassword = styled.div`
     margin-top: 0.23rem;
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
+    padding: 0.5rem;
   }
 `;
 

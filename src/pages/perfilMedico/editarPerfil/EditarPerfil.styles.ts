@@ -101,6 +101,7 @@ export const InputArea = styled.textarea`
   resize: none;
   overflow: hidden;
   font-size: 1rem;
+  font-family: 'poppins', sans-serif;
 
   &.specialty {
     height: 2.8rem;
