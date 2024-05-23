@@ -26,10 +26,11 @@ const DoctorData = () => {
   const { userId, getProfile, data } = useData();
 
   const [modal, setModal] = useState(false);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [specialty, setSpecialty] = useState('');
-  const [about, setAbout] = useState('');
+  const [name, setName] = useState(data?.name);
+  const [email, setEmail] = useState(data?.email);
+  const [crm, setCrm] = useState(data?.CRM);
+  const [specialty, setSpecialty] = useState(data?.specialty);
+  const [about, setAbout] = useState(data?.about);
   const [password, setPassword] = useState('');
   const [editProfile, setEditProfile] = useState(false);
 
@@ -75,6 +76,12 @@ const DoctorData = () => {
             type="email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+          />
+          <Title>CRM:</Title>
+          <InputField
+            type="text"
+            value={crm}
+            onChange={e => setCrm(e.target.value)}
           />
           <Title>Especialidade:</Title>
           <InputArea

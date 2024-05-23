@@ -5,12 +5,12 @@ import Login from '../pages/login/LoginPage';
 import GlobalStorage from '../global/UserContext';
 import MenuMedico from '../pages/menuMedico/MenuMedicoPage';
 import PerfilMedico from '../pages/perfilMedico/PerfilMedicoPage';
+import EditarPerfilMedico from '../pages/perfilMedico/editarPerfil/EditarPerfil';
 import PerfilPaciente from '../pages/perfilPaciente/PerfilPacientePage';
 import TreatmentPhases from '../pages/treatmentPhases/TreatmentPhases';
 import VacinasPaciente from '../pages/vacinasPaciente/VacinasPaciente';
 import FasesDeTratamento from '../pages/fasesDeTratamento/FasesDeTratamentoPage';
 import CadastroPacientePage from '../pages/cadastroPaciente/CadastroPacientePage';
-import DoctorData from '../pages/perfilMedico/editarPerfil/DoctorData';
 
 const Router = () => {
   return (
@@ -23,7 +23,7 @@ const Router = () => {
           <Route path="cadastro/paciente" element={<CadastroPacientePage />} />
           <Route path="menu-medico" element={<MenuMedico />} />
           <Route path="menu-medico/perfil" element={<PerfilMedico />} />
-          <Route path="/menu-medico/perfil/edit" element={<DoctorData />} />
+          <Route path="/menu-medico/perfil/edit" element={<EditarPerfilMedico />} />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
           <Route path="/paciente/fase/edit" element={<FasesDeTratamento />} />
           <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
