@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { useData } from '../../../global/UserContext';
 import { useNavigate } from 'react-router-dom';
-import ImageLogo from '../../../assets/logo.png';
-import IconArrow from '../../../assets/white-arrow.svg';
-import ModalDoctor from '../../../components/modalDoctor/ModalDoctor';
-import MenuHeader from '../../../components/menuHeader/MenuHeader';
+import { useData } from '../../../global/UserContext';
+import useAxios from '../../../hooks/useAxios';
+import { UserRequest } from '../../../requests/UserRequest';
+import { DoctorsType } from '../../../types/DoctorTypes';
+
 import {
   ArticlePassword,
   BoxUpdateProfile,
@@ -19,10 +19,16 @@ import {
   Section,
   SectionDoctor,
 } from './EditarPerfil.styles';
+import ImageLogo from '../../../assets/logo.png';
+import IconArrow from '../../../assets/white-arrow.svg';
+import ModalDoctor from '../../../components/modalDoctor/ModalDoctor';
+import MenuHeader from '../../../components/menuHeader/MenuHeader';
 
 const PerfilMedico = () => {
-  const { data } = useData();
+  const { data, getToken, getProfile, userId } = useData();
   const navigate = useNavigate();
+  const userRequest = new UserRequest();
+  const doctorReq = useAxios<DoctorsType>();
   const [modal, setModal] = useState(false);
 
   const [name, setName] = useState(data?.name);
@@ -30,7 +36,36 @@ const PerfilMedico = () => {
   const [crm, setCrm] = useState(data?.CRM);
   const [specialty, setSpecialty] = useState(data?.specialty);
   const [about, setAbout] = useState(data?.about);
-  // const [password, setPassword] = useState('');
+  const [photo] = useState(data?.photo);
+  const [password] = useState('Adicionar a senha para testar');
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const token = getToken();
+    const { url, headers } = userRequest.PUT_DOCTORS_BY_ID(data.id, token);
+    const body: Partial<DoctorsType> = {
+      name,
+      email,
+      about,
+      CRM: crm,
+      specialty,
+      photo,
+    };
+
+    if (password) {
+      body.password = password;
+    }
+
+    try {
+      await doctorReq.put(url, body, { headers });
+      await getProfile(userId);
+      navigate('/menu-medico/perfil');
+    }
+    catch (error) {
+      console.error('Erro ao atualizar perfil:', error);
+    }
+  };
 
   return (
     <>
@@ -44,7 +79,7 @@ const PerfilMedico = () => {
         </MenuHeader>
 
         <Section>
-          <Container>
+          <Container onSubmit={handleFormSubmit}>
             <div>
               <Title>Nome</Title>
               <InputField
@@ -90,12 +125,10 @@ const PerfilMedico = () => {
               <p>********</p>
               <ChangePassword disabled={true}>Alterar</ChangePassword>
             </ArticlePassword>
+            <BoxUpdateProfile>
+              <UpdateProfile type="submit">Atualizar perfil</UpdateProfile>
+            </BoxUpdateProfile>
           </Container>
-          <BoxUpdateProfile>
-            <UpdateProfile onClick={() => navigate('/menu-medico/perfil/edit')}>
-              Atualizar perfil
-            </UpdateProfile>
-          </BoxUpdateProfile>
         </Section>
       </Main>
 
