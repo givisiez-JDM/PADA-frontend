@@ -1,0 +1,107 @@
+import { useForm } from 'react-hook-form';
+import { z as zod } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useData } from '../global/UserContext';
+import { FormPropsLogin, loginType } from '../types/LoginTypes';
+import { FormPropsSignup, SignupType } from '../types/SignupTypes';
+
+const MIN_PASSWORD_LENGTH = 8;
+const MAX_CHARACTERS = 3;
+
+export const formLoginValidate = zod.object({
+  email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
+
+  password: zod
+    .string()
+    .min(1, 'Digite sua senha')
+    .min(MIN_PASSWORD_LENGTH, 'Sua senha deve ter 8 caracteres'),
+});
+
+export const useLogin = () => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    setValue,
+    getFieldState,
+    formState: { errors },
+  } = useForm<FormPropsLogin>({
+    mode: 'onBlur',
+    resolver: zodResolver(formLoginValidate),
+  });
+
+  const { userLogin } = useData();
+
+  const onSubmit = handleSubmit((data: loginType) => {
+    const { email, password } = data;
+    userLogin(email, password);
+  });
+
+  return {
+    handleSubmit,
+    register,
+    useData,
+    errors,
+    onSubmit,
+    useLogin,
+    getValues,
+    getFieldState,
+    setValue,
+  };
+};
+
+export const formValidateSignup = zod
+  .object({
+    name: zod
+      .string()
+      .min(1, 'Digite seu nome')
+      .min(MAX_CHARACTERS, 'Deve conter no minímo 3 caracteres'),
+
+    email: zod.string().min(1, 'Digite seu email').email('Email inválido'),
+
+    password: zod
+      .string()
+      .min(1, 'Digite sua senha')
+      .min(MIN_PASSWORD_LENGTH, 'Sua senha deve ter 8 caracteres')
+      // eslint-disable-next-line no-useless-escape
+      .regex(/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])/i, {
+        message:
+          'Deve conter um número, uma letra maiúscula, e um caractere especial, ex: ! @ # $ % & *)',
+      }),
+
+    confirmPassword: zod.string(),
+  })
+  .refine(fields => fields.password === fields.confirmPassword, {
+    path: ['confirmPassword'],
+    message: 'As senha precisam ser iguais',
+  });
+
+export const useSignup = () => {
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    formState: { errors },
+  } = useForm<FormPropsSignup>({
+    mode: 'onBlur',
+    resolver: zodResolver(formValidateSignup),
+  });
+
+  const { userSignup, data } = useData();
+
+  const onSubmit = handleSubmit((data: SignupType) => {
+    const { name, email, password, confirmPassword } = data;
+    userSignup(name, email, password, confirmPassword);
+  });
+
+  return {
+    handleSubmit,
+    register,
+    useData,
+    data,
+    errors,
+    onSubmit,
+    useSignup,
+    getValues,
+  };
+};

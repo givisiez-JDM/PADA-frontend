@@ -1,0 +1,61 @@
+import Button from '../../../components/button/Button';
+import PhaseProgress from '../../../components/phaseProgress/PhaseProgress';
+import { PhaseType } from '../../../types/TreatmentTypes';
+import { formatDate } from '../../../utils/DateFns';
+import { PhaseContent, PhaseField, PhaseSubtitle } from './Phase.styles';
+
+interface Props {
+  phase: PhaseType
+  progress: number
+  setPhase: () => void
+}
+
+/**
+ * Statically shows the data of a phase
+ * @param { PhaseType } phase A data values to show
+ * @param { number } progress The pregress value of treatment [0.0-1.0]
+ * @param  setPhase function to set data for edition
+ * @example
+ * <Phase phase={{id:"",...}} progress={0.6} setPhase={setPhaseEdit} />
+ */
+const Phase = ({ phase, progress, setPhase }: Props) => {
+  return (
+    <>
+      <PhaseField>
+        <PhaseSubtitle>Duração da fase</PhaseSubtitle>
+        <PhaseContent>
+          <p>Início:</p>
+          {formatDate(phase.startTreatment)}
+        </PhaseContent>
+        <PhaseContent>
+          <p>Fim:</p>
+          {formatDate(phase.endTreatment)}
+        </PhaseContent>
+      </PhaseField>
+      <PhaseField>
+        <PhaseSubtitle>Periodicidade</PhaseSubtitle>
+        <PhaseContent>
+          {`A cada ${phase.frequency}`}
+        </PhaseContent>
+      </PhaseField>
+      <PhaseField>
+        <PhaseSubtitle>Dosagem do medicamento</PhaseSubtitle>
+        <PhaseContent>
+          {`${phase.dosage}g`}
+        </PhaseContent>
+      </PhaseField>
+      <PhaseContent>
+        <PhaseProgress value={progress}>
+          <Button
+            onClick={setPhase}
+            size="small"
+          >
+            Alterar
+          </Button>
+        </PhaseProgress>
+      </PhaseContent>
+    </>
+  );
+};
+
+export default Phase;
