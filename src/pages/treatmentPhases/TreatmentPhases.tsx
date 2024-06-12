@@ -35,6 +35,11 @@ const TreatmentPhases = () => {
     setPhaseId(newPhase ? newPhase.id : '');
   };
 
+  const closeEditPhaseModal = () => {
+    setPhaseEdit(null);
+    setPhaseSelected(null);
+  };
+
   const hasPhases = () => phaseList.length > 0;
 
   const finishPhase = () => {
@@ -127,7 +132,7 @@ const TreatmentPhases = () => {
     <Main>
       <DefaultPatientPage patient={patient}>
         <Section>
-          <Title>Fases</Title>
+          <Title>Fase</Title>
           {getPhases()}
           <BoxButton className={hasPhases() ? '' : 'centered'}>
             {
@@ -154,7 +159,7 @@ const TreatmentPhases = () => {
       }
       {
         phaseEdit
-        && <TreatmentPhaseEdit closeModal={() => setPhaseEdit(null)} phaseEdit={phaseEdit} />
+        && <TreatmentPhaseEdit closeModal={closeEditPhaseModal} phaseEdit={phaseEdit} />
       }
     </Main>
   );
