@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
 html,
 body,
@@ -74,7 +75,7 @@ td {
 }
 
 body {
-    font-family: 'Poppins' !important;
+    font-family: "Noto Sans KR", sans-serif;
     line-height: 1;
 }
 
