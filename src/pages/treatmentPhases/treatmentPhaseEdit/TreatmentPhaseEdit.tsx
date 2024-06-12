@@ -13,8 +13,8 @@ import {
   ModalContainer, PhaseField, PhaseForm, PhaseStatus, PhaseTitle, Title,
 } from './TreatmentPhaseEdit.styles';
 
-const frequencies: Array<FrequencyType> = ['7 dias', '2 semanas', '3 semanas', '4 semanas'];
-const dosages: Array<DosageType> = ['1:10', '1:100', '1:1.000', '1:10.000'];
+const frequencies: Array<FrequencyType> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
+const dosages: Array<DosageType> = ['1:10.000', '1:100', '1:1.000', '1:10'];
 
 interface Props {
   closeModal: () => void
@@ -91,7 +91,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
       <PhaseForm onSubmit={event => handleFormSubmit(event)}>
         <PhaseTitle>{`Fase ${phase.phaseNumber}`}</PhaseTitle>
         <PhaseField>
-          <Title>Duração do Tratamento</Title>
+          <Title>Duração da Fase</Title>
           <DateContainer>
             <p>Início</p>
             <DateInput
@@ -110,7 +110,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
           </DateContainer>
         </PhaseField>
         <PhaseField>
-          <Title>Periodicidade do Tratamento</Title>
+          <Title>Periodicidade</Title>
           <CheckBoxContainer>
             {frequencies.map(frequency => (
               <Checkbox
@@ -135,7 +135,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
                 type="radio"
                 name="dosage"
                 value={dosage}
-                label={`${dosage} g`}
+                label={`${dosage}`}
                 checked={dosage === phase.dosage}
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   handleChange('dosage', event.target.value)}

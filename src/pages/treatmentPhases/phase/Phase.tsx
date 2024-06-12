@@ -39,9 +39,9 @@ const Phase = ({ phase, progress, setPhase }: Props) => {
         </PhaseContent>
       </PhaseField>
       <PhaseField>
-        <PhaseSubtitle>Dosagem do medicamento</PhaseSubtitle>
+        <PhaseSubtitle>Dosagem do Medicamento</PhaseSubtitle>
         <PhaseContent>
-          {`${phase.dosage}g`}
+          {`${phase.dosage}`}
         </PhaseContent>
       </PhaseField>
       <PhaseContent>

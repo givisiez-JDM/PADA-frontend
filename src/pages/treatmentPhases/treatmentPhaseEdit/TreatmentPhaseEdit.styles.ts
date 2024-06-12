@@ -73,11 +73,12 @@ export const DateContainer = styled.div`
 
 export const DateInput = styled.input`
   background-color: ${props => props.theme.colors.background};
-  width: 12rem;
+  width: 11rem;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.2rem 1rem;
   border: 1px solid ${props => props.theme.colors.variant3};
   color: ${props => props.theme.colors.variant3};
+  font-size: 1rem;
 `;
 
 export const CheckBoxContainer = styled.div`
