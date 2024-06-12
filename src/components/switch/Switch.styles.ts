@@ -11,20 +11,20 @@ export const Label = styled.label`
 
 export const Switch = styled.div`
   position: relative;
-  width: 2.1rem;
-  height: 1rem;
-  background: ${props => props.theme.colors.background};
+  width: 2.5rem;
+  height: 1.35rem;
+  background: ${props => props.theme.colors.buttonOff};
   border-radius: 1rem;
   padding: 0.1rem;
   transition: 300ms all;
-  border: 1px solid ${props => props.theme.colors.variant1};
+  border: 2px solid ${props => props.theme.colors.variant1};
 
   &:before {
     transition: 300ms all;
-    content: "";
+    content: '';
     position: absolute;
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 1rem;
     top: 50%;
     left: 0.1rem;
