@@ -37,13 +37,12 @@ const PerfilMedico = () => {
   const [specialty, setSpecialty] = useState(data?.specialty);
   const [about, setAbout] = useState(data?.about);
   const [photo] = useState(data?.photo);
-  const [password] = useState('Adicionar a senha para testar');
 
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const token = getToken();
-    const { url, headers } = userRequest.PUT_DOCTORS_BY_ID(data.id, token);
+    const { url, headers } = userRequest.PATCH_DOCTORS_BY_ID(data.id, token);
     const body: Partial<DoctorsType> = {
       name,
       email,
@@ -53,12 +52,8 @@ const PerfilMedico = () => {
       photo,
     };
 
-    if (password) {
-      body.password = password;
-    }
-
     try {
-      await doctorReq.put(url, body, { headers });
+      await doctorReq.patch(url, body, { headers });
       await getProfile(userId);
       navigate('/menu-medico/perfil');
     }

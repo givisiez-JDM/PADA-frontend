@@ -8,10 +8,19 @@ interface UseAxiosResponse<T> {
   loading: boolean
   get: (url: string, config?: AxiosRequestConfig) => Promise<void>
   post: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
-  postWithRes: (url: string, body: any, config?: AxiosRequestConfig) => Promise<void>
+  postWithRes: (
+    url: string,
+    body: any,
+    config?: AxiosRequestConfig
+  ) => Promise<void>
   deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  patch: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
   put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
-  putWithoutRes: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
+  putWithoutRes: (
+    url: string,
+    data: any,
+    config?: AxiosRequestConfig
+  ) => Promise<void>
 }
 
 const useAxios = <T = any>(): UseAxiosResponse<T> => {
@@ -37,95 +46,132 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
     }
   }, []);
 
-  const post = useCallback(async (url: string, body: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const post = useCallback(
+    async (url: string, body: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      await axios.post(url, body, config);
-    }
-    catch (error: any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
+        await axios.post(url, body, config);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
-  const postWithRes = useCallback(async (url: string, body: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const postWithRes = useCallback(
+    async (url: string, body: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      const res = await axios.post<T>(url, body, config);
+        const res = await axios.post<T>(url, body, config);
 
-      setData(res.data);
-    }
-    catch (error: any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
+        setData(res.data);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
-  const deleteAxios = useCallback(async (url: string, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const deleteAxios = useCallback(
+    async (url: string, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      await axios.delete(url, config);
-    }
-    catch (error: any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
+        await axios.delete(url, config);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
-  const put = useCallback(async (url: string, data: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const patch = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      const res = await axios.put<T>(url, data, config);
+        const res = await axios.patch<T>(url, data, config);
 
-      setData(res.data);
-    }
-    catch (error: any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
+        setData(res.data);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
-  const putWithoutRes = useCallback(async (url: string, data: any, config?: AxiosRequestConfig) => {
-    try {
-      setError(null);
-      setLoading(true);
+  const put = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
 
-      await axios.put(url, data, config);
-    }
-    catch (error: any) {
-      setData(null);
-      setError(error.response?.data || error.message);
-    }
-    finally {
-      setLoading(false);
-    }
-  }, []);
+        const res = await axios.put<T>(url, data, config);
+
+        setData(res.data);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
+  const putWithoutRes = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
+
+        await axios.put(url, data, config);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
 
   return {
     data,
     error,
     loading,
     get,
+    patch,
     post,
     put,
     deleteAxios,

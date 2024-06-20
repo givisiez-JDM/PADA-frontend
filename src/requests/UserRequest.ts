@@ -110,7 +110,7 @@ export class UserRequest {
     };
   };
 
-  PUT_DOCTORS_BY_ID = (id: string | undefined, token: string | null) => {
+  PATCH_DOCTORS_BY_ID = (id: string | undefined, token: string | null) => {
     return {
       url: `${BASE_URL}/doctors/${id}`,
       headers: {
