@@ -6,7 +6,7 @@ export const Theme = {
     variant1: '#76A7ED',
     variant2: '#4C7ABB',
     variant3: '#334C76',
-    variant4: '#E9EAEC',
+    variant4: '#7E8694',
     separation: '#F5F5F5',
     white: '#FFFFFF',
     keyboard: '#273047',

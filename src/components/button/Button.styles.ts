@@ -29,7 +29,6 @@ export const ButtonBase = styled.button`
 
   &:hover {
     transition: 0.3s ease-in-out;
-    color: ${props => props.theme.colors.variant4};
     scale: 1.05;
   }
 
