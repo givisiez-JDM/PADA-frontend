@@ -15,7 +15,8 @@ import {
 interface Props {
   phase: PhaseType
   progress: number
-  setPhase: () => void
+  editPhase: () => void
+  disablePhase: () => void
 }
 
 const AUXILIARY_PERCENT_CALC_VALUE = 100;
@@ -24,11 +25,12 @@ const AUXILIARY_PERCENT_CALC_VALUE = 100;
  * Statically shows the data of a phase
  * @param { PhaseType } phase A data values to show
  * @param { number } progress The pregress value of treatment [0.0-1.0]
- * @param  setPhase function to set data for edition
+ * @param  editPhase function to set data for edition
+ * @param  editPhase function to disable phase
  * @example
  * <Phase phase={{id:"",...}} progress={0.6} setPhase={setPhaseEdit} />
  */
-const Phase = ({ phase, progress, setPhase }: Props) => {
+const Phase = ({ phase, progress, editPhase, disablePhase }: Props) => {
   return (
     <PhaseContainer>
       <ContentGroup>
@@ -70,7 +72,8 @@ const Phase = ({ phase, progress, setPhase }: Props) => {
         </Card>
       </ContentGroup>
       <ButtonGroup>
-        <Button onClick={setPhase}> Alterar </Button>
+        <Button onClick={editPhase}> Alterar </Button>
+        <Button onClick={disablePhase}> Finalizar </Button>
       </ButtonGroup>
     </PhaseContainer>
   );

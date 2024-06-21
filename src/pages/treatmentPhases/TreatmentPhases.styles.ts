@@ -13,49 +13,37 @@ export const Section = styled.section`
   flex-direction: column;
 `;
 
+export const PhaseHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid ${props => props.theme.colors.separation};
+`;
+
 export const Title = styled.h1`
   font-size: 2rem;
   font-weight: 600;
-  padding-bottom: 2rem;
-  border-bottom: 3px solid ${props => props.theme.colors.separation};
   color: ${props => props.theme.colors.keyboard};
 `;
 
-export const PhaseBlock = styled.section`
+export const PhaseBlock = styled.div`
+  display: flex;
   width: 100%;
-  padding: 0 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid ${props => props.theme.colors.buttonOff};
+  margin: 1rem 0;
 `;
 
 export const PhaseTitle = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
-  padding: 1rem 0;
+  padding: 0.5rem;
   cursor: pointer;
   color: ${props => props.theme.colors.keyboard};
 
-  &::before {
-    content: '.';
+  &.active {
     color: ${props => props.theme.colors.variant2};
-    border-radius: 1rem;
-    margin-right: 0.9rem;
-    background-color: ${props => props.theme.colors.variant2};
-  }
-
-  img {
-    margin-left: 1rem;
-    width: 0.5rem;
-  }
-`;
-
-export const BoxButton = styled.div`
-  display: flex;
-  gap: 5rem;
-  margin-top: 1.5rem;
-
-  &.centered {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    border-bottom: 4px solid ${props => props.theme.colors.variant2};
   }
 `;

@@ -4,14 +4,19 @@ import useAxios from '../../hooks/useAxios';
 import { useData } from '../../global/UserContext';
 import { UserRequest } from '../../requests/UserRequest';
 import { PhaseType, VaccineType } from '../../types/TreatmentTypes';
-import IconArrowUp from '../../assets/arrow-up.svg';
-import IconArrowDown from '../../assets/arrow-down.svg';
 import DefaultPatientPage from '../../components/defaultPatientPage/DefaultPatientPage';
 import Button from '../../components/button/Button';
 import AddPhase from './addPhase/AddPhase';
 import Phase from './phase/Phase';
 import TreatmentPhaseEdit from './treatmentPhaseEdit/TreatmentPhaseEdit';
-import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './TreatmentPhases.styles';
+import {
+  Main,
+  PhaseBlock,
+  PhaseHeader,
+  PhaseTitle,
+  Section,
+  Title,
+} from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
   const { id: idPatient } = useParams();
@@ -24,30 +29,28 @@ const TreatmentPhases = () => {
   const phaseReq = useAxios<PhaseType>();
 
   const [modal, setModal] = useState(false);
-  const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
+  const [phaseSelected, setPhaseSelected] = useState<number>(0);
   const [phaseProgress, setPhaseProgress] = useState<number>(0);
   const [phaseEdit, setPhaseEdit] = useState<PhaseType | null>(null);
   const [maxPhaseNumber, setMaxPhaseNumber] = useState<number>(0);
 
   const selectPhase = (phase: PhaseType) => {
-    const newPhase = phase === phaseSelected ? null : phase;
-    setPhaseSelected(newPhase);
-    setPhaseId(newPhase ? newPhase.id : '');
+    setPhaseSelected(phase.phaseNumber);
+    setPhaseId(phase.id);
   };
 
   const closeEditPhaseModal = () => {
     setPhaseEdit(null);
-    setPhaseSelected(null);
   };
 
   const hasPhases = () => phaseList.length > 0;
 
-  const finishPhase = () => {
+  const finishPhase = (phaseId: string) => {
     if (!phaseSelected) return;
 
     const token = getToken();
     if (confirm('Deseja finalizar essa fase?')) {
-      const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseSelected.id, token);
+      const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseId, token);
 
       const body = { phaseNumber: phaseSelected, active: false };
 
@@ -73,12 +76,15 @@ const TreatmentPhases = () => {
 
   useEffect(() => {
     let maxNumber = 0;
+    let maxPhase: PhaseType | null = null;
     phaseList.forEach((item) => {
       if (item.phaseNumber > maxNumber) {
         maxNumber = item.phaseNumber;
+        maxPhase = item;
       }
-      setMaxPhaseNumber(maxNumber);
     });
+    setMaxPhaseNumber(maxNumber);
+    if (phaseSelected === 0 && maxPhase !== null) selectPhase(maxPhase);
   }, [phaseList]);
 
   useEffect(() => {
@@ -96,20 +102,15 @@ const TreatmentPhases = () => {
     setPhaseProgress(applied / total);
   }, [vaccineList]);
 
-  const getArrow = (phaseNumber: number) => {
-    if (phaseSelected?.phaseNumber === phaseNumber) {
-      return IconArrowUp;
-    }
-    return IconArrowDown;
-  };
-
-  const showPhase = (phase: PhaseType) => {
-    if (phaseSelected?.phaseNumber === phase.phaseNumber) {
+  const showPhase = () => {
+    const phase = phaseList.find(item => item.phaseNumber === phaseSelected);
+    if (phase) {
       return (
         <Phase
           phase={phase}
           progress={phaseProgress}
-          setPhase={() => setPhaseEdit(phaseSelected)}
+          editPhase={() => setPhaseEdit(phase)}
+          disablePhase={() => finishPhase(phase.id)}
         />
       );
     }
@@ -117,14 +118,14 @@ const TreatmentPhases = () => {
 
   const getPhases = () => {
     return phaseList
-      .sort(((a, b) => a.phaseNumber - b.phaseNumber)).map((phase: PhaseType) => (
-        <PhaseBlock key={phase.phaseNumber}>
-          <PhaseTitle onClick={() => selectPhase(phase)}>
-            {`Fase ${phase.phaseNumber}`}
-            <img src={getArrow(phase.phaseNumber)} alt="Mostrar conteúdo" />
-          </PhaseTitle>
-          {showPhase(phase)}
-        </PhaseBlock>
+      .sort(((a, b) => b.phaseNumber - a.phaseNumber)).map((phase: PhaseType) => (
+        <PhaseTitle
+          key={phase.phaseNumber}
+          onClick={() => selectPhase(phase)}
+          className={phase.phaseNumber === phaseSelected ? 'active' : ''}
+        >
+          {`Fase ${phase.phaseNumber}`}
+        </PhaseTitle>
       ));
   };
 
@@ -132,19 +133,14 @@ const TreatmentPhases = () => {
     <Main>
       <DefaultPatientPage patient={patient}>
         <Section>
-          <Title>Fase</Title>
-          {getPhases()}
-          <BoxButton className={hasPhases() ? '' : 'centered'}>
-            {
-              hasPhases()
-              && (
-                <Button disabled={!phaseSelected?.active} onClick={finishPhase}>
-                  Finalizar Fase
-                </Button>
-              )
-            }
-            <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
-          </BoxButton>
+          <PhaseHeader>
+            <Title>Fases</Title>
+            {hasPhases() && <Button onClick={() => setModal(!modal)}>Adicionar</Button>}
+          </PhaseHeader>
+          <PhaseBlock>
+            {getPhases()}
+          </PhaseBlock>
+          {showPhase()}
         </Section>
       </DefaultPatientPage>
       {

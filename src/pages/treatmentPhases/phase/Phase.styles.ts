@@ -29,12 +29,11 @@ export const CardTitle = styled.div`
   font-size: 1.2rem;
   padding: 0.5rem;
   margin-bottom: 0.5rem;
-  border-bottom: 1px solid ${props => props.theme.colors.background};
+  border-bottom: 2px solid ${props => props.theme.colors.separation};
 `;
 
 export const CardContent = styled.div`
   display: flex;
-  gap: 2rem;
   padding: 0.5rem;
 `;
 
@@ -42,7 +41,12 @@ export const CardItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  padding: 0 1rem;
   font-size: 1.2rem;
+
+  :not(:last-child) {
+    border-right: 2px solid ${props => props.theme.colors.separation};
+  }
 `;
 
 export const ItemTitle = styled.p`
