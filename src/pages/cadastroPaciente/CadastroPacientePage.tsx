@@ -3,6 +3,8 @@ import MenuHeader from '../../components/menuHeader/MenuHeader';
 import profileUser from '../../assets/profileUser.svg';
 import doctorPhoto from '../../assets/doctorPhoto.svg';
 import iconArrow from '../../assets/white-arrow.svg';
+import ModalCancel from '../../components/modalCancel/ModalCancel';
+
 import {
   Allergies,
   BoxButton,
@@ -17,6 +19,7 @@ import {
   TreatmentDuration,
   TreatmentMethod,
   AllergiesBox,
+  StyledButton,
   LeftBox,
   RigthBox,
 } from './CadastroPacientePage.styles';
@@ -25,6 +28,7 @@ import { useState } from 'react';
 
 const CadastroPacientePage = () => {
   const [modal, setModal] = useState(false);
+  const [isModalCancelVisible, setIsModalCancelVisible] = useState(false);
   return (
     <Main>
       <MenuHeader>
@@ -144,12 +148,28 @@ const CadastroPacientePage = () => {
 
             <Input type="text" name="others" />
           </AllergiesBox>
-          <BoxButton>
-            <button>Salvar</button>
-          </BoxButton>
         </AllergiesContainer>
+        <BoxButton>
+          <StyledButton
+            type="reset"
+            size="small"
+            className="WhiteButton"
+            onClick={() => setIsModalCancelVisible(!isModalCancelVisible)}
+          >
+            Cancelar
+          </StyledButton>
+          <StyledButton type="submit" size="small">
+            Salvar
+          </StyledButton>
+        </BoxButton>
       </Container>
       {modal && <ModalDoctor />}
+      {isModalCancelVisible && (
+        <ModalCancel
+          setModal={setIsModalCancelVisible}
+          vallue="Tem certeza que deseja cancelar?"
+        />
+      )}
     </Main>
   );
 };
