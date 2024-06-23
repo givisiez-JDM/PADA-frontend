@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import IconClose from '../../assets/X.svg';
 import {
   Modal,
@@ -12,34 +11,70 @@ import {
 interface Props {
   setModal: React.Dispatch<React.SetStateAction<boolean>>
   vallue?: string
+  onConfirm: () => void
+  onDecline: () => void
+  swapButtons?: boolean
 }
 
-const ModalCancel = ({ setModal, vallue }: Props) => {
-  const navigate = useNavigate();
-
-  const handleCancel = (e: React.FormEvent<HTMLButtonElement>) => {
+const ModalCancel = ({
+  setModal,
+  vallue,
+  onConfirm,
+  onDecline,
+  swapButtons = false,
+}: Props) => {
+  const handleConfirm = (e: React.FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    navigate('/menu-medico');
+    onConfirm();
+  };
+
+  const handleDecline = () => {
+    if (onDecline) {
+      onDecline();
+    }
+    else {
+      setModal(false);
+    }
   };
 
   return (
     <Modal>
       <ModalBox>
-        <Close src={IconClose} alt="Fechar" onClick={() => setModal(false)} />
+        <Close src={IconClose} alt="Fechar" onClick={handleDecline} />
         <ContenBox>
           <h2>{vallue}</h2>
           <ButtonBox>
-            <Button type="button" size="small" onClick={e => handleCancel(e)}>
-              Sim
-            </Button>
-            <Button
-              type="button"
-              size="small"
-              className="WhiteButton"
-              onClick={() => setModal(false)}
-            >
-              Não
-            </Button>
+            {swapButtons
+              ? (
+                <>
+                  <Button
+                    type="button"
+                    size="small"
+                    className="WhiteButton"
+                    onClick={handleDecline}
+                  >
+                    Não
+                  </Button>
+                  <Button type="button" size="small" onClick={handleConfirm}>
+                    Sim
+                  </Button>
+                </>
+                )
+              : (
+                <>
+                  <Button type="button" size="small" onClick={handleConfirm}>
+                    Sim
+                  </Button>
+                  <Button
+                    type="button"
+                    size="small"
+                    className="WhiteButton"
+                    onClick={handleDecline}
+                  >
+                    Não
+                  </Button>
+                </>
+                )}
           </ButtonBox>
         </ContenBox>
       </ModalBox>

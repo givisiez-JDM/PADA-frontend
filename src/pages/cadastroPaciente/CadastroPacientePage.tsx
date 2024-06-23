@@ -25,10 +25,23 @@ import {
 } from './CadastroPacientePage.styles';
 import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CadastroPacientePage = () => {
   const [modal, setModal] = useState(false);
   const [isModalCancelVisible, setIsModalCancelVisible] = useState(false);
+  const [isModalSaveVisible, setIsModalSaveVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCancelConfirm = () => {
+    navigate('/menu-medico');
+  };
+
+  const handleSaveConfirm = () => {
+    alert('Dados salvos com sucesso!');
+    setIsModalSaveVisible(false);
+  };
+
   return (
     <Main>
       <MenuHeader>
@@ -158,7 +171,11 @@ const CadastroPacientePage = () => {
           >
             Cancelar
           </StyledButton>
-          <StyledButton type="submit" size="small">
+          <StyledButton
+            type="button"
+            size="small"
+            onClick={() => setIsModalSaveVisible(!isModalSaveVisible)}
+          >
             Salvar
           </StyledButton>
         </BoxButton>
@@ -168,6 +185,16 @@ const CadastroPacientePage = () => {
         <ModalCancel
           setModal={setIsModalCancelVisible}
           vallue="Tem certeza que deseja cancelar?"
+          onConfirm={handleCancelConfirm}
+          onDecline={() => setIsModalCancelVisible(false)}
+        />
+      )}
+      {isModalSaveVisible && (
+        <ModalCancel
+          setModal={setIsModalSaveVisible}
+          vallue="Gostaria de salvar este paciente?"
+          onConfirm={handleSaveConfirm}
+          onDecline={() => setIsModalSaveVisible(false)}
         />
       )}
     </Main>
