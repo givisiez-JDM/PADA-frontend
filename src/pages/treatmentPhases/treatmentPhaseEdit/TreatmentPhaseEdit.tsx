@@ -3,15 +3,15 @@ import { UserRequest } from '../../../requests/UserRequest';
 import { formatDate } from '../../../utils/DateFns';
 import { useData } from '../../../global/UserContext';
 import useAxios from '../../../hooks/useAxios';
-import IconClose from '../../../assets/close.svg';
 import Button from '../../../components/button/Button';
 import Switch from '../../../components/switch/Switch';
 import Checkbox from '../../../components/checkbox/Checkbox';
 import { DosageType, FrequencyType, PhaseType } from '../../../types/TreatmentTypes';
+import ModalTreatmentPhase from '../../../components/modalTreatmentPhase/ModalTreatmentPhase';
+import { ModalForm, DateInput, PhaseStatus } from './TreatmentPhaseEdit.styles';
 import {
-  ButtonGroup, CheckBoxContainer, Close, DateContainer, DateInput, Error, Header, HeaderTitle,
-  ModalContainer, PhaseField, PhaseForm, PhaseStatus, PhaseTitle, Title,
-} from './TreatmentPhaseEdit.styles';
+  BoxButton, ContainerCheckBox, Error, PhaseField, Title,
+} from '../addPhase/AddPhase.styles';
 
 const frequencies: Array<FrequencyType> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
 const dosages: Array<DosageType> = ['1:10.000', '1:100', '1:1.000', '1:10'];
@@ -26,8 +26,8 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
   const userRequest = new UserRequest();
   const phaseReq = useAxios<PhaseType>();
 
-  const dateSize = 10;
-  const today = new Date().toISOString().substring(0, dateSize);
+  const SUBSTRING_DATE_SIZE = 10;
+  const today = new Date().toISOString().substring(0, SUBSTRING_DATE_SIZE);
   const [phase, setPhase] = useState<PhaseType>(phaseEdit);
   const [phaseActive, setPhaseActive] = useState(phase.active);
   const [errorMessage, setErrorMessage] = useState('');
@@ -83,35 +83,26 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
   }, [phase]);
 
   return (
-    <ModalContainer>
-      <Header>
-        <HeaderTitle>Fase de Tratamento</HeaderTitle>
-        <Close onClick={closeModal} src={IconClose} alt="Fechar" />
-      </Header>
-      <PhaseForm onSubmit={event => handleFormSubmit(event)}>
-        <PhaseTitle>{`Fase ${phase.phaseNumber}`}</PhaseTitle>
+    <ModalTreatmentPhase closeModal={closeModal}>
+      <ModalForm onSubmit={event => handleFormSubmit(event)}>
         <PhaseField>
-          <Title>Duração da Fase</Title>
-          <DateContainer>
-            <p>Início</p>
-            <DateInput
-              type="date"
-              value={phase.startTreatment}
-              onChange={event => handleChange('startTreatment', event.target.value)}
-            />
-          </DateContainer>
-          <DateContainer>
-            <p>Fim</p>
-            <DateInput
-              type="date"
-              value={phase.endTreatment}
-              onChange={event => handleChange('endTreatment', event.target.value)}
-            />
-          </DateContainer>
+          <Title>Alteração da Fase</Title>
+          <p>Início</p>
+          <DateInput
+            type="date"
+            value={phase.startTreatment}
+            onChange={event => handleChange('startTreatment', event.target.value)}
+          />
+          <p>Fim</p>
+          <DateInput
+            type="date"
+            value={phase.endTreatment}
+            onChange={event => handleChange('endTreatment', event.target.value)}
+          />
         </PhaseField>
         <PhaseField>
           <Title>Periodicidade</Title>
-          <CheckBoxContainer>
+          <ContainerCheckBox>
             {frequencies.map(frequency => (
               <Checkbox
                 key={frequency}
@@ -124,11 +115,11 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
                   handleChange('frequency', event.target.value)}
               />
             ))}
-          </CheckBoxContainer>
+          </ContainerCheckBox>
         </PhaseField>
         <PhaseField>
           <Title>Dosagem do Medicamento</Title>
-          <CheckBoxContainer>
+          <ContainerCheckBox>
             {dosages.map(dosage => (
               <Checkbox
                 key={dosage}
@@ -141,7 +132,7 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
                   handleChange('dosage', event.target.value)}
               />
             ))}
-          </CheckBoxContainer>
+          </ContainerCheckBox>
         </PhaseField>
         <PhaseField>
           <PhaseStatus>
@@ -150,15 +141,22 @@ const TreatmentPhaseEdit = ({ closeModal, phaseEdit }: Props) => {
               inactiveLabel="Inativo"
               status={phaseActive}
               setStatus={setPhaseActive}
+              theme="dark"
             />
           </PhaseStatus>
         </PhaseField>
-        <Error>{errorMessage}</Error>
-        <ButtonGroup>
-          <Button type="submit" disabled={errorMessage.length > 0}>Salvar</Button>
-        </ButtonGroup>
-      </PhaseForm>
-    </ModalContainer>
+        {errorMessage && <Error>{errorMessage}</Error>}
+        <BoxButton>
+          <Button
+            size="large"
+            type="submit"
+            disabled={errorMessage.length > 0}
+          >
+            Salvar
+          </Button>
+        </BoxButton>
+      </ModalForm>
+    </ModalTreatmentPhase>
   );
 };
 

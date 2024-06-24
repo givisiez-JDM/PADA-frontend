@@ -19,6 +19,10 @@ export const Switch = styled.div`
   transition: 300ms all;
   border: 2px solid ${props => props.theme.colors.variant1};
 
+  &.dark {
+    border: 2px solid ${props => props.theme.colors.white};
+  }
+
   &:before {
     transition: 300ms all;
     content: '';
