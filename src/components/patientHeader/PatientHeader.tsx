@@ -8,10 +8,17 @@ interface HeaderProps {
 }
 
 const PatientHeader: React.FC<HeaderProps> = ({ patient }) => {
+  const getPhoto = () => {
+    if (typeof (patient?.photo) === 'string') {
+      return patient.photo;
+    }
+    return '';
+  };
+
   return (
     <Header>
       <PatientData>
-        <Logo src={patient?.photo || IconPatient} />
+        <Logo src={getPhoto() || IconPatient} alt="Foto do paciente" />
         <p>{patient?.name}</p>
       </PatientData>
       <Close to="/menu-medico">
