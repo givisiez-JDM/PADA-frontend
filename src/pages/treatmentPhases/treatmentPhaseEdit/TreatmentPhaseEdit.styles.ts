@@ -48,8 +48,13 @@ export const PhaseStatus = styled.div`
   color: ${props => props.theme.colors.keyboard};
 `;
 
-export const Error = styled.span`
+export const Error = styled.div`
+  text-align: center;
+  background-color: ${props => props.theme.colors.white};
   color: ${props => props.theme.colors.error};
+  border: 1px solid ${props => props.theme.colors.error};
+  border-radius: 0.5rem;
+  padding: 0.2rem;
 `;
 
 export const ButtonGroup = styled.div`

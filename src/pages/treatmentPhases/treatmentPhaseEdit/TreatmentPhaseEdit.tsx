@@ -8,9 +8,9 @@ import Switch from '../../../components/switch/Switch';
 import Checkbox from '../../../components/checkbox/Checkbox';
 import { DosageType, FrequencyType, PhaseType } from '../../../types/TreatmentTypes';
 import ModalTreatmentPhase from '../../../components/modalTreatmentPhase/ModalTreatmentPhase';
-import { ModalForm, DateInput, PhaseStatus } from './TreatmentPhaseEdit.styles';
+import { ModalForm, DateInput, Error, PhaseStatus } from './TreatmentPhaseEdit.styles';
 import {
-  BoxButton, ContainerCheckBox, Error, PhaseField, Title,
+  BoxButton, ContainerCheckBox, PhaseField, Title,
 } from '../addPhase/AddPhase.styles';
 
 const frequencies: Array<FrequencyType> = ['7 dias', '3 semanas', '2 semanas', '4 semanas'];
