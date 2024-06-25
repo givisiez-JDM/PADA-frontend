@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from '../../../components/button/Button';
 import { PhaseType } from '../../../types/TreatmentTypes';
 import { formatDate } from '../../../utils/DateFns';
@@ -10,6 +11,7 @@ import {
   ContentGroup,
   ButtonGroup,
   ItemTitle,
+  BackButton,
 } from './Phase.styles';
 
 interface Props {
@@ -72,6 +74,9 @@ const Phase = ({ phase, progress, editPhase, disablePhase }: Props) => {
         </Card>
       </ContentGroup>
       <ButtonGroup>
+        <BackButton>
+          <Link to="/menu-medico">Voltar</Link>
+        </BackButton>
         <Button onClick={editPhase}> Alterar </Button>
         <Button onClick={disablePhase}> Finalizar </Button>
       </ButtonGroup>

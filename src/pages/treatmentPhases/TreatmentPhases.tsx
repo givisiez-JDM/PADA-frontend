@@ -10,7 +10,7 @@ import AddPhase from './addPhase/AddPhase';
 import Phase from './phase/Phase';
 import TreatmentPhaseEdit from './treatmentPhaseEdit/TreatmentPhaseEdit';
 import {
-  Main, PhaseBlock, PhaseHeader, PhaseTitle, Section, Title,
+  ButtonBox, PhaseBlock, PhaseEmpty, PhaseHeader, PhaseText, PhaseTitle, Section, Title,
 } from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
@@ -124,18 +124,41 @@ const TreatmentPhases = () => {
       ));
   };
 
-  return (
-    <Main>
-      <DefaultPatientPage patient={patient}>
-        <Section>
-          <PhaseHeader>
-            <Title>Fases</Title>
-            {hasPhases() && <Button onClick={() => setModal(!modal)}>Adicionar</Button>}
-          </PhaseHeader>
+  const phaseContent = () => {
+    if (hasPhases()) {
+      return (
+        <>
           <PhaseBlock>{getPhases()}</PhaseBlock>
           {showPhase()}
-        </Section>
-      </DefaultPatientPage>
+        </>
+      );
+    }
+    else {
+      return (
+        <PhaseEmpty>
+          <PhaseText>Este paciente ainda não possui nenhum monitoramento ativo. </PhaseText>
+          <PhaseText>
+            Por favor,
+            <span> adicione uma fase de monitoramento </span>
+            para acompanhar o progresso do tratamento e garantir o melhor cuidado possível.
+          </PhaseText>
+          <ButtonBox>
+            <Button onClick={() => setModal(true)}>Adicionar Fase</Button>
+          </ButtonBox>
+        </PhaseEmpty>
+      );
+    }
+  };
+
+  return (
+    <DefaultPatientPage patient={patient}>
+      <Section>
+        <PhaseHeader>
+          <Title>Fases</Title>
+          {hasPhases() && <Button onClick={() => setModal(true)}>Adicionar</Button>}
+        </PhaseHeader>
+        {phaseContent()}
+      </Section>
       {
         modal
         && (
@@ -150,7 +173,7 @@ const TreatmentPhases = () => {
         phaseEdit
         && <TreatmentPhaseEdit closeModal={closeEditPhaseModal} phaseEdit={phaseEdit} />
       }
-    </Main>
+    </DefaultPatientPage>
   );
 };
 

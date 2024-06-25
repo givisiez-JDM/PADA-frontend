@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Button from '../../../components/button/Button';
 
 export const PhaseContainer = styled.div`
   display: flex;
@@ -60,4 +61,12 @@ export const ButtonGroup = styled.div`
   align-items: center;
   justify-content: flex-end;
   padding: 1.5rem 2.5rem;
+`;
+
+export const BackButton = styled(Button)`
+  background-color: ${props => props.theme.colors.white};
+  color: ${props => props.theme.colors.keyboard};
+  border: 1px solid ${props => props.theme.colors.keyboard};
+  margin-right: auto;
+  justify-self: flex-start;
 `;
