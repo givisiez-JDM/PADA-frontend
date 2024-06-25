@@ -10,12 +10,7 @@ import AddPhase from './addPhase/AddPhase';
 import Phase from './phase/Phase';
 import TreatmentPhaseEdit from './treatmentPhaseEdit/TreatmentPhaseEdit';
 import {
-  Main,
-  PhaseBlock,
-  PhaseHeader,
-  PhaseTitle,
-  Section,
-  Title,
+  Main, PhaseBlock, PhaseHeader, PhaseTitle, Section, Title,
 } from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
@@ -137,9 +132,7 @@ const TreatmentPhases = () => {
             <Title>Fases</Title>
             {hasPhases() && <Button onClick={() => setModal(!modal)}>Adicionar</Button>}
           </PhaseHeader>
-          <PhaseBlock>
-            {getPhases()}
-          </PhaseBlock>
+          <PhaseBlock>{getPhases()}</PhaseBlock>
           {showPhase()}
         </Section>
       </DefaultPatientPage>
