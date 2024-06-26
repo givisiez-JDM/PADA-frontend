@@ -9,6 +9,7 @@ export const Theme = {
     variant4: '#E9EAEC',
     separation: '#F5F5F5',
     white: '#FFFFFF',
+    darkGray: '#383838',
     keyboard: '#273047',
     background: '#E3E3E3',
     buttonOff: '#B4B4B4',

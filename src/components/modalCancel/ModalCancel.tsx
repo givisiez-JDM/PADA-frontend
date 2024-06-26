@@ -3,7 +3,7 @@ import {
   Modal,
   ModalBox,
   Close,
-  ContenBox,
+  ContentBox,
   ButtonBox,
   StyledButton as Button,
 } from './ModalCancel.styles';
@@ -41,7 +41,7 @@ const ModalCancel = ({
     <Modal>
       <ModalBox>
         <Close src={IconClose} alt="Fechar" onClick={handleDecline} />
-        <ContenBox>
+        <ContentBox>
           <h2>{vallue}</h2>
           <ButtonBox>
             {swapButtons
@@ -50,7 +50,7 @@ const ModalCancel = ({
                   <Button
                     type="button"
                     size="small"
-                    className="WhiteButton"
+                    color="tertiary"
                     onClick={handleDecline}
                   >
                     Não
@@ -68,7 +68,7 @@ const ModalCancel = ({
                   <Button
                     type="button"
                     size="small"
-                    className="WhiteButton"
+                    color="tertiary"
                     onClick={handleDecline}
                   >
                     Não
@@ -76,7 +76,7 @@ const ModalCancel = ({
                 </>
                 )}
           </ButtonBox>
-        </ContenBox>
+        </ContentBox>
       </ModalBox>
     </Modal>
   );

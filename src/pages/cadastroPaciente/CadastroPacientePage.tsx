@@ -165,15 +165,13 @@ const CadastroPacientePage = () => {
         <BoxButton>
           <StyledButton
             type="reset"
-            size="small"
-            className="WhiteButton"
+            color="quaternary"
             onClick={() => setIsModalCancelVisible(!isModalCancelVisible)}
           >
             Cancelar
           </StyledButton>
           <StyledButton
             type="button"
-            size="small"
             onClick={() => setIsModalSaveVisible(!isModalSaveVisible)}
           >
             Salvar

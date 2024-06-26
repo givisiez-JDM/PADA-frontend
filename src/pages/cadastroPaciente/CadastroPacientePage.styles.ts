@@ -125,15 +125,6 @@ export const BoxButton = styled.div`
 
 export const StyledButton = styled(Button)`
   margin-right: 2rem;
-
-  &.WhiteButton {
-    background-color: #ffffff;
-    color: #383838;
-    border: 1px solid #383838;
-  }
-
-  &:hover {
-    background-color: ${props => props.theme.colors.variant3};
-    transition: 0.3s;
-  }
+  height: 2.5625rem;
+  width: 9.1875rem;
 `;

@@ -32,7 +32,7 @@ export const Close = styled.img`
   cursor: pointer;
 `;
 
-export const ContenBox = styled.div`
+export const ContentBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -55,15 +55,10 @@ export const ButtonBox = styled.div`
   width: 100%;
 `;
 
+// Definindo estilos adicionais para o StyledButton
 export const StyledButton = styled(Button)`
   height: 2.5rem;
   width: 6.4375rem;
   border-radius: 3.125rem;
-  border: 2px;
-
-  &.WhiteButton {
-    background-color: #ffffff;
-    color: #383838;
-    border: 1px solid #383838;
-  }
+  border: 2px solid transparent;
 `;
