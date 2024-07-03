@@ -11,18 +11,38 @@ import Button from '../../components/button/Button';
 import AddPhase from './addPhase/AddPhase';
 import Phase from './phase/Phase';
 import TreatmentPhaseEdit from './treatmentPhaseEdit/TreatmentPhaseEdit';
-import { BoxButton, Main, PhaseBlock, PhaseTitle, Section, Title } from './TreatmentPhases.styles';
+import ModalCancel from '../../components/modalCancel/ModalCancel';
+import {
+  BoxButton,
+  Main,
+  PhaseBlock,
+  PhaseTitle,
+  Section,
+  Title,
+} from './TreatmentPhases.styles';
 
 const TreatmentPhases = () => {
   const { id: idPatient } = useParams();
   const {
-    getToken, patient, patientId, setPatientId, getPatient, getTreatment, treatmentId,
-    phaseList, getPhaseList, setPhaseId, phaseId, getVaccineList, vaccineList,
+    getToken,
+    patient,
+    patientId,
+    setPatientId,
+    getPatient,
+    getTreatment,
+    treatmentId,
+    phaseList,
+    getPhaseList,
+    setPhaseId,
+    phaseId,
+    getVaccineList,
+    vaccineList,
   } = useData();
 
   const userRequest = new UserRequest();
   const phaseReq = useAxios<PhaseType>();
 
+  const [modalCancel, setModalCancel] = useState(false);
   const [modal, setModal] = useState(false);
   const [phaseSelected, setPhaseSelected] = useState<PhaseType | null>(null);
   const [phaseProgress, setPhaseProgress] = useState<number>(0);
@@ -37,22 +57,38 @@ const TreatmentPhases = () => {
 
   const hasPhases = () => phaseList.length > 0;
 
+  const handleFinishPhase = () => {
+    setModalCancel(true);
+  };
+
   const finishPhase = () => {
     if (!phaseSelected) return;
 
     const token = getToken();
-    if (confirm('Deseja finalizar essa fase?')) {
-      const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(phaseSelected.id, token);
+    const { url, headers } = userRequest.PUT_PHASE_STATUS_BY_ID(
+      phaseSelected.id,
+      token,
+    );
+    const body = { phaseNumber: phaseSelected.phaseNumber, active: false };
+    phaseReq
+      .put(url, body, { headers })
+      .then(() => {
+        getPhaseList();
+        setModalCancel(false);
+        setPhaseSelected(null);
+      })
+      .catch((error) => {
+        alert(`Erro ao finalizar fase: ${error}`);
+        setModalCancel(false);
+      });
+  };
 
-      const body = { phaseNumber: phaseSelected, active: false };
-
-      phaseReq.put(url, body, { headers });
-    }
+  const closeModal = () => {
+    setModalCancel(false);
   };
 
   useEffect(() => {
-    if (idPatient && idPatient !== patientId)
-      setPatientId(idPatient);
+    if (idPatient && idPatient !== patientId) setPatientId(idPatient);
   }, [idPatient]);
 
   useEffect(() => {
@@ -82,12 +118,15 @@ const TreatmentPhases = () => {
 
   useEffect(() => {
     const total = vaccineList.length;
-    const applied = vaccineList.reduce((total: number, vaccine: VaccineType) => {
-      if (vaccine.status !== 'agendado') {
-        return total + 1;
-      }
-      return total;
-    }, 0);
+    const applied = vaccineList.reduce(
+      (total: number, vaccine: VaccineType) => {
+        if (vaccine.status !== 'agendado') {
+          return total + 1;
+        }
+        return total;
+      },
+      0,
+    );
     setPhaseProgress(applied / total);
   }, [vaccineList]);
 
@@ -112,7 +151,8 @@ const TreatmentPhases = () => {
 
   const getPhases = () => {
     return phaseList
-      .sort(((a, b) => a.phaseNumber - b.phaseNumber)).map((phase: PhaseType) => (
+      .sort((a, b) => a.phaseNumber - b.phaseNumber)
+      .map((phase: PhaseType) => (
         <PhaseBlock key={phase.phaseNumber}>
           <PhaseTitle onClick={() => selectPhase(phase)}>
             {`Fase ${phase.phaseNumber}`}
@@ -130,32 +170,40 @@ const TreatmentPhases = () => {
           <Title>Fases</Title>
           {getPhases()}
           <BoxButton className={hasPhases() ? '' : 'centered'}>
-            {
-              hasPhases()
-              && (
-                <Button disabled={!phaseSelected?.active} onClick={finishPhase}>
-                  Finalizar Fase
-                </Button>
-              )
-            }
+            {hasPhases() && (
+              <Button
+                disabled={!phaseSelected?.active}
+                onClick={handleFinishPhase}
+              >
+                Finalizar Fase
+              </Button>
+            )}
             <Button onClick={() => setModal(!modal)}>Adicionar Fase</Button>
           </BoxButton>
         </Section>
       </DefaultPatientPage>
-      {
-        modal
-        && (
-          <AddPhase
-            setModal={setModal}
-            treatmentId={treatmentId}
-            phaseNumber={maxPhaseNumber + 1}
-          />
-        )
-      }
-      {
-        phaseEdit
-        && <TreatmentPhaseEdit closeModal={() => setPhaseEdit(null)} phaseEdit={phaseEdit} />
-      }
+      {modal && (
+        <AddPhase
+          setModal={setModal}
+          treatmentId={treatmentId}
+          phaseNumber={maxPhaseNumber + 1}
+        />
+      )}
+      {modalCancel && (
+        <ModalCancel
+          setModal={setModalCancel}
+          vallue={`em certeza que quer Finalizar essa Fase ${phaseSelected?.phaseNumber}?`}
+          swapButtons={true}
+          onConfirm={finishPhase}
+          onDecline={closeModal}
+        />
+      )}
+      {phaseEdit && (
+        <TreatmentPhaseEdit
+          closeModal={() => setPhaseEdit(null)}
+          phaseEdit={phaseEdit}
+        />
+      )}
     </Main>
   );
 };

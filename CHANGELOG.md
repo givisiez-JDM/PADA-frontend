@@ -14,6 +14,8 @@ Changelog
 - [PADA-233](https://givisiez.atlassian.net/browse/PADA-233): Logica modal de adicionar fase
 - [PADA-245](https://givisiez.atlassian.net/browse/PADA-245): Ícone de visualização de senha
 - [PADA-249](https://givisiez.atlassian.net/browse/PADA-249): Componentizando checkbox
+- [PADA-293](https://givisiez.atlassian.net/browse/PADA-293): Implementação do modal de confirmação/cancelamento de cadastro de novo paciente.
+- [PADA-294](https://givisiez.atlassian.net/browse/PADA-294): Implementação do modal de confirmação de finalização de fase.
 
 ## Fix
 

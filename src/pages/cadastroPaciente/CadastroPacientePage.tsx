@@ -3,6 +3,8 @@ import MenuHeader from '../../components/menuHeader/MenuHeader';
 import profileUser from '../../assets/profileUser.svg';
 import doctorPhoto from '../../assets/doctorPhoto.svg';
 import iconArrow from '../../assets/white-arrow.svg';
+import ModalCancel from '../../components/modalCancel/ModalCancel';
+
 import {
   Allergies,
   BoxButton,
@@ -17,14 +19,29 @@ import {
   TreatmentDuration,
   TreatmentMethod,
   AllergiesBox,
+  StyledButton,
   LeftBox,
   RigthBox,
 } from './CadastroPacientePage.styles';
 import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const CadastroPacientePage = () => {
   const [modal, setModal] = useState(false);
+  const [isModalCancelVisible, setIsModalCancelVisible] = useState(false);
+  const [isModalSaveVisible, setIsModalSaveVisible] = useState(false);
+  const navigate = useNavigate();
+
+  const handleCancelConfirm = () => {
+    navigate('/menu-medico');
+  };
+
+  const handleSaveConfirm = () => {
+    alert('Dados salvos com sucesso!');
+    setIsModalSaveVisible(false);
+  };
+
   return (
     <Main>
       <MenuHeader>
@@ -144,12 +161,40 @@ const CadastroPacientePage = () => {
 
             <Input type="text" name="others" />
           </AllergiesBox>
-          <BoxButton>
-            <button>Salvar</button>
-          </BoxButton>
         </AllergiesContainer>
+        <BoxButton>
+          <StyledButton
+            type="reset"
+            color="quaternary"
+            onClick={() => setIsModalCancelVisible(!isModalCancelVisible)}
+          >
+            Cancelar
+          </StyledButton>
+          <StyledButton
+            type="button"
+            onClick={() => setIsModalSaveVisible(!isModalSaveVisible)}
+          >
+            Salvar
+          </StyledButton>
+        </BoxButton>
       </Container>
       {modal && <ModalDoctor />}
+      {isModalCancelVisible && (
+        <ModalCancel
+          setModal={setIsModalCancelVisible}
+          vallue="Tem certeza que deseja cancelar?"
+          onConfirm={handleCancelConfirm}
+          onDecline={() => setIsModalCancelVisible(false)}
+        />
+      )}
+      {isModalSaveVisible && (
+        <ModalCancel
+          setModal={setIsModalSaveVisible}
+          vallue="Gostaria de salvar este paciente?"
+          onConfirm={handleSaveConfirm}
+          onDecline={() => setIsModalSaveVisible(false)}
+        />
+      )}
     </Main>
   );
 };
