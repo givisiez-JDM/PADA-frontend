@@ -1,17 +1,27 @@
 import { useState } from 'react';
 import { useData } from '../../global/UserContext';
+import { useNavigate } from 'react-router-dom';
 import ImageLogo from '../../assets/logo.png';
 import IconArrow from '../../assets/white-arrow.svg';
 import ModalDoctor from '../../components/modalDoctor/ModalDoctor';
 import MenuHeader from '../../components/menuHeader/MenuHeader';
-import { ArticleAbout, ArticleCRM,
-  ArticlePassword, ArticleSpecialty, ArticleText, BoxEditProfile, ChangePassword,
-  EditProfile, Logo, Main, Section,
-  SectionDoctor } from './PerfilMedicoPage.styles';
+import {
+  ArticleAbout,
+  ArticleCRM,
+  ArticleSpecialty,
+  ArticleText,
+  BoxEditProfile,
+  EditProfile,
+  Logo,
+  Main,
+  Section,
+  SectionDoctor,
+} from './PerfilMedicoPage.styles';
 
 const PerfilMedico = () => {
   const { data } = useData();
   const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,17 +53,12 @@ const PerfilMedico = () => {
           </ArticleSpecialty>
           <ArticleAbout>
             <h1>Sobre</h1>
-            <p>
-              {data?.about}
-            </p>
+            <p>{data?.about}</p>
           </ArticleAbout>
-          <ArticlePassword>
-            <h1>Senha:</h1>
-            <p>********</p>
-            <ChangePassword disabled={true}>Alterar</ChangePassword>
-          </ArticlePassword>
           <BoxEditProfile>
-            <EditProfile>Editar perfil</EditProfile>
+            <EditProfile onClick={() => navigate('/menu-medico/perfil/edit')}>
+              Editar perfil
+            </EditProfile>
           </BoxEditProfile>
         </Section>
       </Main>

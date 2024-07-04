@@ -15,6 +15,7 @@ interface UseAxiosResponse<T> {
     config?: AxiosRequestConfig
   ) => Promise<void>
   deleteAxios: (url: string, config?: AxiosRequestConfig) => Promise<void>
+  patch: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
   put: (url: string, data: any, config?: AxiosRequestConfig) => Promise<void>
   putWithoutRes: (
     url: string,
@@ -120,6 +121,27 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
     [],
   );
 
+  const patch = useCallback(
+    async (url: string, data: any, config?: AxiosRequestConfig) => {
+      try {
+        setError(null);
+        setLoading(true);
+
+        const res = await axios.patch<T>(url, data, config);
+
+        setData(res.data);
+      }
+      catch (error: any) {
+        setData(null);
+        setError(error.response?.data || error.message);
+      }
+      finally {
+        setLoading(false);
+      }
+    },
+    [],
+  );
+
   const put = useCallback(
     async (url: string, data: any, config?: AxiosRequestConfig) => {
       try {
@@ -173,6 +195,7 @@ const useAxios = <T = any>(): UseAxiosResponse<T> => {
     error,
     loading,
     get,
+    patch,
     post,
     put,
     deleteAxios,
