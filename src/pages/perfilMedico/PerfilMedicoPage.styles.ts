@@ -42,7 +42,7 @@ export const ArticleText = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.125rem;
   }
   p {
@@ -59,7 +59,7 @@ export const ArticleCRM = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.125rem;
   }
   p {
@@ -78,7 +78,7 @@ export const ArticleSpecialty = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.125rem;
   }
   p {
@@ -86,7 +86,7 @@ export const ArticleSpecialty = styled.div`
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
     padding: 0.5rem;
-    line-height: normal;
+    line-height: 1.63rem;
   }
 `;
 
@@ -95,7 +95,7 @@ export const ArticleAbout = styled.div`
   h1 {
     height: 1.25rem;
     margin-bottom: 0.65rem;
-    font-weight: bold;
+    font-weight: 700;
     font-size: 1.125rem;
   }
   p {
@@ -103,7 +103,7 @@ export const ArticleAbout = styled.div`
     color: ${props => props.theme.colors.variant3};
     font-size: 1rem;
     padding: 0.5rem;
-    line-height: normal;
+    line-height: 1.63rem;
   }
 `;
 
