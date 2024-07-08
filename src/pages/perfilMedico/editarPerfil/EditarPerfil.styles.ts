@@ -27,7 +27,7 @@ export const Section = styled.section`
 export const SectionDoctor = styled.div`
   display: flex;
   margin-right: 6rem;
-  color: white;
+  color: ${props => props.theme.colors.white};
   font-size: larger;
 
   img {
@@ -56,7 +56,7 @@ export const Container = styled.form`
 
 export const Title = styled.h3`
   height: 1.25rem;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.125rem;
   color: ${props => props.theme.colors.keyboard};
 `;
@@ -76,7 +76,6 @@ export const InputField = styled.input`
 export const InputArea = styled.textarea`
   margin-top: 0.65rem;
   margin-bottom: 0.18rem;
-  border: 1px solid #ccc;
   border-radius: 1rem;
   padding: 0.5rem;
   border: 1px solid ${props => props.theme.colors.variant3};
@@ -85,7 +84,6 @@ export const InputArea = styled.textarea`
   resize: none;
   overflow: hidden;
   font-size: 1rem;
-  font-family: 'poppins', sans-serif;
 
   &.specialty {
     height: 2.8rem;
