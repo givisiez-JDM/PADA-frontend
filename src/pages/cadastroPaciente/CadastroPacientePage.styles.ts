@@ -13,6 +13,11 @@ export const Container = styled.div`
   gap: 1rem 0;
 `;
 
+export const PatientError = styled.div`
+  padding: 1.5rem 3rem;
+  color: #fc3855;
+`;
+
 export const FirstBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -24,6 +29,15 @@ export const BoxInput = styled.div`
   flex-direction: column;
   gap: 0.4rem 0;
   font-weight: 500;
+
+  input {
+    height: 2.2rem;
+    width: 13rem;
+    border-radius: 1rem;
+    background-color: transparent;
+    border: 1px solid black;
+    padding-left: 1rem;
+  }
 `;
 
 export const SecondBox = styled.div`
@@ -63,7 +77,7 @@ export const TreatmentMethod = styled.div`
   }
 `;
 
-export const MainContent = styled.div`
+export const MainContent = styled.form`
   display: flex;
   align-items: center;
   gap: 0 10rem;
@@ -79,7 +93,15 @@ export const AllergiesContainer = styled.div`
 export const AllergiesBox = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 1rem 0;
+  width: 20rem;
+`;
+
+export const OthersAllergies = styled.div`
+  display: flex;
+  flex-direction: column;
   gap: 0.5rem 0;
+  font-weight: 500;
 `;
 
 export const Allergies = styled.div`

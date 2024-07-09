@@ -2,8 +2,21 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { UserRequest } from '../../requests/UserRequest';
 import {
-  Alergis, ArticleContact, ArticleEmail, ArticleName, Born, Button, Main, MethodTreatment,
-  Middle, Section, Tel, Title, TitleTreatment, Treatment, TreatmentContainer,
+  Alergis,
+  ArticleContact,
+  ArticleEmail,
+  ArticleName,
+  Born,
+  Button,
+  Main,
+  MethodTreatment,
+  Middle,
+  Section,
+  Tel,
+  Title,
+  TitleTreatment,
+  Treatment,
+  TreatmentContainer,
   TreatmentDuration,
 } from './PerfilPacientePage.styles';
 import useAxios from '../../hooks/useAxios';
@@ -38,7 +51,10 @@ const PerfilPaciente = () => {
 
   React.useEffect(() => {
     const token = window.localStorage.getItem('token');
-    const { url, headers } = userRequest.GET_TREATMENTS_PHASES_BY_ID(treatmentId, token);
+    const { url, headers } = userRequest.GET_TREATMENTS_PHASES_BY_ID(
+      treatmentId,
+      token,
+    );
 
     treatmentPhasesReq.get(url, { headers });
   }, [treatmentId]);
@@ -47,7 +63,8 @@ const PerfilPaciente = () => {
     <p key={allergie}>{allergie}</p>
   ));
 
-  const treatmentPhaseMap = treatmentPhasesReq?.data
+  const treatmentPhaseMap
+    = treatmentPhasesReq?.data
     && treatmentPhasesReq.data.map((treatment: any) => (
       <TreatmentDuration key={treatment.id}>
         <h1>Duração do tratamento</h1>

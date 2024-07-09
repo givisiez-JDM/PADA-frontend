@@ -22,7 +22,7 @@ export class UserRequest {
     };
   };
 
-  GET_DOCTOR_BY_ID = (id: any, token: string | null) => {
+  GET_DOCTOR_BY_ID = (id: string, token: string | null) => {
     return {
       url: `${BASE_URL}/doctors/${id}`,
       headers: {
@@ -119,9 +119,21 @@ export class UserRequest {
     };
   };
 
-  PATCH_DOCTORS_BY_ID = (id: string | undefined, token: string | null) => {
+  POST_TREATMENTS_PHASES_BY_ID = (
+    token: string | null,
+    id: string | undefined,
+  ) => {
     return {
-      url: `${BASE_URL}/doctors/${id}`,
+      url: `${BASE_URL}/phases/treatments/${id}`,
+      headers: {
+        Authorization: token,
+      },
+    };
+  };
+
+  POST_PATIENT = (token: string | null) => {
+    return {
+      url: `${BASE_URL}/doctors/patient-register`,
       headers: {
         Authorization: token,
       },
