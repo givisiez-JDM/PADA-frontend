@@ -5,6 +5,7 @@ import Login from '../pages/login/LoginPage';
 import GlobalStorage from '../global/UserContext';
 import MenuMedico from '../pages/menuMedico/MenuMedicoPage';
 import PerfilMedico from '../pages/perfilMedico/PerfilMedicoPage';
+import EditarPerfilMedico from '../pages/perfilMedico/editarPerfil/EditarPerfil';
 import PerfilPaciente from '../pages/perfilPaciente/PerfilPacientePage';
 import TreatmentPhases from '../pages/treatmentPhases/TreatmentPhases';
 import VacinasPaciente from '../pages/vacinasPaciente/VacinasPaciente';
@@ -21,8 +22,15 @@ const Router = () => {
           <Route path="cadastro/paciente" element={<CadastroPacientePage />} />
           <Route path="menu-medico" element={<MenuMedico />} />
           <Route path="menu-medico/perfil" element={<PerfilMedico />} />
+          <Route
+            path="/menu-medico/perfil/edit"
+            element={<EditarPerfilMedico />}
+          />
           <Route path="/paciente/perfil/:id" element={<PerfilPaciente />} />
-          <Route path="/paciente/tratamento/:id" element={<TreatmentPhases />} />
+          <Route
+            path="/paciente/tratamento/:id"
+            element={<TreatmentPhases />}
+          />
           <Route path="/paciente/vacinas/:id" element={<VacinasPaciente />} />
         </Routes>
       </GlobalStorage>
